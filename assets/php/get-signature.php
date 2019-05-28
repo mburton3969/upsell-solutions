@@ -13,6 +13,8 @@ $de_app_key = $_GET['de_apikey'];
 
 $bl_app_key = $_GET['bl_apikey'];
 
+$wm_app_key = $_GET['wm_apikey'];
+
 #****Generates API Signature****
 $signature = base64_encode(hash_hmac('sha1', $upc_code, $auth_key, $raw_output = true));
 

@@ -7,6 +7,8 @@ var bl_apikey = 'by9mvc1ud63gvzw584xrs6rkaisosy';
 
 var ud_apikey = '2e514306059046cf75e01e0010bce0ee';
 
+var wm_apikey = 'rfjbc7str5mjyf6ta4ed76jf';
+
 function lookup_upc(upc){
 	if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -27,7 +29,7 @@ function lookup_upc(upc){
 
     }
   }
-  xmlhttp.open("GET","assets/php/get-signature.php?upc="+upc+"&auth_key="+auth_key+"&bl_apikey="+bl_apikey+"&de_apikey="+de_apikey+"&ud_apikey="+ud_apikey,true);
+  xmlhttp.open("GET","assets/php/get-signature.php?upc="+upc+"&auth_key="+auth_key+"&bl_apikey="+bl_apikey+"&de_apikey="+de_apikey+"&ud_apikey="+ud_apikey+"&wm_apikey="+wm_apikey,true);
   xmlhttp.send();
 }
 
