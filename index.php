@@ -6,6 +6,8 @@
 	<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<button type="button" onclick="lookup_upc(0076031150489);">Lookup</button>
+<div id="result" style="width:80%;"></div>
 
 
 

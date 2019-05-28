@@ -18,15 +18,16 @@ function lookup_upc(upc){
     if (this.readyState==4 && this.status==200) {
       
       console.log(this.responseText);
+      document.getElementById('result').innerHTML = this.responseText;
       //console.log('SIGN: '+this.responseText);
       //signature = this.responseText;
       //get_details(upc,signature);
-      var result = JSON.parse(this.responseText);
-      var r = result.products;
+      //var result = JSON.parse(this.responseText);
+      //var r = result.products;
 
     }
   }
-  xmlhttp.open("GET","assets/php/get-signature.php?upc="+upc+"&auth_key="+auth_key+"&apikey="+bl_apikey,true);
+  xmlhttp.open("GET","assets/php/get-signature.php?upc="+upc+"&auth_key="+auth_key+"&bl_apikey="+bl_apikey+"&de_apikey="+de_apikey+"&ud_apikey="+ud_apikey,true);
   xmlhttp.send();
 }
 

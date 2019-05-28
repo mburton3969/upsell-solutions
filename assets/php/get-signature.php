@@ -9,7 +9,9 @@ $upc_code = $_GET['upc'];
 #****Substitute Your Auth Key****
 $auth_key = $_GET['auth_key'];
 #****Substitute Your App Key****
-$app_key = $_GET['apikey'];
+$de_app_key = $_GET['de_apikey'];
+
+$bl_app_key = $_GET['bl_apikey'];
 
 #****Generates API Signature****
 $signature = base64_encode(hash_hmac('sha1', $upc_code, $auth_key, $raw_output = true));
@@ -24,7 +26,11 @@ $signature = base64_encode(hash_hmac('sha1', $upc_code, $auth_key, $raw_output =
 //$qry = '?upc_code='. $upc_code .'&app_key='. $app_key .'&language=en&field_names=all&signature='. $signature;
 //$url = 'https://digit-eyes.com/gtin/v2_0/';
 
-$url = 'https://api.barcodelookup.com/v2/products?barcode=' . $upc_code . '&formatted=y&key=' . $app_key;
+$de_url = 'https://digit-eyes.com/gtin/v2_0/?upcCode='. $upc_code .'&app_key='. $de_app_key .'&language=en&field_names=all&signature='. $signature;
+
+$bl_url = 'https://api.barcodelookup.com/v2/products?barcode=' . $upc_code . '&formatted=y&key=' . $bl_app_key;
+
+$upc_url = 'https://api.upcitemdb.com/prod/trial/lookup?upc=' . $upc_code;
 
 
 /*$ch = curl_init($url);
@@ -36,7 +42,7 @@ $data = curl_exec($ch);
 curl_close($ch);
 echo $data;*/
 
-$data = file_get_contents($url);
+$data = file_get_contents($upc_url);
 echo $data;
 
 //echo $signature;*/
