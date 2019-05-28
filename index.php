@@ -1,4 +1,13 @@
-<!-- Product Detail Form Content Here -->
+
+<html>
+<head>
+	<title>API Test</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+	<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<!--<button type="button" onclick="lookup_upc(0076031150489);">Lookup</button>
+<div id="result" style="width:80%;"></div>-->
 <body>
     <div>
         <div class="container">
@@ -107,3 +116,7 @@
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;"><button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button><button class="btn btn-dark btn-lg text-white border rounded-0 border-dark shadow-sm" type="submit">Submit</button></div>
     </div><br>
+</body>
+<script src="assets/js/digit-eyes-api.js"></script>
+</html>
+
