@@ -1,8 +1,11 @@
 //Global Variables...
-var apikey = '//xu6oxn1fAq';
+var de_apikey = '//xu6oxn1fAq';
 var auth_key = 'Nk07Z4j6m5Aq3Th1';
 var signature = '';
 
+var bl_apikey = 'by9mvc1ud63gvzw584xrs6rkaisosy';
+
+var ud_apikey = '2e514306059046cf75e01e0010bce0ee';
 
 function lookup_upc(upc){
 	if (window.XMLHttpRequest) {
@@ -18,13 +21,16 @@ function lookup_upc(upc){
       //console.log('SIGN: '+this.responseText);
       //signature = this.responseText;
       //get_details(upc,signature);
+      var result = JSON.parse(this.responseText);
+      var r = result.products;
+
     }
   }
-  xmlhttp.open("GET","assets/php/get-signature.php?upc="+upc+"&auth_key="+auth_key+"&apikey="+apikey,true);
+  xmlhttp.open("GET","assets/php/get-signature.php?upc="+upc+"&auth_key="+auth_key+"&apikey="+bl_apikey,true);
   xmlhttp.send();
 }
 
-/*function get_details(upc,signature){
+/*function get_details(upc){
 
 	if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -45,7 +51,8 @@ function lookup_upc(upc){
       
     }
   }
-  xmlhttp.open("GET","https://www.digit-eyes.com/gtin/v2_0/?upcCode="+upc+"&field_names=all&language=en&app_key="+apikey+"&signature="+signature,true);
+  xmlhttp.open("GET","https://api.barcodelookup.com/v2/products?barcode="+upc+"&formatted=y&key="+bl_apikey,true);
+  xmlhttp.withCredentials = true;
   xmlhttp.send();
 }*/
 
