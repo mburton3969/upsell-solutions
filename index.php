@@ -28,10 +28,16 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12"><input class="border rounded border-dark form-control-lg" type="text" style="width: 100%;margin: 2px;" placeholder="Scan UPC Code Here" name="UPC Code Scan"></div>
+                <div class="col-md-12">
+                    <input class="border rounded border-dark form-control-lg" type="text" style="width:100%;margin:2px;" placeholder="Scan UPC Code Here" id="upc_code" name="upc_code" onkeyup="lookup_upc(event,this.value);">
+                    <p style="color:red;font-weight:bold;" id="response_message"></p>
+                </div>
             </div>
         </div>
-    </div><br>
+    </div>
+    <br>
+
+<form action="" method="">
     <div style="padding: 15px;">
         <div class="container">
             <div class="row">
@@ -78,7 +84,7 @@
                 <div class="col-md-6">
                     <h4 class="text-left">Condition:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_title" style="width: 100%;" name="product_title"></div>
+                <div class="col-md-6"><input type="text" id="product_condition" style="width: 100%;" name="product_condition"></div>
             </div>
         </div>
     </div>
@@ -87,9 +93,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="text-left">Images:</h4>
-                    <div class="text-left"><button class="btn btn-primary text-center text-body bg-light border rounded border-dark shadow-sm" type="button">Upload</button></div>
+                    <div class="text-left">
+                        <input class="btn btn-primary text-center text-body bg-light border rounded border-dark shadow-sm" type="file" value="Upload">
+                    </div>
                 </div>
-                <div class="col-md-6"><img id="product_image1" name="product_image1" style="width: 33%;"><img id="product_image2" name="product_image2" style="width: 33%;"><img id="product_image3" name="product_image3" style="width: 33%;"></div>
+                <div class="col-md-6">
+                    <img id="product_image1" name="product_image1" style="width: 33%;">
+                    <img id="product_image2" name="product_image2" style="width: 33%;">
+                    <img id="product_image3" name="product_image3" style="width: 33%;">
+                </div>
             </div>
         </div>
     </div>
@@ -114,9 +126,16 @@
         </div>
     </div><br>
     <div class="text-center">
-        <div class="btn-group" role="group" style="margin: 0px;padding: 10px;"><button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button><button class="btn btn-dark btn-lg text-white border rounded-0 border-dark shadow-sm" type="submit">Submit</button></div>
-    </div><br>
+        <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
+            <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
+            <button class="btn btn-dark btn-lg text-white border rounded-0 border-dark shadow-sm" type="button" onclick="ebay_add_item();">Submit</button>
+        </div>
+    </div>
+</form>
+    <br>
 </body>
-<script src="assets/js/digit-eyes-api.js"></script>
+<script src="assets/js/upc-lookup-api.js"></script>
+<script src="assets/js/upc-parsers.js"></script>
+<script src="assets/js/ebay-api.js"></script>
 </html>
 

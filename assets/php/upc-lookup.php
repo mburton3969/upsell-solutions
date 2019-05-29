@@ -18,15 +18,6 @@ $wm_app_key = $_GET['wm_apikey'];
 #****Generates API Signature****
 $signature = base64_encode(hash_hmac('sha1', $upc_code, $auth_key, $raw_output = true));
 
-//echo $signature;
-
-
-#***Dynamic UPC Production***
-//$url = 'https://digit-eyes.com/gtin/v2_0/?upc_code='.$_GET["upc"].'&app_key='. $app_key .'&language=en&field_names=all&signature='. $signature .'';
-
-#***Hard Code UPC Test***
-//$qry = '?upc_code='. $upc_code .'&app_key='. $app_key .'&language=en&field_names=all&signature='. $signature;
-//$url = 'https://digit-eyes.com/gtin/v2_0/';
 
 $de_url = 'https://digit-eyes.com/gtin/v2_0/?upcCode='. $upc_code .'&app_key='. $de_app_key .'&language=en&field_names=all&signature='. $signature;
 
@@ -34,18 +25,16 @@ $bl_url = 'https://api.barcodelookup.com/v2/products?barcode=' . $upc_code . '&f
 
 $upc_url = 'https://api.upcitemdb.com/prod/trial/lookup?upc=' . $upc_code;
 
+$wm_url = 'http://api.walmartlabs.com/v1/items/' . $upc_code . '?format=json&apiKey=' . $wm_app_key;
 
-/*$ch = curl_init($url);
-//curl_setopt($ch, CURLOPT_URL, $url . $qry);
-curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$data = curl_exec($ch);
-curl_close($ch);
-echo $data;*/
 
-$data = file_get_contents($upc_url);
+$x->de_data = file_get_contents($de_url);
+$x->bl_data = file_get_contents($bl_url);
+$x->upc_data = file_get_contents($upc_url);
+$x->wm_data = file_get_contents($wm_url);
+
+$data = json_encode($x);
+
 echo $data;
 
-//echo $signature;*/
 ?>
