@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 #
 # Digit Eyes Code to Generate and Output JSON
 #
