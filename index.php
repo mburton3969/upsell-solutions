@@ -128,7 +128,7 @@
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
-            <button class="btn btn-dark btn-lg text-white border rounded-0 border-dark shadow-sm" type="button" onclick="ebay_add_item();">Submit</button>
+            <button class="btn btn-dark btn-lg text-white border rounded-0 border-dark shadow-sm" type="button" onclick="ebay_add_item();" disabled="true">Submit To Ebay [Disabled]</button>
         </div>
     </div>
 </form>
