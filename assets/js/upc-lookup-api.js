@@ -1,6 +1,9 @@
 //Global Variables...
-var de_apikey = '//xu6oxn1fAq';
-var auth_key = 'Nk07Z4j6m5Aq3Th1';
+//var de_apikey = '//xu6oxn1fAq';//Demo Account
+var de_apikey = '/4elLY+pIk2S';//Live Account
+
+//var auth_key = 'Nk07Z4j6m5Aq3Th1';//Demo Account
+var auth_key = 'Ws05M3r7w9Bt3Yu1';//Live Account
 var signature = '';
 
 var bl_apikey = 'by9mvc1ud63gvzw584xrs6rkaisosy';
