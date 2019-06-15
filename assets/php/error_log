@@ -1,0 +1,70 @@
+[29-May-2019 10:22:27 America/Chicago] PHP Warning:  Creating default object from empty value in /home3/mburton9/public_html/81demo/assets/php/upc-lookup.php on line 31
+[29-May-2019 10:22:29 America/Chicago] PHP Warning:  file_get_contents(http://api.walmartlabs.com/v1/items/0076031150489?format=json&amp;apiKey=rfjbc7str5mjyf6ta4ed76jf): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
+ in /home3/mburton9/public_html/81demo/assets/php/upc-lookup.php on line 34
+[14-Jun-2019 11:21:23 America/Chicago] PHP Warning:  require(vendor/autoload.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 2
+[14-Jun-2019 11:21:23 America/Chicago] PHP Warning:  require(vendor/autoload.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 2
+[14-Jun-2019 11:21:23 America/Chicago] PHP Fatal error:  require(): Failed opening required 'vendor/autoload.php' (include_path='.:/opt/php56/lib/php') in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 2
+[14-Jun-2019 11:26:26 America/Chicago] PHP Fatal error:  Class 'Types\FindItemsByKeywordsRequest' not found in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 6
+[14-Jun-2019 11:26:37 America/Chicago] PHP Fatal error:  Class 'Types\FindItemsByKeywordsRequest' not found in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 12
+[14-Jun-2019 11:27:32 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Sdk' not found in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 11
+[14-Jun-2019 11:28:16 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Sdk' not found in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 11
+[14-Jun-2019 11:31:13 America/Chicago] PHP Fatal error:  Class 'Types\createOrReplaceInventoryItem' not found in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 9
+[14-Jun-2019 11:32:17 America/Chicago] PHP Fatal error:  Class 'Types\createOrReplaceInventoryItem' not found in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 9
+[14-Jun-2019 11:32:43 America/Chicago] PHP Fatal error:  Class 'Types\createOrReplaceInventoryItem' not found in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 9
+[14-Jun-2019 11:38:19 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 14
+[14-Jun-2019 11:40:17 America/Chicago] PHP Warning:  require(vendor/autoload.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 3
+[14-Jun-2019 11:40:17 America/Chicago] PHP Warning:  require(vendor/autoload.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 3
+[14-Jun-2019 11:40:17 America/Chicago] PHP Fatal error:  require(): Failed opening required 'vendor/autoload.php' (include_path='.:/opt/php56/lib/php') in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 3
+[14-Jun-2019 11:40:27 America/Chicago] PHP Catchable fatal error:  Argument 2 passed to DTS\eBaySDK\Finding\Services\FindingService::__construct() must implement interface DTS\eBaySDK\Interfaces\HttpClientInterface, array given, called in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 16 and defined in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/DTS/eBaySDK/Finding/Services/FindingService.php on line 30
+[14-Jun-2019 11:40:57 America/Chicago] PHP Parse error:  syntax error, unexpected '.', expecting identifier (T_STRING) or function (T_FUNCTION) or const (T_CONST) or \\ (T_NS_SEPARATOR) in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 5
+[14-Jun-2019 11:41:13 America/Chicago] PHP Parse error:  syntax error, unexpected '.', expecting identifier (T_STRING) in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 5
+[14-Jun-2019 11:41:25 America/Chicago] PHP Catchable fatal error:  Argument 2 passed to DTS\eBaySDK\Finding\Services\FindingService::__construct() must implement interface DTS\eBaySDK\Interfaces\HttpClientInterface, array given, called in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 16 and defined in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/DTS/eBaySDK/Finding/Services/FindingService.php on line 30
+[14-Jun-2019 12:30:14 America/Chicago] PHP Warning:  require(configuration.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 27
+[14-Jun-2019 12:30:14 America/Chicago] PHP Warning:  require(configuration.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 27
+[14-Jun-2019 12:30:14 America/Chicago] PHP Fatal error:  require(): Failed opening required 'configuration.php' (include_path='.:/opt/php56/lib/php') in /home3/mburton9/public_html/81demo/assets/php/beta-ebay-api.php on line 27
+[14-Jun-2019 12:30:32 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\UnknownConfigurationOptionException' with message 'Unknown configuration option: DTS\eBaySDK\Trading\Services\TradingService::credentials' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/DTS/eBaySDK/Services/BaseService.php:343
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/DTS/eBaySDK/Services/BaseService.php(329): DTS\eBaySDK\Services\BaseService::ensureValidConfigOption('DTS\\eBaySDK\\Tra...', 'credentials')
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/DTS/eBaySDK/Services/BaseService.php(91): DTS\eBaySDK\Services\BaseService::ensureValidConfigOptions(Array)
+#2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/DTS/eBaySDK/Trading/Services/TradingBaseService.php(58): DTS\eBaySDK\Services\BaseService->__construct('https://api.eba...', 'https://api.san...', Array, NULL)
+#3 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/DTS/eBaySDK/Tra in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/DTS/eBaySDK/Services/BaseService.php on line 343
+[14-Jun-2019 14:27:43 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Sdk' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 18
+[14-Jun-2019 14:29:56 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Sdk' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 20
+[14-Jun-2019 14:31:41 America/Chicago] PHP Fatal error:  Class 'Types\FindItemsByKeywordsRequest' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 14
+[14-Jun-2019 14:33:56 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Inventory\Services\InventoryService' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 8
+[14-Jun-2019 14:35:14 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Inventory\Services\InventoryService' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 9
+[14-Jun-2019 14:38:02 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Inventory\Services\InventoryService' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 8
+[14-Jun-2019 14:45:39 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Services\BaseRestService' not found in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryBaseService.php on line 8
+[14-Jun-2019 14:46:03 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Inventory\Services\InventoryBaseService' not found in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryService.php on line 14
+[14-Jun-2019 14:46:12 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Services\BaseRestService' not found in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryBaseService.php on line 8
+[14-Jun-2019 14:47:22 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Services\BaseRestService' not found in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryBaseService.php on line 8
+[14-Jun-2019 14:47:45 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Inventory\Services\InventoryService' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 11
+[14-Jun-2019 14:48:47 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Inventory\Services\InventoryService' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 12
+[14-Jun-2019 14:51:34 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Inventory\Services\InventoryService' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 37
+[14-Jun-2019 14:55:09 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Inventory\Services\InventoryService' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 37
+[14-Jun-2019 14:55:23 America/Chicago] PHP Fatal error:  Class 'DTS\eBaySDK\Inventory\Services\InventoryService' not found in /home3/mburton9/public_html/81demo/assets/php/test.php on line 37
+[14-Jun-2019 15:55:13 America/Chicago] PHP Warning:  require(/home3/mburton9/public_html/81demo/assets/php/../ebay-config.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/get-test.php on line 27
+[14-Jun-2019 15:55:13 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home3/mburton9/public_html/81demo/assets/php/../ebay-config.php' (include_path='.:/opt/php56/lib/php') in /home3/mburton9/public_html/81demo/assets/php/get-test.php on line 27
+[14-Jun-2019 16:14:39 America/Chicago] PHP Warning:  require(/home3/mburton9/public_html/81demo/assets/php/../configuration.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/app-token-test.php on line 27
+[14-Jun-2019 16:14:39 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home3/mburton9/public_html/81demo/assets/php/../configuration.php' (include_path='.:/opt/php56/lib/php') in /home3/mburton9/public_html/81demo/assets/php/app-token-test.php on line 27
+[14-Jun-2019 16:14:51 America/Chicago] PHP Parse error:  syntax error, unexpected ''oauthUserToken'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /home3/mburton9/public_html/81demo/assets/php/ebay-config.php on line 19
+[14-Jun-2019 16:23:02 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home3/mburton9/public_html/81demo/assets/php/ebay-config.php on line 20
+[14-Jun-2019 16:50:23 America/Chicago] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Missing required configuration options: 
+
+' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php:145
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(52): DTS\eBaySDK\ConfigurationResolver->throwRequired(Array)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Services/BaseRestService.php(53): DTS\eBaySDK\ConfigurationResolver->resolve(Array)
+#2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryBaseService.php(32): DTS\eBaySDK\Services\BaseRestService->__construct(Array)
+#3 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryService.php(332): DTS\eBaySDK\Inventory\Services\InventoryBaseService->__construct(Array)
+#4 /home3/mburton9/public_html/81demo/assets/php/get-test.php(39): DTS\eBaySDK\Inventory\Services\InventoryService->_ in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php on line 145
+[14-Jun-2019 16:52:21 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home3/mburton9/public_html/81demo/assets/php/get-test.php on line 39
+[14-Jun-2019 16:53:59 America/Chicago] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Missing required configuration options: 
+
+' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php:145
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(52): DTS\eBaySDK\ConfigurationResolver->throwRequired(Array)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Services/BaseRestService.php(53): DTS\eBaySDK\ConfigurationResolver->resolve(Array)
+#2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryBaseService.php(32): DTS\eBaySDK\Services\BaseRestService->__construct(Array)
+#3 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryService.php(332): DTS\eBaySDK\Inventory\Services\InventoryBaseService->__construct(Array)
+#4 /home3/mburton9/public_html/81demo/assets/php/test.php(42): DTS\eBaySDK\Inventory\Services\InventoryService->__con in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php on line 145
