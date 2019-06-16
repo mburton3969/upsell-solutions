@@ -1,21 +1,6 @@
 <?php
 session_start();
 /**
- * Copyright 2017 David T. Sadler
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
  * Include the SDK by using the autoloader from Composer.
  */
 require '../vendor/autoload.php';
@@ -33,6 +18,10 @@ use \DTS\eBaySDK\Inventory\Services;
 use \DTS\eBaySDK\Inventory\Types;
 use \DTS\eBaySDK\Inventory\Enums;
 /**
+ * Include the Database Connection File.
+ */
+//include 'connection.php';
+/**
  * Create the service object.
  */
 $service = new Services\InventoryService([
@@ -45,33 +34,62 @@ $service = new Services\InventoryService([
  * Create the request object.
  */
 $request = new Types\CreateOrReplaceInventoryItemRestRequest();
+
+//Load Form Variables...
+$product_title = $_POST['product_title'];
+$product_label = $_POST['product_label'];
+$product_category = $_POST['product_category'];
+$product_code = $_POST['product_code'];
+$product_condition = $_POST['product_condition'];
+$product_image1 = $_POST['img_url1'];
+$product_image2 = $_POST['img_url2'];
+$product_image3 = $_POST['img_url3'];
+$product_price = $_POST['product_price'];
+$product_quantity = $_POST['product_quantity'];
+
 /**
  * Note how URI parameters are just properties on the request object.
  */
-$request->sku = '123';
+$request->sku = $product_code;
 $request->availability = new Types\Availability();
 $request->availability->shipToLocationAvailability = new Types\ShipToLocationAvailability();
-$request->availability->shipToLocationAvailability->quantity = 50;
+$request->availability->shipToLocationAvailability->quantity = intval($product_quantity);
 $request->condition = Enums\ConditionEnum::C_NEW_OTHER;
 $request->product = new Types\Product();
-$request->product->title = 'GoPro Hero4 Helmet Cam';
-$request->product->description = 'New GoPro Hero4 Helmet Cam. Unopened box.';
+$request->product->title = $product_title;
+$request->product->description = $product_title;
 /**
  * Aspects are specified as an associative array.
  */
-$request->product->aspects = [
+/*$request->product->aspects = [
     'Brand'                => ['GoPro'],
     'Type'                 => ['Helmet/Action'],
     'Storage Type'         => ['Removable'],
     'Recording Definition' => ['High Definition'],
     'Media Format'         => ['Flash Drive (SSD)'],
     'Optical Zoom'         => ['10x', '8x', '4x']
-];
-$request->product->imageUrls = [
-    'http://i.ebayimg.com/images/i/182196556219-0-1/s-l1000.jpg',
-    'http://i.ebayimg.com/images/i/182196556219-0-1/s-l1001.jpg',
-    'http://i.ebayimg.com/images/i/182196556219-0-1/s-l1002.jpg'
-];
+];*/
+if($product_image1 != '' && $product_image1 != 'undefined'){
+  $request->product->imageUrls = [
+      $product_image1
+  ];
+}elseif($product_image2 != '' && $product_image2 != 'undefined'){
+  $request->product->imageUrls = [
+      $product_image1,
+      $product_image2
+  ];
+}elseif($product_image3 != '' && $product_image3 != 'undefined'){
+  $request->product->imageUrls = [
+      $product_image1,
+      $product_image2,
+      $product_image3
+  ];
+}else{
+  $request->product->imageUrls = [
+      
+  ];
+}
+
 /**
  * Send the request.
  */
@@ -92,4 +110,10 @@ if (isset($response->errors)) {
 }
 if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 400) {
     echo "Success\n";
+}
+
+if($response->getStatusCode() == 204){
+  echo '<script>
+          window.location = "http://81demo.ignition-innovations.com/?res_code=' . $response->getStatusCode() . '";
+        </script>';
 }

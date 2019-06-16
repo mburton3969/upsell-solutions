@@ -1,6 +1,7 @@
 //Global Variables...
 //var de_apikey = '//xu6oxn1fAq';//Demo Account
-var de_apikey = '/4elLY+pIk2S';//Live Account
+//var de_apikey = '/4elLY+pIk2S';//Live Account
+var de_apikey = '/4elLY%2BpIk2S';//Live Account
 
 //var auth_key = 'Nk07Z4j6m5Aq3Th1';//Demo Account
 var auth_key = 'Ws05M3r7w9Bt3Yu1';//Live Account
@@ -17,6 +18,7 @@ function lookup_upc(e,upc){
     //console.log('NOT ENTER...');
     return;
   }
+  document.getElementById('loader').style.display = 'inline';
 	if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
@@ -31,9 +33,6 @@ function lookup_upc(e,upc){
 
       var trip = false;
       var de_r = JSON.parse(response.de_data);
-      var bl_r = JSON.parse(response.bl_data);
-      var wm_r = JSON.parse(response.wm_data);
-      var upc_r = JSON.parse(response.upc_data);
 
       if(trip === false){
         if(de_r.return_code === '000'){
@@ -41,6 +40,11 @@ function lookup_upc(e,upc){
           trip = true;
         }else{
           console.log('Digit Eyes Return Code Error...');
+          if(response.bl_data !== ''){
+            var bl_r = JSON.parse(response.bl_data);
+          }else{
+            var bl_r = false;
+          }
         }
       }
 
@@ -50,16 +54,26 @@ function lookup_upc(e,upc){
           trip = true;
         }else{
           console.log('No Barcode Lookup Results...');
+          if(response.upc_data !== ''){
+            var upc_r = JSON.parse(response.upc_data);
+          }else{
+            var upc_r = false;
+          }
         }
       }
 
 
       if(trip === false){
-        if(upc_r.code === 'OK'){
+        if(upc_r.code === 'OK' && upc_r !== false){
           upc_parse(upc_r);
           trip = true;
         }else{
           console.log('No UPC Database Results...');
+          if(response.wm_data !== ''){
+            var wm_r = JSON.parse(response.wm_data);
+          }else{
+            var wm_r = false;
+          }
         }
       }
 
@@ -71,6 +85,13 @@ function lookup_upc(e,upc){
         }else{
           console.log('No Walmart Results...');
         }
+      }
+      
+      //No Results Found...
+      if(trip === false){
+        document.getElementById('loader').style.display = 'none';
+        //Title, Message, Button Text...
+        throwError("No Results Found!","There were no results found for the UPC code entered. Please Manually enter the item details","Enter Manually");
       }
 
 

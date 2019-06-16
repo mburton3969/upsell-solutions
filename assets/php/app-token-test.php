@@ -1,7 +1,8 @@
 <?php
 session_start();
+$env_mode = $_SESSION['ebay_mode'];
 $_SESSION['auth_code'] = $_GET['code'];
-echo $_SESSION['auth_code'];
+//echo $_SESSION['auth_code'];
 /**
  * Copyright 2017 David T. Sadler
  *
@@ -37,8 +38,8 @@ use \DTS\eBaySDK\OAuth\Types;
  * Create the service object.
  */
 $service = new Services\OAuthService([
-    'credentials' => $config['sandbox']['credentials'],
-    'ruName'      => $config['sandbox']['ruName'],
+    'credentials' => $config[$env_mode]['credentials'],
+    'ruName'      => $config[$env_mode]['ruName'],
     'sandbox'     => true
 ]);
 /**
@@ -48,8 +49,9 @@ $response = $service->getAppToken();
 /**
  * Output the result of calling the service operation.
  */
-printf("\nStatus Code: %s\n\n", $response->getStatusCode());
+//printf("\nStatus Code: %s\n\n", $response->getStatusCode());
 if ($response->getStatusCode() !== 200) {
+    printf("\nStatus Code: %s\n\n", $response->getStatusCode());
     printf(
         "%s: %s\n\n",
         $response->error,
@@ -57,12 +59,15 @@ if ($response->getStatusCode() !== 200) {
     );
 } else {
     $_SESSION['app_token'] = $response->access_token;
-    printf(
+    /*printf(
         "%s\n%s\n%s\n%s\n\n",
         $response->access_token,
         $response->token_type,
         $response->expires_in,
         $response->refresh_token
-    );
+    );*/
+  echo '<script>
+        window.location = "http://81demo.ignition-innovations.com/assets/php/user-token-test.php";
+        </script>';
 }
 ?>

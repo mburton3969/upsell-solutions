@@ -68,3 +68,126 @@ Stack trace:
 #2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryBaseService.php(32): DTS\eBaySDK\Services\BaseRestService->__construct(Array)
 #3 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryService.php(332): DTS\eBaySDK\Inventory\Services\InventoryBaseService->__construct(Array)
 #4 /home3/mburton9/public_html/81demo/assets/php/test.php(42): DTS\eBaySDK\Inventory\Services\InventoryService->__con in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php on line 145
+[15-Jun-2019 15:32:31 America/Chicago] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/submit-item.php on line 2
+[15-Jun-2019 15:32:31 America/Chicago] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home3/mburton9/public_html/81demo/assets/php/submit-item.php on line 2
+[15-Jun-2019 15:32:31 America/Chicago] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/php56/lib/php') in /home3/mburton9/public_html/81demo/assets/php/submit-item.php on line 2
+[15-Jun-2019 15:32:31 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/mburton9/public_html/81demo/assets/php/submit-item.php:2) in /home3/mburton9/public_html/81demo/assets/php/submit-item.php on line 25
+[15-Jun-2019 15:42:38 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/mburton9/public_html/81demo/assets/php/app-token-test.php on line 67
+[15-Jun-2019 16:06:08 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for quantity. Expected integer but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Inv...', 'quantity', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Inv...', 'quantity', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/submit-item.php(56): DTS\eBaySDK\Types\BaseType->__set('quantity', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 16:08:12 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for quantity. Expected integer but got string' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Inv...', 'quantity', '5')
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Inv...', 'quantity', '5')
+#2 /home3/mburton9/public_html/81demo/assets/php/submit-item.php(56): DTS\eBaySDK\Types\BaseType->__set('quantity', '5')
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 16:09:04 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for quantity. Expected integer but got string' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Inv...', 'quantity', '5')
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Inv...', 'quantity', '5')
+#2 /home3/mburton9/public_html/81demo/assets/php/submit-item.php(56): DTS\eBaySDK\Types\BaseType->__set('quantity', '5')
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 16:10:50 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for imageUrls. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php:181
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php(86): DTS\eBaySDK\Types\RepeatableType->ensurePropertyType(NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(387): DTS\eBaySDK\Types\RepeatableType->offsetSet(NULL, NULL)
+#2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(312): DTS\eBaySDK\Types\BaseType->setValue('DTS\\eBaySDK\\Inv...', 'imageUrls', Array)
+#3 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Inv...', 'imageUrls', Array)
+#4 /home3/mburton9/public_html/81demo/assets/php/submit-item.php(72): DTS\eBay in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php on line 181
+[15-Jun-2019 16:13:31 America/Chicago] PHP Warning:  array_push() expects parameter 1 to be array, object given in /home3/mburton9/public_html/81demo/assets/php/submit-item.php on line 75
+[15-Jun-2019 16:13:52 America/Chicago] PHP Warning:  array_push() expects parameter 1 to be array, object given in /home3/mburton9/public_html/81demo/assets/php/submit-item.php on line 75
+[15-Jun-2019 20:39:17 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(47): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 20:44:41 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(47): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 20:48:01 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 20:48:02 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 20:48:09 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 20:48:11 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 20:48:29 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 20:48:40 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 20:49:16 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 20:50:53 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for code. Expected string but got NULL' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home3/mburton9/public_html/81demo/assets/php/user-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
+[15-Jun-2019 21:08:26 America/Chicago] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Missing required configuration options: 
+
+' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php:145
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(52): DTS\eBaySDK\ConfigurationResolver->throwRequired(Array)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Services/BaseRestService.php(53): DTS\eBaySDK\ConfigurationResolver->resolve(Array)
+#2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryBaseService.php(32): DTS\eBaySDK\Services\BaseRestService->__construct(Array)
+#3 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryService.php(332): DTS\eBaySDK\Inventory\Services\InventoryBaseService->__construct(Array)
+#4 /home3/mburton9/public_html/81demo/assets/php/submit-item.php(32): DTS\eBaySDK\Inventory\Services\InventoryService in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php on line 145
+[15-Jun-2019 21:08:51 America/Chicago] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Missing required configuration options: 
+
+' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php:145
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(52): DTS\eBaySDK\ConfigurationResolver->throwRequired(Array)
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Services/BaseRestService.php(53): DTS\eBaySDK\ConfigurationResolver->resolve(Array)
+#2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryBaseService.php(32): DTS\eBaySDK\Services\BaseRestService->__construct(Array)
+#3 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Inventory/Services/InventoryService.php(332): DTS\eBaySDK\Inventory\Services\InventoryBaseService->__construct(Array)
+#4 /home3/mburton9/public_html/81demo/assets/php/submit-item.php(32): DTS\eBaySDK\Inventory\Services\InventoryService in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php on line 145

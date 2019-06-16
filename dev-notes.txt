@@ -1,0 +1,1 @@
+Ebay Production API Keys allow 5000 calls per day.

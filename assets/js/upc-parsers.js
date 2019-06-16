@@ -8,6 +8,7 @@ function de_parse(r){
 	document.getElementById('product_price').value = '';
 	document.getElementById('product_quantity').value = '';
 	document.getElementById('response_message').innerHTML = '*Info Found via Digit-Eyes.com';
+  document.getElementById('loader').style.display = 'none';
 }
 
 
@@ -23,6 +24,7 @@ function bl_parse(res){
 	document.getElementById('product_price').value = '';
 	document.getElementById('product_quantity').value = '';
 	document.getElementById('response_message').innerHTML = '*Info Found via Barcodelookup.com';
+  document.getElementById('loader').style.display = 'none';
 }
 
 
@@ -38,4 +40,5 @@ function upc_parse(res){
 	document.getElementById('product_price').value = '';
 	document.getElementById('product_quantity').value = '';
 	document.getElementById('response_message').innerHTML = '*Info Found via upcitemdb.com';
+  document.getElementById('loader').style.display = 'none';
 }
