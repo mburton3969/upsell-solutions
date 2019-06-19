@@ -75,6 +75,16 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
+                    <h4 class="text-left">Description:</h4>
+                </div>
+                <div class="col"><input type="text" id="product_description" style="width: 100%;" name="product_description"></div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
                     <h4 class="text-left">Custom Label:</h4>
                 </div>
                 <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label"></div>
