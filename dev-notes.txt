@@ -1,1 +1,3 @@
 Ebay Production API Keys allow 5000 calls per day.
+
+Walmart API URL = http://api.walmartlabs.com/v1/items?apiKey=rfjbc7str5mjyf6ta4ed76jf&upc=076031150489

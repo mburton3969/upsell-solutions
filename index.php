@@ -30,6 +30,10 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
   <div id="loader" class="loader" style="display:none;">Loading...</div>
     <div>
         <div class="container">
+          
+          <!--Chrome Browser Notification-->
+          <div class="row" id="chromeNotification"></div>
+          
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center bg-light shadow" style="margin: 8px;padding: 10px;">Product Detail Form</h1>
@@ -159,6 +163,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
 <script src="assets/js/upc-lookup-api.js"></script>
 <script src="assets/js/upc-parsers.js"></script>
 <script src="assets/js/errors.js"></script>
+<script src="assets/js/chrome-detection.js"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>
