@@ -1,5 +1,6 @@
 function de_parse(r,surl){
 	document.getElementById('product_title').value = r.description;
+	document.getElementById('product_description').value = r.description;
 	document.getElementById('product_label').value = '';
 	document.getElementById('product_category').value = '';
 	document.getElementById('product_code').value = r.upc_code;

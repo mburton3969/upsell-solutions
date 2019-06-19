@@ -1,5 +1,7 @@
 <?php
 session_start();
+$env_mode = $_SESSION['ebay_mode'];
+$env_mode_val = $_SESSION['ebay_mode_val'];
 /**
  * Include the SDK by using the autoloader from Composer.
  */
@@ -25,10 +27,10 @@ use \DTS\eBaySDK\Inventory\Enums;
  * Create the service object.
  */
 $service = new Services\InventoryService([
-    'authorization'    => $config['sandbox']['oauthUserToken'],
+    'authorization'    => $config[$env_mode]['oauthUserToken'],
     'requestLanguage'  => 'en-US',
     'responseLanguage' => 'en-US',
-    'sandbox'          => true
+    'sandbox'          => $env_mode_val
 ]);
 /**
  * Create the request object.
@@ -37,6 +39,7 @@ $request = new Types\CreateOrReplaceInventoryItemRestRequest();
 
 //Load Form Variables...
 $product_title = $_POST['product_title'];
+$product_description = $_POST['product_description'];
 $product_label = $_POST['product_label'];
 $product_category = $_POST['product_category'];
 $product_code = $_POST['product_code'];
@@ -54,10 +57,15 @@ $request->sku = $product_code;
 $request->availability = new Types\Availability();
 $request->availability->shipToLocationAvailability = new Types\ShipToLocationAvailability();
 $request->availability->shipToLocationAvailability->quantity = intval($product_quantity);
+
 $request->condition = Enums\ConditionEnum::C_NEW_OTHER;
+
 $request->product = new Types\Product();
 $request->product->title = $product_title;
-$request->product->description = $product_title;
+$request->product->description = $product_description;
+
+//$request->packageWeightandSize = new Types\packageWeightandSize();
+//$request->packageWeightandSize
 /**
  * Aspects are specified as an associative array.
  */
