@@ -34,14 +34,18 @@ $x->upc_data = '';
 $x->wm_data = '';
 
 $x->de_data = file_get_contents($de_url);
+$x->de_url = $de_url;
 if($x->de_data == false){
   $x->bl_data = file_get_contents($bl_url);
+  $x->bl_url = $bl_url;
 }
 if($x->bl_data == false && $x->bl_data != ''){
   $x->upc_data = file_get_contents($upc_url);
+  $x->upc_url = $upc_url;
 }
 if($x->upc_data == false && $x->upc_data != ''){
   $x->wm_data = file_get_contents($wm_url);
+  $x->wm_url = $wm_url;
 }
 
 $data = json_encode($x);

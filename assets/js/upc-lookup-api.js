@@ -36,7 +36,7 @@ function lookup_upc(e,upc){
 
       if(trip === false){
         if(de_r.return_code === '000'){
-          de_parse(de_r);
+          de_parse(de_r,response.de_url);
           trip = true;
         }else{
           console.log('Digit Eyes Return Code Error...');
@@ -50,7 +50,7 @@ function lookup_upc(e,upc){
 
       if(trip === false){
         if(bl_r !== false){
-          bl_parse(bl_r);
+          bl_parse(bl_r,response.bl_url);
           trip = true;
         }else{
           console.log('No Barcode Lookup Results...');
@@ -65,7 +65,7 @@ function lookup_upc(e,upc){
 
       if(trip === false){
         if(upc_r.code === 'OK' && upc_r !== false){
-          upc_parse(upc_r);
+          upc_parse(upc_r,response.upc_url);
           trip = true;
         }else{
           console.log('No UPC Database Results...');
@@ -80,7 +80,7 @@ function lookup_upc(e,upc){
 
       if(trip === false){
         if(wm_r !== false){
-          wm_parse(wm_r);
+          wm_parse(wm_r,response.wm_url);
           trip = true;
         }else{
           console.log('No Walmart Results...');
