@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-$_SESSION['ebay_mode'] = 'production';//sandbox or production
-$_SESSION['ebay_mode_val'] = false;//true="sandbox" false="production"
+$_SESSION['ebay_mode'] = 'sandbox';//sandbox or production
+$_SESSION['ebay_mode_val'] = true;//true="sandbox" false="production"
 
 if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
   if($_SESSION['ebay_mode'] == 'sandbox'){
-    $rurl = 'https://auth.sandbox.ebay.com/oauth2/authorize?client_id=MichaelB-UpsellSo-SBX-9dbf9000b-ae4101bc&response_type=code&redirect_uri=Michael_Burton-MichaelB-Upsell-gzpwqabnj&scope=https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/buy.order.readonly https://api.ebay.com/oauth/api_scope/buy.guest.order https://api.ebay.com/oauth/api_scope/sell.marketing.readonly https://api.ebay.com/oauth/api_scope/sell.marketing https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope/sell.inventory https://api.ebay.com/oauth/api_scope/sell.account.readonly https://api.ebay.com/oauth/api_scope/sell.account https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly https://api.ebay.com/oauth/api_scope/sell.fulfillment https://api.ebay.com/oauth/api_scope/sell.analytics.readonly https://api.ebay.com/oauth/api_scope/sell.marketplace.insights.readonly https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly https://api.ebay.com/oauth/api_scope/buy.shopping.cart https://api.ebay.com/oauth/api_scope/buy.offer.auction https://api.ebay.com/oauth/api_scope/commerce.identity.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.email.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.phone.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.address.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.name.readonly https://api.ebay.com/oauth/api_scope/sell.finances.readonly';
+    $rurl = 'https://auth.sandbox.ebay.com/oauth2/authorize?client_id=MichaelB-UpsellSo-SBX-9dbf9000b-ae4101bc&response_type=code&redirect_uri=Michael_Burton-MichaelB-Upsell-gzpwqabnj&scope=https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/buy.order.readonly https://api.ebay.com/oauth/api_scope/buy.guest.order https://api.ebay.com/oauth/api_scope/sell.marketing.readonly https://api.ebay.com/oauth/api_scope/sell.marketing https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope/sell.inventory https://api.ebay.com/oauth/api_scope/sell.account.readonly https://api.ebay.com/oauth/api_scope/sell.account https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly https://api.ebay.com/oauth/api_scope/sell.fulfillment https://api.ebay.com/oauth/api_scope/sell.analytics.readonly https://api.ebay.com/oauth/api_scope/sell.marketplace.insights.readonly https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly https://api.ebay.com/oauth/api_scope/buy.shopping.cart https://api.ebay.com/oauth/api_scope/buy.offer.auction https://api.ebay.com/oauth/api_scope/commerce.identity.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.email.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.phone.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.address.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.name.readonly https://api.ebay.com/oauth/api_scope/sell.finances';
     header('Location: '.$rurl);
   }elseif($_SESSION['ebay_mode'] == 'production'){
     $rurl = 'https://auth.ebay.com/oauth2/authorize?client_id=MichaelB-UpsellSo-PRD-b520c1333-d6a63876&response_type=code&redirect_uri=Michael_Burton-MichaelB-Upsell-sprmo&scope=https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/sell.marketing.readonly https://api.ebay.com/oauth/api_scope/sell.marketing https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope/sell.inventory https://api.ebay.com/oauth/api_scope/sell.account.readonly https://api.ebay.com/oauth/api_scope/sell.account https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly https://api.ebay.com/oauth/api_scope/sell.fulfillment https://api.ebay.com/oauth/api_scope/sell.analytics.readonly';
@@ -29,7 +29,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
   <link rel="stylesheet" href="assets/css/modal-style.css">
   <link rel="stylesheet" href="assets/css/loader.css">
 </head>
-<body>
+<body onload="get_cats(1);">
   <div id="loader" class="loader" style="display:none;">Loading...</div>
     <div>
         <div class="container">
@@ -63,14 +63,24 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
     </div>
     <br>
 
-<form action="assets/php/submit-item.php" method="post">
+<form action="assets/php/add-item.php" method="post">
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">UPC Code:</h4>
+                </div>
+                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code"></div>
+            </div>
+        </div>
+    </div>
     <div style="padding: 15px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="text-left">Title:</h4>
                 </div>
-                <div class="col"><input type="text" id="product_title" style="width: 100%;" name="product_title"></div>
+                <div class="col"><input type="text" id="product_title" style="width: 100%;" name="product_title" class="form-control" placeholder="Title"></div>
             </div>
         </div>
     </div>
@@ -80,7 +90,22 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Description:</h4>
                 </div>
-                <div class="col"><input type="text" id="product_description" style="width: 100%;" name="product_description"></div>
+                <div class="col"><input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description"></div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">Product Details:</h4>
+                </div>
+                <div class="col">
+                  <input type="text" id="product_brand" style="width: 32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand">
+                  <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
+                  <input type="text" id="product_sizetype" style="width: 32%;display:inline;" name="product_sizetype" class="form-control" placeholder="Size Type">
+                  <input type="text" id="product_sleevelength" style="width: 32%;display:inline;" name="product_sleevelength" class="form-control" placeholder="Sleeve Length">
+                </div>
             </div>
         </div>
     </div>
@@ -90,7 +115,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Custom Label:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label"></div>
+                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label" class="form-control" placeholder="Custom Label"></div>
             </div>
         </div>
     </div>
@@ -100,17 +125,11 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Category:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_category" style="width: 100%;" name="product_category"></div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="text-left">UPC Code:</h4>
-                </div>
-                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code"></div>
+                <div class="col-md-6" id="cat_box">
+                  <select id="product_category" name="product_category" class="form-control">
+                    <option value="">Select Category</option>
+                  </select>
+              </div>
             </div>
         </div>
     </div>
@@ -120,7 +139,14 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Condition:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_condition" style="width: 100%;" name="product_condition"></div>
+                <div class="col-md-6">
+                  <select id="product_condition" style="width: 100%;" name="product_condition" class="form-control">
+                    <option value="">Select Condition</option>
+                    <option value="New with tags">New with tags</option>
+                    <option value="New without tags">New without tags</option>
+                    <option value="New with defects">New with defects</option>
+                  </select>
+                </div>
             </div>
         </div>
     </div>
@@ -147,7 +173,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Price:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_price" style="width: 100%;" name="product_price"></div>
+                <div class="col-md-6"><input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Price"></div>
             </div>
         </div>
     </div>
@@ -157,10 +183,55 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Quantity:</h4>
                 </div>
-                <div class="col-md-6"><input type="number" id="product_quantity" style="width: 100%;" name="product_quantity"></div>
+                <div class="col-md-6"><input type="number" id="product_quantity" style="width: 100%;" name="product_quantity" class="form-control" placeholder="Quantity"></div>
             </div>
         </div>
-    </div><br>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">Package Dimensions:</h4>
+                </div>
+                <div class="col-md-6">
+                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_width" name="product_pkg_width" class="form-control" placeholder="Width (inches)">
+                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_length" name="product_pkg_length" class="form-control" placeholder="Length (inches)">
+                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_depth" name="product_pkg_depth" class="form-control" placeholder="Depth (inches)">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">Package Weight:</h4>
+                </div>
+                <div class="col-md-6">
+                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_lbs" name="product_pkg_lbs" class="form-control" placeholder="Pounds">
+                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_oz" name="product_pkg_oz" class="form-control" placeholder="Ounces">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Shipping Service: &nbsp; <small>[<a href="https://www.ebay.com/shp/Calculator" target="_blank">Shipping Calculator</a>]</small></h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="product_condition" style="width: 100%;" name="product_condition" class="form-control">
+                    <option value="">Select Shipping Option</option>
+                    <option value="USPS Priority Mail">USPS Priority Mail (1-3 Business Days)</option>
+                    <option value="USPS First Class Package">USPS First Class Package (2-3 Business Days)</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+  <br>
+    <input type="hidden" id="cur_cat" name="cur_cat" />
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
@@ -177,6 +248,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
 <script src="assets/js/upc-parsers.js"></script>
 <script src="assets/js/errors.js"></script>
 <script src="assets/js/chrome-detection.js"></script>
+<script src="assets/js/get-categories.js"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>

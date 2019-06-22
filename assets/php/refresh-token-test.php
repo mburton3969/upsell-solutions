@@ -48,7 +48,9 @@ $request = new Types\RefreshUserTokenRestRequest();
 $request->refresh_token = $_SESSION['refresh_token'];
 $request->scope = [
     'https://api.ebay.com/oauth/api_scope/sell.account',
-    'https://api.ebay.com/oauth/api_scope/sell.inventory'
+    'https://api.ebay.com/oauth/api_scope/sell.inventory',
+    'https://api.ebay.com/oauth/api_scope/sell.fulfillment',
+    'https://api.ebay.com/oauth/api_scope'
 ];
 /**
  * Send the request.
@@ -66,15 +68,15 @@ if ($response->getStatusCode() !== 200) {
     );
 } else {
   $_SESSION['user_token'] = $response->access_token;
-  $_SESSION['refresh_token'] = $response->refresh_token;
-    /*printf(
+  //$_SESSION['refresh_token'] = $response->refresh_token;
+    printf(
         "%s\n%s\n%s\n%s\n\n",
         $response->access_token,
         $response->token_type,
         $response->expires_in,
         $response->refresh_token
-    );*/
+    );
   echo '<script>
-        window.location = "http://81demo.ignition-innovations.com";
+        //window.location = "http://81demo.ignition-innovations.com";
         </script>';
 }

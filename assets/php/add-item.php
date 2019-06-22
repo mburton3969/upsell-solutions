@@ -37,6 +37,9 @@ $siteId = Constants\SiteIds::US;
  */
 $service = new Services\TradingService([
     'credentials' => $config[$env_mode]['credentials'],
+    'authorization' => $config[$env_mode]['oauthUserToken'],
+    'requestLanguage'  => 'en-US',
+    'responseLanguage' => 'en-US',
     'sandbox'     => $env_mode_val,
     'siteId'      => $siteId
 ]);
@@ -47,8 +50,15 @@ $request = new Types\AddFixedPriceItemRequestType();
 /**
  * An user token is required when using the Trading service.
  */
-$request->RequesterCredentials = new Types\CustomSecurityHeaderType();
-$request->RequesterCredentials->eBayAuthToken = $config[$env_mode]['authToken'];
+//$request->RequesterCredentials = new Types\CustomSecurityHeaderType();
+//$request->RequesterCredentials->eBayAuthToken = $config[$env_mode]['authToken'];
+
+//$request->RequesterCredentials->Credentials = new Types\UserIdPasswordType();
+//$request->RequesterCredentials->Credentials->AppId = $config[$env_mode]['credentials']['appId'];
+//$request->RequesterCredentials->Credentials->DevId = $config[$env_mode]['credentials']['devId'];
+//$request->RequesterCredentials->Credentials->AuthCert = $config[$env_mode]['credentials']['certId'];
+//$request->RequesterCredentials->Credentials->Username = $un;
+//$request->RequesterCredentials->Credentials->Password = $ps;
 /**
  * Begin creating the fixed price item.
  */
@@ -81,7 +91,8 @@ $item->ListingDuration = Enums\ListingDurationCodeType::C_GTC;
  * Note that we don't have to specify a currency as eBay will use the site id
  * that we provided earlier to determine that it will be United States Dollars (USD).
  */
-$item->StartPrice = new Types\AmountType(['value' => intval($product_price)]);
+$iPrice = floatval($product_price);
+$item->StartPrice = new Types\AmountType(['value' => $iPrice]);
 /**
  * Allow buyers to submit a best offer.
  */
@@ -100,6 +111,29 @@ $item->BestOfferDetails->BestOfferEnabled = false;
 $item->Title = $product_title;
 $item->Description = $product_description;
 $item->SKU = 'ABC-001';
+
+$item->ItemSpecifics = new Types\NameValueListArrayType();
+$item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
+    'Name' => 'Brand',
+    'Value' => ['Gildan']
+]);
+
+$specific = new Types\NameValueListType();
+$specific->Name = 'Size Type';
+$specific->Value[] = 'XL';
+$item->ItemSpecifics->NameValueList[] = $specific;
+
+$specific = new Types\NameValueListType();
+$specific->Name = 'Style';
+$specific->Value[] = 'Boxers';
+$item->ItemSpecifics->NameValueList[] = $specific;
+
+$specific = new Types\NameValueListType();
+$specific->Name = "Bottoms Size (Men's)";
+$specific->Value[] = 'XL';
+$item->ItemSpecifics->NameValueList[] = $specific;
+
+
 $item->Country = 'US';
 $item->Location = 'Leesburg';
 $item->PostalCode = '20175';
@@ -137,7 +171,7 @@ if($product_image1 != '' && $product_image1 != 'undefined'){
  * List item in the Books > Audiobooks (29792) category.
  */
 $item->PrimaryCategory = new Types\CategoryType();
-$item->PrimaryCategory->CategoryID = '11450';//Parent Clothing Category...
+$item->PrimaryCategory->CategoryID = '11507';
 /**
  * Tell buyers what condition the item is in.
  * For the category that we are listing in the value of 1000 is for Brand New.
@@ -155,7 +189,7 @@ $item->PaymentMethods = [
     'VisaMC',
     'PayPal'
 ];
-$item->PayPalEmailAddress = 'example@example.com';
+$item->PayPalEmailAddress = 'mburton3969@gmail.com';
 $item->DispatchTimeMax = 3;
 /**
  * Setting up the shipping details.
@@ -185,43 +219,7 @@ $shippingService->ShippingService = 'USPSParcel';
 $shippingService->ShippingServiceCost = new Types\AmountType(['value' => 3.00]);
 $shippingService->ShippingServiceAdditionalCost = new Types\AmountType(['value' => 2.00]);
 $item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
-/**
- * Create our first international shipping option.
- * Offer the USPS First Class Mail International service at $4.00 for the first item.
- * Additional items will be shipped at $3.00.
- * The item can be shipped Worldwide with this service.
- */
-$shippingService = new Types\InternationalShippingServiceOptionsType();
-$shippingService->ShippingServicePriority = 1;
-$shippingService->ShippingService = 'USPSFirstClassMailInternational';
-$shippingService->ShippingServiceCost = new Types\AmountType(['value' => 4.00]);
-$shippingService->ShippingServiceAdditionalCost = new Types\AmountType(['value' => 3.00]);
-$shippingService->ShipToLocation = ['WorldWide'];
-$item->ShippingDetails->InternationalShippingServiceOption[] = $shippingService;
-/**
- * Create our second international shipping option.
- * Offer the USPS Priority Mail International (6-10 business days) service at $5.00 for the first item.
- * Additional items will be shipped at $4.00.
- * The item will only be shipped to the following locations with this service.
- * N. and S. America
- * Canada
- * Australia
- * Europe
- * Japan
- */
-$shippingService = new Types\InternationalShippingServiceOptionsType();
-$shippingService->ShippingServicePriority = 2;
-$shippingService->ShippingService = 'USPSPriorityMailInternational';
-$shippingService->ShippingServiceCost = new Types\AmountType(['value' => 5.00]);
-$shippingService->ShippingServiceAdditionalCost = new Types\AmountType(['value' => 4.00]);
-$shippingService->ShipToLocation = [
-    'Americas',
-    'CA',
-    'AU',
-    'Europe',
-    'JP'
-];
-$item->ShippingDetails->InternationalShippingServiceOption[] = $shippingService;
+
 /**
  * The return policy.
  * Returns are accepted.
@@ -257,7 +255,7 @@ if (isset($response->Errors)) {
 }
 if ($response->Ack !== 'Failure') {
     printf(
-        "The item was listed to the eBay Sandbox with the Item number %s\n",
+        "The item was listed on eBay Sandbox with the Item number %s\n",
         $response->ItemID
     );
 }

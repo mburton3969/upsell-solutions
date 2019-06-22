@@ -2,7 +2,8 @@ function de_parse(r,surl){
 	document.getElementById('product_title').value = r.description;
 	document.getElementById('product_description').value = r.description;
 	document.getElementById('product_label').value = '';
-	document.getElementById('product_category').value = '';
+	document.getElementById('product_brand').value = r.brand;
+	//document.getElementById('product_category').value = '';
 	document.getElementById('product_code').value = r.upc_code;
 	document.getElementById('product_condition').value = '';
 	document.getElementById('product_image1').src = r.image;
@@ -18,7 +19,7 @@ function bl_parse(res,surl){
 	console.log(r);
 	document.getElementById('product_title').value = r.product_name;
 	document.getElementById('product_label').value = r.label;
-	document.getElementById('product_category').value = r.category;
+	//document.getElementById('product_category').value = r.category;
 	document.getElementById('product_code').value = r.barcode_number;
 	document.getElementById('product_condition').value = '';
 	document.getElementById('product_image1').src = r.images[0];
@@ -34,7 +35,7 @@ function upc_parse(res,surl){
 	console.log(r);
 	document.getElementById('product_title').value = r.title;
 	document.getElementById('product_label').value = '';
-	document.getElementById('product_category').value = '';
+	//document.getElementById('product_category').value = '';
 	document.getElementById('product_code').value = r.upc;
 	document.getElementById('product_condition').value = '';
 	document.getElementById('product_image1').src = r.images[0];

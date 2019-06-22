@@ -26,7 +26,7 @@ $bl_url = 'https://api.barcodelookup.com/v2/products?barcode=' . $upc_code . '&f
 
 $upc_url = 'https://api.upcitemdb.com/prod/trial/lookup?upc=' . $upc_code;
 
-$wm_url = 'http://api.walmartlabs.com/v1/items/' . $upc_code . '?format=json&apiKey=' . $wm_app_key;
+$wm_url = 'http://api.walmartlabs.com/v1/items?apiKey=' . $wm_app_key . '&upc=' . $upc_code;
 
 $x->de_data = '';
 $x->bl_data = '';
