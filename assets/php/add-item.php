@@ -110,12 +110,13 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  */
 $item->Title = $product_title;
 $item->Description = $product_description;
-$item->SKU = 'ABC-001';
+//$item->SKU = 'ABC-001';
+$item->SKU = $product_label;
 
 $item->ItemSpecifics = new Types\NameValueListArrayType();
 $item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
     'Name' => 'Brand',
-    'Value' => ['Gildan']
+    'Value' => ['Unknown']
 ]);
 
 $specific = new Types\NameValueListType();
@@ -171,12 +172,12 @@ if($product_image1 != '' && $product_image1 != 'undefined'){
  * List item in the Books > Audiobooks (29792) category.
  */
 $item->PrimaryCategory = new Types\CategoryType();
-$item->PrimaryCategory->CategoryID = '11507';
+$item->PrimaryCategory->CategoryID = $product_category;
 /**
  * Tell buyers what condition the item is in.
  * For the category that we are listing in the value of 1000 is for Brand New.
  */
-$item->ConditionID = 1000;
+$item->ConditionID = $product_condition;
 /**
  * Buyers can use one of two payment methods when purchasing the item.
  * Visa / Master Card
