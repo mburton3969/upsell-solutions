@@ -53,29 +53,49 @@ $request = new Types\AddFixedPriceItemRequestType();
 //$request->RequesterCredentials = new Types\CustomSecurityHeaderType();
 //$request->RequesterCredentials->eBayAuthToken = $config[$env_mode]['authToken'];
 
-//$request->RequesterCredentials->Credentials = new Types\UserIdPasswordType();
-//$request->RequesterCredentials->Credentials->AppId = $config[$env_mode]['credentials']['appId'];
-//$request->RequesterCredentials->Credentials->DevId = $config[$env_mode]['credentials']['devId'];
-//$request->RequesterCredentials->Credentials->AuthCert = $config[$env_mode]['credentials']['certId'];
-//$request->RequesterCredentials->Credentials->Username = $un;
-//$request->RequesterCredentials->Credentials->Password = $ps;
 /**
  * Begin creating the fixed price item.
  */
 $item = new Types\ItemType();
 
 //Load Form Variables...
+$product_code = $_POST['product_code'];
 $product_title = $_POST['product_title'];
 $product_description = $_POST['product_description'];
+
+//Product Details...
+$product_brand = $_POST['product_brand'];
+$product_color = $_POST['product_color'];
+$product_sizetype = $_POST['product_sizetype'];
+$product_style = $_POST['product_style'];
+$product_sleevelength = $_POST['product_sleevelength'];
+
 $product_label = $_POST['product_label'];
-$product_category = $_POST['product_category'];
-$product_code = $_POST['product_code'];
+
+//$product_category = $_POST['product_category'];
+$product_category = $_POST['cur_cat'];
+
 $product_condition = $_POST['product_condition'];
+
+//Images...
 $product_image1 = $_POST['img_url1'];
 $product_image2 = $_POST['img_url2'];
 $product_image3 = $_POST['img_url3'];
+
 $product_price = $_POST['product_price'];
 $product_quantity = $_POST['product_quantity'];
+
+//Package Dimensions...
+$product_pkg_width = $_POST['product_pkg_width'];
+$product_pkg_length = $_POST['product_pkg_length'];
+$product_pkg_depth = $_POST['product_pkg_depth'];
+
+//Package Weight...
+$product_pkg_lbs = $_POST['product_pkg_lbs'];
+$product_pkg_oz = $_POST['product_pkg_oz'];
+
+//Shipping Service...
+$shipping_service_option = $_POST['product_ship_option'];
 
 /**
  * We want a multiple quantity fixed price listing.
@@ -115,24 +135,35 @@ $item->SKU = 'ABC-001';
 $item->ItemSpecifics = new Types\NameValueListArrayType();
 $item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
     'Name' => 'Brand',
-    'Value' => ['Gildan']
+    'Value' => [$product_brand]
 ]);
 
 $specific = new Types\NameValueListType();
 $specific->Name = 'Size Type';
-$specific->Value[] = 'XL';
+$specific->Value[] = $product_sizetype;
 $item->ItemSpecifics->NameValueList[] = $specific;
+
 
 $specific = new Types\NameValueListType();
 $specific->Name = 'Style';
-$specific->Value[] = 'Boxers';
+$specific->Value[] = $product_style;
+$item->ItemSpecifics->NameValueList[] = $specific;
+
+
+$specific = new Types\NameValueListType();
+$specific->Name = "Size (Women's)";
+$specific->Value[] = $product_sizetype;
 $item->ItemSpecifics->NameValueList[] = $specific;
 
 $specific = new Types\NameValueListType();
-$specific->Name = "Bottoms Size (Men's)";
-$specific->Value[] = 'XL';
+$specific->Name = "Sleeve Length";
+$specific->Value[] = $product_sleevelength;
 $item->ItemSpecifics->NameValueList[] = $specific;
 
+$specific = new Types\NameValueListType();
+$specific->Name = "Color";
+$specific->Value[] = $product_color;
+$item->ItemSpecifics->NameValueList[] = $specific;
 
 $item->Country = 'US';
 $item->Location = 'Leesburg';
@@ -171,12 +202,12 @@ if($product_image1 != '' && $product_image1 != 'undefined'){
  * List item in the Books > Audiobooks (29792) category.
  */
 $item->PrimaryCategory = new Types\CategoryType();
-$item->PrimaryCategory->CategoryID = '11507';
+$item->PrimaryCategory->CategoryID = $product_category;
 /**
  * Tell buyers what condition the item is in.
  * For the category that we are listing in the value of 1000 is for Brand New.
  */
-$item->ConditionID = 1000;
+$item->ConditionID = intval($product_condition);
 /**
  * Buyers can use one of two payment methods when purchasing the item.
  * Visa / Master Card
@@ -196,28 +227,64 @@ $item->DispatchTimeMax = 3;
  * We will use a Flat shipping rate for both domestic and international.
  */
 $item->ShippingDetails = new Types\ShippingDetailsType();
-$item->ShippingDetails->ShippingType = Enums\ShippingTypeCodeType::C_FLAT;
+$item->ShippingDetails->ShippingType = Enums\ShippingTypeCodeType::C_CALCULATED;
+/**
+ * Sellers can charge a fee (in addition to whatever the shipping service might charge) for packaging/handling costs.
+ * For this example the seller will charge $1.99 for domestic and $2.99 for international packaging.
+ */
+$item->ShippingDetails->CalculatedShippingRate = new Types\CalculatedShippingRateType();
+//$item->ShippingDetails->CalculatedShippingRate->PackagingHandlingCosts = new Types\AmountType(['value' => 1.99]);
+//$item->ShippingDetails->CalculatedShippingRate->InternationalPackagingHandlingCosts = new Types\AmountType(['value' => 2.99]);
+$item->ShippingDetails->CalculatedShippingRate->OriginatingPostalCode = '20175';
+
+/**
+ * Using Calculated shipping requires specifying the dimensions and weight of the package.
+ * Note that we are listing to the US site and so dimensions are specified in inches
+ * and the weight in pounds and ounces. Other sites will use different units.
+ */
+$packageDetails = new Types\ShipPackageDetailsType();
+$packageDetails->ShippingPackage = 'PackageThickEnvelope';
+$packageDetails->MeasurementUnit = Enums\MeasurementSystemCodeType::C_ENGLISH;
+$packageDetails->ShippingIrregular = false;
+$packageDetails->PackageWidth = new Types\MeasureType();
+$packageDetails->PackageWidth->unit = 'in';
+$packageDetails->PackageWidth->value = intval($product_pkg_width);
+$packageDetails->PackageLength = new Types\MeasureType();
+$packageDetails->PackageLength->unit = 'in';
+$packageDetails->PackageLength->value = intval($product_pkg_length);
+$packageDetails->PackageDepth = new Types\MeasureType();
+$packageDetails->PackageDepth->unit = 'in';
+$packageDetails->PackageDepth->value = intval($product_pkg_depth);
+$packageDetails->WeightMajor = new Types\MeasureType();
+$packageDetails->WeightMajor->unit = 'lbs';
+$packageDetails->WeightMajor->value = intval($product_pkg_lbs);
+/**
+ * The SDK allows properties to be specified when constructing new objects.
+ * By taking advantage of this feature we add details as follows.
+ */
+$packageDetails->WeightMinor = new Types\MeasureType([
+    'unit' => 'oz',
+    'value' => intval($product_pkg_oz)
+]);
+$item->ShippingPackageDetails = $packageDetails;
 /**
  * Create our first domestic shipping option.
- * Offer the Economy Shipping (1-10 business days) service at $2.00 for the first item.
- * Additional items will be shipped at $1.00.
+ * Offer the USPS Parcel Select (2-9 business days)
+ *
+ * Note that not all shipping services can be used with Calculated shipping.
+ * To determine which can be used is beyond the scope of this example, but in summary:
+ *
+ * A call is made to the GeteBayDetails operation for the site that you are listing to.
+ * The value ShippingServiceDetails is specified in the DetailName field in the request.
+ * Iterate through the ShippingServiceDetails collection in the response.
+ * Each item is a shipping service that can support more than one type of shipping.
+ * Ignore any service where the ValidForSellingFlow property is false or not present. (This indicates that you cannot list with this service!)
+ * For each service iterate over the ServiceType collection. If any have the value of Calculated then
+ * the service can be used with Calculated shipping.
  */
 $shippingService = new Types\ShippingServiceOptionsType();
 $shippingService->ShippingServicePriority = 1;
-$shippingService->ShippingService = 'Other';
-$shippingService->ShippingServiceCost = new Types\AmountType(['value' => 2.00]);
-$shippingService->ShippingServiceAdditionalCost = new Types\AmountType(['value' => 1.00]);
-$item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
-/**
- * Create our second domestic shipping option.
- * Offer the USPS Parcel Select (2-9 business days) at $3.00 for the first item.
- * Additional items will be shipped at $2.00.
- */
-$shippingService = new Types\ShippingServiceOptionsType();
-$shippingService->ShippingServicePriority = 2;
-$shippingService->ShippingService = 'USPSParcel';
-$shippingService->ShippingServiceCost = new Types\AmountType(['value' => 3.00]);
-$shippingService->ShippingServiceAdditionalCost = new Types\AmountType(['value' => 2.00]);
+$shippingService->ShippingService = $shipping_service_option;
 $item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
 
 /**
@@ -255,9 +322,13 @@ if (isset($response->Errors)) {
 }
 if ($response->Ack !== 'Failure') {
     printf(
-        "The item was listed on eBay Sandbox with the Item number %s\n",
+        "The item was listed on eBay with the Item number %s\n",
         $response->ItemID
     );
 }
+
+echo '<div style="width:100%;text-align:center;">
+        <a href="http://81demo.ignition-innovations.com/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
+      </div>';
 
 ?>

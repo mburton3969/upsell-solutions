@@ -5,3 +5,97 @@ Walmart API URL = http://api.walmartlabs.com/v1/items?apiKey=rfjbc7str5mjyf6ta4e
 
 Fields Added:
 1. Description
+
+
+
+//Conditions...
+Clothing, Shoes & Accessories: Clothing and accessories, Jewelry & Watches, Sporting Goods
+  1. New with tags [1000]
+  2. New without tags [1500]
+  3. New with defects [1750]
+  4. Pre-owned [3000]
+  
+  
+Clothing, Shoes & Accessories: Shoes
+  1. New with box [1000]
+  2. New without box [1500]
+  3. New with defects [1750]
+  4. Pre-owned [3000]
+  
+  
+Clothing, Shoes & Accessories: Underwear
+  1. New with tags [1000]
+  2. New without tags [1500]
+  3. New with defects [1750]
+  
+  
+  
+
+
+
+
+
+
+ExtraLargePack
+Furniture
+IndustryVehicles
+LargeCanadaPostBox
+LargeCanadaPostBubbleMailer
+LargeEnvelope
+Letter
+MailingBoxes
+MediumCanadaPostBox
+MediumCanadaPostBubbleMailer
+Motorbikes
+None
+OneWayPallet
+PackageThickEnvelope
+PaddedBags
+ParcelOrPaddedEnvelope
+Roll
+SmallCanadaPostBox
+SmallCanadaPostBubbleMailer
+ToughBags
+UPSLetter
+USPSFlatRateEnvelope
+USPSLargePack
+VeryLargePack
+Winepak
+
+
+
+
+
+
+
+
+Bulky goods
+Caravan
+Cars
+Reserved for internal or future use.
+Europallet
+Expandable Tough Bags
+Extra Large Package/Oversize 3
+Furniture
+Industry vehicles
+Large Canada Post Box
+Large Canada Post Bubble Mailer
+LargeEnvelope
+Letter
+Mailing Boxes
+Medium Canada Post Box
+Medium Canada Post Bubble Mailer
+Motorbikes
+None
+Onewaypallet
+Package/thick envelope
+Padded Bags
+Parcel or padded Envelope
+Roll
+Small Canada Post Box
+Small Canada Post Bubble Mailer
+Tough Bags
+UPS Letter
+USPS Flat Rate Envelope
+USPS Large Package/Oversize 1
+Very Large Package/Oversize 2

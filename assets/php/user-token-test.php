@@ -2,7 +2,7 @@
 session_start();
 $env_mode = $_SESSION['ebay_mode'];
 $env_mode_val = $_SESSION['ebay_mode_val'];
-print_r($_SESSION);
+//print_r($_SESSION);
 //echo $_SESSION['app_token'];
 /**
  * Copyright 2017 David T. Sadler
