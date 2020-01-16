@@ -65,9 +65,6 @@ $product_description = $_POST['product_description'];
 
 //Product Details...
 $product_brand = $_POST['product_brand'];
-if($product_brand == ''){
-    $product_brand = 'Unknown';
-}
 $product_color = $_POST['product_color'];
 $product_sizetype = $_POST['product_sizetype'];
 $product_style = $_POST['product_style'];
@@ -139,7 +136,7 @@ $item->SKU = $product_label;
 $item->ItemSpecifics = new Types\NameValueListArrayType();
 $item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
     'Name' => 'Brand',
-    'Value' => $product_brand
+    'Value' => [$product_brand]
 ]);
 
 $specific = new Types\NameValueListType();
