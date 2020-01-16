@@ -166,6 +166,11 @@ $specific->Name = "Color";
 $specific->Value[] = $product_color;
 $item->ItemSpecifics->NameValueList[] = $specific;
 
+$specific = new Types\NameValueListType();
+$specific->Name = 'Custom Label';
+$specific->Value[] = $product_label;
+$item->ItemSpecifics->NameValueList[] = $specific;
+
 $item->Country = 'US';
 $item->Location = 'Leesburg';
 $item->PostalCode = '20175';
