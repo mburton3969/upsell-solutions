@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$_SESSION['ebay_mode'] = 'sandbox';//sandbox or production
-$_SESSION['ebay_mode_val'] = true;//true="sandbox" false="production"
+$_SESSION['ebay_mode'] = 'production';//sandbox or production
+$_SESSION['ebay_mode_val'] = false;//true="sandbox" false="production"
 
 if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
   if($_SESSION['ebay_mode'] == 'sandbox'){
@@ -16,6 +16,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
   }
     
 }
+$cache_buster = uniqid();
 ?>
 <html>
 <head>
@@ -70,7 +71,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">UPC Code:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code"></div>
+                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" Required></div>
             </div>
         </div>
     </div>
@@ -80,7 +81,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Title:</h4>
                 </div>
-                <div class="col"><input type="text" id="product_title" style="width: 100%;" name="product_title" class="form-control" placeholder="Title"></div>
+                <div class="col"><input type="text" id="product_title" style="width: 100%;" name="product_title" class="form-control" placeholder="Title" maxlength="80" Required></div>
             </div>
         </div>
     </div>
@@ -90,7 +91,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Description:</h4>
                 </div>
-                <div class="col"><input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description"></div>
+                <div class="col"><input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description" Required></div>
             </div>
         </div>
     </div>
@@ -104,6 +105,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                   <input type="text" id="product_brand" style="width: 32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand">
                   <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
                   <input type="text" id="product_sizetype" style="width: 32%;display:inline;" name="product_sizetype" class="form-control" placeholder="Size Type">
+                  <input type="text" id="product_style" style="width: 32%;display:inline;" name="product_style" class="form-control" placeholder="Style">
                   <input type="text" id="product_sleevelength" style="width: 32%;display:inline;" name="product_sleevelength" class="form-control" placeholder="Sleeve Length">
                 </div>
             </div>
@@ -115,7 +117,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Custom Label:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label" class="form-control" placeholder="Custom Label"></div>
+                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label" class="form-control" placeholder="Custom Label" Required></div>
             </div>
         </div>
     </div>
@@ -126,7 +128,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                     <h4 class="text-left">Category:</h4>
                 </div>
                 <div class="col-md-6" id="cat_box">
-                  <select id="product_category" name="product_category" class="form-control">
+                  <select id="product_category" name="product_category" class="form-control" Required>
                     <option value="">Select Category</option>
                   </select>
               </div>
@@ -140,11 +142,12 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                     <h4 class="text-left">Condition:</h4>
                 </div>
                 <div class="col-md-6">
-                  <select id="product_condition" style="width: 100%;" name="product_condition" class="form-control">
+                  <select id="product_condition" style="width: 100%;" name="product_condition" class="form-control" Required>
                     <option value="">Select Condition</option>
-                    <option value="New with tags">New with tags</option>
-                    <option value="New without tags">New without tags</option>
-                    <option value="New with defects">New with defects</option>
+                    <option value="1000">New with tags/box</option>
+                    <option value="1500">New without tags/box</option>
+                    <option value="1750">New with defects</option>
+                    <option value="3000">Pre-owned</option>
                   </select>
                 </div>
             </div>
@@ -160,9 +163,12 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img id="product_image1" name="product_image1" style="width: 33%;">
-                    <img id="product_image2" name="product_image2" style="width: 33%;">
-                    <img id="product_image3" name="product_image3" style="width: 33%;">
+                  <a id="img1_link" href="#" target="_blank"><img id="product_image1" name="product_image1" style="width: 33%;"></a>
+                    <input type="hidden" id="img_url1" name="img_url1" />
+                  <a id="img2_link" href="#" target="_blank"><img id="product_image2" name="product_image2" style="width: 33%;"></a>
+                    <input type="hidden" id="img_url2" name="img_url2" />
+                  <a id="img3_link" href="#" target="_blank"><img id="product_image3" name="product_image3" style="width: 33%;"></a>
+                    <input type="hidden" id="img_url3" name="img_url3" />
                 </div>
             </div>
         </div>
@@ -173,7 +179,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Price:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Price"></div>
+                <div class="col-md-6"><input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Price" Required></div>
             </div>
         </div>
     </div>
@@ -183,7 +189,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                 <div class="col-md-6">
                     <h4 class="text-left">Quantity:</h4>
                 </div>
-                <div class="col-md-6"><input type="number" id="product_quantity" style="width: 100%;" name="product_quantity" class="form-control" placeholder="Quantity"></div>
+                <div class="col-md-6"><input type="number" id="product_quantity" style="width: 100%;" name="product_quantity" class="form-control" placeholder="Quantity" Required></div>
             </div>
         </div>
     </div>
@@ -194,9 +200,9 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                     <h4 class="text-left">Package Dimensions:</h4>
                 </div>
                 <div class="col-md-6">
-                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_width" name="product_pkg_width" class="form-control" placeholder="Width (inches)">
-                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_length" name="product_pkg_length" class="form-control" placeholder="Length (inches)">
-                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_depth" name="product_pkg_depth" class="form-control" placeholder="Depth (inches)">
+                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_width" name="product_pkg_width" class="form-control" placeholder="Width (inches)" Required>
+                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_length" name="product_pkg_length" class="form-control" placeholder="Length (inches)" Required>
+                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_depth" name="product_pkg_depth" class="form-control" placeholder="Depth (inches)" Required>
                 </div>
             </div>
         </div>
@@ -208,12 +214,55 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                     <h4 class="text-left">Package Weight:</h4>
                 </div>
                 <div class="col-md-6">
-                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_lbs" name="product_pkg_lbs" class="form-control" placeholder="Pounds">
-                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_oz" name="product_pkg_oz" class="form-control" placeholder="Ounces">
+                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_lbs" name="product_pkg_lbs" class="form-control" placeholder="Pounds" Required>
+                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_oz" name="product_pkg_oz" class="form-control" placeholder="Ounces" Required>
                 </div>
             </div>
         </div>
     </div>
+    <!--<div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Package Type:</h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="product_ship_option" style="width: 100%;" name="product_ship_option" class="form-control">
+                    <option value="">Select Package Type</option>
+                    <option value="BulkyGoods"></option>
+                    <option value="Caravan"></option>
+                    <option value="Cars"></option>
+                    <option value="Europallet"></option>
+                    <option value="ExpandableToughBags"></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>-->
     <div style="padding: 15px;">
         <div class="container">
             <div class="row">
@@ -221,10 +270,10 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
                   <h4 class="text-left">Shipping Service: &nbsp; <small>[<a href="https://www.ebay.com/shp/Calculator" target="_blank">Shipping Calculator</a>]</small></h4>
                 </div>
                 <div class="col-md-6">
-                  <select id="product_condition" style="width: 100%;" name="product_condition" class="form-control">
+                  <select id="product_ship_option" style="width: 100%;" name="product_ship_option" class="form-control" Required>
                     <option value="">Select Shipping Option</option>
-                    <option value="USPS Priority Mail">USPS Priority Mail (1-3 Business Days)</option>
-                    <option value="USPS First Class Package">USPS First Class Package (2-3 Business Days)</option>
+                    <option value="USPSPriority">USPS Priority Mail (1-3 Business Days)</option>
+                    <option value="USPSFirstClass">USPS First Class Package (2-3 Business Days)</option>
                   </select>
                 </div>
             </div>
@@ -235,8 +284,9 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
-            <input type="hidden" name="env_mode" value="SANDBOX"><!--'SANDBOX' or 'PRODUCTION'-->
-            <button class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm" type="submit">Submit To Ebay [SANDBOX MODE]</button>
+            <input type="hidden" name="env_mode" value="PRODUCTION"><!--'SANDBOX' or 'PRODUCTION'-->
+            <?php ?>
+            <button class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm" type="submit">Submit To Ebay</button>
         </div>
     </div>
 </form>
@@ -244,11 +294,11 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
   <?php include 'modals/success-modal.php'; ?>
   <?php include 'modals/error-modal.php'; ?>
 </body>
-<script src="assets/js/upc-lookup-api.js"></script>
-<script src="assets/js/upc-parsers.js"></script>
-<script src="assets/js/errors.js"></script>
-<script src="assets/js/chrome-detection.js"></script>
-<script src="assets/js/get-categories.js"></script>
+<script src="assets/js/upc-lookup-api.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/upc-parsers.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/errors.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/chrome-detection.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/get-categories.js?cb=<?php echo $cache_buster; ?>"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>

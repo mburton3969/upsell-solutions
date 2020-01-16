@@ -7,6 +7,8 @@ function de_parse(r,surl){
 	document.getElementById('product_code').value = r.upc_code;
 	document.getElementById('product_condition').value = '';
 	document.getElementById('product_image1').src = r.image;
+  document.getElementById('img1_link').href = r.image;
+	document.getElementById('img_url1').value = r.image;
 	document.getElementById('product_price').value = '';
 	document.getElementById('product_quantity').value = '';
 	document.getElementById('response_message').innerHTML = '*Info Found via Digit-Eyes.com [<a href="'+surl+'" target="_blank">View Source</a>]';
@@ -23,6 +25,8 @@ function bl_parse(res,surl){
 	document.getElementById('product_code').value = r.barcode_number;
 	document.getElementById('product_condition').value = '';
 	document.getElementById('product_image1').src = r.images[0];
+  document.getElementById('img1_link').href = r.images[0];
+	document.getElementById('img_url1').value = r.images[0];
 	document.getElementById('product_price').value = '';
 	document.getElementById('product_quantity').value = '';
 	document.getElementById('response_message').innerHTML = '*Info Found via Barcodelookup.com [<a href="'+surl+'" target="_blank">View Source</a>]';
@@ -39,6 +43,8 @@ function upc_parse(res,surl){
 	document.getElementById('product_code').value = r.upc;
 	document.getElementById('product_condition').value = '';
 	document.getElementById('product_image1').src = r.images[0];
+  document.getElementById('img1_link').href = r.images[0];
+	document.getElementById('img_url1').value = r.images[0];
 	document.getElementById('product_price').value = '';
 	document.getElementById('product_quantity').value = '';
 	document.getElementById('response_message').innerHTML = '*Info Found via upcitemdb.com [<a href="'+surl+'" target="_blank">View Source</a>]';
@@ -55,6 +61,8 @@ function wm_parse(res,surl){
 	document.getElementById('product_code').value = r.upc;
 	document.getElementById('product_condition').value = '';
 	document.getElementById('product_image1').src = r.images[0];
+	document.getElementById('img_url1').value = r.images[0];
+  document.getElementById('img1_link').href = r.images[0];
 	document.getElementById('product_price').value = '';
 	document.getElementById('product_quantity').value = '';
 	document.getElementById('response_message').innerHTML = '*Info Found via walmart.com [<a href="'+surl+'" target="_blank">View Source</a>]';

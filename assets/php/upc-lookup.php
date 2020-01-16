@@ -9,8 +9,10 @@ error_reporting(0);
 $upc_code = $_GET['upc'];
 #****Substitute Your Auth Key****
 $auth_key = $_GET['auth_key'];
+$auth_key = str_replace('/','%2F',$auth_key);
 #****Substitute Your App Key****
 $de_app_key = $_GET['de_apikey'];
+$de_app_key = str_replace('/','%2F',$de_app_key);
 
 $bl_app_key = $_GET['bl_apikey'];
 
@@ -18,6 +20,7 @@ $wm_app_key = $_GET['wm_apikey'];
 
 #****Generates API Signature****
 $signature = base64_encode(hash_hmac('sha1', $upc_code, $auth_key, $raw_output = true));
+$signature = str_replace('/','%2F',$signature);
 
 
 $de_url = 'https://digit-eyes.com/gtin/v2_0/?upcCode='. $upc_code .'&app_key='. $de_app_key .'&language=en&field_names=all&signature='. $signature;
