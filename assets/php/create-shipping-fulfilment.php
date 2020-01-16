@@ -36,7 +36,7 @@ use \DTS\eBaySDK\Fulfillment\Enums;
  * Create the service object.
  */
 $service = new Services\FulfillmentService([
-    'authorization' => $config['production']['oauthUserToken']
+    'authorization' => $config['production']['oauthUserToken'],
     'siteId' => \DTS\eBaySDK\Constants\SiteIds::US
 ]);
 /**
