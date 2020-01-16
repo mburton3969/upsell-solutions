@@ -65,6 +65,9 @@ $product_description = $_POST['product_description'];
 
 //Product Details...
 $product_brand = $_POST['product_brand'];
+if($product_brand == ''){
+    $product_brand = 'Unknown';
+}
 $product_color = $_POST['product_color'];
 $product_sizetype = $_POST['product_sizetype'];
 $product_style = $_POST['product_style'];
