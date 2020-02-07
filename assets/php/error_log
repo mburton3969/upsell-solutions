@@ -100213,3 +100213,19 @@ Stack trace:
 #2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk- in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[16-Jan-2020 14:28:54 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for Value. Expected DTS\eBaySDK\Types\RepeatableType but got string' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:383
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(312): DTS\eBaySDK\Types\BaseType->setValue('DTS\\eBaySDK\\Tra...', 'Value', 'Frame Layered C...')
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(276): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'Value', 'Frame Layered C...')
+#2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Trading/Types/NameValueListType.php(62): DTS\eBaySDK\Types\BaseType->setValues('DTS\\eBaySDK\\Tra...', Array)
+#3 /home3/mburton9/public_html/81demo/assets/php/add-item.php(140): DTS\eBaySDK\Trading\Types\NameValueListType->__construct(Array)
+#4 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 383
+[16-Jan-2020 14:33:48 America/Chicago] PHP Fatal error:  Uncaught exception 'DTS\eBaySDK\Exceptions\InvalidPropertyTypeException' with message 'Invalid property type provided for Value. Expected DTS\eBaySDK\Types\RepeatableType but got string' in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:383
+Stack trace:
+#0 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(312): DTS\eBaySDK\Types\BaseType->setValue('DTS\\eBaySDK\\Tra...', 'Value', 'Frame Layered C...')
+#1 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(276): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'Value', 'Frame Layered C...')
+#2 /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Trading/Types/NameValueListType.php(62): DTS\eBaySDK\Types\BaseType->setValues('DTS\\eBaySDK\\Tra...', Array)
+#3 /home3/mburton9/public_html/81demo/assets/php/add-item.php(143): DTS\eBaySDK\Trading\Types\NameValueListType->__construct(Array)
+#4 {main}
+  thrown in /home3/mburton9/public_html/81demo/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 383
