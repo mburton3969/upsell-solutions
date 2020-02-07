@@ -263,7 +263,7 @@ $cache_buster = uniqid();
             </div>
         </div>
     </div>-->
-    <div style="padding: 15px;">
+    <!--<div style="padding: 15px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -279,7 +279,7 @@ $cache_buster = uniqid();
             </div>
         </div>
     </div>
-    <!--<div style="padding: 15px;">
+    <div style="padding: 15px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
