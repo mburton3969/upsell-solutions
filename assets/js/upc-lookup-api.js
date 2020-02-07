@@ -1,11 +1,10 @@
 //Global Variables...
-//var de_apikey = '//xu6oxn1fAq';//Demo Account
-//var de_apikey = '/4elLY+pIk2S';//Live Account
+//var de_apikey = '/xMWqdrXkwY1';//Demo Account
 var de_apikey = '/4elLY%2BpIk2S';//Live Account
 
-//var auth_key = 'Nk07Z4j6m5Aq3Th1';//Demo Account
+//var auth_key = 'Jw52V2u2x9Mm6Kb0';//Demo Account
 var auth_key = 'Ws05M3r7w9Bt3Yu1';//Live Account
-var signature = '';
+var signature = 'rE5vp\/HdpLZLGG+mlYluip2bIpY=';
 
 var bl_apikey = 'by9mvc1ud63gvzw584xrs6rkaisosy';
 
@@ -36,7 +35,7 @@ function lookup_upc(e,upc){
 
       if(trip === false){
         if(de_r.return_code === '000'){
-          de_parse(de_r);
+          de_parse(de_r,response.de_url);
           trip = true;
         }else{
           console.log('Digit Eyes Return Code Error...');
@@ -50,7 +49,7 @@ function lookup_upc(e,upc){
 
       if(trip === false){
         if(bl_r !== false){
-          bl_parse(bl_r);
+          bl_parse(bl_r,response.bl_url);
           trip = true;
         }else{
           console.log('No Barcode Lookup Results...');
@@ -65,7 +64,7 @@ function lookup_upc(e,upc){
 
       if(trip === false){
         if(upc_r.code === 'OK' && upc_r !== false){
-          upc_parse(upc_r);
+          upc_parse(upc_r,response.upc_url);
           trip = true;
         }else{
           console.log('No UPC Database Results...');
@@ -80,7 +79,7 @@ function lookup_upc(e,upc){
 
       if(trip === false){
         if(wm_r !== false){
-          wm_parse(wm_r);
+          wm_parse(wm_r,response.wm_url);
           trip = true;
         }else{
           console.log('No Walmart Results...');

@@ -1,1 +1,6 @@
 [15-Jun-2019 15:39:36 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/mburton9/public_html/81demo/destroy.php:5) in /home3/mburton9/public_html/81demo/destroy.php on line 7
+[20-Jun-2019 19:20:10 America/Chicago] PHP Warning:  Header may not contain more than a single header, new line detected in /home3/mburton9/public_html/81demo/index.php on line 11
+[20-Jun-2019 19:21:43 America/Chicago] PHP Warning:  Header may not contain more than a single header, new line detected in /home3/mburton9/public_html/81demo/index.php on line 11
+[20-Jun-2019 19:22:31 America/Chicago] PHP Warning:  Header may not contain more than a single header, new line detected in /home3/mburton9/public_html/81demo/index.php on line 11
+[20-Jun-2019 19:22:48 America/Chicago] PHP Warning:  Header may not contain more than a single header, new line detected in /home3/mburton9/public_html/81demo/index.php on line 11
+[20-Jun-2019 19:22:48 America/Chicago] PHP Warning:  Header may not contain more than a single header, new line detected in /home3/mburton9/public_html/81demo/index.php on line 11

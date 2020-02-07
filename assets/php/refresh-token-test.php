@@ -1,5 +1,7 @@
 <?php
 session_start();
+$env_mode = $_SESSION['ebay_mode'];
+$env_mode_val = $_SESSION['ebay_mode_val'];
 /**
  * Copyright 2017 David T. Sadler
  *
@@ -35,9 +37,9 @@ use \DTS\eBaySDK\OAuth\Types;
  * Create the service object.
  */
 $service = new Services\OAuthService([
-    'credentials' => $config['sandbox']['credentials'],
-    'ruName'      => $config['sandbox']['ruName'],
-    'sandbox'     => true
+    'credentials' => $config[$env_mode]['credentials'],
+    'ruName'      => $config[$env_mode]['ruName'],
+    'sandbox'     => $env_mode_val
 ]);
 /**
  * Create the request object.
@@ -46,7 +48,9 @@ $request = new Types\RefreshUserTokenRestRequest();
 $request->refresh_token = $_SESSION['refresh_token'];
 $request->scope = [
     'https://api.ebay.com/oauth/api_scope/sell.account',
-    'https://api.ebay.com/oauth/api_scope/sell.inventory'
+    'https://api.ebay.com/oauth/api_scope/sell.inventory',
+    'https://api.ebay.com/oauth/api_scope/sell.fulfillment',
+    'https://api.ebay.com/oauth/api_scope'
 ];
 /**
  * Send the request.
@@ -64,6 +68,7 @@ if ($response->getStatusCode() !== 200) {
     );
 } else {
   $_SESSION['user_token'] = $response->access_token;
+  //$_SESSION['refresh_token'] = $response->refresh_token;
     printf(
         "%s\n%s\n%s\n%s\n\n",
         $response->access_token,
@@ -71,4 +76,7 @@ if ($response->getStatusCode() !== 200) {
         $response->expires_in,
         $response->refresh_token
     );
+  echo '<script>
+        //window.location = "http://81demo.ignition-innovations.com";
+        </script>';
 }
