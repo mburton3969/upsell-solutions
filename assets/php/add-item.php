@@ -93,15 +93,23 @@ $product_pkg_depth = $_POST['product_pkg_depth'];
 //Package Weight...
 $product_pkg_lbs = $_POST['product_pkg_lbs'];
 $product_pkg_oz = $_POST['product_pkg_oz'];
+$oz_to_lbs = ($product_pkg_oz / 16);
+$pkg_weight = ($product_pkg_lbs + $oz_to_lbs);
+//check if under or over 1 pound...
+if($pkg_weight <= 1){
+    $shipping_service_option = 'USPSFirstClass';
+}else{
+    $shipping_service_option = 'USPSPriority';
+}
 
 //Shipping Service...
-$shipping_service_option = $_POST['product_ship_option'];
+//$shipping_service_option = $_POST['product_ship_option'];
 
 //Returns Options...
-$returns_option = $_POST['returns_accepted_option'];
-$returns_within = $_POST['returns_accepted_within_option'];
-$refund_method = $_POST['refund_option'];
-$return_shipping_option = $_POST['return_shipping_option'];
+//$returns_option = $_POST['returns_accepted_option'];
+//$returns_within = $_POST['returns_accepted_within_option'];
+//$refund_method = $_POST['refund_option'];
+//$return_shipping_option = $_POST['return_shipping_option'];
 
 /**
  * We want a multiple quantity fixed price listing.
