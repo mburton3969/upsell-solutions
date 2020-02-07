@@ -107,7 +107,7 @@ $cache_buster = uniqid();
                   <input type="text" id="product_sizetype" style="width: 32%;display:inline;" name="product_sizetype" class="form-control" placeholder="Size Type">
                   <input type="text" id="product_style" style="width: 32%;display:inline;" name="product_style" class="form-control" placeholder="Style">
                   <input type="text" id="product_sleevelength" style="width: 32%;display:inline;" name="product_sleevelength" class="form-control" placeholder="Sleeve Length">
-                  <button type="button" id="add_specific" style="width: 32%;display:inline;" name="add_specific" class="form-control btn btn-primary"><i class="fas fa-plus"></i></button>
+                  <button type="button" id="add_specific" style="width: 32%;display:inline;" name="add_specific" class="form-control btn btn-primary" onclick="add_specific();"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
         </div>
