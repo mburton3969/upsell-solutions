@@ -7,7 +7,7 @@ function new_specific() {
         alert('Please Enter an Item Specific Category');
         return;
     }else{
-        sName.replace(' ','_');
+        sName = sName.replace(' ','_');
     }
     //Create Input to add...
     var input = document.createElement('input');
