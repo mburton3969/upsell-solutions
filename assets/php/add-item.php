@@ -86,9 +86,12 @@ $product_price = $_POST['product_price'];
 $product_quantity = $_POST['product_quantity'];
 
 //Package Dimensions...
-$product_pkg_width = $_POST['product_pkg_width'];
-$product_pkg_length = $_POST['product_pkg_length'];
-$product_pkg_depth = $_POST['product_pkg_depth'];
+//$product_pkg_width = $_POST['product_pkg_width'];
+//$product_pkg_length = $_POST['product_pkg_length'];
+//$product_pkg_depth = $_POST['product_pkg_depth'];
+$product_pkg_width = '11';
+$product_pkg_length = '15';
+$product_pkg_depth = '5';
 
 //Package Weight...
 $product_pkg_lbs = $_POST['product_pkg_lbs'];
@@ -247,7 +250,7 @@ $item->DispatchTimeMax = 3;
  * We will use a Flat shipping rate for both domestic and international.
  */
 $item->ShippingDetails = new Types\ShippingDetailsType();
-$item->ShippingDetails->ShippingType = Enums\ShippingTypeCodeType::C_CALCULATED;
+$item->ShippingDetails->ShippingType = Enums\ShippingTypeCodeType::C_FLAT;//C_FLAT or C_CALCULATED
 /**
  * Sellers can charge a fee (in addition to whatever the shipping service might charge) for packaging/handling costs.
  * For this example the seller will charge $1.99 for domestic and $2.99 for international packaging.
