@@ -6,6 +6,8 @@ function new_specific() {
     if(sName === '' || sName === null){
         alert('Please Enter an Item Specific Category');
         return;
+    }else{
+        sName.replace(' ','_');
     }
     //Create Input to add...
     var input = document.createElement('input');
