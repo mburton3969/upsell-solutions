@@ -156,6 +156,16 @@ $item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
     'Value' => [$product_brand]
 ]);
 
+foreach($_POST['item_specifics_array'] as $is){
+    if($_POST['product_'.$is] != ''){
+        $specific = new Types\NameValueListType();
+        $specific->Name = $is;
+        $specific->Value[] = $_POST['product_'.$is];
+        $item->ItemSpecifics->NameValueList[] = $specific;
+    }
+}
+
+/*
 $specific = new Types\NameValueListType();
 $specific->Name = 'Size Type';
 $specific->Value[] = $product_sizetype;
@@ -182,6 +192,7 @@ $specific = new Types\NameValueListType();
 $specific->Name = "Color";
 $specific->Value[] = $product_color;
 $item->ItemSpecifics->NameValueList[] = $specific;
+*/
 
 $specific = new Types\NameValueListType();
 $specific->Name = 'Custom Label';
