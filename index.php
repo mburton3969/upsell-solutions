@@ -279,6 +279,71 @@ $cache_buster = uniqid();
             </div>
         </div>
     </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Returns Accepted?</h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="returns_accepted_option" style="width: 100%;" name="returns_accepted_option" class="form-control" Required>
+                    <option value="">Select Returns Option</option>
+                    <option value="ReturnsAccepted">Returns Accepted</option>
+                    <option value="ReturnsNotAccepted">Returns Not Accepted</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Returns Accepted Within?</h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="returns_accepted_within_option" style="width: 100%;" name="returns_accepted_within_option" class="form-control" Required>
+                    <option value="">Select Returns Time Option</option>
+                    <option value="Days_14">14 Days</option>
+                    <option value="Days_30">30 Days</option>
+                    <option value="Days_60">60 Days</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Refund Method?</h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="refund_option" style="width: 100%;" name="refund_option" class="form-control" Required>
+                    <option value="">Select Refund Option</option>
+                    <option value="MoneyBack">Money Back Only</option>
+                    <option value="MoneyBackOrReplacement">Money Back Or Replacement</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Who Pays Return Shipping?</h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="refund_option" style="width: 100%;" name="refund_option" class="form-control" Required>
+                    <option value="">Select Return Shipping Option</option>
+                    <option value="Buyer">Buyer</option>
+                    <option value="Seller">Seller</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
   <br>
     <input type="hidden" id="cur_cat" name="cur_cat" />
     <div class="text-center">
