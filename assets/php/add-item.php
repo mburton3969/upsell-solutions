@@ -294,9 +294,17 @@ $item->ShippingPackageDetails = $packageDetails;
  * For each service iterate over the ServiceType collection. If any have the value of Calculated then
  * the service can be used with Calculated shipping.
  */
+/*
 $shippingService = new Types\ShippingServiceOptionsType();
 $shippingService->ShippingServicePriority = 1;
 $shippingService->ShippingService = $shipping_service_option;
+$item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
+*/
+$shippingService = new Types\ShippingServiceOptionsType();
+$shippingService->ShippingServicePriority = 1;
+$shippingService->ShippingService = $shipping_service_option;
+$shippingService->ShippingServiceCost = new Types\AmountType(['value' => 0.00]);//Shipping Cost for 1st Item
+//$shippingService->ShippingServiceAdditionalCost = new Types\AmountType(['value' => 2.00]);//Shipping cost for additional items
 $item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
 
 /**
@@ -306,15 +314,17 @@ $item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
  * The buyer will have 14 days in which to contact the seller after receiving the item.
  * The buyer will pay the return shipping cost.
  */
+/*
 $item->ReturnPolicy = new Types\ReturnPolicyType();
 //$item->ReturnPolicy->ReturnsAcceptedOption = 'ReturnsAccepted';
-$item->ReturnPolicy->ReturnsAcceptedOption = $returns_option;
 //$item->ReturnPolicy->RefundOption = 'MoneyBack';
-$item->ReturnPolicy->RefundOption = $refund_method;
 //$item->ReturnPolicy->ReturnsWithinOption = 'Days_14';
-$item->ReturnPolicy->ReturnsWithinOption = $returns_within;
 //$item->ReturnPolicy->ShippingCostPaidByOption = 'Buyer';
+$item->ReturnPolicy->ReturnsAcceptedOption = $returns_option;
+$item->ReturnPolicy->RefundOption = $refund_method;
+$item->ReturnPolicy->ReturnsWithinOption = $returns_within;
 $item->ReturnPolicy->ShippingCostPaidByOption = $return_shipping_option;
+*/
 /**
  * Finish the request object.
  */
