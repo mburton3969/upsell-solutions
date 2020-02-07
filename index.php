@@ -29,6 +29,7 @@ $cache_buster = uniqid();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />  <link rel="stylesheet" href="assets/css/modal-style.css">
   <link rel="stylesheet" href="assets/css/loader.css">
+  <script src="assets/js/item-specifics-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 </head>
 <body onload="get_cats(1);">
   <div id="loader" class="loader" style="display:none;">Loading...</div>
@@ -366,7 +367,6 @@ $cache_buster = uniqid();
 <script src="assets/js/errors.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/chrome-detection.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/get-categories.js?cb=<?php echo $cache_buster; ?>"></script>
-<script src="assets/js/item-specifics-functions.js?cb=<?php echo $cache_buster; ?>"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>
