@@ -255,16 +255,17 @@ $item->ShippingDetails->ShippingType = Enums\ShippingTypeCodeType::C_FLAT;//C_FL
  * Sellers can charge a fee (in addition to whatever the shipping service might charge) for packaging/handling costs.
  * For this example the seller will charge $1.99 for domestic and $2.99 for international packaging.
  */
-$item->ShippingDetails->CalculatedShippingRate = new Types\CalculatedShippingRateType();
+//$item->ShippingDetails->CalculatedShippingRate = new Types\CalculatedShippingRateType();
 //$item->ShippingDetails->CalculatedShippingRate->PackagingHandlingCosts = new Types\AmountType(['value' => 1.99]);
 //$item->ShippingDetails->CalculatedShippingRate->InternationalPackagingHandlingCosts = new Types\AmountType(['value' => 2.99]);
-$item->ShippingDetails->CalculatedShippingRate->OriginatingPostalCode = '20175';
+//$item->ShippingDetails->CalculatedShippingRate->OriginatingPostalCode = '20175';
 
 /**
  * Using Calculated shipping requires specifying the dimensions and weight of the package.
  * Note that we are listing to the US site and so dimensions are specified in inches
  * and the weight in pounds and ounces. Other sites will use different units.
  */
+/*
 $packageDetails = new Types\ShipPackageDetailsType();
 $packageDetails->ShippingPackage = 'PackageThickEnvelope';
 $packageDetails->MeasurementUnit = Enums\MeasurementSystemCodeType::C_ENGLISH;
@@ -281,15 +282,16 @@ $packageDetails->PackageDepth->value = intval($product_pkg_depth);
 $packageDetails->WeightMajor = new Types\MeasureType();
 $packageDetails->WeightMajor->unit = 'lbs';
 $packageDetails->WeightMajor->value = intval($product_pkg_lbs);
+*/
 /**
  * The SDK allows properties to be specified when constructing new objects.
  * By taking advantage of this feature we add details as follows.
  */
-$packageDetails->WeightMinor = new Types\MeasureType([
+/*$packageDetails->WeightMinor = new Types\MeasureType([
     'unit' => 'oz',
     'value' => intval($product_pkg_oz)
-]);
-$item->ShippingPackageDetails = $packageDetails;
+]);*/
+//$item->ShippingPackageDetails = $packageDetails;
 /**
  * Create our first domestic shipping option.
  * Offer the USPS Parcel Select (2-9 business days)
