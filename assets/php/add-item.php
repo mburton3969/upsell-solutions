@@ -160,7 +160,7 @@ $is_array = explode(',',$_POST['item_specifics_array']);
 foreach($is_array as $is){
     if($_POST['product_'.$is] != ''){
         $specific = new Types\NameValueListType();
-        $specific->Name = $is;
+        $specific->Name = str_replace('_',' ',$is);
         $specific->Value[] = $_POST['product_'.$is];
         $item->ItemSpecifics->NameValueList[] = $specific;
     }
