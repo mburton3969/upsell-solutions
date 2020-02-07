@@ -325,17 +325,16 @@ $item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
  * The buyer will have 14 days in which to contact the seller after receiving the item.
  * The buyer will pay the return shipping cost.
  */
-/*
+
 $item->ReturnPolicy = new Types\ReturnPolicyType();
-//$item->ReturnPolicy->ReturnsAcceptedOption = 'ReturnsAccepted';
-//$item->ReturnPolicy->RefundOption = 'MoneyBack';
-//$item->ReturnPolicy->ReturnsWithinOption = 'Days_14';
-//$item->ReturnPolicy->ShippingCostPaidByOption = 'Buyer';
-$item->ReturnPolicy->ReturnsAcceptedOption = $returns_option;
-$item->ReturnPolicy->RefundOption = $refund_method;
-$item->ReturnPolicy->ReturnsWithinOption = $returns_within;
-$item->ReturnPolicy->ShippingCostPaidByOption = $return_shipping_option;
-*/
+$item->ReturnPolicy->ReturnsAcceptedOption = 'ReturnsAccepted';
+$item->ReturnPolicy->RefundOption = 'MoneyBack';
+$item->ReturnPolicy->ReturnsWithinOption = 'Days_30';
+$item->ReturnPolicy->ShippingCostPaidByOption = 'Seller';
+//$item->ReturnPolicy->ReturnsAcceptedOption = $returns_option;
+//$item->ReturnPolicy->RefundOption = $refund_method;
+//$item->ReturnPolicy->ReturnsWithinOption = $returns_within;
+//$item->ReturnPolicy->ShippingCostPaidByOption = $return_shipping_option;
 /**
  * Finish the request object.
  */
