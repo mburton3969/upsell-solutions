@@ -27,6 +27,7 @@ $cache_buster = uniqid();
   <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/modal-style.css">
   <link rel="stylesheet" href="assets/css/loader.css">
 </head>
@@ -101,12 +102,13 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">Product Details:</h4>
                 </div>
-                <div class="col">
+                <div class="col" id="item_specifics">
                   <input type="text" id="product_brand" style="width: 32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand">
                   <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
                   <input type="text" id="product_sizetype" style="width: 32%;display:inline;" name="product_sizetype" class="form-control" placeholder="Size Type">
                   <input type="text" id="product_style" style="width: 32%;display:inline;" name="product_style" class="form-control" placeholder="Style">
                   <input type="text" id="product_sleevelength" style="width: 32%;display:inline;" name="product_sleevelength" class="form-control" placeholder="Sleeve Length">
+                  <button type="button" id="add_specific" style="width: 32%;display:inline;" name="add_specific" class="form-control btn btn-primary"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
         </div>
@@ -354,6 +356,7 @@ $cache_buster = uniqid();
             <button class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm" type="submit">Submit To Ebay</button>
         </div>
     </div>
+    <input type="hidden" id="item_specifics_array" name="item_specifics_array" />
 </form>
     <br>
   <?php include 'modals/success-modal.php'; ?>
@@ -364,6 +367,7 @@ $cache_buster = uniqid();
 <script src="assets/js/errors.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/chrome-detection.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/get-categories.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/item-specifics-functions.js?cb=<?php echo $cache_buster; ?>"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>
