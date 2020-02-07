@@ -1,7 +1,7 @@
 //Global Variables...
 var item_specifics = [];
 
-function add_specific() {
+function new_specific() {
     var sName = prompt("Name of Item Specific:");
     if(sName === '' || sName === null){
         alert('Please Enter an Item Specific Category');
