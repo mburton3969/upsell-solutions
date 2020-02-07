@@ -156,8 +156,8 @@ $item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
     'Value' => [$product_brand]
 ]);
 
-echo $_POST['item_specifics_array'];
-foreach($_POST['item_specifics_array'] as $is){
+$is_array = explode(',',$_POST['item_specifics_array']);
+foreach($is_array as $is){
     if($_POST['product_'.$is] != ''){
         $specific = new Types\NameValueListType();
         $specific->Name = $is;
