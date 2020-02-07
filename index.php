@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$_SESSION['ebay_mode'] = 'production';//sandbox or production
-$_SESSION['ebay_mode_val'] = false;//true="sandbox" false="production"
+$_SESSION['ebay_mode'] = 'sandbox';//sandbox or production
+$_SESSION['ebay_mode_val'] = true;//true="sandbox" false="production"
 
 if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
   if($_SESSION['ebay_mode'] == 'sandbox'){
@@ -284,9 +284,9 @@ $cache_buster = uniqid();
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
-            <input type="hidden" name="env_mode" value="PRODUCTION"><!--'SANDBOX' or 'PRODUCTION'-->
+            <input type="hidden" name="env_mode" value="SANDBOX"><!--'SANDBOX' or 'PRODUCTION'-->
             <?php ?>
-            <button class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm" type="submit">Submit To Ebay</button>
+            <button class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm" type="submit">Submit To Ebay [SANDBOX MODE]</button>
         </div>
     </div>
 </form>
