@@ -97,6 +97,12 @@ $product_pkg_oz = $_POST['product_pkg_oz'];
 //Shipping Service...
 $shipping_service_option = $_POST['product_ship_option'];
 
+//Returns Options...
+$returns_option = $_POST['returns_accepted_option'];
+$returns_within = $_POST['returns_accepted_within_option'];
+$refund_method = $_POST['refund_option'];
+$return_shipping_option = $_POST['return_shipping_option'];
+
 /**
  * We want a multiple quantity fixed price listing.
  */
@@ -301,10 +307,14 @@ $item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
  * The buyer will pay the return shipping cost.
  */
 $item->ReturnPolicy = new Types\ReturnPolicyType();
-$item->ReturnPolicy->ReturnsAcceptedOption = 'ReturnsAccepted';
-$item->ReturnPolicy->RefundOption = 'MoneyBack';
-$item->ReturnPolicy->ReturnsWithinOption = 'Days_14';
-$item->ReturnPolicy->ShippingCostPaidByOption = 'Buyer';
+//$item->ReturnPolicy->ReturnsAcceptedOption = 'ReturnsAccepted';
+$item->ReturnPolicy->ReturnsAcceptedOption = $returns_option;
+//$item->ReturnPolicy->RefundOption = 'MoneyBack';
+$item->ReturnPolicy->RefundOption = $refund_method;
+//$item->ReturnPolicy->ReturnsWithinOption = 'Days_14';
+$item->ReturnPolicy->ReturnsWithinOption = $returns_within;
+//$item->ReturnPolicy->ShippingCostPaidByOption = 'Buyer';
+$item->ReturnPolicy->ShippingCostPaidByOption = $return_shipping_option;
 /**
  * Finish the request object.
  */

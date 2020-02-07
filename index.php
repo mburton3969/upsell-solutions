@@ -335,7 +335,7 @@ $cache_buster = uniqid();
                   <h4 class="text-left">Who Pays Return Shipping?</h4>
                 </div>
                 <div class="col-md-6">
-                  <select id="refund_option" style="width: 100%;" name="refund_option" class="form-control" Required>
+                  <select id="return_shipping_option" style="width: 100%;" name="return_shipping_option" class="form-control" Required>
                     <option value="">Select Return Shipping Option</option>
                     <option value="Buyer">Buyer</option>
                     <option value="Seller">Seller</option>
