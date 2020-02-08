@@ -100,7 +100,7 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Product Details:</h4>
+                    <h4 class="text-left">Item Specifics:</h4>
                 </div>
                 <div class="col" id="item_specifics">
                   <button type="button" id="add_specific" style="width:15%;display:inline;" name="add_specific" class="form-control btn btn-primary" onclick="new_specific();"><i class="fas fa-plus"></i></button>

@@ -357,28 +357,75 @@ $request->Item = $item;
  * Send the request.
  */
 $response = $service->addFixedPriceItem($request);
+
+echo '<html>
+      <head>
+        <title>Add Item</title>
+      </head>
+      <body>';
+
+echo '<div id="status">
+        <h1 id="lStatus"></h1>
+      </div>';
+
+echo '<div id="errors" style="padding:10px;background:rgba(255,49,3,0.5);">
+        <h3 style=""><u>Required Additions [These must be corrected for the item to be listed]:</u></h3>
+      </div>';
+
+echo '<div id="warnings" style="padding:10px;background:rgba(255,251,0,0.5);">
+        <h3 style=""><u>Suggested Additions:</u></h3>
+      </div>';
 /**
  * Output the result of calling the service operation.
  */
 if (isset($response->Errors)) {
     foreach ($response->Errors as $error) {
-        printf(
+        /*printf(
             "%s: %s\n%s\n\n",
             $error->SeverityCode === Enums\SeverityCodeType::C_ERROR ? 'Error' : 'Warning',
             $error->ShortMessage,
             $error->LongMessage
-        );
+        );*/
+      $error_type = $error->SeverityCode === Enums\SeverityCodeType::C_ERROR ? 'Error' : 'Warning';
+      if($error_type == 'Error'){
+        echo '<script>
+                var errors = document.getElementById("errors");
+                var h4 = document.createElement("h4");
+                h4.innerHTML = "' . $error->LongMessage . '";
+                errors.appendChild(h4);
+              </script>';
+        //echo '<h1>' . $error_type . '</h1>';
+        //echo '<h4>' . $error->ShortMessage . '</h4>';
+        //echo '<h4>' . $error->LongMessage . '</h4>';
+      }elseif($error_type == 'Warning'){
+        echo '<script>
+                var warnings = document.getElementById("warnings");
+                var h4 = document.createElement("h4");
+                h4.innerHTML = "' . $error->LongMessage . '";
+                warnings.appendChild(h4);
+              </script>';
+      }
     }
 }
 if ($response->Ack !== 'Failure') {
-    printf(
+    /*printf(
         "The item was listed on eBay with the Item number %s\n",
         $response->ItemID
-    );
+    );*/
+    echo '<script>
+            document.getElementById("lStatus").innerHTML = "<span style=\"color:green;\">Listing Status: LISTED [Item#: ' . $response->ItemID . ']</span>";
+          </script>';
+}else{
+    echo '<script>
+            document.getElementById("lStatus").innerHTML = "<span style=\"color:red;\">Listing Status: NOT LISTED</span>";
+          </script>';
 }
 
 echo '<div style="width:100%;text-align:center;">
+        <br><br>
         <a href="http://81demo.ignition-innovations.com/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
       </div>';
 
+echo '</body>
+      </html>';
 ?>
