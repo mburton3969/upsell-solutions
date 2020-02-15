@@ -147,8 +147,11 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  */
 $item->Title = $product_title;
 $item->Description = $product_description;
-//$item->SKU = 'ABC-001';
-$item->SKU = $product_label;
+$item->SKU = $product_code;
+
+//Add The Product UPC Code...
+$item->ProductListingDetails = new Types\ProductListingDetailsType();
+$item->ProductListingDetails->UPC = $product_code;
 
 $item->ItemSpecifics = new Types\NameValueListArrayType();
 $item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
@@ -166,39 +169,18 @@ foreach($is_array as $is){
     }
 }
 
-/*
-$specific = new Types\NameValueListType();
-$specific->Name = 'Size Type';
-$specific->Value[] = $product_sizetype;
-$item->ItemSpecifics->NameValueList[] = $specific;
-
-
-$specific = new Types\NameValueListType();
-$specific->Name = 'Style';
-$specific->Value[] = $product_style;
-$item->ItemSpecifics->NameValueList[] = $specific;
-
-
-$specific = new Types\NameValueListType();
-$specific->Name = "Size (Women's)";
-$specific->Value[] = $product_sizetype;
-$item->ItemSpecifics->NameValueList[] = $specific;
-
-$specific = new Types\NameValueListType();
-$specific->Name = "Sleeve Length";
-$specific->Value[] = $product_sleevelength;
-$item->ItemSpecifics->NameValueList[] = $specific;
-
-$specific = new Types\NameValueListType();
-$specific->Name = "Color";
-$specific->Value[] = $product_color;
-$item->ItemSpecifics->NameValueList[] = $specific;
-*/
-
+//Item Custom Label...
 $specific = new Types\NameValueListType();
 $specific->Name = 'Custom Label';
 $specific->Value[] = $product_label;
 $item->ItemSpecifics->NameValueList[] = $specific;
+
+//Item UPC Code...
+$specific = new Types\NameValueListType();
+$specific->Name = 'UPC';
+$specific->Value[] = $product_code;
+$item->ItemSpecifics->NameValueList[] = $specific;
+
 
 $item->Country = 'US';
 $item->Location = 'Leesburg';

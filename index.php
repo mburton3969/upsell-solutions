@@ -13,6 +13,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
     header('Location: '.$rurl);
   }else{
     //Error...
+    echo 'ERROR';
   }
     
 }
@@ -41,7 +42,7 @@ $cache_buster = uniqid();
           
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center bg-light shadow" style="margin: 8px;padding: 10px;">Product Detail Form</h1>
+                    <h1 class="text-center bg-light shadow" style="margin: 8px;padding: 10px;">Product Detail Form <small>[<a href="destroy.php">Refresh Session</a>]</small></h1>
                 </div>
             </div>
         </div>
@@ -102,9 +103,10 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">Item Specifics:</h4>
                 </div>
-                <div class="col" id="item_specifics">
+                <div class="col">
                   <button type="button" id="add_specific" style="width:15%;display:inline;" name="add_specific" class="form-control btn btn-primary" onclick="new_specific();"><i class="fas fa-plus"></i></button>
-                  <input type="text" id="product_brand" style="width:32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand">
+                  <input type="text" id="product_brand" style="width:32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand" required>
+                  <span id="item_specifics"></span>
                   <!--
                   <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
                   <input type="text" id="product_sizetype" style="width: 32%;display:inline;" name="product_sizetype" class="form-control" placeholder="Size Type">
