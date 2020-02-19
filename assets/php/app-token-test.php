@@ -69,7 +69,7 @@ if ($response->getStatusCode() !== 200) {
         $response->refresh_token
     );*/
   echo '<script>
-        window.location = "http://81demo.ignition-innovations.com/assets/php/user-token-test.php";
+        window.location = "http://' . $_SERVER['HTTP_HOST'] . '/assets/php/user-token-test.php";
         </script>';
 }
 ?>
