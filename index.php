@@ -93,7 +93,10 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">Description:</h4>
                 </div>
-                <div class="col"><input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description" Required></div>
+                <div class="col">
+                  <!--<input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description" Required>-->
+                  <textarea id="product_description" style="width: 100%;height:150px;" name="product_description" class="form-control" placeholder="Description" Required></textarea>
+                </div>
             </div>
         </div>
     </div>
@@ -101,11 +104,14 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Item Specifics:</h4>
+                    <h4 class="text-left">
+                      Item Specifics:
+                      <button type="button" id="add_specific" style="width:30%;display:inline;float:right;" name="add_specific" class="form-control btn btn-primary" onclick="new_specific();"><i class="fas fa-plus"></i> Add Specific</button>
+                    </h4>
                 </div>
                 <div class="col">
-                  <button type="button" id="add_specific" style="width:15%;display:inline;" name="add_specific" class="form-control btn btn-primary" onclick="new_specific();"><i class="fas fa-plus"></i></button>
                   <input type="text" id="product_brand" style="width:32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand" required>
+                  <input type="text" id="product_material" style="width:32%;display:inline;" name="product_material" class="form-control" placeholder="Material" required>
                   <span id="item_specifics"></span>
                   <!--
                   <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">

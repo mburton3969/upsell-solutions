@@ -61,7 +61,8 @@ $item = new Types\ItemType();
 //Load Form Variables...
 $product_code = $_POST['product_code'];
 $product_title = $_POST['product_title'];
-$product_description = $_POST['product_description'];
+//$product_description = $_POST['product_description'];
+$product_description = nl2br($_POST['product_description']);
 
 //Product Details...
 $product_brand = $_POST['product_brand'];
@@ -69,6 +70,7 @@ $product_color = $_POST['product_color'];
 $product_sizetype = $_POST['product_sizetype'];
 $product_style = $_POST['product_style'];
 $product_sleevelength = $_POST['product_sleevelength'];
+$product_material = $_POST['product_material'];
 
 $product_label = $_POST['product_label'];
 
@@ -147,7 +149,7 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  */
 $item->Title = $product_title;
 $item->Description = $product_description;
-$item->SKU = $product_code;
+$item->SKU = $product_label;//Was $product_code...
 
 //Add The Product UPC Code...
 $item->ProductListingDetails = new Types\ProductListingDetailsType();
@@ -158,6 +160,12 @@ $item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
     'Name' => 'Brand',
     'Value' => [$product_brand]
 ]);
+//Material Item Specific...
+//Item Custom Label...
+$specific = new Types\NameValueListType();
+$specific->Name = 'Material';
+$specific->Value[] = $product_material;
+$item->ItemSpecifics->NameValueList[] = $specific;
 
 $is_array = explode(',',$_POST['item_specifics_array']);
 foreach($is_array as $is){
@@ -170,10 +178,10 @@ foreach($is_array as $is){
 }
 
 //Item Custom Label...
-$specific = new Types\NameValueListType();
+/*$specific = new Types\NameValueListType();
 $specific->Name = 'Custom Label';
 $specific->Value[] = $product_label;
-$item->ItemSpecifics->NameValueList[] = $specific;
+$item->ItemSpecifics->NameValueList[] = $specific;*/
 
 //Item UPC Code...
 $specific = new Types\NameValueListType();
