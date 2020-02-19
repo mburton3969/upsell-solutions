@@ -169,18 +169,26 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Images:</h4>
+                    <h4 class="text-left">Images: <small>[Click Image to Remove]</small></h4>
                     <div class="text-left">
-                        <input class="btn btn-primary text-center text-body bg-light border rounded border-dark shadow-sm" type="file" value="Upload">
+                        <!--<input class="btn btn-primary text-center text-body bg-light border rounded border-dark shadow-sm" type="file" value="Upload">-->
+                        <input type="text" name="new_img_url" id="new_img_url" class="form-control" placeholder="New Image URL" />
+                        <button type="button" class="btn btn-success text-center text-body border rounded shadow-sm" onclick="add_item_img();">
+                          <i class="fas fa-plus"></i> Add Image
+                        </button>
                     </div>
                 </div>
                 <div class="col-md-6">
-                  <a id="img1_link" href="#" target="_blank"><img id="product_image1" name="product_image1" style="width: 33%;"></a>
+                  <a id="img1_link" href="#" onclick="remove_item_img('1');return false;" target="_blank"><img id="product_image1" name="product_image1" style="width: 32%;"></a>
                     <input type="hidden" id="img_url1" name="img_url1" />
-                  <a id="img2_link" href="#" target="_blank"><img id="product_image2" name="product_image2" style="width: 33%;"></a>
+                  <a id="img2_link" href="#" onclick="remove_item_img('2');return false;" target="_blank"><img id="product_image2" name="product_image2" style="width: 32%;"></a>
                     <input type="hidden" id="img_url2" name="img_url2" />
-                  <a id="img3_link" href="#" target="_blank"><img id="product_image3" name="product_image3" style="width: 33%;"></a>
+                  <a id="img3_link" href="#" onclick="remove_item_img('3');return false;" target="_blank"><img id="product_image3" name="product_image3" style="width: 32%;"></a>
                     <input type="hidden" id="img_url3" name="img_url3" />
+                  <a id="img4_link" href="#" onclick="remove_item_img('4');return false;" target="_blank"><img id="product_image4" name="product_image4" style="width: 32%;"></a>
+                    <input type="hidden" id="img_url4" name="img_url4" />
+                  <a id="img5_link" href="#" onclick="remove_item_img('5');return false;" target="_blank"><img id="product_image5" name="product_image5" style="width: 32%;"></a>
+                    <input type="hidden" id="img_url5" name="img_url5" />
                 </div>
             </div>
         </div>
@@ -377,6 +385,7 @@ $cache_buster = uniqid();
 <script src="assets/js/errors.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/chrome-detection.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/get-categories.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/img-handler.js?cb=<?php echo $cache_buster; ?>"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>

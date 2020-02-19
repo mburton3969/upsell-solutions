@@ -83,6 +83,8 @@ $product_condition = $_POST['product_condition'];
 $product_image1 = $_POST['img_url1'];
 $product_image2 = $_POST['img_url2'];
 $product_image3 = $_POST['img_url3'];
+$product_image4 = $_POST['img_url4'];
+$product_image5 = $_POST['img_url5'];
 
 $product_price = $_POST['product_price'];
 $product_quantity = $_POST['product_quantity'];
@@ -203,7 +205,7 @@ $item->Currency = 'USD';
 $item->PictureDetails = new Types\PictureDetailsType();
 $item->PictureDetails->GalleryType = Enums\GalleryTypeCodeType::C_GALLERY;
 //$item->PictureDetails->PictureURL = ['http://lorempixel.com/1500/1024/abstract'];
-if($product_image1 != '' && $product_image1 != 'undefined'){
+/*if($product_image1 != '' && $product_image1 != 'undefined'){
   $item->PictureDetails->PictureURL = [
       $product_image1
   ];
@@ -222,7 +224,25 @@ if($product_image1 != '' && $product_image1 != 'undefined'){
   $item->PictureDetails->PictureURL = [
       
   ];
+}*/
+$img_array = [];
+if($product_image1 != '' && $product_image1 != 'undefined'){
+  array_push($img_array, $product_image1);
 }
+if($product_image2 != '' && $product_image2 != 'undefined'){
+  array_push($img_array, $product_image2);
+}
+if($product_image3 != '' && $product_image3 != 'undefined'){
+  array_push($img_array, $product_image3);
+}
+if($product_image4 != '' && $product_image4 != 'undefined'){
+  array_push($img_array, $product_image4);
+}
+if($product_image5 != '' && $product_image5 != 'undefined'){
+  array_push($img_array, $product_image5);
+}
+  
+$item->PictureDetails->PictureURL = $img_array;
 /**
  * List item in the Books > Audiobooks (29792) category.
  */
@@ -245,7 +265,7 @@ $item->PaymentMethods = [
     'VisaMC',
     'PayPal'
 ];
-$item->PayPalEmailAddress = 'mburton3969@gmail.com';
+$item->PayPalEmailAddress = '81outfitters@gmail.com';
 $item->DispatchTimeMax = 3;
 /**
  * Setting up the shipping details.
@@ -267,33 +287,33 @@ $item->ShippingDetails->ShippingType = Enums\ShippingTypeCodeType::C_FLAT;//C_FL
  * Note that we are listing to the US site and so dimensions are specified in inches
  * and the weight in pounds and ounces. Other sites will use different units.
  */
-/*
+
 $packageDetails = new Types\ShipPackageDetailsType();
-$packageDetails->ShippingPackage = 'PackageThickEnvelope';
+$packageDetails->ShippingPackage = 'USPSLargePack';
 $packageDetails->MeasurementUnit = Enums\MeasurementSystemCodeType::C_ENGLISH;
 $packageDetails->ShippingIrregular = false;
-$packageDetails->PackageWidth = new Types\MeasureType();
-$packageDetails->PackageWidth->unit = 'in';
-$packageDetails->PackageWidth->value = intval($product_pkg_width);
-$packageDetails->PackageLength = new Types\MeasureType();
-$packageDetails->PackageLength->unit = 'in';
-$packageDetails->PackageLength->value = intval($product_pkg_length);
-$packageDetails->PackageDepth = new Types\MeasureType();
-$packageDetails->PackageDepth->unit = 'in';
-$packageDetails->PackageDepth->value = intval($product_pkg_depth);
+//$packageDetails->PackageWidth = new Types\MeasureType();
+//$packageDetails->PackageWidth->unit = 'in';
+//$packageDetails->PackageWidth->value = intval($product_pkg_width);
+//$packageDetails->PackageLength = new Types\MeasureType();
+//$packageDetails->PackageLength->unit = 'in';
+//$packageDetails->PackageLength->value = intval($product_pkg_length);
+//$packageDetails->PackageDepth = new Types\MeasureType();
+//$packageDetails->PackageDepth->unit = 'in';
+//$packageDetails->PackageDepth->value = intval($product_pkg_depth);
 $packageDetails->WeightMajor = new Types\MeasureType();
 $packageDetails->WeightMajor->unit = 'lbs';
 $packageDetails->WeightMajor->value = intval($product_pkg_lbs);
-*/
+
 /**
  * The SDK allows properties to be specified when constructing new objects.
  * By taking advantage of this feature we add details as follows.
  */
-/*$packageDetails->WeightMinor = new Types\MeasureType([
+$packageDetails->WeightMinor = new Types\MeasureType([
     'unit' => 'oz',
     'value' => intval($product_pkg_oz)
-]);*/
-//$item->ShippingPackageDetails = $packageDetails;
+]);
+$item->ShippingPackageDetails = $packageDetails;
 /**
  * Create our first domestic shipping option.
  * Offer the USPS Parcel Select (2-9 business days)
