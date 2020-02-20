@@ -433,7 +433,7 @@ if ($response->Ack !== 'Failure') {
 
 echo '<div style="width:100%;text-align:center;">
         <br><br>
-        <a href="http://81demo.ignition-innovations.com/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
       </div>';
 
 echo '</body>
