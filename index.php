@@ -1,5 +1,10 @@
 <?php
 session_start();
+if($_SERVER['HTTP_HOST'] == 'beta.reseller-solutions.com'){
+  $_SESSION = $_GET['session_data'];
+  var_dump($_SESSION);
+  break;
+}
 
 $_SESSION['ebay_mode'] = 'production';//sandbox or production
 $_SESSION['ebay_mode_val'] = false;//true="sandbox" false="production"
@@ -376,6 +381,7 @@ $cache_buster = uniqid();
     </div>
     <input type="hidden" id="item_specifics_array" name="item_specifics_array" />
 </form>
+  <a href="beta.reseller-solutions.com?session_data=<?php echo $_SESSION; ?>">Try BETA</a>
     <br>
   <?php include 'modals/success-modal.php'; ?>
   <?php include 'modals/error-modal.php'; ?>
