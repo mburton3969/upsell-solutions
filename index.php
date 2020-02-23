@@ -198,7 +198,10 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">Price:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Price" Required></div>
+                <div class="col-md-6">
+                  <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Price" Required>
+                  <span id="suggested_prices"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -385,6 +388,7 @@ $cache_buster = uniqid();
 <script src="assets/js/chrome-detection.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/get-categories.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/img-handler.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/item-price-functions.js?cb=<?php echo $cache_buster; ?>"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>
