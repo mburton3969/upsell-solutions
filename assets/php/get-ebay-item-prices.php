@@ -1,22 +1,11 @@
 <?php
+error_reporting(0);
 session_start();
 $env_mode = $_SESSION['ebay_mode'];
 $env_mode_val = $_SESSION['ebay_mode_val'];
-/**
- * Copyright 2016 David T. Sadler
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+//Load Variables...
+$upc_code = $_GET['upc_code'];
 
 /**
  * Include the SDK by using the autoloader from Composer.
@@ -29,7 +18,7 @@ require __DIR__.'/../vendor/autoload.php';
  * Ensure that you have edited the configuration.php file
  * to include your application keys.
  */
-$config = require __DIR__.'/../configuration.php';
+$config = require __DIR__.'/../php/ebay-config.php';
 
 /**
  * The namespaces provided by the SDK.
@@ -59,7 +48,7 @@ $request = new Types\FindItemsByProductRequest();
  * Using a UPC value for any other product will result in no items been returned.
  */
 $productId = new Types\ProductId();
-$productId->value = '085392246724';
+$productId->value = $upc_code;
 $productId->type = 'UPC';
 $request->productId = $productId;
 
@@ -69,20 +58,33 @@ $request->productId = $productId;
 $response = $service->findItemsByProduct($request);
 
 if (isset($response->errorMessage)) {
+  $x->response = 'ERROR';
+  
+    $errors = [];
     foreach ($response->errorMessage->error as $error) {
-        printf(
+      array_push($errors, array("error_type" => $error->severity=== Enums\ErrorSeverity::C_ERROR ? 'Error' : 'Warning', "error_message" => $error->message));
+        /*printf(
             "%s: %s\n\n",
             $error->severity=== Enums\ErrorSeverity::C_ERROR ? 'Error' : 'Warning',
             $error->message
-        );
+        );*/
     }
+  $x->error_data = $errors;
 }
 
 /**
  * Output the result of the search.
  */
 if ($response->ack !== 'Failure') {
-    foreach ($response->searchResult->item as $item) {
+  $x->response = 'GOOD';
+  $values = [];
+  foreach ($response->searchResult->item as $item) {
+    array_push($values, $item->sellingStatus->currentPrice->value);
+    //echo $item->sellingStatus->currentPrice->value . '<br>';
+  }
+  $x->prices = $values;
+  
+    /*foreach ($response->searchResult->item as $item) {
         printf(
             "(%s) %s: %s %.2f\n",
             $item->itemId,
@@ -90,5 +92,8 @@ if ($response->ack !== 'Failure') {
             $item->sellingStatus->currentPrice->currencyId,
             $item->sellingStatus->currentPrice->value
         );
-    }
+    }*/
 }
+$d = json_encode($x, JSON_PRETTY_PRINT);
+  echo $d;
+?>
