@@ -61,7 +61,8 @@ $item = new Types\ItemType();
 //Load Form Variables...
 $product_code = $_POST['product_code'];
 $product_title = $_POST['product_title'];
-$product_description = $_POST['product_description'];
+//$product_description = $_POST['product_description'];
+$product_description = nl2br($_POST['product_description']);
 
 //Product Details...
 $product_brand = $_POST['product_brand'];
@@ -69,6 +70,7 @@ $product_color = $_POST['product_color'];
 $product_sizetype = $_POST['product_sizetype'];
 $product_style = $_POST['product_style'];
 $product_sleevelength = $_POST['product_sleevelength'];
+$product_material = $_POST['product_material'];
 
 $product_label = $_POST['product_label'];
 
@@ -81,21 +83,40 @@ $product_condition = $_POST['product_condition'];
 $product_image1 = $_POST['img_url1'];
 $product_image2 = $_POST['img_url2'];
 $product_image3 = $_POST['img_url3'];
+$product_image4 = $_POST['img_url4'];
+$product_image5 = $_POST['img_url5'];
 
 $product_price = $_POST['product_price'];
 $product_quantity = $_POST['product_quantity'];
 
 //Package Dimensions...
-$product_pkg_width = $_POST['product_pkg_width'];
-$product_pkg_length = $_POST['product_pkg_length'];
-$product_pkg_depth = $_POST['product_pkg_depth'];
+//$product_pkg_width = $_POST['product_pkg_width'];
+//$product_pkg_length = $_POST['product_pkg_length'];
+//$product_pkg_depth = $_POST['product_pkg_depth'];
+$product_pkg_width = '11';
+$product_pkg_length = '15';
+$product_pkg_depth = '5';
 
 //Package Weight...
 $product_pkg_lbs = $_POST['product_pkg_lbs'];
 $product_pkg_oz = $_POST['product_pkg_oz'];
+$oz_to_lbs = ($product_pkg_oz / 16);
+$pkg_weight = ($product_pkg_lbs + $oz_to_lbs);
+//check if under or over 1 pound...
+if($pkg_weight <= 1){
+    $shipping_service_option = 'USPSFirstClass';
+}else{
+    $shipping_service_option = 'USPSPriority';
+}
 
 //Shipping Service...
-$shipping_service_option = $_POST['product_ship_option'];
+//$shipping_service_option = $_POST['product_ship_option'];
+
+//Returns Options...
+//$returns_option = $_POST['returns_accepted_option'];
+//$returns_within = $_POST['returns_accepted_within_option'];
+//$refund_method = $_POST['refund_option'];
+//$return_shipping_option = $_POST['return_shipping_option'];
 
 /**
  * We want a multiple quantity fixed price listing.
@@ -130,46 +151,46 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  */
 $item->Title = $product_title;
 $item->Description = $product_description;
-//$item->SKU = 'ABC-001';
-$item->SKU = $product_label;
+$item->SKU = $product_label;//Was $product_code...
+
+//Add The Product UPC Code...
+$item->ProductListingDetails = new Types\ProductListingDetailsType();
+$item->ProductListingDetails->UPC = $product_code;
 
 $item->ItemSpecifics = new Types\NameValueListArrayType();
 $item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
     'Name' => 'Brand',
     'Value' => [$product_brand]
 ]);
-
+//Material Item Specific...
+//Item Custom Label...
 $specific = new Types\NameValueListType();
-$specific->Name = 'Size Type';
-$specific->Value[] = $product_sizetype;
+$specific->Name = 'Material';
+$specific->Value[] = $product_material;
 $item->ItemSpecifics->NameValueList[] = $specific;
 
+$is_array = explode(',',$_POST['item_specifics_array']);
+foreach($is_array as $is){
+    if($_POST['product_'.$is] != ''){
+        $specific = new Types\NameValueListType();
+        $specific->Name = str_replace('_',' ',$is);
+        $specific->Value[] = $_POST['product_'.$is];
+        $item->ItemSpecifics->NameValueList[] = $specific;
+    }
+}
 
-$specific = new Types\NameValueListType();
-$specific->Name = 'Style';
-$specific->Value[] = $product_style;
-$item->ItemSpecifics->NameValueList[] = $specific;
-
-
-$specific = new Types\NameValueListType();
-$specific->Name = "Size (Women's)";
-$specific->Value[] = $product_sizetype;
-$item->ItemSpecifics->NameValueList[] = $specific;
-
-$specific = new Types\NameValueListType();
-$specific->Name = "Sleeve Length";
-$specific->Value[] = $product_sleevelength;
-$item->ItemSpecifics->NameValueList[] = $specific;
-
-$specific = new Types\NameValueListType();
-$specific->Name = "Color";
-$specific->Value[] = $product_color;
-$item->ItemSpecifics->NameValueList[] = $specific;
-
-$specific = new Types\NameValueListType();
+//Item Custom Label...
+/*$specific = new Types\NameValueListType();
 $specific->Name = 'Custom Label';
 $specific->Value[] = $product_label;
+$item->ItemSpecifics->NameValueList[] = $specific;*/
+
+//Item UPC Code...
+$specific = new Types\NameValueListType();
+$specific->Name = 'UPC';
+$specific->Value[] = $product_code;
 $item->ItemSpecifics->NameValueList[] = $specific;
+
 
 $item->Country = 'US';
 $item->Location = 'Leesburg';
@@ -184,7 +205,7 @@ $item->Currency = 'USD';
 $item->PictureDetails = new Types\PictureDetailsType();
 $item->PictureDetails->GalleryType = Enums\GalleryTypeCodeType::C_GALLERY;
 //$item->PictureDetails->PictureURL = ['http://lorempixel.com/1500/1024/abstract'];
-if($product_image1 != '' && $product_image1 != 'undefined'){
+/*if($product_image1 != '' && $product_image1 != 'undefined'){
   $item->PictureDetails->PictureURL = [
       $product_image1
   ];
@@ -203,7 +224,25 @@ if($product_image1 != '' && $product_image1 != 'undefined'){
   $item->PictureDetails->PictureURL = [
       
   ];
+}*/
+$img_array = [];
+if($product_image1 != '' && $product_image1 != 'undefined'){
+  array_push($img_array, $product_image1);
 }
+if($product_image2 != '' && $product_image2 != 'undefined'){
+  array_push($img_array, $product_image2);
+}
+if($product_image3 != '' && $product_image3 != 'undefined'){
+  array_push($img_array, $product_image3);
+}
+if($product_image4 != '' && $product_image4 != 'undefined'){
+  array_push($img_array, $product_image4);
+}
+if($product_image5 != '' && $product_image5 != 'undefined'){
+  array_push($img_array, $product_image5);
+}
+  
+$item->PictureDetails->PictureURL = $img_array;
 /**
  * List item in the Books > Audiobooks (29792) category.
  */
@@ -226,44 +265,46 @@ $item->PaymentMethods = [
     'VisaMC',
     'PayPal'
 ];
-$item->PayPalEmailAddress = 'mburton3969@gmail.com';
+$item->PayPalEmailAddress = '81outfitters@gmail.com';
 $item->DispatchTimeMax = 3;
 /**
  * Setting up the shipping details.
  * We will use a Flat shipping rate for both domestic and international.
  */
 $item->ShippingDetails = new Types\ShippingDetailsType();
-$item->ShippingDetails->ShippingType = Enums\ShippingTypeCodeType::C_CALCULATED;
+$item->ShippingDetails->ShippingType = Enums\ShippingTypeCodeType::C_FLAT;//C_FLAT or C_CALCULATED
 /**
  * Sellers can charge a fee (in addition to whatever the shipping service might charge) for packaging/handling costs.
  * For this example the seller will charge $1.99 for domestic and $2.99 for international packaging.
  */
-$item->ShippingDetails->CalculatedShippingRate = new Types\CalculatedShippingRateType();
+//$item->ShippingDetails->CalculatedShippingRate = new Types\CalculatedShippingRateType();
 //$item->ShippingDetails->CalculatedShippingRate->PackagingHandlingCosts = new Types\AmountType(['value' => 1.99]);
 //$item->ShippingDetails->CalculatedShippingRate->InternationalPackagingHandlingCosts = new Types\AmountType(['value' => 2.99]);
-$item->ShippingDetails->CalculatedShippingRate->OriginatingPostalCode = '20175';
+//$item->ShippingDetails->CalculatedShippingRate->OriginatingPostalCode = '20175';
 
 /**
  * Using Calculated shipping requires specifying the dimensions and weight of the package.
  * Note that we are listing to the US site and so dimensions are specified in inches
  * and the weight in pounds and ounces. Other sites will use different units.
  */
+
 $packageDetails = new Types\ShipPackageDetailsType();
-$packageDetails->ShippingPackage = 'PackageThickEnvelope';
+$packageDetails->ShippingPackage = 'USPSLargePack';
 $packageDetails->MeasurementUnit = Enums\MeasurementSystemCodeType::C_ENGLISH;
 $packageDetails->ShippingIrregular = false;
-$packageDetails->PackageWidth = new Types\MeasureType();
-$packageDetails->PackageWidth->unit = 'in';
-$packageDetails->PackageWidth->value = intval($product_pkg_width);
-$packageDetails->PackageLength = new Types\MeasureType();
-$packageDetails->PackageLength->unit = 'in';
-$packageDetails->PackageLength->value = intval($product_pkg_length);
-$packageDetails->PackageDepth = new Types\MeasureType();
-$packageDetails->PackageDepth->unit = 'in';
-$packageDetails->PackageDepth->value = intval($product_pkg_depth);
+//$packageDetails->PackageWidth = new Types\MeasureType();
+//$packageDetails->PackageWidth->unit = 'in';
+//$packageDetails->PackageWidth->value = intval($product_pkg_width);
+//$packageDetails->PackageLength = new Types\MeasureType();
+//$packageDetails->PackageLength->unit = 'in';
+//$packageDetails->PackageLength->value = intval($product_pkg_length);
+//$packageDetails->PackageDepth = new Types\MeasureType();
+//$packageDetails->PackageDepth->unit = 'in';
+//$packageDetails->PackageDepth->value = intval($product_pkg_depth);
 $packageDetails->WeightMajor = new Types\MeasureType();
 $packageDetails->WeightMajor->unit = 'lbs';
 $packageDetails->WeightMajor->value = intval($product_pkg_lbs);
+
 /**
  * The SDK allows properties to be specified when constructing new objects.
  * By taking advantage of this feature we add details as follows.
@@ -288,9 +329,17 @@ $item->ShippingPackageDetails = $packageDetails;
  * For each service iterate over the ServiceType collection. If any have the value of Calculated then
  * the service can be used with Calculated shipping.
  */
+/*
 $shippingService = new Types\ShippingServiceOptionsType();
 $shippingService->ShippingServicePriority = 1;
 $shippingService->ShippingService = $shipping_service_option;
+$item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
+*/
+$shippingService = new Types\ShippingServiceOptionsType();
+$shippingService->ShippingServicePriority = 1;
+$shippingService->ShippingService = $shipping_service_option;
+$shippingService->ShippingServiceCost = new Types\AmountType(['value' => 0.00]);//Shipping Cost for 1st Item
+//$shippingService->ShippingServiceAdditionalCost = new Types\AmountType(['value' => 2.00]);//Shipping cost for additional items
 $item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
 
 /**
@@ -300,11 +349,16 @@ $item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
  * The buyer will have 14 days in which to contact the seller after receiving the item.
  * The buyer will pay the return shipping cost.
  */
+
 $item->ReturnPolicy = new Types\ReturnPolicyType();
 $item->ReturnPolicy->ReturnsAcceptedOption = 'ReturnsAccepted';
 $item->ReturnPolicy->RefundOption = 'MoneyBack';
-$item->ReturnPolicy->ReturnsWithinOption = 'Days_14';
-$item->ReturnPolicy->ShippingCostPaidByOption = 'Buyer';
+$item->ReturnPolicy->ReturnsWithinOption = 'Days_30';
+$item->ReturnPolicy->ShippingCostPaidByOption = 'Seller';
+//$item->ReturnPolicy->ReturnsAcceptedOption = $returns_option;
+//$item->ReturnPolicy->RefundOption = $refund_method;
+//$item->ReturnPolicy->ReturnsWithinOption = $returns_within;
+//$item->ReturnPolicy->ShippingCostPaidByOption = $return_shipping_option;
 /**
  * Finish the request object.
  */
@@ -313,28 +367,75 @@ $request->Item = $item;
  * Send the request.
  */
 $response = $service->addFixedPriceItem($request);
+
+echo '<html>
+      <head>
+        <title>Add Item</title>
+      </head>
+      <body>';
+
+echo '<div id="status">
+        <h1 id="lStatus"></h1>
+      </div>';
+
+echo '<div id="errors" style="padding:10px;background:rgba(255,49,3,0.5);">
+        <h3 style=""><u>Required Additions [These must be corrected for the item to be listed]:</u></h3>
+      </div>';
+
+echo '<div id="warnings" style="padding:10px;background:rgba(255,251,0,0.5);">
+        <h3 style=""><u>Suggested Additions:</u></h3>
+      </div>';
 /**
  * Output the result of calling the service operation.
  */
 if (isset($response->Errors)) {
     foreach ($response->Errors as $error) {
-        printf(
+        /*printf(
             "%s: %s\n%s\n\n",
             $error->SeverityCode === Enums\SeverityCodeType::C_ERROR ? 'Error' : 'Warning',
             $error->ShortMessage,
             $error->LongMessage
-        );
+        );*/
+      $error_type = $error->SeverityCode === Enums\SeverityCodeType::C_ERROR ? 'Error' : 'Warning';
+      if($error_type == 'Error'){
+        echo '<script>
+                var errors = document.getElementById("errors");
+                var h4 = document.createElement("h4");
+                h4.innerHTML = "' . $error->LongMessage . '";
+                errors.appendChild(h4);
+              </script>';
+        //echo '<h1>' . $error_type . '</h1>';
+        //echo '<h4>' . $error->ShortMessage . '</h4>';
+        //echo '<h4>' . $error->LongMessage . '</h4>';
+      }elseif($error_type == 'Warning'){
+        echo '<script>
+                var warnings = document.getElementById("warnings");
+                var h4 = document.createElement("h4");
+                h4.innerHTML = "' . $error->LongMessage . '";
+                warnings.appendChild(h4);
+              </script>';
+      }
     }
 }
 if ($response->Ack !== 'Failure') {
-    printf(
+    /*printf(
         "The item was listed on eBay with the Item number %s\n",
         $response->ItemID
-    );
+    );*/
+    echo '<script>
+            document.getElementById("lStatus").innerHTML = "<span style=\"color:green;\">Listing Status: LISTED [Item#: ' . $response->ItemID . ']</span>";
+          </script>';
+}else{
+    echo '<script>
+            document.getElementById("lStatus").innerHTML = "<span style=\"color:red;\">Listing Status: NOT LISTED</span>";
+          </script>';
 }
 
 echo '<div style="width:100%;text-align:center;">
-        <a href="http://81demo.ignition-innovations.com/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
+        <br><br>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
       </div>';
 
+echo '</body>
+      </html>';
 ?>

@@ -1,5 +1,5 @@
 function de_parse(r,surl){
-	document.getElementById('product_title').value = r.description;
+	document.getElementById('product_title').value = r.description.substring(0,80);
 	document.getElementById('product_description').value = r.description;
 	document.getElementById('product_label').value = '';
 	document.getElementById('product_brand').value = r.brand;
@@ -19,7 +19,7 @@ function de_parse(r,surl){
 function bl_parse(res,surl){
 	var r = res.products[0];
 	console.log(r);
-	document.getElementById('product_title').value = r.product_name;
+	document.getElementById('product_title').value = r.product_name.substring(0,80);
 	document.getElementById('product_label').value = r.label;
 	//document.getElementById('product_category').value = r.category;
 	document.getElementById('product_code').value = r.barcode_number;
@@ -37,7 +37,7 @@ function bl_parse(res,surl){
 function upc_parse(res,surl){
 	var r = res.items[0];
 	console.log(r);
-	document.getElementById('product_title').value = r.title;
+	document.getElementById('product_title').value = r.title.substring(0,80);
 	document.getElementById('product_label').value = '';
 	//document.getElementById('product_category').value = '';
 	document.getElementById('product_code').value = r.upc;
@@ -55,7 +55,7 @@ function upc_parse(res,surl){
 function wm_parse(res,surl){
 	var r = res.items[0];
 	console.log(r);
-	document.getElementById('product_title').value = r.title;
+	document.getElementById('product_title').value = r.title.substring(0,80);
 	document.getElementById('product_label').value = '';
 	document.getElementById('product_category').value = '';
 	document.getElementById('product_code').value = r.upc;

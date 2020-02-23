@@ -13,6 +13,7 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
     header('Location: '.$rurl);
   }else{
     //Error...
+    echo 'ERROR';
   }
     
 }
@@ -27,8 +28,9 @@ $cache_buster = uniqid();
   <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/modal-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />  <link rel="stylesheet" href="assets/css/modal-style.css">
   <link rel="stylesheet" href="assets/css/loader.css">
+  <script src="assets/js/item-specifics-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 </head>
 <body onload="get_cats(1);">
   <div id="loader" class="loader" style="display:none;">Loading...</div>
@@ -40,7 +42,7 @@ $cache_buster = uniqid();
           
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center bg-light shadow" style="margin: 8px;padding: 10px;">Product Detail Form</h1>
+                    <h1 class="text-center bg-light shadow" style="margin: 8px;padding: 10px;">Product Detail Form <small>[<a href="destroy.php">Refresh Session</a>]</small></h1>
                 </div>
             </div>
         </div>
@@ -91,7 +93,10 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">Description:</h4>
                 </div>
-                <div class="col"><input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description" Required></div>
+                <div class="col">
+                  <!--<input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description" Required>-->
+                  <textarea id="product_description" style="width: 100%;height:150px;" name="product_description" class="form-control" placeholder="Description" Required></textarea>
+                </div>
             </div>
         </div>
     </div>
@@ -99,14 +104,21 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Product Details:</h4>
+                    <h4 class="text-left">
+                      Item Specifics:
+                      <button type="button" id="add_specific" style="width:30%;display:inline;float:right;" name="add_specific" class="form-control btn btn-primary" onclick="new_specific();"><i class="fas fa-plus"></i> Add Specific</button>
+                    </h4>
                 </div>
                 <div class="col">
-                  <input type="text" id="product_brand" style="width: 32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand">
+                  <input type="text" id="product_brand" style="width:32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand" required>
+                  <input type="text" id="product_material" style="width:32%;display:inline;" name="product_material" class="form-control" placeholder="Material" required>
+                  <span id="item_specifics"></span>
+                  <!--
                   <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
                   <input type="text" id="product_sizetype" style="width: 32%;display:inline;" name="product_sizetype" class="form-control" placeholder="Size Type">
                   <input type="text" id="product_style" style="width: 32%;display:inline;" name="product_style" class="form-control" placeholder="Style">
                   <input type="text" id="product_sleevelength" style="width: 32%;display:inline;" name="product_sleevelength" class="form-control" placeholder="Sleeve Length">
+                  -->
                 </div>
             </div>
         </div>
@@ -157,18 +169,26 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Images:</h4>
+                    <h4 class="text-left">Images: <small>[Click Image to Remove]</small></h4>
                     <div class="text-left">
-                        <input class="btn btn-primary text-center text-body bg-light border rounded border-dark shadow-sm" type="file" value="Upload">
+                        <!--<input class="btn btn-primary text-center text-body bg-light border rounded border-dark shadow-sm" type="file" value="Upload">-->
+                        <input type="text" name="new_img_url" id="new_img_url" class="form-control" placeholder="New Image URL" />
+                        <button type="button" class="btn btn-success text-center text-body border rounded shadow-sm" onclick="add_item_img();">
+                          <i class="fas fa-plus"></i> Add Image
+                        </button>
                     </div>
                 </div>
                 <div class="col-md-6">
-                  <a id="img1_link" href="#" target="_blank"><img id="product_image1" name="product_image1" style="width: 33%;"></a>
+                  <a id="img1_link" href="#" onclick="remove_item_img('1');return false;" target="_blank"><img id="product_image1" name="product_image1" style="width: 32%;"></a>
                     <input type="hidden" id="img_url1" name="img_url1" />
-                  <a id="img2_link" href="#" target="_blank"><img id="product_image2" name="product_image2" style="width: 33%;"></a>
+                  <a id="img2_link" href="#" onclick="remove_item_img('2');return false;" target="_blank"><img id="product_image2" name="product_image2" style="width: 32%;"></a>
                     <input type="hidden" id="img_url2" name="img_url2" />
-                  <a id="img3_link" href="#" target="_blank"><img id="product_image3" name="product_image3" style="width: 33%;"></a>
+                  <a id="img3_link" href="#" onclick="remove_item_img('3');return false;" target="_blank"><img id="product_image3" name="product_image3" style="width: 32%;"></a>
                     <input type="hidden" id="img_url3" name="img_url3" />
+                  <a id="img4_link" href="#" onclick="remove_item_img('4');return false;" target="_blank"><img id="product_image4" name="product_image4" style="width: 32%;"></a>
+                    <input type="hidden" id="img_url4" name="img_url4" />
+                  <a id="img5_link" href="#" onclick="remove_item_img('5');return false;" target="_blank"><img id="product_image5" name="product_image5" style="width: 32%;"></a>
+                    <input type="hidden" id="img_url5" name="img_url5" />
                 </div>
             </div>
         </div>
@@ -193,7 +213,7 @@ $cache_buster = uniqid();
             </div>
         </div>
     </div>
-    <div style="padding: 15px;">
+    <!--<div style="padding: 15px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -206,7 +226,7 @@ $cache_buster = uniqid();
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div style="padding: 15px;">
         <div class="container">
             <div class="row">
@@ -263,7 +283,7 @@ $cache_buster = uniqid();
             </div>
         </div>
     </div>-->
-    <div style="padding: 15px;">
+    <!--<div style="padding: 15px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -279,6 +299,71 @@ $cache_buster = uniqid();
             </div>
         </div>
     </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Returns Accepted?</h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="returns_accepted_option" style="width: 100%;" name="returns_accepted_option" class="form-control" Required>
+                    <option value="">Select Returns Option</option>
+                    <option value="ReturnsAccepted">Returns Accepted</option>
+                    <option value="ReturnsNotAccepted">Returns Not Accepted</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Returns Accepted Within?</h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="returns_accepted_within_option" style="width: 100%;" name="returns_accepted_within_option" class="form-control" Required>
+                    <option value="">Select Returns Time Option</option>
+                    <option value="Days_14">14 Days</option>
+                    <option value="Days_30">30 Days</option>
+                    <option value="Days_60">60 Days</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Refund Method?</h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="refund_option" style="width: 100%;" name="refund_option" class="form-control" Required>
+                    <option value="">Select Refund Option</option>
+                    <option value="MoneyBack">Money Back Only</option>
+                    <option value="MoneyBackOrReplacement">Money Back Or Replacement</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h4 class="text-left">Who Pays Return Shipping?</h4>
+                </div>
+                <div class="col-md-6">
+                  <select id="return_shipping_option" style="width: 100%;" name="return_shipping_option" class="form-control" Required>
+                    <option value="">Select Return Shipping Option</option>
+                    <option value="Buyer">Buyer</option>
+                    <option value="Seller">Seller</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>-->
   <br>
     <input type="hidden" id="cur_cat" name="cur_cat" />
     <div class="text-center">
@@ -289,6 +374,7 @@ $cache_buster = uniqid();
             <button class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm" type="submit">Submit To Ebay</button>
         </div>
     </div>
+    <input type="hidden" id="item_specifics_array" name="item_specifics_array" />
 </form>
     <br>
   <?php include 'modals/success-modal.php'; ?>
@@ -299,6 +385,7 @@ $cache_buster = uniqid();
 <script src="assets/js/errors.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/chrome-detection.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/get-categories.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/img-handler.js?cb=<?php echo $cache_buster; ?>"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>

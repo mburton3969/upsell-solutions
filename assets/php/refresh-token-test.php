@@ -77,6 +77,6 @@ if ($response->getStatusCode() !== 200) {
         $response->refresh_token
     );
   echo '<script>
-        //window.location = "http://81demo.ignition-innovations.com";
+        //window.location = "http://' . $_SERVER['HTTP_HOST'] . '";
         </script>';
 }

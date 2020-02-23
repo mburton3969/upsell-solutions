@@ -1,5 +1,7 @@
 var catLevel = 0;
 function get_cats(lvl,pid){
+  //Clear Item Specifics Inputs...
+  document.getElementById('item_specifics').innerHTML = '';
   
   var cb = document.getElementById('cat_box');
   
@@ -17,6 +19,7 @@ function get_cats(lvl,pid){
         ccf.value = cc.value;
         console.log('Category set to: '+cc.value);
         console.log('No Results Found');
+        getItemSpecifics(cc.value);
         return;
       }
       var res = JSON.parse(this.responseText);
