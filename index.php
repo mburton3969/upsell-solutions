@@ -381,7 +381,7 @@ $cache_buster = uniqid();
     </div>
     <input type="hidden" id="item_specifics_array" name="item_specifics_array" />
 </form>
-  <a href="beta.reseller-solutions.com?session_data=<?php echo $_SESSION; ?>">Try BETA</a>
+  <a href="http://beta.reseller-solutions.com?session_data=<?php echo $_SESSION; ?>">Try BETA</a>
     <br>
   <?php include 'modals/success-modal.php'; ?>
   <?php include 'modals/error-modal.php'; ?>
