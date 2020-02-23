@@ -1,14 +1,5 @@
 <?php
 session_start();
-if($_SERVER['HTTP_HOST'] == 'beta.reseller-solutions.com'){
-  $sData = json_decode($_GET['session_data']);
-  foreach($aData as $key => $value){
-    echo $key . ' - ' . $value . '<br><br>';
-  }
-  //var_dump($_SESSION);
-  break;
-}
-
 $_SESSION['ebay_mode'] = 'production';//sandbox or production
 $_SESSION['ebay_mode_val'] = false;//true="sandbox" false="production"
 
@@ -384,7 +375,6 @@ $cache_buster = uniqid();
     </div>
     <input type="hidden" id="item_specifics_array" name="item_specifics_array" />
 </form>
-  <a href="http://beta.reseller-solutions.com?session_data=<?php echo json_encode($_SESSION); ?>">Try BETA</a>
     <br>
   <?php include 'modals/success-modal.php'; ?>
   <?php include 'modals/error-modal.php'; ?>
