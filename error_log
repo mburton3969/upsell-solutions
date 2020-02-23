@@ -5,3 +5,5 @@
 [20-Jun-2019 19:22:48 America/Chicago] PHP Warning:  Header may not contain more than a single header, new line detected in /home3/mburton9/public_html/81demo/index.php on line 11
 [20-Jun-2019 19:22:48 America/Chicago] PHP Warning:  Header may not contain more than a single header, new line detected in /home3/mburton9/public_html/81demo/index.php on line 11
 [22-Feb-2020 22:12:48 America/Chicago] PHP Fatal error:  Cannot break/continue 1 level in /home1/reseller/beta/index.php on line 6
+[22-Feb-2020 22:16:07 America/Chicago] PHP Fatal error:  Cannot break/continue 1 level in /home1/reseller/beta/index.php on line 6
+[22-Feb-2020 22:16:15 America/Chicago] PHP Fatal error:  Cannot break/continue 1 level in /home1/reseller/beta/index.php on line 6

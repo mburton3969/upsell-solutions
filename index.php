@@ -1,8 +1,11 @@
 <?php
 session_start();
 if($_SERVER['HTTP_HOST'] == 'beta.reseller-solutions.com'){
-  $_SESSION = json_decode($_GET['session_data']);
-  var_dump($_SESSION);
+  $sData = json_decode($_GET['session_data']);
+  foreach($aData as $key => $value){
+    echo $key . ' - ' . $value . '<br><br>';
+  }
+  //var_dump($_SESSION);
   break;
 }
 
