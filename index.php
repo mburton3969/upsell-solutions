@@ -1,7 +1,7 @@
 <?php
 session_start();
 if($_SERVER['HTTP_HOST'] == 'beta.reseller-solutions.com'){
-  $_SESSION = $_GET['session_data'];
+  $_SESSION = json_decode($_GET['session_data']);
   var_dump($_SESSION);
   break;
 }
@@ -381,7 +381,7 @@ $cache_buster = uniqid();
     </div>
     <input type="hidden" id="item_specifics_array" name="item_specifics_array" />
 </form>
-  <a href="http://beta.reseller-solutions.com?session_data=<?php echo $_SESSION; ?>">Try BETA</a>
+  <a href="http://beta.reseller-solutions.com?session_data=<?php echo json_encode($_SESSION); ?>">Try BETA</a>
     <br>
   <?php include 'modals/success-modal.php'; ?>
   <?php include 'modals/error-modal.php'; ?>
