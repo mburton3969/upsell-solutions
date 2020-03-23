@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $_SESSION['ebay_mode'] = 'production';//sandbox or production
 $_SESSION['ebay_mode_val'] = false;//true="sandbox" false="production"
 
@@ -30,9 +29,8 @@ $cache_buster = uniqid();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />  <link rel="stylesheet" href="assets/css/modal-style.css">
   <link rel="stylesheet" href="assets/css/loader.css">
-  <script src="assets/js/item-specifics-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 </head>
-<body onload="get_cats(1);">
+<body onload="get_cats(1);get_store_cats(1);">
   <div id="loader" class="loader" style="display:none;">Loading...</div>
     <div>
         <div class="container">
@@ -137,11 +135,25 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Category:</h4>
+                    <h4 class="text-left">Ebay Category:</h4>
                 </div>
                 <div class="col-md-6" id="cat_box">
                   <select id="product_category" name="product_category" class="form-control" Required>
-                    <option value="">Select Category</option>
+                    <option value="">Select Ebay Category</option>
+                  </select>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
+                </div>
+                <div class="col-md-6" id="store_cat_box">
+                  <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);" Required>
+                    <option value="">Select Store Category</option>
                   </select>
               </div>
             </div>
@@ -199,7 +211,10 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">Price:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Price" Required></div>
+                <div class="col-md-6">
+                  <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Price" Required>
+                  <span id="suggested_prices"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -366,6 +381,7 @@ $cache_buster = uniqid();
     </div>-->
   <br>
     <input type="hidden" id="cur_cat" name="cur_cat" />
+    <input type="hidden" id="cur_store_cat" name="cur_store_cat" />
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
@@ -380,12 +396,14 @@ $cache_buster = uniqid();
   <?php include 'modals/success-modal.php'; ?>
   <?php include 'modals/error-modal.php'; ?>
 </body>
+<script src="assets/js/item-specifics-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/upc-lookup-api.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/upc-parsers.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/errors.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/chrome-detection.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/get-categories.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/img-handler.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/item-price-functions.js?cb=<?php echo $cache_buster; ?>"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>

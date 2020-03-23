@@ -14,7 +14,7 @@ echo '<h4>User Token:</h4>';
 echo '<p>' . $_SESSION['user_token'] . '</p>';
 
 echo '<h4>Session Data:</h4>';
-echo '<p>' . print_r($_SESSION) . '</p>';
-
-
+echo '<p>';
+print_r($_SESSION);
+echo '</p>';
 ?>
