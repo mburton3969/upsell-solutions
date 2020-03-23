@@ -150,6 +150,9 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  * Provide a title and description and other information such as the item's location.
  * Note that any HTML in the title or description must be converted to HTML entities.
  */
+  
+//$item->Title = $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
+ 
 $item->Title = $product_title;
 $item->Description = $product_description;
 $item->SKU = $product_label;//Was $product_code...
