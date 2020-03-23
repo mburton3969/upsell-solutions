@@ -76,6 +76,7 @@ $product_label = $_POST['product_label'];
 
 //$product_category = $_POST['product_category'];
 $product_category = $_POST['cur_cat'];
+$product_store_category = $_POST['cur_store_cat'];
 
 $product_condition = $_POST['product_condition'];
 
@@ -244,10 +245,13 @@ if($product_image5 != '' && $product_image5 != 'undefined'){
   
 $item->PictureDetails->PictureURL = $img_array;
 /**
- * List item in the Books > Audiobooks (29792) category.
+ * List item in the selected category.
  */
 $item->PrimaryCategory = new Types\CategoryType();
 $item->PrimaryCategory->CategoryID = $product_category;
+//Store Category...
+$item->Storefront = new Types\StorefrontType();
+$item->Storefront->StoreCategoryID = intval($product_store_category);
 /**
  * Tell buyers what condition the item is in.
  * For the category that we are listing in the value of 1000 is for Brand New.
