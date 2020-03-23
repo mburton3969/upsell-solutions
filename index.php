@@ -135,7 +135,14 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Ebay Category:</h4>
+                    <h4 class="text-left">Ebay Category:
+                    	<select id="product_section" name="product_section" style="float:right;" required>
+                    		<option value="">Select Section</option>
+                    		<option value="Mens">Mens</option>
+                    		<option value="Womens">Womens</option>
+                    		<option value="Childrens">Childrens</option>
+                    	</select>
+                    </h4>
                 </div>
                 <div class="col-md-6" id="cat_box">
                   <select id="product_category" name="product_category" class="form-control" Required>
