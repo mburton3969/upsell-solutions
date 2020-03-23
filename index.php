@@ -1,5 +1,9 @@
 <?php
 session_start();
+$maint = 'No';//Site Under Maintenance? Yes or No...
+if($maint == 'Yes' && $_GET['bypass'] != 'Yes'){
+	header('Location: maintenance.php');
+}
 $_SESSION['ebay_mode'] = 'production';//sandbox or production
 $_SESSION['ebay_mode_val'] = false;//true="sandbox" false="production"
 
