@@ -2,13 +2,14 @@
 var item_specifics = [];
 
 function new_specific(spec, values) {
-  if(spec === ''){
+  if(spec === '' || spec === undefined){
     var sName = prompt("Name of Item Specific:");
     var dd = false;
   }else{
     var sName = spec;
     var dd = true;
   }
+  //alert(sName);
     if(sName === '' || sName === null){
         alert('Please Enter an Item Specific Category');
         return;

@@ -1,5 +1,9 @@
 <?php
 session_start();
+$maint = 'No';//Site Under Maintenance? Yes or No...
+if($maint == 'Yes' && $_GET['bypass'] != 'Yes'){
+	header('Location: maintenance.php');
+}
 $_SESSION['ebay_mode'] = 'production';//sandbox or production
 $_SESSION['ebay_mode_val'] = false;//true="sandbox" false="production"
 
@@ -135,7 +139,14 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Ebay Category:</h4>
+                    <h4 class="text-left">Ebay Category:
+                    	<select class="form-control" id="product_section" name="product_section" style="float:right;width:50%;" required>
+                    		<option value="">Select Section</option>
+                    		<option value="Mens">Mens</option>
+                    		<option value="Womens">Womens</option>
+                    		<option value="Childrens">Childrens</option>
+                    	</select>
+                    </h4>
                 </div>
                 <div class="col-md-6" id="cat_box">
                   <select id="product_category" name="product_category" class="form-control" Required>

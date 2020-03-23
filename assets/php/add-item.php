@@ -66,15 +66,17 @@ $product_description = nl2br($_POST['product_description']);
 
 //Product Details...
 $product_brand = $_POST['product_brand'];
-$product_color = $_POST['product_color'];
-$product_sizetype = $_POST['product_sizetype'];
-$product_style = $_POST['product_style'];
+$product_color = $_POST['product_Color'];
+$product_sizetype = $_POST['product_Sizetype'];
+$product_style = $_POST['product_Style'];
 $product_sleevelength = $_POST['product_sleevelength'];
 $product_material = $_POST['product_material'];
+$product_size = $_POST['product_Size'];
 
 $product_label = $_POST['product_label'];
 
 //$product_category = $_POST['product_category'];
+$product_section = $_POST['product_section'];
 $product_category = $_POST['cur_cat'];
 $product_store_category = $_POST['cur_store_cat'];
 
@@ -150,7 +152,10 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  * Provide a title and description and other information such as the item's location.
  * Note that any HTML in the title or description must be converted to HTML entities.
  */
-$item->Title = $product_title;
+  
+$item->Title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
+ 
+//$item->Title = $product_title;
 $item->Description = $product_description;
 $item->SKU = $product_label;//Was $product_code...
 
