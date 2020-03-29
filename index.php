@@ -85,7 +85,7 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">Title:</h4>
                 </div>
-                <div class="col"><input type="text" id="product_title" style="width: 100%;" name="product_title" class="form-control" placeholder="Title" maxlength="80" Required></div>
+                <div class="col"><input type="text" id="product_title" style="width: 100%;" name="product_title" class="form-control" placeholder="Title" maxlength="80" onchange="format_ebay();" Required></div>
             </div>
         </div>
     </div>
@@ -106,41 +106,8 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">
-                      Item Specifics:
-                      <button type="button" id="add_specific" style="width:30%;display:inline;float:right;" name="add_specific" class="form-control btn btn-primary" onclick="new_specific();"><i class="fas fa-plus"></i> Add Specific</button>
-                    </h4>
-                </div>
-                <div class="col">
-                  <input type="text" id="product_brand" style="width:32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand" required>
-                  <input type="text" id="product_material" style="width:32%;display:inline;" name="product_material" class="form-control" placeholder="Material" required>
-                  <span id="item_specifics"></span>
-                  <!--
-                  <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
-                  <input type="text" id="product_sizetype" style="width: 32%;display:inline;" name="product_sizetype" class="form-control" placeholder="Size Type">
-                  <input type="text" id="product_style" style="width: 32%;display:inline;" name="product_style" class="form-control" placeholder="Style">
-                  <input type="text" id="product_sleevelength" style="width: 32%;display:inline;" name="product_sleevelength" class="form-control" placeholder="Sleeve Length">
-                  -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="text-left">Custom Label:</h4>
-                </div>
-                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label" class="form-control" placeholder="Custom Label" Required></div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
                     <h4 class="text-left">Ebay Category:
-                    	<select class="form-control" id="product_section" name="product_section" style="float:right;width:50%;" required>
+                    	<select class="form-control" id="product_section" name="product_section" style="float:right;width:50%;" onchange="format_ebay();" required>
                     		<option value="">Select Section</option>
                     		<option value="Mens">Mens</option>
                     		<option value="Womens">Womens</option>
@@ -174,6 +141,40 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
+                    <h4 class="text-left">
+                      Item Specifics:
+                      <button type="button" id="add_specific" style="width:30%;display:inline;float:right;" name="add_specific" class="form-control btn btn-primary" onclick="new_specific();"><i class="fas fa-plus"></i> Add Specific</button>
+                    </h4>
+                </div>
+                <div class="col">
+                  <input type="text" id="product_brand" style="width:32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand" onchange="format_ebay();" required>
+                  <input type="text" id="product_material" style="width:32%;display:inline;" name="product_material" class="form-control" placeholder="Material" maxlength="50" onchange="format_ebay();" required>
+                  <input type="text" id="product_color" style="width:32%;display:inline;" name="product_color" class="form-control" placeholder="Color" onchange="format_ebay();" required>
+                  <span id="item_specifics"></span>
+                  <!--
+                  <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
+                  <input type="text" id="product_sizetype" style="width: 32%;display:inline;" name="product_sizetype" class="form-control" placeholder="Size Type">
+                  <input type="text" id="product_style" style="width: 32%;display:inline;" name="product_style" class="form-control" placeholder="Style">
+                  <input type="text" id="product_sleevelength" style="width: 32%;display:inline;" name="product_sleevelength" class="form-control" placeholder="Sleeve Length">
+                  -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">Custom Label:</h4>
+                </div>
+                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label" class="form-control" placeholder="Custom Label" Required></div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
                     <h4 class="text-left">Condition:</h4>
                 </div>
                 <div class="col-md-6">
@@ -198,6 +199,9 @@ $cache_buster = uniqid();
                         <input type="text" name="new_img_url" id="new_img_url" class="form-control" placeholder="New Image URL" />
                         <button type="button" class="btn btn-success text-center text-body border rounded shadow-sm" onclick="add_item_img();">
                           <i class="fas fa-plus"></i> Add Image
+                        </button>
+                        <button type="button" class="btn btn-primary text-center text-body border rounded shadow-sm" data-toggle="modal" data-target="#imageUploadModal">
+                          <i class="fas fa-upload"></i> Upload Image From File
                         </button>
                     </div>
                 </div>
@@ -403,9 +407,13 @@ $cache_buster = uniqid();
     </div>
     <input type="hidden" id="item_specifics_array" name="item_specifics_array" />
 </form>
+  
+<!-- Footer -->
+  <p style="text-align:center;">&copy; Reseller Solutions <i class="fa fa-code-branch"> V2.7.1</i> | Developed By <a href="http://ignition-innovations.com" target="_blank">Ignition Innovations</a></p>
     <br>
   <?php include 'modals/success-modal.php'; ?>
   <?php include 'modals/error-modal.php'; ?>
+  <?php include 'modals/img-upload-modal.php'; ?>
 </body>
 <script src="assets/js/item-specifics-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/upc-lookup-api.js?cb=<?php echo $cache_buster; ?>"></script>
@@ -415,6 +423,8 @@ $cache_buster = uniqid();
 <script src="assets/js/get-categories.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/img-handler.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/item-price-functions.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/product-img-uploader.js?cb=<?php echo $cache_buster; ?>"></script>
+<script src="assets/js/formatting-functions.js?cb=<?php echo $cache_buster; ?>"></script>
   <?php
   if($_GET['res_code'] == 204){
     echo '<script>

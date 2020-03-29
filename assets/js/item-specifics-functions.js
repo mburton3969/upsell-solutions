@@ -4,10 +4,10 @@ var item_specifics = [];
 function new_specific(spec, values) {
   if(spec === '' || spec === undefined){
     var sName = prompt("Name of Item Specific:");
-    var dd = false;
+    var dd = false;//dd = Drop Down [Select] input...
   }else{
     var sName = spec;
-    var dd = true;
+    var dd = true;//dd = Drop Down [Select] input...
   }
   //alert(sName);
     if(sName === '' || sName === null){
@@ -46,8 +46,12 @@ function new_specific(spec, values) {
       select.appendChild(option);
     }
   }
+  
+  if(sName === 'Size'){
+    select.setAttribute('onchange','format_ebay();');
+  }
 
-    var div = document.getElementById('item_specifics');
+  var div = document.getElementById('item_specifics');
   if(dd === false){
     div.appendChild(input);
   }else{
@@ -72,7 +76,9 @@ function getItemSpecifics(cat_code){
       if(r.response == 'GOOD'){
         for(var i = 0; i < r.ItemSpecific.length; i++){
           var x = r.ItemSpecific[i];
-          new_specific(x.Name, x.Values);
+          if(x.Name != 'Color'){
+            new_specific(x.Name, x.Values);
+          }
         }
       }
       

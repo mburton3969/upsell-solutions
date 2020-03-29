@@ -3,6 +3,10 @@ session_start();
 $env_mode = $_SESSION['ebay_mode'];
 $env_mode_val = $_SESSION['ebay_mode_val'];
 /**
+ * Include the Database Connection File.
+ */
+include 'connection.php';
+/**
  * Include the SDK by using the autoloader from Composer.
  */
 require __DIR__.'/../vendor/autoload.php';
@@ -66,7 +70,7 @@ $product_description = nl2br($_POST['product_description']);
 
 //Product Details...
 $product_brand = $_POST['product_brand'];
-$product_color = $_POST['product_Color'];
+$product_color = $_POST['product_color'];
 $product_sizetype = $_POST['product_Sizetype'];
 $product_style = $_POST['product_Style'];
 $product_sleevelength = $_POST['product_sleevelength'];
@@ -173,6 +177,13 @@ $item->ItemSpecifics->NameValueList[] = new Types\NameValueListType([
 $specific = new Types\NameValueListType();
 $specific->Name = 'Material';
 $specific->Value[] = $product_material;
+$item->ItemSpecifics->NameValueList[] = $specific;
+
+//Material Item Specific...
+//Item Custom Label...
+$specific = new Types\NameValueListType();
+$specific->Name = 'Color';
+$specific->Value[] = $product_color;
 $item->ItemSpecifics->NameValueList[] = $specific;
 
 $is_array = explode(',',$_POST['item_specifics_array']);
@@ -434,6 +445,13 @@ if ($response->Ack !== 'Failure') {
     echo '<script>
             document.getElementById("lStatus").innerHTML = "<span style=\"color:green;\">Listing Status: LISTED [Item#: ' . $response->ItemID . ']</span>";
           </script>';
+  
+    $iq = "INSERT INTO `upc_search_log` 
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`inactive`)
+      VALUES
+      (CURRENT_DATE,CURRENT_TIME,'Listing','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No')";
+    mysqli_query($conn, $iq);
+  
 }else{
     echo '<script>
             document.getElementById("lStatus").innerHTML = "<span style=\"color:red;\">Listing Status: NOT LISTED</span>";
