@@ -1,0 +1,9 @@
+[31-Mar-2020 15:36:31 America/Chicago] PHP Warning:  file_get_contents(http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAI53RGJHPITJJFSKQ&amp;AssociateTag=resellersolut-20&amp;IdType=UPC&amp;IncludeReviewsSummary=1&amp;ItemId=768686885075&amp;Operation=ItemLookup&amp;ResponseGroup=SalesRank%2CItemAttributes%2COfferSummary%2CReviews&amp;SearchIndex=SportingGoods&amp;Service=AWSECommerceService&amp;Timestamp=2020-03-31T20%3A36%3A31Z&amp;TruncateReviewsAt=256&amp;Version=2011-08-01&amp;Signature=%2Fqeg6jsqw858ackYsQqoEo1YwWcVyqCMecbaJ9xSvXU%3D): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
+ in /home1/reseller/public_html/amazon/app/controller/output.php on line 97
+[31-Mar-2020 15:36:31 America/Chicago] PHP Fatal error:  Uncaught Exception: String could not be parsed as XML in /home1/reseller/public_html/amazon/app/controller/output.php:97
+Stack trace:
+#0 /home1/reseller/public_html/amazon/app/controller/output.php(97): SimpleXMLElement->__construct('')
+#1 /home1/reseller/public_html/amazon/index.php(29): Output->process(Array)
+#2 {main}
+  thrown in /home1/reseller/public_html/amazon/app/controller/output.php on line 97
+[31-Mar-2020 16:07:12 America/Chicago] PHP Parse error:  syntax error, unexpected '$method' (T_VARIABLE) in /home1/reseller/public_html/amazon/test.php on line 21

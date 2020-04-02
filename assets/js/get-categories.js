@@ -1,5 +1,6 @@
 var catLevel = 0;
-function get_cats(lvl,pid){
+function get_cats(lvl,pid,setCat){
+  //console.warn(setCat);
   //Clear Item Specifics Inputs...
   document.getElementById('item_specifics').innerHTML = '';
   
@@ -61,6 +62,9 @@ function get_cats(lvl,pid){
           var o = document.createElement('option');
           o.value = r[i].id;
           o.text = r[i].name;
+          if(r[i].id === '11450' || r[i].id === setCat){
+            o.setAttribute('selected','selected');
+          }
           s.appendChild(o);
         }
         cb.appendChild(s);
@@ -72,6 +76,10 @@ function get_cats(lvl,pid){
         ccf.value = cc.value;
         console.log('Category set to: '+cc.value);
       }
+      
+      if(lvl === 1){
+        get_cats(2,11450);
+      }
 
     }
   }
@@ -80,7 +88,7 @@ function get_cats(lvl,pid){
 }
 
 
-function get_store_cats(lvl,cid){
+function get_store_cats(lvl,cid,setStoreCat){
   console.log(lvl+' -> '+cid);
   var scb = document.getElementById('store_cat_box');
   
@@ -92,6 +100,10 @@ function get_store_cats(lvl,cid){
   }
   xmlhttp.onreadystatechange=function() {
     if (this.readyState==4 && this.status==200) {
+      if(this.responseText.includes("Auth token is hard expired")){
+        window.location = 'assets/php/refresh-token-test.php';
+        return;
+      }
       if(this.responseText === '' || this.responseText === 'null'){
         var cc = document.getElementById('product_category_'+(lvl - 1));
         var ccf = document.getElementById('cur_cat');
@@ -126,6 +138,9 @@ function get_store_cats(lvl,cid){
             var o = document.createElement('option');
             o.value = r.CategoryID;
             o.text = r.Name;
+            if(r.CategoryID === setStoreCat){
+              o.setAttribute('selected','selected');
+            }
             s.appendChild(o);
             console.warn('Store Category: '+r.Name+' -> '+r.CategoryID);
           }
@@ -174,6 +189,11 @@ function get_store_cats(lvl,cid){
       if(lvl > 1){
       	var csc = document.getElementById('cur_store_cat');
         csc.value = Number(cid);
+      }
+      
+      //If 1st Category is auto-set, get 2nd categories...
+      if(lvl === 1 && setStoreCat === 25334048017){
+        get_store_cats(2,setStoreCat);
       }
 
     }

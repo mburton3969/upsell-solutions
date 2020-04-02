@@ -2,6 +2,8 @@
 session_start();
 $env_mode = $_SESSION['ebay_mode'];
 $env_mode_val = $_SESSION['ebay_mode_val'];
+$_SESSION['form_data'] = '';
+$_SESSION['retry'] = 'No';
 /**
  * Include the Database Connection File.
  */
@@ -67,6 +69,7 @@ $product_code = $_POST['product_code'];
 $product_title = $_POST['product_title'];
 //$product_description = $_POST['product_description'];
 $product_description = nl2br($_POST['product_description']);
+//$_SESSION['pd'] = $_POST['product_description'];
 
 //Product Details...
 $product_brand = $_POST['product_brand'];
@@ -157,7 +160,8 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  * Note that any HTML in the title or description must be converted to HTML entities.
  */
   
-$item->Title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
+//$item->Title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
+$item->Title = substr($product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size, 0, 80);
  
 //$item->Title = $product_title;
 $item->Description = $product_description;
@@ -185,6 +189,14 @@ $specific = new Types\NameValueListType();
 $specific->Name = 'Color';
 $specific->Value[] = $product_color;
 $item->ItemSpecifics->NameValueList[] = $specific;
+
+//Size Item Specific...
+//Item Custom Label...
+$specific = new Types\NameValueListType();
+$specific->Name = 'Size';
+$specific->Value[] = $product_size;
+$item->ItemSpecifics->NameValueList[] = $specific;
+
 
 $is_array = explode(',',$_POST['item_specifics_array']);
 foreach($is_array as $is){
@@ -286,7 +298,7 @@ $item->PaymentMethods = [
     'PayPal'
 ];
 $item->PayPalEmailAddress = '81outfitters@gmail.com';
-$item->DispatchTimeMax = 3;
+$item->DispatchTimeMax = 1;
 /**
  * Setting up the shipping details.
  * We will use a Flat shipping rate for both domestic and international.
@@ -406,6 +418,10 @@ echo '<div id="warnings" style="padding:10px;background:rgba(255,251,0,0.5);">
         <h3 style=""><u>Suggested Additions:</u></h3>
       </div>';
 /**
+ * Set Form Data to SESSION Variable
+**/
+$_SESSION['form_data'] = $_REQUEST;
+/**
  * Output the result of calling the service operation.
  */
 if (isset($response->Errors)) {
@@ -447,21 +463,35 @@ if ($response->Ack !== 'Failure') {
           </script>';
   
     $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$response) . "','No')";
     mysqli_query($conn, $iq);
+  
+  echo '<div style="width:100%;text-align:center;">
+        <br><br>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
+        <br><br><br><br><br><br>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/?retry=Yes" style="background:green;padding:10px;border-radius:25px;color:white;">Similar Item</a>
+
+      </div>';
   
 }else{
     echo '<script>
             document.getElementById("lStatus").innerHTML = "<span style=\"color:red;\">Listing Status: NOT LISTED</span>";
           </script>';
-}
-
-echo '<div style="width:100%;text-align:center;">
+  
+  $iq = "INSERT INTO `upc_search_log` 
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
+      VALUES
+      (CURRENT_DATE,CURRENT_TIME,'Listing','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$response) . "','No')";
+    mysqli_query($conn, $iq);
+  
+  echo '<div style="width:100%;text-align:center;">
         <br><br>
-        <a href="http://' . $_SERVER['HTTP_HOST'] . '/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/?retry=Yes" style="background:blue;padding:10px;border-radius:25px;color:white;">Retry</a>
       </div>';
+}
 
 echo '</body>
       </html>';

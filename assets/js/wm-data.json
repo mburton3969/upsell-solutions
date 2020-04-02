@@ -1,0 +1,49 @@
+{
+  "items": [{
+    "itemId": 228739733,
+    "parentItemId": 228739733,
+    "name": "Mens Dress Shirt Jade SLim-Fit Button-Front XL",
+    "msrp": 59.0,
+    "salePrice": 13.99,
+    "upc": "732994320917",
+    "categoryPath": "Home Page/Clothing/Mens Clothing/Mens Casual Button-Down Shirts",
+    "shortDescription": "Color: GreensSize Type: RegularDress Shirt Size: XLSleeve Length: 34/35Fit: Slim Fit, FittedCollar: Button-DownPattern: SolidsCuff Style: Standard CuffMaterial: Cotton Blends",
+    "longDescription": "Mens Dress Shirt Jade SLim-Fit Button-Front XL",
+    "brandName": "Alfani Dress Shirts",
+    "thumbnailImage": "https://i5.walmartimages.com/asr/2d1306a2-5fb2-437d-871f-6b62b309f327_1.dabb37f4db8a6ab46448c85941f05c40.jpeg?odnHeight=100&odnWidth=100&odnBg=FFFFFF",
+    "mediumImage": "https://i5.walmartimages.com/asr/2d1306a2-5fb2-437d-871f-6b62b309f327_1.dabb37f4db8a6ab46448c85941f05c40.jpeg?odnHeight=180&odnWidth=180&odnBg=FFFFFF",
+    "largeImage": "https://i5.walmartimages.com/asr/2d1306a2-5fb2-437d-871f-6b62b309f327_1.dabb37f4db8a6ab46448c85941f05c40.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
+    "productTrackingUrl": "https://goto.walmart.com/c/|PUBID|/568844/9383?veh=aff&sourceid=imp_000011112222333344&prodsku=228739733&u=https%3A%2F%2Fwww.walmart.com%2Fip%2F228739733",
+    "standardShipRate": 0.0,
+    "color": "Green",
+    "marketplace": true,
+    "modelNumber": "B1980-0022",
+    "sellerInfo": "Fashion Square",
+    "productUrl": "http://c.affil.walmart.com/t/api01?l=https%3A%2F%2Fwww.walmart.com%2Fip%2FMens-Dress-Shirt-Jade-SLim-Fit-Button-Front-XL%2F228739733%3Faffp1%3DrD6vGTpB_3M5zxHcm1amP8igqO_4afn3J-EzP3tKnE4%26affilsrc%3Dapi%26veh%3Daff%26wmlspartner%3Dreadonlyapi",
+    "categoryNode": "5438_133197_1224676",
+    "rhid": "39454",
+    "bundle": false,
+    "clearance": false,
+    "preOrder": false,
+    "stock": "Not available",
+    "attributes": {
+      "color": "Clothing",
+      "imgSwtchInd": "0"
+    },
+    "addToCartUrl": "http://c.affil.walmart.com/t/api01?l=http%3A%2F%2Faffil.walmart.com%2Fcart%2FaddToCart%3Fitems%3D228739733%7C1%26affp1%3DrD6vGTpB_3M5zxHcm1amP8igqO_4afn3J-EzP3tKnE4%26affilsrc%3Dapi%26veh%3Daff%26wmlspartner%3Dreadonlyapi",
+    "affiliateAddToCartUrl": "https://goto.walmart.com/c/|PUBID|/568844/9383?veh=aff&sourceid=imp_000011112222333344&prodsku=228739733&u=http%3A%2F%2Faffil.walmart.com%2Fcart%2FaddToCart%3Fitems%3D228739733",
+    "freeShippingOver35Dollars": false,
+    "imageEntities": [{
+      "thumbnailImage": "https://i5.walmartimages.com/asr/2d1306a2-5fb2-437d-871f-6b62b309f327_1.dabb37f4db8a6ab46448c85941f05c40.jpeg?odnHeight=100&odnWidth=100&odnBg=FFFFFF",
+      "mediumImage": "https://i5.walmartimages.com/asr/2d1306a2-5fb2-437d-871f-6b62b309f327_1.dabb37f4db8a6ab46448c85941f05c40.jpeg?odnHeight=180&odnWidth=180&odnBg=FFFFFF",
+      "largeImage": "https://i5.walmartimages.com/asr/2d1306a2-5fb2-437d-871f-6b62b309f327_1.dabb37f4db8a6ab46448c85941f05c40.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
+      "entityType": "PRIMARY"
+    }, {
+      "thumbnailImage": "https://i5.walmartimages.com/asr/6cb89627-47b4-4c51-8971-4242982e31ed_1.c1cb752b34bf03a8f7ab15122c1f572b.jpeg?odnHeight=100&odnWidth=100&odnBg=FFFFFF",
+      "mediumImage": "https://i5.walmartimages.com/asr/6cb89627-47b4-4c51-8971-4242982e31ed_1.c1cb752b34bf03a8f7ab15122c1f572b.jpeg?odnHeight=180&odnWidth=180&odnBg=FFFFFF",
+      "largeImage": "https://i5.walmartimages.com/asr/6cb89627-47b4-4c51-8971-4242982e31ed_1.c1cb752b34bf03a8f7ab15122c1f572b.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
+      "entityType": "SECONDARY"
+    }],
+    "availableOnline": false
+  }]
+}

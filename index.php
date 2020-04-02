@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'assets/php/connection.php';
 $maint = 'No';//Site Under Maintenance? Yes or No...
 if($maint == 'Yes' && $_GET['bypass'] != 'Yes'){
 	header('Location: maintenance.php');
@@ -18,10 +19,35 @@ if($_SESSION['auth_code'] == '' || !isset($_SESSION['auth_code'])){
     //Error...
     echo 'ERROR';
   }
-    
+}
+if($_SESSION['user_token'] == '' || !isset($_SESSION['user_token'])){
+  if($_SESSION['refresh_token'] == '' || !isset($_SESSION['refresh_token'])){
+    $_SESSION['auth_code'] = '';
+    echo '<script>
+            window.location = "http://' . $_SERVER['HTTP_HOST'] . '";
+          </script>';
+  }else{
+    $trurl = 'assets/php/refresh-token-test.php';
+    //header('Location: '.$trurl);
+    echo '<script>
+            window.location = "' . $trurl . '";
+          </script>';
+  }
 }
 $cache_buster = uniqid();
+
+//Check for Previous form-data...
+if($_GET['retry'] == 'Yes'){
+  //print_r($_SESSION['form_data']);
+  //echo $_SESSION['form_data']['product_title'];
+  //echo '<br><br>';
+  //echo $_SESSION['pd'];
+  echo '<script>
+          var retry = true;
+        </script>';
+}
 ?>
+<?php //if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data'][''];}?>
 <html>
 <head>
 	<title>API Test</title>
@@ -33,9 +59,15 @@ $cache_buster = uniqid();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />  <link rel="stylesheet" href="assets/css/modal-style.css">
   <link rel="stylesheet" href="assets/css/loader.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <style>
+    td{
+      padding: 5px;
+    }
+  </style>
 </head>
-<body onload="get_cats(1);get_store_cats(1);">
-  <div id="loader" class="loader" style="display:none;">Loading...</div>
+<body onload="get_cats(1);get_store_cats(1,'',25334048017);">
+  <div id="loader" class="loader" style="display:<?php if($_GET['retry'] == 'Yes'){echo 'inline';}else{echo 'none';} ?>;">Loading...</div>
     <div>
         <div class="container">
           
@@ -52,9 +84,87 @@ $cache_buster = uniqid();
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12"><br></div>
+                <?php 
+                //Scanned BC...
+                $dq = "SELECT DISTINCT `upc_code` FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'UPC Scan' AND `date` = CURRENT_DATE";
+                $dg = mysqli_query($conn, $dq) or die($conn->error);
+                $scanned_bc = mysqli_num_rows($dg);
+              
+                //Data Found...
+                $dq = "SELECT DISTINCT `upc_code`,`data_source` FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'UPC Scan' AND `data_found` = 'Yes' AND `date` = CURRENT_DATE";
+                $dg = mysqli_query($conn, $dq) or die($conn->error);
+                $bc_data = mysqli_num_rows($dg);
+                //Setup API Variables...
+                $de_api = 0;
+                $bl_api = 0;
+                $upc_api = 0;
+                $wm_api = 0;
+                while($dr = mysqli_fetch_array($dg)){
+                  if($dr['data_source'] == 'digit-eyes.com'){
+                    $de_api++;
+                  }
+                  if($dr['data_source'] == 'barcodelookup.com'){
+                    $bl_api++;
+                  }
+                  if($dr['data_source'] == 'upcitemdb.com'){
+                    $upc_api++;
+                  }
+                  if($dr['data_source'] == 'walmart.com'){
+                    $wm_api++;
+                  }
+                }
+              
+                //Listings...
+                $ldq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing' AND `listed` = 'Yes' AND `date` = CURRENT_DATE";
+                $ldg = mysqli_query($conn, $ldq) or die($conn->error);
+                $listings = mysqli_num_rows($ldg);
+              
+                  echo '<div class="col-md-4 text-center alert alert-info">
+                          <h4>Barcodes Scanned:</h4> 
+                          <p>' . $scanned_bc . '</p>
+                        </div>';
+                  
+                  echo '<div class="col-md-4 text-center alert alert-info">
+                          <h4>Barcodes Found:</h4>
+                          <p>' . $bc_data . '</p>
+                        </div>';
+                        
+                  echo '<div class="col-md-4 text-center alert alert-info">
+                          <h4>Items Listed:</h4>
+                          <p>' . $listings . '</p>
+                        </div>';
+              
+                if($_GET['dev'] == 'Yes'){
+                  echo '<div class="col-md-3 text-center alert alert-info">
+                          <h5><u>Barcodes Scanned:</u></h5> 
+                          <p>' . $scanned_bc . '</p>
+                        </div>';
+                  
+                  echo '<div class="col-md-3 text-center alert alert-info">
+                          <h5><u>Barcodes Found:</u></h5>
+                          <p>' . $bc_data . '</p>
+                        </div>';
+                        
+                  echo '<div class="col-md-3 text-center alert alert-info">
+                          <h5><u>Items Listed:</u></h5>
+                          <p>' . $listings . '</p>
+                        </div>';
+                  
+                  echo '<div class="col-md-3 alert alert-info">
+                          <h5 class="text-center"><u>API Usage:</u></h5>
+                          <table>
+                            <tr><td>Digit-Eyes API: </td><td>' . $de_api . '</td></tr>
+                            <tr><td>Barcode Lookup API: </td><td>' . $bl_api . '</td></tr>
+                            <tr><td>UPC Item DB API: </td><td>' . $upc_api . '</td></tr>
+                            <tr><td>Walmart API: </td><td>' . $wm_api . '</td></tr>
+                          </table>
+                        </div>';
+                }
+              
+                ?>
             </div>
         </div>
+      <br>
     </div>
     <div>
         <div class="container">
@@ -75,7 +185,7 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">UPC Code:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" Required></div>
+                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_code'];}?>" Required></div>
             </div>
         </div>
     </div>
@@ -85,19 +195,9 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">Title:</h4>
                 </div>
-                <div class="col"><input type="text" id="product_title" style="width: 100%;" name="product_title" class="form-control" placeholder="Title" maxlength="80" onchange="format_ebay();" Required></div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="text-left">Description:</h4>
-                </div>
                 <div class="col">
-                  <!--<input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description" Required>-->
-                  <textarea id="product_description" style="width: 100%;height:150px;" name="product_description" class="form-control" placeholder="Description" Required></textarea>
+                  <input type="text" id="product_title" style="width: 100%;" name="product_title" class="form-control" placeholder="Title" maxlength="80" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_title'];}?>" onchange="format_ebay();" Required>
+                  <p id="product_title_display"></p>
                 </div>
             </div>
         </div>
@@ -109,9 +209,9 @@ $cache_buster = uniqid();
                     <h4 class="text-left">Ebay Category:
                     	<select class="form-control" id="product_section" name="product_section" style="float:right;width:50%;" onchange="format_ebay();" required>
                     		<option value="">Select Section</option>
-                    		<option value="Mens">Mens</option>
-                    		<option value="Womens">Womens</option>
-                    		<option value="Childrens">Childrens</option>
+                    		<option value="Mens" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['product_section'] == 'Mens'){echo 'selected';}?>>Mens</option>
+                    		<option value="Womens" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['product_section'] == 'Womens'){echo 'selected';}?>>Womens</option>
+                    		<option value="Childrens" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['product_section'] == 'Childrens'){echo 'selected';}?>>Childrens</option>
                     	</select>
                     </h4>
                 </div>
@@ -127,29 +227,16 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
-                </div>
-                <div class="col-md-6" id="store_cat_box">
-                  <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);" Required>
-                    <option value="">Select Store Category</option>
-                  </select>
-              </div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
                     <h4 class="text-left">
                       Item Specifics:
                       <button type="button" id="add_specific" style="width:30%;display:inline;float:right;" name="add_specific" class="form-control btn btn-primary" onclick="new_specific();"><i class="fas fa-plus"></i> Add Specific</button>
                     </h4>
                 </div>
                 <div class="col">
-                  <input type="text" id="product_brand" style="width:32%;display:inline;" name="product_brand" class="form-control" placeholder="Brand" onchange="format_ebay();" required>
-                  <input type="text" id="product_material" style="width:32%;display:inline;" name="product_material" class="form-control" placeholder="Material" maxlength="50" onchange="format_ebay();" required>
-                  <input type="text" id="product_color" style="width:32%;display:inline;" name="product_color" class="form-control" placeholder="Color" onchange="format_ebay();" required>
+                  <input type="text" id="product_brand" style="width:31%;display:inline;" name="product_brand" class="form-control is-field" placeholder="Brand" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_brand'];}?>" required>
+                  <input type="text" id="product_material" style="width:31%;display:inline;" name="product_material" class="form-control is-field" placeholder="Material" maxlength="50" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_material'];}?>" required>
+                  <input type="text" id="product_color" style="width:31%;display:inline;" name="product_color" class="form-control is-field" placeholder="Color" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_color'];}?>" required>
+                  <input type="text" id="product_Size" style="width:31%;display:inline;" name="product_Size" class="form-control is-field" placeholder="Size" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_Size'];}?>" required>
                   <span id="item_specifics"></span>
                   <!--
                   <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
@@ -165,9 +252,12 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Custom Label:</h4>
+                    <h4 class="text-left">Description:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label" class="form-control" placeholder="Custom Label" Required></div>
+                <div class="col">
+                  <!--<input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description" Required>-->
+                  <textarea id="product_description" style="width: 100%;height:150px;" name="product_description" class="form-control" placeholder="Description" Required><?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_description'];}?></textarea>
+                </div>
             </div>
         </div>
     </div>
@@ -180,7 +270,7 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                   <select id="product_condition" style="width: 100%;" name="product_condition" class="form-control" Required>
                     <option value="">Select Condition</option>
-                    <option value="1000">New with tags/box</option>
+                    <option value="1000" selected>New with tags/box</option>
                     <option value="1500">New without tags/box</option>
                     <option value="1750">New with defects</option>
                     <option value="3000">Pre-owned</option>
@@ -206,17 +296,32 @@ $cache_buster = uniqid();
                     </div>
                 </div>
                 <div class="col-md-6">
-                  <a id="img1_link" href="#" onclick="remove_item_img('1');return false;" target="_blank"><img id="product_image1" name="product_image1" style="width: 32%;"></a>
-                    <input type="hidden" id="img_url1" name="img_url1" />
-                  <a id="img2_link" href="#" onclick="remove_item_img('2');return false;" target="_blank"><img id="product_image2" name="product_image2" style="width: 32%;"></a>
-                    <input type="hidden" id="img_url2" name="img_url2" />
-                  <a id="img3_link" href="#" onclick="remove_item_img('3');return false;" target="_blank"><img id="product_image3" name="product_image3" style="width: 32%;"></a>
-                    <input type="hidden" id="img_url3" name="img_url3" />
-                  <a id="img4_link" href="#" onclick="remove_item_img('4');return false;" target="_blank"><img id="product_image4" name="product_image4" style="width: 32%;"></a>
-                    <input type="hidden" id="img_url4" name="img_url4" />
-                  <a id="img5_link" href="#" onclick="remove_item_img('5');return false;" target="_blank"><img id="product_image5" name="product_image5" style="width: 32%;"></a>
-                    <input type="hidden" id="img_url5" name="img_url5" />
+                  <a id="img1_link" href="#" onclick="remove_item_img('1');return false;" target="_blank"><img id="product_image1" name="product_image1" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url1'] != ''){echo 'src="' . $_SESSION['form_data']['img_url1'] . '"';}?>></a>
+                    <input type="hidden" id="img_url1" name="img_url1" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url1'];}?>" />
+                  <a id="img2_link" href="#" onclick="remove_item_img('2');return false;" target="_blank"><img id="product_image2" name="product_image2" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url2'] != ''){echo 'src="' . $_SESSION['form_data']['img_url2'] . '"';}?>></a>
+                    <input type="hidden" id="img_url2" name="img_url2" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url2'];}?>" />
+                  <a id="img3_link" href="#" onclick="remove_item_img('3');return false;" target="_blank"><img id="product_image3" name="product_image3" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url3'] != ''){echo 'src="' . $_SESSION['form_data']['img_url3'] . '"';}?>></a>
+                    <input type="hidden" id="img_url3" name="img_url3" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url3'];}?>" />
+                  <a id="img4_link" href="#" onclick="remove_item_img('4');return false;" target="_blank"><img id="product_image4" name="product_image4" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url4'] != ''){echo 'src="' . $_SESSION['form_data']['img_url4'] . '"';}?>></a>
+                    <input type="hidden" id="img_url4" name="img_url4" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url4'];}?>" />
+                  <a id="img5_link" href="#" onclick="remove_item_img('5');return false;" target="_blank"><img id="product_image5" name="product_image5" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url5'] != ''){echo 'src="' . $_SESSION['form_data']['img_url5'] . '"';}?>></a>
+                    <input type="hidden" id="img_url5" name="img_url5" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url5'];}?>" />
                 </div>
+            </div>
+        </div>
+    </div>
+    <div style="background:#8A8A8A;">
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
+                </div>
+                <div class="col-md-6" id="store_cat_box">
+                  <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);" Required>
+                    <option value="">Select Store Category</option>
+                  </select>
+              </div>
             </div>
         </div>
     </div>
@@ -224,10 +329,21 @@ $cache_buster = uniqid();
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
+                    <h4 class="text-left">Custom Label:</h4>
+                </div>
+                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label" class="form-control" placeholder="Custom Label" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_label'];}?>" Required></div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
                     <h4 class="text-left">Price:</h4>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Price" Required>
+                  <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_price'];}?>" Required>
                   <span id="suggested_prices"></span>
                 </div>
             </div>
@@ -239,24 +355,10 @@ $cache_buster = uniqid();
                 <div class="col-md-6">
                     <h4 class="text-left">Quantity:</h4>
                 </div>
-                <div class="col-md-6"><input type="number" id="product_quantity" style="width: 100%;" name="product_quantity" class="form-control" placeholder="Quantity" Required></div>
+                <div class="col-md-6"><input type="number" id="product_quantity" style="width: 100%;" name="product_quantity" class="form-control" placeholder="Quantity" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_quantity'];}?>" Required></div>
             </div>
         </div>
     </div>
-    <!--<div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="text-left">Package Dimensions:</h4>
-                </div>
-                <div class="col-md-6">
-                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_width" name="product_pkg_width" class="form-control" placeholder="Width (inches)" Required>
-                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_length" name="product_pkg_length" class="form-control" placeholder="Length (inches)" Required>
-                  <input type="number" style="width: 32%;display:inline;" id="product_pkg_depth" name="product_pkg_depth" class="form-control" placeholder="Depth (inches)" Required>
-                </div>
-            </div>
-        </div>
-    </div>-->
     <div style="padding: 15px;">
         <div class="container">
             <div class="row">
@@ -264,156 +366,32 @@ $cache_buster = uniqid();
                     <h4 class="text-left">Package Weight:</h4>
                 </div>
                 <div class="col-md-6">
-                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_lbs" name="product_pkg_lbs" class="form-control" placeholder="Pounds" Required>
-                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_oz" name="product_pkg_oz" class="form-control" placeholder="Ounces" Required>
+                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_lbs" name="product_pkg_lbs" class="form-control" placeholder="Pounds" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_pkg_lbs'];}?>" Required>
+                  <input type="number" style="width: 49%;display:inline;" id="product_pkg_oz" name="product_pkg_oz" class="form-control" placeholder="Ounces" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_pkg_oz'];}?>" Required>
                 </div>
             </div>
         </div>
     </div>
-    <!--<div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                  <h4 class="text-left">Package Type:</h4>
-                </div>
-                <div class="col-md-6">
-                  <select id="product_ship_option" style="width: 100%;" name="product_ship_option" class="form-control">
-                    <option value="">Select Package Type</option>
-                    <option value="BulkyGoods"></option>
-                    <option value="Caravan"></option>
-                    <option value="Cars"></option>
-                    <option value="Europallet"></option>
-                    <option value="ExpandableToughBags"></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                  </select>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <!--<div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                  <h4 class="text-left">Shipping Service: &nbsp; <small>[<a href="https://www.ebay.com/shp/Calculator" target="_blank">Shipping Calculator</a>]</small></h4>
-                </div>
-                <div class="col-md-6">
-                  <select id="product_ship_option" style="width: 100%;" name="product_ship_option" class="form-control" Required>
-                    <option value="">Select Shipping Option</option>
-                    <option value="USPSPriority">USPS Priority Mail (1-3 Business Days)</option>
-                    <option value="USPSFirstClass">USPS First Class Package (2-3 Business Days)</option>
-                  </select>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                  <h4 class="text-left">Returns Accepted?</h4>
-                </div>
-                <div class="col-md-6">
-                  <select id="returns_accepted_option" style="width: 100%;" name="returns_accepted_option" class="form-control" Required>
-                    <option value="">Select Returns Option</option>
-                    <option value="ReturnsAccepted">Returns Accepted</option>
-                    <option value="ReturnsNotAccepted">Returns Not Accepted</option>
-                  </select>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                  <h4 class="text-left">Returns Accepted Within?</h4>
-                </div>
-                <div class="col-md-6">
-                  <select id="returns_accepted_within_option" style="width: 100%;" name="returns_accepted_within_option" class="form-control" Required>
-                    <option value="">Select Returns Time Option</option>
-                    <option value="Days_14">14 Days</option>
-                    <option value="Days_30">30 Days</option>
-                    <option value="Days_60">60 Days</option>
-                  </select>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                  <h4 class="text-left">Refund Method?</h4>
-                </div>
-                <div class="col-md-6">
-                  <select id="refund_option" style="width: 100%;" name="refund_option" class="form-control" Required>
-                    <option value="">Select Refund Option</option>
-                    <option value="MoneyBack">Money Back Only</option>
-                    <option value="MoneyBackOrReplacement">Money Back Or Replacement</option>
-                  </select>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                  <h4 class="text-left">Who Pays Return Shipping?</h4>
-                </div>
-                <div class="col-md-6">
-                  <select id="return_shipping_option" style="width: 100%;" name="return_shipping_option" class="form-control" Required>
-                    <option value="">Select Return Shipping Option</option>
-                    <option value="Buyer">Buyer</option>
-                    <option value="Seller">Seller</option>
-                  </select>
-                </div>
-            </div>
-        </div>
-    </div>-->
   <br>
-    <input type="hidden" id="cur_cat" name="cur_cat" />
-    <input type="hidden" id="cur_store_cat" name="cur_store_cat" />
+    <input type="hidden" id="cur_cat" name="cur_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_cat'];}?>" />
+    <input type="hidden" id="cur_store_cat" name="cur_store_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_store_cat'];}?>" />
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
             <input type="hidden" name="env_mode" value="PRODUCTION"><!--'SANDBOX' or 'PRODUCTION'-->
             <?php ?>
-            <button class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm" type="submit">Submit To Ebay</button>
+            <button type="submit" id="submit_btn" class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm">Submit To Ebay</button>
         </div>
     </div>
-    <input type="hidden" id="item_specifics_array" name="item_specifics_array" />
+    <input type="hidden" id="item_specifics_array" name="item_specifics_array" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['item_specifics_array'];}?>" />
 </form>
   
 <!-- Footer -->
   <p style="text-align:center;">&copy; Reseller Solutions <i class="fa fa-code-branch"> V2.7.1</i> | Developed By <a href="http://ignition-innovations.com" target="_blank">Ignition Innovations</a></p>
     <br>
-  <?php include 'modals/success-modal.php'; ?>
-  <?php include 'modals/error-modal.php'; ?>
-  <?php include 'modals/img-upload-modal.php'; ?>
+  <?php include 'list-item/modals/success-modal.php'; ?>
+  <?php include 'list-item/modals/error-modal.php'; ?>
+  <?php include 'list-item/modals/img-upload-modal.php'; ?>
 </body>
 <script src="assets/js/item-specifics-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/upc-lookup-api.js?cb=<?php echo $cache_buster; ?>"></script>
@@ -425,12 +403,89 @@ $cache_buster = uniqid();
 <script src="assets/js/item-price-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/product-img-uploader.js?cb=<?php echo $cache_buster; ?>"></script>
 <script src="assets/js/formatting-functions.js?cb=<?php echo $cache_buster; ?>"></script>
-  <?php
+<?php
   if($_GET['res_code'] == 204){
     echo '<script>
           $("#successModal").modal("show");
           </script>';
   }
-  ?>
+  
+  if($_GET['retry'] == 'Yes'){
+    
+    echo '<script>';
+    echo '(function(){';
+    
+    //eBay Categories...
+    $timer = 0;
+    $clvl = 1;
+    if(isset($_SESSION['form_data']['product_category_2']) && $_SESSION['form_data']['product_category_2'] != ''){
+      echo 'setTimeout(function(){get_cats(2,' . $_SESSION['form_data']['product_category_1'] . ',"' . $_SESSION['form_data']['product_category_2'] . '");
+      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_2'] . '";},500);
+      console.log("Cat2");';
+      $timer = $timer + 500;
+      $clvl = 2;
+    }
+    if(isset($_SESSION['form_data']['product_category_3']) && $_SESSION['form_data']['product_category_3'] != ''){
+      echo 'setTimeout(function(){get_cats(3,' . $_SESSION['form_data']['product_category_2'] . ',"' . $_SESSION['form_data']['product_category_3'] . '");
+      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_3'] . '";},1000);
+      console.log("Cat3");';
+      $timer = $timer + 500;
+      $clvl = 3;
+    }
+    if(isset($_SESSION['form_data']['product_category_4']) && $_SESSION['form_data']['product_category_4'] != ''){
+      echo 'setTimeout(function(){get_cats(4,' . $_SESSION['form_data']['product_category_3'] . ',"' . $_SESSION['form_data']['product_category_4'] . '");
+      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_4'] . '";},1500);
+      console.log("Cat4");';
+      $timer = $timer + 500;
+      $clvl = 4;
+    }
+    if(isset($_SESSION['form_data']['product_category_5']) && $_SESSION['form_data']['product_category_5'] != ''){
+      echo 'setTimeout(function(){get_cats(5,' . $_SESSION['form_data']['product_category_4'] . ',"' . $_SESSION['form_data']['product_category_5'] . '");},2000);
+      console.log("Cat5");';
+      $timer = $timer + 500;
+      $clvl = 5;
+    }
+    
+    echo 'setTimeout(function(){
+            //var nCatLevel = catLevel + 1;
+            var cl = document.getElementById("product_category_' . $clvl . '").value;
+            getItemSpecifics(cl);
+            document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_'.$clvl] . '";
+            console.log("clvl: "+cl);
+          },' . ($timer + 500) . ');
+          ';
+    
+    //Item Specifics...
+    $isa = explode(',',$_SESSION['form_data']['item_specifics_array']);
+    echo 'setTimeout(function(){';
+    foreach($isa as $is){
+      //echo 'new_specific("' . $is . '","Bypass");';
+      echo 'document.getElementById("product_' . $is . '").value = "' . $_SESSION['form_data']['product_' . $is] . '";';
+      echo 'document.getElementById("loader").style.display = "none";';
+    }
+    echo '},' . ($timer + 3500) . ');';
+    
+    //Store Categories...
+    echo 'setTimeout(function(){document.getElementById("product_store_category_1").value = "' . $_SESSION['form_data']['product_store_category_1'] . '";},1000);
+    ';
+    $stimer = 0;
+    $sclvl = 0;
+    if(isset($_SESSION['form_data']['product_category_2']) && $_SESSION['form_data']['product_store_category_2'] != ''){
+      echo 'setTimeout(function(){get_store_cats(2,' . $_SESSION['form_data']['product_store_category_1'] . ',"' . $_SESSION['form_data']['product_store_category_2'] . '");},750);
+      console.log("StoreCat2");';
+      $stimer = $stimer + 2000;
+      $sclvl = 1;
+      echo 'setTimeout(function(){
+              document.getElementById("product_store_category_2").value = "' . $_SESSION['form_data']['product_store_category_2'] . '";
+              document.getElementById("cur_store_cat").value = "' . $_SESSION['form_data']['product_store_category_2'] . '";
+            },' . $stimer . ');';
+    }
+    
+    
+    
+    echo '})();';
+    echo '</script>';
+  }
+?>
 </html>
 
