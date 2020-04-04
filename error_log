@@ -27,3 +27,44 @@
 [16-Mar-2020 19:52:13 America/Chicago] PHP Fatal error:  'break' not in the 'loop' or 'switch' context in /home1/reseller/beta/index.php on line 9
 [17-Mar-2020 10:13:08 America/Chicago] PHP Fatal error:  'break' not in the 'loop' or 'switch' context in /home1/reseller/beta/index.php on line 9
 [19-Mar-2020 18:05:24 America/Chicago] PHP Fatal error:  'break' not in the 'loop' or 'switch' context in /home1/reseller/beta/index.php on line 9
+[29-Mar-2020 19:08:44 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home1/reseller/public_html/index.php on line 479
+[29-Mar-2020 19:10:08 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home1/reseller/public_html/index.php on line 479
+[29-Mar-2020 19:10:22 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home1/reseller/public_html/index.php on line 479
+[29-Mar-2020 19:11:30 America/Chicago] PHP Parse error:  syntax error, unexpected 'as' (T_AS), expecting ';' in /home1/reseller/public_html/index.php on line 479
+[29-Mar-2020 19:12:21 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home1/reseller/public_html/index.php on line 479
+[30-Mar-2020 10:52:09 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home1/reseller/public_html/index.php on line 71
+[30-Mar-2020 10:52:13 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home1/reseller/public_html/index.php on line 71
+[30-Mar-2020 10:52:25 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home1/reseller/public_html/index.php on line 75
+[30-Mar-2020 21:10:05 America/Chicago] PHP Parse error:  syntax error, unexpected '$_SESSION' (T_VARIABLE) in /home1/reseller/public_html/test.php on line 3
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_code' in /home1/reseller/public_html/index.php on line 153
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_title' in /home1/reseller/public_html/index.php on line 164
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_section' in /home1/reseller/public_html/index.php on line 177
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_section' in /home1/reseller/public_html/index.php on line 178
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_section' in /home1/reseller/public_html/index.php on line 179
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_brand' in /home1/reseller/public_html/index.php on line 201
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_material' in /home1/reseller/public_html/index.php on line 202
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_color' in /home1/reseller/public_html/index.php on line 203
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_Size' in /home1/reseller/public_html/index.php on line 204
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_description' in /home1/reseller/public_html/index.php on line 224
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url1' in /home1/reseller/public_html/index.php on line 264
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url1' in /home1/reseller/public_html/index.php on line 265
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url2' in /home1/reseller/public_html/index.php on line 266
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url2' in /home1/reseller/public_html/index.php on line 267
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url3' in /home1/reseller/public_html/index.php on line 268
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url3' in /home1/reseller/public_html/index.php on line 269
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url4' in /home1/reseller/public_html/index.php on line 270
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url4' in /home1/reseller/public_html/index.php on line 271
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url5' in /home1/reseller/public_html/index.php on line 272
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'img_url5' in /home1/reseller/public_html/index.php on line 273
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_label' in /home1/reseller/public_html/index.php on line 299
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_price' in /home1/reseller/public_html/index.php on line 311
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_quantity' in /home1/reseller/public_html/index.php on line 323
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_pkg_lbs' in /home1/reseller/public_html/index.php on line 334
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_pkg_oz' in /home1/reseller/public_html/index.php on line 335
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'cur_cat' in /home1/reseller/public_html/index.php on line 341
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'cur_store_cat' in /home1/reseller/public_html/index.php on line 342
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'item_specifics_array' in /home1/reseller/public_html/index.php on line 351
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_category_1' in /home1/reseller/public_html/index.php on line 418
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'item_specifics_array' in /home1/reseller/public_html/index.php on line 424
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_' in /home1/reseller/public_html/index.php on line 428
+[01-Apr-2020 12:26:03 America/Chicago] PHP Warning:  Illegal string offset 'product_store_category_1' in /home1/reseller/public_html/index.php on line 434

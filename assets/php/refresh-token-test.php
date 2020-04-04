@@ -66,6 +66,8 @@ if ($response->getStatusCode() !== 200) {
         $response->error,
         $response->error_description
     );
+  echo '<br><br><br>
+        <a href="../../destroy.php">Correct Error</a>';
 } else {
   $_SESSION['user_token'] = $response->access_token;
   //$_SESSION['refresh_token'] = $response->refresh_token;
@@ -77,6 +79,6 @@ if ($response->getStatusCode() !== 200) {
         $response->refresh_token
     );
   echo '<script>
-        //window.location = "http://' . $_SERVER['HTTP_HOST'] . '";
+        window.location = "http://' . $_SERVER['HTTP_HOST'] . '";
         </script>';
 }

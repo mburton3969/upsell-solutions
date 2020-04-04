@@ -6,7 +6,10 @@ var de_apikey = '/4elLY%2BpIk2S';//Live Account
 var auth_key = 'Ws05M3r7w9Bt3Yu1';//Live Account
 var signature = 'rE5vp\/HdpLZLGG+mlYluip2bIpY=';
 
-var bl_apikey = 'by9mvc1ud63gvzw584xrs6rkaisosy';
+//var bl_apikey = 'by9mvc1ud63gvzw584xrs6rkaisosy';//Old - michael@ignition-innovations.com
+//var bl_apikey = 'v2f01t08qidk97sd9bmunttekq8gzr';//Old Test Account michael@burtonsolution.com
+var bl_apikey = 'nvr38f3cdml6nlwjqqa3vx21cbbrqn';
+
 
 var ud_apikey = '2e514306059046cf75e01e0010bce0ee';
 
@@ -63,7 +66,7 @@ function lookup_upc(e,upc){
 
 
       if(trip === false){
-        if(upc_r.code === 'OK' && upc_r !== false){
+        if(upc_r.code === 'OK' && upc_r !== false && upc_r.total !== 0){
           upc_parse(upc_r,response.upc_url);
           trip = true;
         }else{

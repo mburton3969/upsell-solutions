@@ -4,34 +4,40 @@ var item_specifics = [];
 function new_specific(spec, values) {
   if(spec === '' || spec === undefined){
     var sName = prompt("Name of Item Specific:");
-    var dd = false;
+    var dd = false;//dd = Drop Down [Select] input...
   }else{
     var sName = spec;
-    var dd = true;
+    var cc = document.getElementById('cur_cat').value;
+    if(cc === '63867' && sName === 'Size'){
+      var dd = false;//dd = Drop Down [Select] input...
+    }else{
+      var dd = true;//dd = Drop Down [Select] input...
+    }
   }
+  //console.warn(dd+' '+sName);
   //alert(sName);
     if(sName === '' || sName === null){
         alert('Please Enter an Item Specific Category');
         return;
     }else{
-        sName = sName.replace(' ','_');
+        sName = sName.replace(/ /g,'_');
     }
     //Create Input to add...
   if(dd === false){
     var input = document.createElement('input');
     input.setAttribute('type','text');
     input.setAttribute('id','product_'+sName);
-    input.setAttribute('style','width:32%;display:inline;');
+    input.setAttribute('style','width:31%;display:inline;');
     input.setAttribute('name','product_'+sName);
-    input.setAttribute('class','form-control');
+    input.setAttribute('class','form-control is-field');
     input.setAttribute('placeholder',sName);
     input.setAttribute('required','required');
   }else{
     var select = document.createElement('select');
     select.setAttribute('id','product_'+sName);
-    select.setAttribute('style','width:32%;display:inline;');
+    select.setAttribute('style','width:31%;display:inline;');
     select.setAttribute('name','product_'+sName);
-    select.setAttribute('class','form-control');
+    select.setAttribute('class','form-control is-field');
     select.setAttribute('required','required');
     var option = document.createElement('option');
     option.setAttribute('value','');
@@ -46,8 +52,16 @@ function new_specific(spec, values) {
       select.appendChild(option);
     }
   }
+  
+  if(sName === 'Size'){
+    if(dd === true){
+     select.setAttribute('onchange','format_ebay();');
+    }else{
+     input.setAttribute('onchange','format_ebay();');
+    }
+  }
 
-    var div = document.getElementById('item_specifics');
+  var div = document.getElementById('item_specifics');
   if(dd === false){
     div.appendChild(input);
   }else{
@@ -72,7 +86,9 @@ function getItemSpecifics(cat_code){
       if(r.response == 'GOOD'){
         for(var i = 0; i < r.ItemSpecific.length; i++){
           var x = r.ItemSpecific[i];
-          new_specific(x.Name, x.Values);
+          if(x.Name != 'Color' && x.Name != 'Size'){
+            new_specific(x.Name, x.Values);
+          }
         }
       }
       
