@@ -20,6 +20,8 @@ function lookup_upc(e,upc){
     //console.log('NOT ENTER...');
     return;
   }
+  //Move space from beginning and end of the UPC code...
+  upc = upc.trim();
   document.getElementById('loader').style.display = 'inline';
 	if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -92,6 +94,14 @@ function lookup_upc(e,upc){
       //No Results Found...
       if(trip === false){
         document.getElementById('loader').style.display = 'none';
+        //Add "Search BrickSeek" button...
+        var em = document.getElementById('response_message');
+        var btn = document.createElement('button');
+        btn.setAttribute('type','button');
+        btn.setAttribute('class','btn btn-primary');
+        btn.setAttribute('onclick','window.open("http://brickseek.com","_blank");');
+        btn.innerHTML = 'Search BrickSeek.com';
+        em.appendChild(btn);
         //Title, Message, Button Text...
         throwError("No Results Found!","There were no results found for the UPC code entered. Please Manually enter the item details","Enter Manually");
       }
