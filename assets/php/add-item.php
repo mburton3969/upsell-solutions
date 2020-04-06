@@ -67,9 +67,14 @@ $item = new Types\ItemType();
 //Load Form Variables...
 $product_code = $_POST['product_code'];
 $product_title = $_POST['product_title'];
-//$product_description = $_POST['product_description'];
-$product_description = nl2br($_POST['product_description']);
-//$_SESSION['pd'] = $_POST['product_description'];
+
+$pd = $_POST['product_description'];
+$pd_extra = $_POST['product_description_extra'];
+$pd_footer = $_POST['product_description_footer'];
+$pd_img = '<img src="https://beta.reseller-solutions.com/assets/imgs/81-logo.png" style="width:500px;" />';
+$fpd = '<p>' . $pd . '</p>' . $pd_extra . '</p><p>' . $pd_footer . '</p>' . $pd_img;
+$product_description = nl2br($fpd);
+//$product_description = nl2br($_POST['product_description']);
 
 //Product Details...
 $product_brand = $_POST['product_brand'];

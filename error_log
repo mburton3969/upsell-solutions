@@ -22,3 +22,13 @@ Stack trace:
   thrown in /home1/reseller/beta/vendor/symfony/dom-crawler/Crawler.php on line 514
 [05-Apr-2020 23:30:49 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home1/reseller/beta/index.php on line 494
 [05-Apr-2020 23:31:08 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home1/reseller/beta/index.php on line 494
+[06-Apr-2020 00:02:02 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home1/reseller/beta/vendor/symfony/dom-crawler/Crawler.php:548
+Stack trace:
+#0 /home1/reseller/beta/scrape.php(11): Symfony\Component\DomCrawler\Crawler->text()
+#1 {main}
+  thrown in /home1/reseller/beta/vendor/symfony/dom-crawler/Crawler.php on line 548
+[06-Apr-2020 00:02:14 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home1/reseller/beta/vendor/symfony/dom-crawler/Crawler.php:548
+Stack trace:
+#0 /home1/reseller/beta/scrape.php(11): Symfony\Component\DomCrawler\Crawler->text()
+#1 {main}
+  thrown in /home1/reseller/beta/vendor/symfony/dom-crawler/Crawler.php on line 548

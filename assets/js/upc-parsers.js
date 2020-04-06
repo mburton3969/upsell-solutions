@@ -16,6 +16,7 @@ function de_parse(r,surl){
 	document.getElementById('response_message').innerHTML = '*Info Found via Digit-Eyes.com [<a href="'+surl+'" target="_blank">View Source</a>]';
   document.getElementById('loader').style.display = 'none';
   get_ebay_item_prices(r.upc_code);
+  format_ebay();
 }
 
 
@@ -51,6 +52,7 @@ function bl_parse(res,surl){
   }else{
     get_ebay_item_prices(r.barcode_number);
   }
+  format_ebay();
 }
 
 
@@ -78,6 +80,7 @@ function upc_parse(res,surl){
   }else{
     get_ebay_item_prices(r.upc);
   }
+  format_ebay();
 }
 
 
@@ -89,7 +92,7 @@ function wm_parse(res,surl){
 	document.getElementById('product_title').value = nTitle;
 	document.getElementById('product_label').value = '';
 	document.getElementById('product_code').value = r.upc;
-	//document.getElementById('product_description').value = r.shortDescription;
+	document.getElementById('product_description').value = r.shortDescription;
   for(var i = 0; i < 5; i++){
     if(r.imageEntities[i]){
       document.getElementById('product_image'+(i+1)+'').src = r.imageEntities[i].largeImage;
@@ -108,6 +111,7 @@ function wm_parse(res,surl){
 	document.getElementById('response_message').innerHTML = '*Info Found via walmart.com [<a href="'+surl+'" target="_blank">View Source</a>]';
   document.getElementById('loader').style.display = 'none';
   get_ebay_item_prices(r.upc);
+  format_ebay();
 }
 
 
