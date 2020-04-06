@@ -89,7 +89,7 @@ function wm_parse(res,surl){
 	document.getElementById('product_title').value = nTitle;
 	document.getElementById('product_label').value = '';
 	document.getElementById('product_code').value = r.upc;
-	//document.getElementById('product_condition').value = '';
+	//document.getElementById('product_description').value = r.shortDescription;
   for(var i = 0; i < 5; i++){
     if(r.imageEntities[i]){
       document.getElementById('product_image'+(i+1)+'').src = r.imageEntities[i].largeImage;

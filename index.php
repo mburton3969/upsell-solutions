@@ -187,7 +187,7 @@ if($_GET['retry'] == 'Yes'){
                 <div class="col-md-6">
                     <h4 class="text-left">UPC Code:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_code'];}?>" Required></div>
+                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required></div>
             </div>
         </div>
     </div>
