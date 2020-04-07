@@ -185,16 +185,6 @@ if($_GET['retry'] == 'Yes'){
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">UPC Code:</h4>
-                </div>
-                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required></div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
                     <h4 class="text-left">Title:</h4>
                 </div>
                 <div class="col">
@@ -377,6 +367,16 @@ if($_GET['retry'] == 'Yes'){
                   <input type="number" style="width: 49%;display:inline;" id="product_pkg_lbs" name="product_pkg_lbs" class="form-control" placeholder="Pounds" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_pkg_lbs'];}?>" Required>
                   <input type="number" style="width: 49%;display:inline;" id="product_pkg_oz" name="product_pkg_oz" class="form-control" placeholder="Ounces" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_pkg_oz'];}?>" Required>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">UPC Code:</h4>
+                </div>
+                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required></div>
             </div>
         </div>
     </div>
