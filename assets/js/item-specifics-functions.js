@@ -14,8 +14,11 @@ function new_specific(spec, values) {
       var dd = true;//dd = Drop Down [Select] input...
     }
   }
-  //console.warn(dd+' '+sName);
-  //alert(sName);
+  
+  if(values === '' || values.length === 0){
+    var dd = false;
+  }
+  
     if(sName === '' || sName === null){
         alert('Please Enter an Item Specific Category');
         return;
