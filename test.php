@@ -1,36 +1,45 @@
-<?php
-//session_start();
-//$_SESSION['refresh_token'] = '';
-?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
-  <head>
-    <title>Image Dimensions Checkers</title>
-    
-  </head>
-  <body>
-    <h1>
-      Image Dimensions Checker
-    </h1>
-    <input type="text" id="img_url" onchange="check_img(this.value);" />
-    <br><br>
-    <div id="img_size"></div>
-  </body>
-  <script>
-    var data = null;
+    <head>
+        <title>Sample DYMO Label Plug-In</title>
 
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
 
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === this.DONE) {
-        console.log(this.responseText);
-      }
-    });
+            <script src="http://labelwriter.com/software/dls/sdk/js/DYMO.Label.Framework.latest.js"
+            type="text/javascript" charset="UTF-8"></script>
 
-    xhr.open("GET", "https://feeditem-target.p.rapidapi.com/itemID/077-03-1873");
-    xhr.setRequestHeader("x-rapidapi-host", "feeditem-target.p.rapidapi.com");
-    xhr.setRequestHeader("x-rapidapi-key", "bb3c6d2c0cmsh28f3e3f09b863c4p14cbdajsn6e51e6f47faa");
+    </head>
+    <body onload="GetDYMOPrinters()">
+         <form action="" method="post" id="DYMOLabel">
+        <center>
+        <h2>DYMO Label  Example</h2>
+         <input type=button value="Get DYMO Printers" onClick="GetDYMOPrinters()">
+     </center>
+    </form>
 
-    xhr.send(data);
-  </script>
+    <script>
+    function GetDYMOPrinters(){   
+
+                var printers = dymo.label.framework.getPrinters();
+                if (printers.length == 0)
+                throw "No DYMO printers are installed. Install DYMO printers.";
+                var printerName = "";
+                for (var i = 0; i < printers.length; ++i)
+                {
+                    var printer = printers[i];
+                    if (printer.printerType == "LabelWriterPrinter")
+                    {
+                        printerName = printer.name;
+                        break;
+                    }
+                }
+
+              var label = DYMO.Label.Framework.Label.Open("MyText.label");
+              label.SetObjectText("NameTxt", "John Smith");
+
+              label.print("DYMO LabelWriter");
+            }  
+    </script>
+
+
+    </body>
 </html>

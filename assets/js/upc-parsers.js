@@ -109,6 +109,29 @@ function wm_parse(res,surl){
 }
 
 
+function bs_parse(res,surl){
+	var r = res;
+	console.log(r);
+	var nTitle = r.title.substring(0,80);
+  //nTitle =  nTitle.replace(r.brandName,'');
+	document.getElementById('product_title').value = nTitle;
+	document.getElementById('product_code').value = r.upc;
+	//document.getElementById('product_description_extra').value = r.shortDescription;
+  document.getElementById('product_image1').src = r.img_url;
+  document.getElementById('img1_link').href = r.img_url;
+  document.getElementById('img_url1').value = r.img_url;
+  document.getElementById('product_color').value = r.color;
+	document.getElementById('product_brand').value = r.brand;
+	document.getElementById('product_Size').value = r.size;
+	document.getElementById('response_message').innerHTML = '*Info Found via BrickSeek.com [<a href="'+surl+'" target="_blank">View Source</a>]';
+  document.getElementById('loader').style.display = 'none';
+  if(r.price !== ''){
+    add_suggested_price(r.price,'BrickSeek');
+  }
+  add_suggested_price('Google');
+  format_ebay();
+}
+
 
 
 

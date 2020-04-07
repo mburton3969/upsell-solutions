@@ -88,6 +88,20 @@ function lookup_upc(e,upc){
           trip = true;
         }else{
           console.log('No Walmart Results...');
+          if(response.bs_data !== ''){
+            var bs_r = JSON.parse(response.bs_data);
+          }else{
+            var bs_r = false;
+          }
+        }
+      }
+      
+      if(trip === false){
+        if(bs_r !== false){
+          bs_parse(bs_r,response.bs_url);
+          trip = true;
+        }else{
+          console.log('No BrickSeek Results...');
         }
       }
       
@@ -96,6 +110,7 @@ function lookup_upc(e,upc){
         document.getElementById('loader').style.display = 'none';
         //Add "Search BrickSeek" button...
         var em = document.getElementById('response_message');
+        em.innerHTML = '';
         var btn = document.createElement('button');
         btn.setAttribute('type','button');
         btn.setAttribute('class','btn btn-primary');
