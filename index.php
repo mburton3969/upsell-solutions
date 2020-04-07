@@ -461,7 +461,7 @@ if($_GET['retry'] == 'Yes'){
             getItemSpecifics(cl);
             document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_'.$clvl] . '";
             console.log("clvl: "+cl);
-          },' . ($timer + 500) . ');
+          },' . ($timer + 1000) . ');
           ';
     
     //Item Specifics...
@@ -472,7 +472,7 @@ if($_GET['retry'] == 'Yes'){
       echo 'document.getElementById("product_' . $is . '").value = "' . $_SESSION['form_data']['product_' . $is] . '";';
       echo 'document.getElementById("loader").style.display = "none";';
     }
-    echo '},' . ($timer + 3500) . ');';
+    echo '},' . ($timer + 4000) . ');';
     
     //Store Categories...
     echo 'setTimeout(function(){document.getElementById("product_store_category_1").value = "' . $_SESSION['form_data']['product_store_category_1'] . '";},1000);
