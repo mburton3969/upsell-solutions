@@ -1,10 +1,8 @@
 function de_parse(r,surl){
-	document.getElementById('product_description').value = r.description;
+	document.getElementById('product_description_extra').value = r.description;
 	document.getElementById('product_label').value = '';
 	document.getElementById('product_brand').value = r.brand;
-	//document.getElementById('product_category').value = '';
 	document.getElementById('product_code').value = r.upc_code;
-	//document.getElementById('product_condition').value = '';
 	document.getElementById('product_image1').src = r.image;
   document.getElementById('img1_link').href = r.image;
 	document.getElementById('img_url1').value = r.image;
@@ -25,9 +23,8 @@ function bl_parse(res,surl){
 	console.log(r);
 	document.getElementById('product_title').value = r.product_name.substring(0,80);
 	document.getElementById('product_label').value = r.label;
-	//document.getElementById('product_category').value = r.category;
+	document.getElementById('product_description_extra').value = r.description;
 	document.getElementById('product_code').value = r.barcode_number;
-	//document.getElementById('product_condition').value = '';
   for(var i = 0; i < 5; i++){
     if(r.images[i]){
       document.getElementById('product_image'+(i+1)+'').src = r.images[i];
@@ -61,7 +58,7 @@ function upc_parse(res,surl){
 	console.log(r);
 	document.getElementById('product_title').value = r.title.substring(0,80);
 	document.getElementById('product_label').value = '';
-	//document.getElementById('product_category').value = '';
+	document.getElementById('product_description_extra').value = r.description;
 	document.getElementById('product_code').value = r.upc;
 	document.getElementById('product_brand').value = r.brand;
 	document.getElementById('product_image1').src = r.images[0];
@@ -92,7 +89,7 @@ function wm_parse(res,surl){
 	document.getElementById('product_title').value = nTitle;
 	document.getElementById('product_label').value = '';
 	document.getElementById('product_code').value = r.upc;
-	document.getElementById('product_description').value = r.shortDescription;
+	document.getElementById('product_description_extra').value = r.shortDescription;
   for(var i = 0; i < 5; i++){
     if(r.imageEntities[i]){
       document.getElementById('product_image'+(i+1)+'').src = r.imageEntities[i].largeImage;
@@ -100,9 +97,6 @@ function wm_parse(res,surl){
       document.getElementById('img_url'+(i+1)+'').value = r.imageEntities[i].largeImage;
     }
   }
-	//document.getElementById('product_image1').src = r.imageEntities[0].largeImage;
-	//document.getElementById('img_url1').value = r.imageEntities[0].largeImage;
-  //document.getElementById('img1_link').href = r.imageEntities[0].largeImage;
 	document.getElementById('product_price').value = '';
   document.getElementById('product_color').value = r.color;
 	document.getElementById('product_quantity').value = '';

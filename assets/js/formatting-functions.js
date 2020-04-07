@@ -32,7 +32,7 @@ function format_ebay(){
   document.getElementById('product_title_display').innerHTML = ebay_title;
   
   //Set Description...
-  document.getElementById('product_description_extra').value = ebay_desc;
+  document.getElementById('product_description').value = ebay_desc;
   
   //Set Description Preview...
   var d = document.getElementById('product_description').value;

@@ -185,16 +185,6 @@ if($_GET['retry'] == 'Yes'){
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">UPC Code:</h4>
-                </div>
-                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required></div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
                     <h4 class="text-left">Title:</h4>
                 </div>
                 <div class="col">
@@ -380,6 +370,16 @@ if($_GET['retry'] == 'Yes'){
             </div>
         </div>
     </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">UPC Code:</h4>
+                </div>
+                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required></div>
+            </div>
+        </div>
+    </div>
   <br>
     <input type="hidden" id="cur_cat" name="cur_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_cat'];}?>" />
     <input type="hidden" id="cur_store_cat" name="cur_store_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_store_cat'];}?>" />
@@ -461,7 +461,7 @@ if($_GET['retry'] == 'Yes'){
             getItemSpecifics(cl);
             document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_'.$clvl] . '";
             console.log("clvl: "+cl);
-          },' . ($timer + 500) . ');
+          },' . ($timer + 1000) . ');
           ';
     
     //Item Specifics...
@@ -472,7 +472,7 @@ if($_GET['retry'] == 'Yes'){
       echo 'document.getElementById("product_' . $is . '").value = "' . $_SESSION['form_data']['product_' . $is] . '";';
       echo 'document.getElementById("loader").style.display = "none";';
     }
-    echo '},' . ($timer + 3500) . ');';
+    echo '},' . ($timer + 4000) . ');';
     
     //Store Categories...
     echo 'setTimeout(function(){document.getElementById("product_store_category_1").value = "' . $_SESSION['form_data']['product_store_category_1'] . '";},1000);
