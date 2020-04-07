@@ -68,7 +68,7 @@ if($_GET['retry'] == 'Yes'){
     }
   </style>
 </head>
-<body onload="get_cats(1);get_store_cats(1,'',25334048017);">
+<body onload="get_cats(1);get_store_cats(1,'',25334048017);format_ebay();">
   <div id="loader" class="loader" style="display:<?php if($_GET['retry'] == 'Yes'){echo 'inline';}else{echo 'none';} ?>;">Loading...</div>
     <div>
         <div class="container">
@@ -185,16 +185,6 @@ if($_GET['retry'] == 'Yes'){
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">UPC Code:</h4>
-                </div>
-                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required></div>
-            </div>
-        </div>
-    </div>
-    <div style="padding: 15px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
                     <h4 class="text-left">Title:</h4>
                 </div>
                 <div class="col">
@@ -255,10 +245,16 @@ if($_GET['retry'] == 'Yes'){
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="text-left">Description:</h4>
+                    <small>Preview:</small>
+                    <div id="desc_preview" class="desc_preview" style="border:1px solid blue;height:400px;background:rgba(0,0,255,0.1);overflow:scroll;" contenteditable="false">
+                      
+                    </div>
                 </div>
                 <div class="col">
                   <!--<input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description" Required>-->
-                  <textarea id="product_description" style="width: 100%;height:150px;" name="product_description" class="form-control" placeholder="Description" Required><?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_description'];}?></textarea>
+                  <textarea id="product_description" style="width: 100%;height:150px;" name="product_description" class="form-control" placeholder="Description" onchange="format_ebay();" Required><?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_description'];}?></textarea>
+                  <textarea id="product_description_extra" style="width: 100%;height:150px;" name="product_description_extra" class="form-control" placeholder="Description Extras" onchange="format_ebay();" Required><?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_description_extra'];}?></textarea>
+                  <textarea id="product_description_footer" style="width: 100%;height:150px;" name="product_description_footer" class="form-control" placeholder="Description Footer" onchange="format_ebay();" Required><?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_description_footer'];}else{echo 'Thank you for shopping with 81 Outfitters. With our top rating and consistently lowest prices, we look forward to exceeding your expectations. ';}?></textarea>
                 </div>
             </div>
         </div>
@@ -374,6 +370,16 @@ if($_GET['retry'] == 'Yes'){
             </div>
         </div>
     </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">UPC Code:</h4>
+                </div>
+                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required></div>
+            </div>
+        </div>
+    </div>
   <br>
     <input type="hidden" id="cur_cat" name="cur_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_cat'];}?>" />
     <input type="hidden" id="cur_store_cat" name="cur_store_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_store_cat'];}?>" />
@@ -418,31 +424,32 @@ if($_GET['retry'] == 'Yes'){
     echo '(function(){';
     
     //eBay Categories...
-    $timer = 0;
+    $timer = 500;
     $clvl = 1;
     if(isset($_SESSION['form_data']['product_category_2']) && $_SESSION['form_data']['product_category_2'] != ''){
       echo 'setTimeout(function(){get_cats(2,' . $_SESSION['form_data']['product_category_1'] . ',"' . $_SESSION['form_data']['product_category_2'] . '");
-      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_2'] . '";},500);
+      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_2'] . '";},' . $timer . ');
       console.log("Cat2");';
       $timer = $timer + 500;
       $clvl = 2;
     }
     if(isset($_SESSION['form_data']['product_category_3']) && $_SESSION['form_data']['product_category_3'] != ''){
       echo 'setTimeout(function(){get_cats(3,' . $_SESSION['form_data']['product_category_2'] . ',"' . $_SESSION['form_data']['product_category_3'] . '");
-      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_3'] . '";},1000);
+      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_3'] . '";},' . $timer . ');
       console.log("Cat3");';
       $timer = $timer + 500;
       $clvl = 3;
     }
     if(isset($_SESSION['form_data']['product_category_4']) && $_SESSION['form_data']['product_category_4'] != ''){
       echo 'setTimeout(function(){get_cats(4,' . $_SESSION['form_data']['product_category_3'] . ',"' . $_SESSION['form_data']['product_category_4'] . '");
-      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_4'] . '";},1500);
+      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_4'] . '";},' . $timer . ');
       console.log("Cat4");';
       $timer = $timer + 500;
       $clvl = 4;
     }
     if(isset($_SESSION['form_data']['product_category_5']) && $_SESSION['form_data']['product_category_5'] != ''){
-      echo 'setTimeout(function(){get_cats(5,' . $_SESSION['form_data']['product_category_4'] . ',"' . $_SESSION['form_data']['product_category_5'] . '");},2000);
+      echo 'setTimeout(function(){get_cats(5,' . $_SESSION['form_data']['product_category_4'] . ',"' . $_SESSION['form_data']['product_category_5'] . '");
+      document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_5'] . '";},' . $timer . ');
       console.log("Cat5");';
       $timer = $timer + 500;
       $clvl = 5;
