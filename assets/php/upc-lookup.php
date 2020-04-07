@@ -117,9 +117,9 @@ if($x->wm_data == false && $trip != true){
   $x->bs_data = file_get_contents($bs_url);
   if($x->bs_data == false){
     $x->bs_data = false;
-    $trip = true;
   }else{
     $data_source = 'brickseek.com';
+    $trip = true;
   }
 }else{
   $x->bs_data = false;
