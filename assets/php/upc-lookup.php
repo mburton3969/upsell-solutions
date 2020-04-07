@@ -24,6 +24,7 @@ $wm_app_key = $_GET['wm_apikey'];
 $signature = base64_encode(hash_hmac('sha1', $upc_code, $auth_key, $raw_output = true));
 $signature = str_replace('/','%2F',$signature);
 
+$bs_url = 'https://' . $_SERVER['HTTP_HOST'] . '/assets/php/brickseek-scraper.php?upc=' . $upc_code;
 
 $de_url = 'https://digit-eyes.com/gtin/v2_0/?upcCode='. $upc_code .'&app_key='. $de_app_key .'&language=en&field_names=all&signature='. $signature;
 
@@ -31,17 +32,17 @@ $bl_url = 'https://api.barcodelookup.com/v2/products?barcode=' . $upc_code . '&f
 
 $upc_url = 'https://api.upcitemdb.com/prod/trial/lookup?upc=' . $upc_code;
 
-//$wm_url = 'http://api.walmartlabs.com/v1/items?apiKey=' . $wm_app_key . '&upc=' . $upc_code;
-//$wm_url = 'http://api.walmartlabs.com/v1/items/' . $upc_code . '?format=json&apiKey=' . $wm_app_key;
 $wm_url = 'http://api.walmartlabs.com/v1/items?apiKey=rfjbc7str5mjyf6ta4ed76jf&upc=' . $upc_code;
 
 //Data Response Variables...
+$x->bs_data = false;
 $x->de_data = false;
 $x->bl_data = false;
 $x->upc_data = false;
 $x->wm_data = false;
 
 //API Search Link URLs...
+$x->bs_url = $bs_url;
 $x->de_url = $de_url;
 $x->wm_url = $wm_url;
 $x->upc_url = $upc_url;
@@ -98,9 +99,7 @@ if($x->upc_data == false && $trip != true){
   $x->wm_data = file_get_contents($wm_url);
   $rwmd = json_decode($x->wm_data);
   if(!isset($rwmd->items) || $x->wm_data == false){
-    //$x->debug = $x->wm_data;
     $x->wm_data = false;
-    $data_source = 'NONE';
   }else{
     $data_source = 'walmart.com';
   }
@@ -112,15 +111,33 @@ if($x->upc_data == false && $trip != true){
   }
 }
 
+//Check BrickSeek.com...
+if($x->wm_data == false && $trip != true){
+  $x->mess .= ' - bs_data Searched';
+  $x->bs_data = file_get_contents($bs_url);
+  if($x->bs_data == false){
+    $x->bs_data = false;
+    $trip = true;
+  }else{
+    $data_source = 'brickseek.com';
+  }
+}else{
+  $x->bs_data = false;
+  if($trip != true){
+    $trip = true;
+    $data_source = 'walmart.com';
+  }
+}
+
 
 /*
+$x->bs_data = file_get_contents($bs_url);
 $x->de_data = file_get_contents($de_url);
 $x->bl_data = file_get_contents($bl_url);
 $x->upc_data = file_get_contents($upc_url);
 $x->wm_data = file_get_contents($wm_url);
 */
 
-//if($x->de_data == false && $x->bl_data == false && $x->upc_data == false && $x->wm_data == false){
 if($trip == false){
   $found = 'No';
   $x->mess .= ' - Found [No]';

@@ -57,7 +57,7 @@ function add_suggested_price(price,location){
     po.setAttribute('type','button');
     po.setAttribute('class','btn btn-primary btn-sm');
     po.setAttribute('style','margin:5px;');
-    po.setAttribute('onclick','set_price_value('+price+');');
+    //po.setAttribute('onclick','set_price_value('+price+');');
     po.innerHTML = '<small>$'+price+' ['+location+']</small>';
     sp.appendChild(po);
   }

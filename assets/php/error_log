@@ -888,3 +888,10 @@ Stack trace:
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
 
+[07-Apr-2020 12:57:31 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home1/reseller/beta/vendor/symfony/dom-crawler/Crawler.php:548
+Stack trace:
+#0 /home1/reseller/beta/assets/php/brickseek-scraper.php(14): Symfony\Component\DomCrawler\Crawler->text()
+#1 {main}
+  thrown in /home1/reseller/beta/vendor/symfony/dom-crawler/Crawler.php on line 548
+[07-Apr-2020 15:06:33 America/Chicago] PHP Parse error:  syntax error, unexpected 'contains' (T_STRING) in /home1/reseller/beta/assets/php/brickseek-scraper.php on line 53
+[07-Apr-2020 15:46:02 America/Chicago] PHP Parse error:  syntax error, unexpected '$x' (T_VARIABLE) in /home1/reseller/beta/assets/php/brickseek-scraper.php on line 52
