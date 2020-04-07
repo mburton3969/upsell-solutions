@@ -35,9 +35,9 @@ function format_ebay(){
   document.getElementById('product_description').value = ebay_desc;
   
   //Set Description Preview...
-  var d = document.getElementById('product_description').value;
+  var d = document.getElementById('product_description').value.replace(/\r?\n/g, "<br />");
   var de = document.getElementById('product_description_extra').value.replace(/\r?\n/g, "<br />");
-  var df = document.getElementById('product_description_footer').value;
+  var df = document.getElementById('product_description_footer').value.replace(/\r?\n/g, "<br />");
   var df_img = '<img src="https://beta.reseller-solutions.com/assets/imgs/81-logo.png" style="width:500px;" />';
   document.getElementById('desc_preview').innerHTML = d+'</br></br>'+de+'</br></br>'+df+'</br>'+df_img;
 }
