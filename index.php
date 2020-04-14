@@ -62,13 +62,27 @@ if($_GET['retry'] == 'Yes'){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />  <link rel="stylesheet" href="assets/css/modal-style.css">
   <link rel="stylesheet" href="assets/css/loader.css">
   <link rel="stylesheet" href="assets/css/custom.css">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   <style>
     td{
       padding: 5px;
     }
+    .toggle-group .toggle-handle{
+      background-color: #fff !important;
+      border: 1px solid #000 !important;
+    }
+    .toggle-group .btn{
+      border: 1px solid #000 !important;
+    }
+    .toggle-group .btn-default{
+      color: #333;
+      background-color: #e6e6e6;
+      border-color: #adadad;
+    }
   </style>
 </head>
-<body onload="get_cats(1);get_store_cats(1,'',25334048017);format_ebay();">
+<body onload="get_cats(1);get_store_cats(1,'',25334048017);format_ebay();get_81_store_cats(1,'0');">
   <div id="loader" class="loader" style="display:<?php if($_GET['retry'] == 'Yes'){echo 'inline';}else{echo 'none';} ?>;">Loading...</div>
     <div>
         <div class="container">
@@ -116,10 +130,15 @@ if($_GET['retry'] == 'Yes'){
                   }
                 }
               
-                //Listings...
-                $ldq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing' AND `listed` = 'Yes' AND `date` = CURRENT_DATE";
-                $ldg = mysqli_query($conn, $ldq) or die($conn->error);
-                $listings = mysqli_num_rows($ldg);
+                //Store Listings...
+                $sldq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_Store' AND `listed` = 'Yes' AND `date` = CURRENT_DATE";
+                $sldg = mysqli_query($conn, $sldq) or die($conn->error);
+                $s_listings = mysqli_num_rows($sldg);
+              
+                //Ebay Listings...
+                $eldq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_Ebay' AND `listed` = 'Yes' AND `date` = CURRENT_DATE";
+                $eldg = mysqli_query($conn, $eldq) or die($conn->error);
+                $e_listings = mysqli_num_rows($eldg);
               
                   echo '<div class="col-md-4 text-center alert alert-info">
                           <h4>Barcodes Scanned:</h4> 
@@ -133,7 +152,8 @@ if($_GET['retry'] == 'Yes'){
                         
                   echo '<div class="col-md-4 text-center alert alert-info">
                           <h4>Items Listed:</h4>
-                          <p>' . $listings . '</p>
+                          <p>81O Store: ' . $s_listings . '</p>
+                          <p>Ebay Store: ' . $e_listings . '</p>
                         </div>';
               
                 if($_GET['dev'] == 'Yes'){
@@ -313,11 +333,25 @@ if($_GET['retry'] == 'Yes'){
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
+                    <h4 class="text-left">Ebay Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
                 </div>
                 <div class="col-md-6" id="store_cat_box">
                   <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);" Required>
                     <option value="">Select Store Category</option>
+                  </select>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">81O Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
+                </div>
+                <div class="col-md-6" id="81_store_cat_box">
+                  <select id="product_81_store_category" name="product_81_store_category" class="form-control" Required>
+                    <option value="">Select 81O Store Category</option>
                   </select>
               </div>
             </div>
@@ -380,13 +414,33 @@ if($_GET['retry'] == 'Yes'){
             </div>
         </div>
     </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">Listing Locations:</h4>
+                </div>
+                <div class="col-md-6 ml-15">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" checked data-toggle="toggle" name="submit_to_store" id="submit_to_store" /> 81O-Store
+                  </label>
+                  <br>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" checked data-toggle="toggle" name="submit_to_ebay" id="submit_to_ebay" /> Ebay Store
+                  </label>
+                </div>
+            </div>
+        </div>
+    </div>
   <br>
     <input type="hidden" id="cur_cat" name="cur_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_cat'];}?>" />
     <input type="hidden" id="cur_store_cat" name="cur_store_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_store_cat'];}?>" />
+    <input type="hidden" id="cur_81_cat" name="cur_81_cat" value="" />
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
             <input type="hidden" name="env_mode" value="PRODUCTION"><!--'SANDBOX' or 'PRODUCTION'-->
+            <input type="hidden" name="api_key" value="ScSDadVl4tQLQ2NLMnLpuFbibQGQySNbJZLVKyQvhi1Zmt4u60U72HdqETS0ZRT3mUnr5IN2a14VnEO37kXLxHf40CHmCWuNhiHkdoIrXgYBmvJX1tK87nzlX5dLEji0U11BdhgvpGH0SEXJPHY0HNRSqC8XMphG65tcnxLSj7Ppa6fKgTFdMo6JsQJMO61pS1jTo6A3lKPSQSZYvTD4d6vFTIBD6fepMvh3zHzijSpVG15gVuxgizwetm84vjmQ" />
             <?php ?>
             <button type="submit" id="submit_btn" class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm">Submit To Ebay</button>
         </div>

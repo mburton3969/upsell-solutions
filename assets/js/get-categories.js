@@ -49,6 +49,7 @@ function get_cats(lvl,pid,setCat){
         s.id = 'product_category_'+lvl;
         s.setAttribute('name','product_category_'+lvl);
         s.setAttribute('class','form-control');
+        s.setAttribute('required','required');
         s.setAttribute('onchange','get_cats('+nLVL+',this.value);');
         var o = document.createElement('option');
         o.value = '';
@@ -123,6 +124,7 @@ function get_store_cats(lvl,cid,setStoreCat){
           s.id = 'product_store_category_'+lvl;
           s.setAttribute('name','product_store_category_'+lvl);
           s.setAttribute('class','form-control');
+          s.setAttribute('required','required');
           s.setAttribute('onchange','get_store_cats('+(lvl + 1)+',this.value);');
           var o = document.createElement('option');
           o.value = '';
@@ -161,6 +163,7 @@ function get_store_cats(lvl,cid,setStoreCat){
                   s.id = 'product_store_category_'+lvl;
                   s.setAttribute('name','product_store_category_'+lvl);
                   s.setAttribute('class','form-control');
+                  s.setAttribute('required','required');
                   s.setAttribute('onchange','get_store_cats('+(lvl + 1)+',this.value);');
                   var o = document.createElement('option');
                   o.value = '';
@@ -199,6 +202,106 @@ function get_store_cats(lvl,cid,setStoreCat){
     }
   }
   xmlhttp.open("GET","assets/php/get-store.php",true);
+  xmlhttp.send();
+}
+
+
+
+function get_81_store_cats(lvl,parentID){
+  var scb = document.getElementById('81_store_cat_box');
+  
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      if(this.responseText.includes("Auth token is hard expired")){
+        window.location = 'assets/php/refresh-token-test.php';
+        return;
+      }
+      if(this.responseText === '' || this.responseText === 'null'){
+        console.log('Empty Result Set...');
+        return;
+      }
+      var res = JSON.parse(this.responseText);
+      var r_cat = res.categories;
+      if(r_cat.length === 0){
+        console.log('Empty Result Set...');
+        return;
+      }
+      document.getElementById('cur_81_cat').value = lvl;
+      if(lvl === 1){
+          scb.innerHTML = '';
+          var s = document.createElement('select');
+          s.id = 'product_81_store_category_'+lvl;
+          s.setAttribute('name','product_81_store_category_'+lvl);
+          s.setAttribute('class','form-control');
+          s.setAttribute('required','required');
+          s.setAttribute('onchange','get_81_store_cats('+(lvl + 1)+',this.value);');
+          var o = document.createElement('option');
+          o.value = '';
+          if(lvl === 1){
+            o.text = 'Select 81O Store Category';
+          }else{
+            o.text = 'Select 81O Store Sub-Category';
+          }
+          s.appendChild(o);
+           for(var i = 0; i < r_cat.length; i++){
+            r_cat.sort();
+            var r = r_cat[i];
+            var o = document.createElement('option');
+            o.value = r.category_id;
+            o.text = r.category_name;
+            //if(r.CategoryID === setStoreCat){
+            //  o.setAttribute('selected','selected');
+            //}
+            s.appendChild(o);
+            console.warn('81O Store Category: '+r.category_name+' -> '+r.category_id);
+          }
+          scb.appendChild(s);
+        }
+      
+      
+      if(lvl === 2){
+        if(document.getElementById('product_81_store_category_'+lvl)){
+          document.getElementById('product_81_store_category_'+lvl).remove();
+        }
+          //scb.innerHTML = '';
+          var s = document.createElement('select');
+          s.id = 'product_81_store_category_'+lvl;
+          s.setAttribute('name','product_81_store_category_'+lvl);
+          s.setAttribute('class','form-control');
+          s.setAttribute('required','required');
+          s.setAttribute('onchange','get_81_store_cats('+(lvl + 1)+',this.value);');
+          var o = document.createElement('option');
+          o.value = '';
+          if(lvl === 1){
+            o.text = 'Select 81O Store Category';
+          }else{
+            o.text = 'Select 81O Store Sub-Category';
+          }
+          s.appendChild(o);
+           for(var i = 0; i < r_cat.length; i++){
+            r_cat.sort();
+            var r = r_cat[i];
+            var o = document.createElement('option');
+            o.value = r.category_id;
+            o.text = r.category_name;
+            //if(r.CategoryID === setStoreCat){
+            //  o.setAttribute('selected','selected');
+            //}
+            s.appendChild(o);
+            console.warn('81O Store Category: '+r.category_name+' -> '+r.category_id);
+          }
+          scb.appendChild(s);
+        }
+
+    }
+  }
+  xmlhttp.open("GET","http://beta.81outfitters.com/api/get-categories.php?parent_id="+parentID,true);
   xmlhttp.send();
 }
 
