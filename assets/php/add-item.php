@@ -463,7 +463,7 @@ if (isset($response->Errors)) {
 }
 if ($response->Ack !== 'Failure') {
     echo '<script>
-            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: LISTED <a href="https://www.ebay.com/itm/' . $response->ItemID . '" target="_blank">[Item#: ' . $response->ItemID . ']</a></span><br><br>";
+            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: LISTED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";
             document.getElementById("success_btns").style.display = "inline-block";
             document.getElementById("failed_btns").style.display = "none";
           </script>';
@@ -499,7 +499,7 @@ if($_REQUEST['submit_to_store'] == 'on'){
   if($store_response->response == 'GOOD'){
     
      echo '<script>
-            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">81O Store: LISTED <a href="http://beta.81outfitters.com/index.php?route=product/product&product_id=' . $store_response->product_id . '" target="_blank">[Item#: ' . $store_response->product_id . ']</a></span><br><br>";
+            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">81O Store: LISTED <a href=\"http://beta.81outfitters.com/index.php?route=product/product&product_id=' . $store_response->product_id . '\" target=\"_blank\">[Item#: ' . $store_response->product_id . ']</a></span><br><br>";
             document.getElementById("success_btns").style.display = "inline-block";
             document.getElementById("failed_btns").style.display = "none";
             var warnings = document.getElementById("success");
