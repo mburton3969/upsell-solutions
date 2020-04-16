@@ -77,13 +77,13 @@ if ($response->getStatusCode() !== 200) {
 } else {
   $_SESSION['user_token'] = $response->access_token;
   //$_SESSION['refresh_token'] = $response->refresh_token;
-    printf(
+    /*printf(
         "%s\n%s\n%s\n%s\n\n",
         $response->access_token,
         $response->token_type,
         $response->expires_in,
         $response->refresh_token
-    );
+    );*/
   echo '<script>
         window.location = "http://' . $_SERVER['HTTP_HOST'] . $qs . '";
         </script>';
