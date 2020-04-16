@@ -144,14 +144,14 @@ echo '<div id="success" style="padding:10px;background:rgba(92,184,92,0.5);">
 //Echo Ending HTML...
   echo '<div id="success_btns" style="width:100%;text-align:center;display:none;">
         <br><br>
-        <a href="http://' . $_SERVER['HTTP_HOST'] . '/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/assets/php/refresh-token-test.php" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
         <br><br><br><br><br><br>
-        <a href="http://' . $_SERVER['HTTP_HOST'] . '/?retry=Yes" style="background:green;padding:10px;border-radius:25px;color:white;">Similar Item</a>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/assets/php/refresh-token-test.php?retry=Yes" style="background:green;padding:10px;border-radius:25px;color:white;">Similar Item</a>
       </div>';
 
 echo '<div id="failed_btns" style="width:100%;text-align:center;display:none;">
         <br><br>
-        <a href="http://' . $_SERVER['HTTP_HOST'] . '/?retry=Yes" style="background:blue;padding:10px;border-radius:25px;color:white;">Retry</a>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/assets/php/refresh-token-test.php?retry=Yes" style="background:blue;padding:10px;border-radius:25px;color:white;">Retry</a>
       </div>';
 
 

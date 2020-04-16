@@ -2,6 +2,12 @@
 session_start();
 $env_mode = $_SESSION['ebay_mode'];
 $env_mode_val = $_SESSION['ebay_mode_val'];
+
+if($_SERVER['QUERY_STRING'] != ''){
+  $qs = '?' . $_SERVER['QUERY_STRING'];
+}else{
+  $qs = '';
+}
 /**
  * Copyright 2017 David T. Sadler
  *
@@ -79,6 +85,6 @@ if ($response->getStatusCode() !== 200) {
         $response->refresh_token
     );
   echo '<script>
-        window.location = "http://' . $_SERVER['HTTP_HOST'] . '";
+        window.location = "http://' . $_SERVER['HTTP_HOST'] . $qs . '";
         </script>';
 }
