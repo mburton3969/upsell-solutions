@@ -13,6 +13,11 @@ function new_specific(spec, values) {
     }else{
       var dd = true;//dd = Drop Down [Select] input...
     }
+    if(cc === '63863' && sName === 'Style'){
+      var dd = false;//dd = Drop Down [Select] input...
+    }else{
+      var dd = true;//dd = Drop Down [Select] input...
+    }
   }
   
   if(values === '' || values.length === 0){
