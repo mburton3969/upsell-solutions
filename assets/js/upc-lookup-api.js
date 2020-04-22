@@ -98,12 +98,28 @@ function lookup_upc(e,upc){
       
       if(trip === false){
         if(bs_r !== false){
-          bs_parse(bs_r,response.bs_url);
+          wm_parse(bs_r,response.bs_url);
           trip = true;
         }else{
           console.log('No BrickSeek Results...');
+          if(response.bs_data !== ''){
+            var ra_r = JSON.parse(response.ra_data);
+          }else{
+            var ra_r = false;
+          }
         }
       }
+      
+      if(trip === false){
+        if(ra_r !== false){
+          ra_parse(ra_r);
+          trip = true;
+        }else{
+          console.log('No Reseller App Results...');
+        }
+      }
+      
+      
       
       //No Results Found...
       if(trip === false){

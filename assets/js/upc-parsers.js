@@ -133,5 +133,87 @@ function bs_parse(res,surl){
 }
 
 
+function ra_parse(res){
+	var r = res;
+	console.log(r);
+  if(r.title){
+	  var nTitle = r.title.substring(0,80);
+  }else{
+    var nTitle = r.description.substring(0,80);
+  }
+  nTitle =  nTitle.replace(r.brand,'');
+	document.getElementById('product_title').value = nTitle;
+	document.getElementById('product_code').value = r.upc;
+	document.getElementById('product_description_extra').value = r.description;
+  //Img1
+  if(r.img1 !== ''){
+    document.getElementById('product_image1').src = r.img1;
+    document.getElementById('img1_link').href = r.img1;
+    document.getElementById('img_url1').value = r.img1;
+  }
+  //Img2
+  if(r.img2 !== ''){
+    document.getElementById('product_image2').src = r.img2;
+    document.getElementById('img2_link').href = r.img2;
+    document.getElementById('img_url2').value = r.img2;
+  }
+  //Img3...
+  if(r.img3 !== ''){
+    document.getElementById('product_image3').src = r.img3;
+    document.getElementById('img3_link').href = r.img3;
+    document.getElementById('img_url3').value = r.img3;
+  }
+  //Img4...
+  if(r.img4 !== ''){
+    document.getElementById('product_image4').src = r.img4;
+    document.getElementById('img4_link').href = r.img4;
+    document.getElementById('img_url4').value = r.img4;
+  }
+  //Img5...
+  if(r.img5 !== ''){
+    document.getElementById('product_image5').src = r.img5;
+    document.getElementById('img5_link').href = r.img5;
+    document.getElementById('img_url5').value = r.img5;
+  }
+  //Other info...
+  document.getElementById('product_color').value = r.color;
+	document.getElementById('product_brand').value = r.brand;
+	document.getElementById('product_Size').value = r.size;
+  if(r.accurate == 'No'){
+	  document.getElementById('response_message').innerHTML = '*Info Found via Reseller App\'s Internal UPC Database';
+  }else{
+	  document.getElementById('response_message').innerHTML = '*Info Found via Reseller App\'s Internal UPC Database <button type="button" class="btn btn-danger btn-sm" onclick="flag_upc('+r.upc+',this);">Mark Inaccurate</button>';
+  }
+  document.getElementById('loader').style.display = 'none';
+  if(r.price !== ''){
+    add_suggested_price(r.price,'Reseller App');
+  }
+  add_suggested_price('Google');
+  format_ebay();
+}
 
 
+function flag_upc(upc,elem){
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      
+      console.log(this.responseText);
+      var r = JSON.parse(this.responseText);
+      if(r.response == 'GOOD'){
+        alert(r.message);
+        elem.remove();
+      }else{
+        alert('There was an error flagging this UPC Code...');
+      }
+      
+    }
+  }
+  xmlhttp.open("GET","assets/upc-data/flag-upc.php?upc="+upc,true);
+  xmlhttp.send();
+}
