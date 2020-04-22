@@ -207,7 +207,7 @@ function get_store_cats(lvl,cid,setStoreCat){
 
 
 
-function get_81_store_cats(lvl,parentID){
+function get_81_store_cats(lvl,parentID,set81Cat){
   var scb = document.getElementById('81_store_cat_box');
   
   if (window.XMLHttpRequest) {
@@ -218,10 +218,10 @@ function get_81_store_cats(lvl,parentID){
   }
   xmlhttp.onreadystatechange=function() {
     if (this.readyState==4 && this.status==200) {
-      if(this.responseText.includes("Auth token is hard expired")){
+      /*if(this.responseText.includes("Auth token is hard expired")){
         window.location = 'assets/php/refresh-token-test.php';
         return;
-      }
+      }*/
       if(this.responseText === '' || this.responseText === 'null'){
         console.log('Empty Result Set...');
         return;
@@ -255,9 +255,9 @@ function get_81_store_cats(lvl,parentID){
             var o = document.createElement('option');
             o.value = r.category_id;
             o.text = r.category_name;
-            //if(r.CategoryID === setStoreCat){
-            //  o.setAttribute('selected','selected');
-            //}
+            if(r.category_id === set81Cat && set81Cat !== undefined){
+              o.setAttribute('selected','selected');
+            }
             s.appendChild(o);
             console.warn('81O Store Category: '+r.category_name+' -> '+r.category_id);
           }
@@ -290,9 +290,9 @@ function get_81_store_cats(lvl,parentID){
             var o = document.createElement('option');
             o.value = r.category_id;
             o.text = r.category_name;
-            //if(r.CategoryID === setStoreCat){
-            //  o.setAttribute('selected','selected');
-            //}
+            if(r.category_id === set81Cat && set81Cat !== undefined){
+              o.setAttribute('selected','selected');
+            }
             s.appendChild(o);
             console.warn('81O Store Category: '+r.category_name+' -> '+r.category_id);
           }

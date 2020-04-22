@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+//print_r($_SESSION);
 include 'assets/php/connection.php';
 $config = require 'assets/php/ebay-config.php';
 $maint = 'No';//Site Under Maintenance? Yes or No...
@@ -83,7 +84,7 @@ if($_GET['retry'] == 'Yes'){
     }
   </style>
 </head>
-<body onload="get_cats(1);get_store_cats(1,'',25334048017);format_ebay();get_81_store_cats(1,'0');">
+<body onload="get_cats(1);get_store_cats(1,'',25334048017);format_ebay();<?php if($_REQUEST['rety'] != 'Yes'){ echo 'get_81_store_cats(1,\'0\');';} ?>">
   <div id="loader" class="loader" style="display:<?php if($_GET['retry'] == 'Yes'){echo 'inline';}else{echo 'none';} ?>;">Loading...</div>
     <div>
         <div class="container">
@@ -249,7 +250,7 @@ if($_GET['retry'] == 'Yes'){
                   <input type="text" id="product_brand" style="width:31%;display:inline;" name="product_brand" class="form-control is-field" placeholder="Brand" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_brand'];}?>" required>
                   <input type="text" id="product_material" style="width:31%;display:inline;" name="product_material" class="form-control is-field" placeholder="Material" maxlength="50" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_material'];}?>" required>
                   <input type="text" id="product_color" style="width:31%;display:inline;" name="product_color" class="form-control is-field" placeholder="Color" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_color'];}?>" required>
-                  <input type="text" id="product_Size" style="width:31%;display:inline;" name="product_Size" class="form-control is-field" placeholder="Size" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_Size'];}?>" required>
+                  <input type="text" id="product_Size" style="width:31%;display:inline;" name="product_Size" class="form-control is-field" placeholder="Size" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_Size'];}?>" >
                   <span id="item_specifics"></span>
                   <!--
                   <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
@@ -477,7 +478,7 @@ if($_GET['retry'] == 'Yes'){
     
     echo '<script>';
     echo '(function(){';
-    
+    echo 'document.getElementById("loader").style.display = "inline";';
     //eBay Categories...
     $timer = 500;
     $clvl = 1;
@@ -516,7 +517,7 @@ if($_GET['retry'] == 'Yes'){
             getItemSpecifics(cl);
             document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_'.$clvl] . '";
             console.log("clvl: "+cl);
-          },' . ($timer + 1000) . ');
+          },' . ($timer + 1500) . ');
           ';
     
     //Item Specifics...
@@ -525,19 +526,19 @@ if($_GET['retry'] == 'Yes'){
     foreach($isa as $is){
       //echo 'new_specific("' . $is . '","Bypass");';
       echo 'document.getElementById("product_' . $is . '").value = "' . $_SESSION['form_data']['product_' . $is] . '";';
-      echo 'document.getElementById("loader").style.display = "none";';
+      
     }
     echo '},' . ($timer + 4000) . ');';
     
     //Store Categories...
-    echo 'setTimeout(function(){document.getElementById("product_store_category_1").value = "' . $_SESSION['form_data']['product_store_category_1'] . '";},1000);
+    echo 'setTimeout(function(){document.getElementById("product_store_category_1").value = "' . $_SESSION['form_data']['product_store_category_1'] . '";},' . ($timer + 4500) . ');
     ';
     $stimer = 0;
     $sclvl = 0;
     if(isset($_SESSION['form_data']['product_category_2']) && $_SESSION['form_data']['product_store_category_2'] != ''){
       echo 'setTimeout(function(){get_store_cats(2,' . $_SESSION['form_data']['product_store_category_1'] . ',"' . $_SESSION['form_data']['product_store_category_2'] . '");},750);
       console.log("StoreCat2");';
-      $stimer = $stimer + 2000;
+      $stimer = $stimer + 2500;
       $sclvl = 1;
       echo 'setTimeout(function(){
               document.getElementById("product_store_category_2").value = "' . $_SESSION['form_data']['product_store_category_2'] . '";
@@ -546,6 +547,27 @@ if($_GET['retry'] == 'Yes'){
     }
     
     
+    //81 Store Cat 1...
+    if(isset($_SESSION['form_data']['product_81_store_category_1']) && $_SESSION['form_data']['product_81_store_category_1'] != ''){
+      echo 'console.warn("81 Store Category 1: ' . $_SESSION['form_data']['product_81_store_category_1'] . '");';
+      echo 'setTimeout(function(){get_81_store_cats(1,"0","' . $_SESSION['form_data']['product_81_store_category_1'] . '");
+      document.getElementById("cur_81_cat").value = "' . $_SESSION['form_data']['product_81_store_category_1'] . '";},' . $timer . ');
+      console.log("81StoreCat1");';
+      $timer = $timer + 500;
+    }
+    //81 Store Cat 2...
+    if(isset($_SESSION['form_data']['product_81_store_category_2']) && $_SESSION['form_data']['product_81_store_category_2'] != ''){
+      echo 'console.warn("81 Store Category 2: ' . $_SESSION['form_data']['product_81_store_category_2'] . '");';
+      echo 'setTimeout(function(){get_81_store_cats(2,"' . $_SESSION['form_data']['product_81_store_category_1'] . '","' . $_SESSION['form_data']['product_81_store_category_2'] . '");
+      document.getElementById("cur_81_cat").value = "' . $_SESSION['form_data']['product_81_store_category_2'] . '";
+      document.getElementById("loader").style.display = "none";},' . $timer . ');
+      console.log("81StoreCat2");';
+      $timer = $timer + 500;
+    }
+    
+    echo 'setTimeout(function(){
+            document.getElementById("loader").style.display = "none";
+          },' . $timer . ');';
     
     echo '})();';
     echo '</script>';

@@ -978,3 +978,4 @@ Stack trace:
 [22-Apr-2020 08:25:16 America/Chicago] PHP Warning:  Illegal string offset 'item_specifics_array' in /home1/reseller/public_html/index.php on line 522
 [22-Apr-2020 08:25:16 America/Chicago] PHP Warning:  Illegal string offset 'product_' in /home1/reseller/public_html/index.php on line 526
 [22-Apr-2020 08:25:16 America/Chicago] PHP Warning:  Illegal string offset 'product_store_category_1' in /home1/reseller/public_html/index.php on line 532
+[22-Apr-2020 09:51:54 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home1/reseller/beta/index.php on line 575
