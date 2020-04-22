@@ -68,3 +68,4 @@ Stack trace:
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+
