@@ -130,7 +130,7 @@ function lookup_upc(e,upc){
         var btn = document.createElement('button');
         btn.setAttribute('type','button');
         btn.setAttribute('class','btn btn-primary');
-        btn.setAttribute('onclick','window.open("http://brickseek.com","_blank");');
+        btn.setAttribute('onclick','window.open("https://brickseek.com/products/?search='+upc+'","_blank");');
         btn.innerHTML = 'Search BrickSeek.com';
         em.appendChild(btn);
         //Title, Message, Button Text...
