@@ -98,7 +98,7 @@ function lookup_upc(e,upc){
       
       if(trip === false){
         if(bs_r !== false){
-          wm_parse(bs_r,response.bs_url);
+          bs_parse(bs_r,response.bs_url);
           trip = true;
         }else{
           console.log('No BrickSeek Results...');
