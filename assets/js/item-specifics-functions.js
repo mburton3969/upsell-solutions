@@ -6,9 +6,10 @@ function new_specific(spec, values) {
     var sName = prompt("Name of Item Specific:");
     var dd = false;//dd = Drop Down [Select] input...
   }else{
+    
     var sName = spec;
     var cc = document.getElementById('cur_cat').value;
-    if(cc === '63867' && sName === 'Size'){
+    /*if(cc === '63867' && sName === 'Size'){
       var dd = false;//dd = Drop Down [Select] input...
     }else{
       var dd = true;//dd = Drop Down [Select] input...
@@ -18,6 +19,10 @@ function new_specific(spec, values) {
     }else{
       var dd = true;//dd = Drop Down [Select] input...
     }
+    if(sName === 'Inseam'){
+      var dd = false;
+    }*/
+    var dd = false;
   }
   
   if(values === '' || values.length === 0){
