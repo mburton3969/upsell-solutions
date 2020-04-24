@@ -316,15 +316,15 @@ if($_GET['retry'] == 'Yes'){
                     </div>
                 </div>
                 <div class="col-md-6">
-                  <a id="img1_link" href="#" onclick="remove_item_img('1');return false;" target="_blank"><img id="product_image1" name="product_image1" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url1'] != ''){echo 'src="' . $_SESSION['form_data']['img_url1'] . '"';}?>></a>
+                  <a id="img1_link" href="#" onclick="remove_item_img('1');return false;" target="_blank"><img id="product_image1" name="product_image1" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url1'] != ''){echo 'src="' . $_SESSION['form_data']['img_url1'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url1" name="img_url1" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url1'];}?>" />
-                  <a id="img2_link" href="#" onclick="remove_item_img('2');return false;" target="_blank"><img id="product_image2" name="product_image2" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url2'] != ''){echo 'src="' . $_SESSION['form_data']['img_url2'] . '"';}?>></a>
+                  <a id="img2_link" href="#" onclick="remove_item_img('2');return false;" target="_blank"><img id="product_image2" name="product_image2" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url2'] != ''){echo 'src="' . $_SESSION['form_data']['img_url2'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url2" name="img_url2" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url2'];}?>" />
-                  <a id="img3_link" href="#" onclick="remove_item_img('3');return false;" target="_blank"><img id="product_image3" name="product_image3" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url3'] != ''){echo 'src="' . $_SESSION['form_data']['img_url3'] . '"';}?>></a>
+                  <a id="img3_link" href="#" onclick="remove_item_img('3');return false;" target="_blank"><img id="product_image3" name="product_image3" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url3'] != ''){echo 'src="' . $_SESSION['form_data']['img_url3'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url3" name="img_url3" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url3'];}?>" />
-                  <a id="img4_link" href="#" onclick="remove_item_img('4');return false;" target="_blank"><img id="product_image4" name="product_image4" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url4'] != ''){echo 'src="' . $_SESSION['form_data']['img_url4'] . '"';}?>></a>
+                  <a id="img4_link" href="#" onclick="remove_item_img('4');return false;" target="_blank"><img id="product_image4" name="product_image4" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url4'] != ''){echo 'src="' . $_SESSION['form_data']['img_url4'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url4" name="img_url4" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url4'];}?>" />
-                  <a id="img5_link" href="#" onclick="remove_item_img('5');return false;" target="_blank"><img id="product_image5" name="product_image5" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url5'] != ''){echo 'src="' . $_SESSION['form_data']['img_url5'] . '"';}?>></a>
+                  <a id="img5_link" href="#" onclick="remove_item_img('5');return false;" target="_blank"><img id="product_image5" name="product_image5" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url5'] != ''){echo 'src="' . $_SESSION['form_data']['img_url5'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url5" name="img_url5" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url5'];}?>" />
                 </div>
             </div>
@@ -571,6 +571,14 @@ if($_GET['retry'] == 'Yes'){
     
     echo '})();';
     echo '</script>';
+  }
+  
+  if($_REQUEST['upc_code'] != ''){
+    echo '<script>
+            (function(){
+              lookup_upc(\'BYPASS\',\'' . $_REQUEST['upc_code'] . '\');
+            })();
+          </script>';
   }
 ?>
 </html>

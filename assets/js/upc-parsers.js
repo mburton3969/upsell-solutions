@@ -208,6 +208,7 @@ function flag_upc(upc,elem){
       if(r.response == 'GOOD'){
         alert(r.message);
         elem.remove();
+        window.location = "?upc_code="+upc;
       }else{
         alert('There was an error flagging this UPC Code...');
       }

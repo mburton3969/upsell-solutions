@@ -17,11 +17,18 @@ var wm_apikey = 'rfjbc7str5mjyf6ta4ed76jf';
 
 function lookup_upc(e,upc){
   if(e.keyCode !== 13){
-    //console.log('NOT ENTER...');
-    return;
+    if(e === 'BYPASS'){
+      //continue...
+      document.getElementById('upc_code').value = upc;
+    }else{
+      //console.log('NOT ENTER...');
+      return;
+    }
+  }else{
+    upc = upc.trim();
   }
   //Move space from beginning and end of the UPC code...
-  upc = upc.trim();
+  //upc = upc.trim();
   document.getElementById('loader').style.display = 'inline';
 	if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari

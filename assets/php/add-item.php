@@ -264,6 +264,17 @@ $specific->Name = 'Size';
 $specific->Value[] = $product_size;
 $item->ItemSpecifics->NameValueList[] = $specific;
 
+if($product_section == 'Mens'){
+  $specific = new Types\NameValueListType();
+  $specific->Name = 'Size (Men\'s)';
+  $specific->Value[] = $product_size;
+  $item->ItemSpecifics->NameValueList[] = $specific;
+}elseif($product_section == 'Womens'){
+  $specific = new Types\NameValueListType();
+  $specific->Name = 'Size (Women\'s)';
+  $specific->Value[] = $product_size;
+  $item->ItemSpecifics->NameValueList[] = $specific;
+}
 
 $is_array = explode(',',$_REQUEST['item_specifics_array']);
 foreach($is_array as $is){

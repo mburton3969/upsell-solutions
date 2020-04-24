@@ -24,7 +24,6 @@ function new_specific(spec, values) {
     }*/
     var dd = false;
   }
-  
   if(values === '' || values.length === 0){
     var dd = false;
   }
@@ -45,6 +44,10 @@ function new_specific(spec, values) {
     input.setAttribute('class','form-control is-field');
     input.setAttribute('placeholder',sName);
     input.setAttribute('required','required');
+    if(sName === 'Inseam'){
+      input.setAttribute('value','Does Not Apply');
+      input.style.display = 'none';
+    }
   }else{
     var select = document.createElement('select');
     select.setAttribute('id','product_'+sName);
@@ -75,11 +78,15 @@ function new_specific(spec, values) {
   }
 
   var div = document.getElementById('item_specifics');
-  if(dd === false){
-    div.appendChild(input);
-  }else{
-    div.appendChild(select);
+  console.warn('Item Specific: '+sName);
+  if(sName !== "Size_(Women's)" && sName !== "Size_(Men's)"){
+    if(dd === false){
+      div.appendChild(input);
+    }else{
+      div.appendChild(select);
+    }
   }
+  
     item_specifics.push(sName);
     document.getElementById('item_specifics_array').value = item_specifics;
     console.log('Input added to the application');

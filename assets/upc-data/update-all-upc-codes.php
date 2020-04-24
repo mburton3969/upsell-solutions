@@ -7,7 +7,7 @@ include '../php/connection.php';
 
 
 //Loop Through UPC Codes in Database...
-$q = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` = '' AND `item_source` = 'Target' LIMIT 1";
+$q = "SELECT * FROM `upc_codes` WHERE `data_source` = '' AND `item_source` = 'Target' LIMIT 1";
 $g = mysqli_query($conn, $q) or die($conn->error);
 $rnums = mysqli_num_rows($g);
 if($rnums <= 0){
@@ -16,7 +16,7 @@ if($rnums <= 0){
 while($r = mysqli_fetch_array($g)){
   
   //Get Number of Records...
-  $nq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` = '' AND `item_source` = 'Target'";
+  $nq = "SELECT * FROM `upc_codes` WHERE `data_source` = '' AND `item_source` = 'Target'";
   $ng = mysqli_query($conn, $nq) or die($conn->error);
   $nrnums = mysqli_num_rows($ng);
   
