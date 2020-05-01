@@ -564,6 +564,15 @@ if($_GET['retry'] == 'Yes'){
       console.log("81StoreCat2");';
       $timer = $timer + 500;
     }
+    //81 Store Cat 3...
+    if(isset($_SESSION['form_data']['product_81_store_category_3']) && $_SESSION['form_data']['product_81_store_category_3'] != ''){
+      echo 'console.warn("81 Store Category 3: ' . $_SESSION['form_data']['product_81_store_category_3'] . '");';
+      echo 'setTimeout(function(){get_81_store_cats(3,"' . $_SESSION['form_data']['product_81_store_category_2'] . '","' . $_SESSION['form_data']['product_81_store_category_3'] . '");
+      document.getElementById("cur_81_cat").value = "' . $_SESSION['form_data']['product_81_store_category_3'] . '";
+      document.getElementById("loader").style.display = "none";},' . $timer . ');
+      console.log("81StoreCat3");';
+      $timer = $timer + 500;
+    }
     
     echo 'setTimeout(function(){
             document.getElementById("loader").style.display = "none";

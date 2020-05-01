@@ -29,6 +29,7 @@ use \DTS\eBaySDK\Trading\Enums;
 
 error_reporting(0);
 
+var_dump($_REQUEST);
 //Load Form Variables...
 $product_code = $_REQUEST['product_code'];
 $product_title = $_REQUEST['product_title'];
@@ -58,6 +59,10 @@ $product_category = $_REQUEST['cur_cat'];
 $product_store_category = $_REQUEST['cur_store_cat'];
 $prod_81_cat = $_REQUEST['cur_81_cat'];
 $product_81_store_category = $_REQUEST['product_81_store_category_' . $prod_81_cat];
+$prod_81_cat_1 = $_REQUEST['product_81_store_category_1'];
+$prod_81_cat_2 = $_REQUEST['product_81_store_category_2'];
+$prod_81_cat_3 = $_REQUEST['product_81_store_category_3'];
+
 
 $product_condition = $_REQUEST['product_condition'];
 
