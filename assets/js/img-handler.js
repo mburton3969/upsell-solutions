@@ -2,6 +2,7 @@ function add_item_img(){
   var iimg = document.getElementById('new_img_url');
   if(iimg.value === ''){
     alert('You must enter an image URL!');
+    iimg.value = '';
     return;
   }
   
@@ -10,7 +11,7 @@ function add_item_img(){
       //alert(this.width + 'x' + this.height);
       //document.getElementById('img_size').innerHTML = this.width + 'x' + this.height;
       if(this.width < 500 && this.height < 500){
-        
+        iimg.value = '';
         alert('Your image ('+this.width+'x'+this.height+') is too small! Must be at least 500 Pixels in Height or Width.');
         
       }else{

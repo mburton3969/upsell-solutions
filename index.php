@@ -310,7 +310,7 @@ if($_GET['retry'] == 'Yes'){
                         <button type="button" class="btn btn-success text-center text-body border rounded shadow-sm" onclick="add_item_img();">
                           <i class="fas fa-plus"></i> Add Image
                         </button>
-                        <button type="button" class="btn btn-primary text-center text-body border rounded shadow-sm" data-toggle="modal" data-target="#imageUploadModal">
+                        <button type="button" class="btn btn-primary text-center text-body border rounded shadow-sm" onclick="document.getElementById('new_img_url').value = '';" data-toggle="modal" data-target="#imageUploadModal">
                           <i class="fas fa-upload"></i> Upload Image From File
                         </button>
                     </div>
