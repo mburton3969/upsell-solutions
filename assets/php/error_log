@@ -1,322 +1,75 @@
-[25-Feb-2020 15:33:37 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+[16-Apr-2020 12:24:21 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[26-Feb-2020 11:31:03 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+[16-Apr-2020 12:27:02 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[27-Feb-2020 11:46:11 America/Chicago] PHP Warning:  require(/home1/reseller/public_html/assets/php/../ebay-config.php): failed to open stream: No such file or directory in /home1/reseller/public_html/assets/php/get-store.php on line 32
-[27-Feb-2020 11:46:11 America/Chicago] PHP Warning:  require(/home1/reseller/public_html/assets/php/../ebay-config.php): failed to open stream: No such file or directory in /home1/reseller/public_html/assets/php/get-store.php on line 32
-[27-Feb-2020 11:46:11 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home1/reseller/public_html/assets/php/../ebay-config.php' (include_path='.:/opt/php71/lib/php') in /home1/reseller/public_html/assets/php/get-store.php on line 32
-[27-Feb-2020 13:45:04 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+[16-Apr-2020 12:27:37 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[27-Feb-2020 16:12:47 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for StoreCategoryID. Expected integer but got string in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+[16-Apr-2020 12:27:56 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'StoreCategoryID', '25334103017')
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'StoreCategoryID', '25334103017')
-#2 /home1/reseller/public_html/assets/php/add-item.php(254): DTS\eBaySDK\Types\BaseType->__set('StoreCategoryID', '25334103017')
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[27-Feb-2020 16:14:50 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for StoreCategoryID. Expected integer but got string in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[17-Apr-2020 07:43:43 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'StoreCategoryID', '25334103017')
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'StoreCategoryID', '25334103017')
-#2 /home1/reseller/public_html/assets/php/add-item.php(254): DTS\eBaySDK\Types\BaseType->__set('StoreCategoryID', '25334103017')
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[28-Feb-2020 01:47:47 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[17-Apr-2020 07:44:31 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+Stack trace:
+#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[20-Apr-2020 12:22:39 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[03-Mar-2020 15:54:12 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[03-Mar-2020 16:10:26 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[03-Mar-2020 17:37:51 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[04-Mar-2020 14:47:07 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[04-Mar-2020 14:53:54 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[04-Mar-2020 14:55:18 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[11-Mar-2020 11:14:10 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+[20-Apr-2020 12:22:52 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[13-Mar-2020 15:24:20 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[16-Mar-2020 12:27:01 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[20-Apr-2020 12:22:54 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[17-Mar-2020 11:08:08 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[17-Mar-2020 13:55:54 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[19-Mar-2020 12:43:03 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[19-Mar-2020 12:46:17 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[19-Mar-2020 14:32:38 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[20-Apr-2020 12:23:11 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[19-Mar-2020 14:32:53 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[19-Mar-2020 14:33:40 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[19-Mar-2020 15:25:21 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[20-Mar-2020 10:37:41 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[21-Mar-2020 09:28:27 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[21-Mar-2020 09:46:54 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[21-Mar-2020 10:00:24 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[21-Mar-2020 10:04:22 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[21-Mar-2020 13:13:24 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[21-Mar-2020 13:14:26 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[21-Mar-2020 13:14:42 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[21-Mar-2020 14:04:39 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[21-Mar-2020 15:04:58 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[21-Mar-2020 15:05:32 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[21-Mar-2020 15:06:23 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[21-Mar-2020 15:15:23 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[23-Mar-2020 09:53:59 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[23-Mar-2020 10:17:14 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[23-Mar-2020 10:20:52 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[23-Mar-2020 10:21:12 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[23-Mar-2020 10:21:22 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[23-Mar-2020 10:21:38 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[24-Mar-2020 09:15:14 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[24-Mar-2020 09:39:56 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[24-Mar-2020 10:27:47 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[24-Mar-2020 11:20:26 America/Chicago] PHP Fatal error:  Uncaught GuzzleHttp\Exception\ServerException: Server error: `POST https://api.ebay.com/ws/api.dll` resulted in a `503 Service Unavailable` response:
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+
+[22-Apr-2020 09:23:19 America/Chicago] PHP Fatal error:  Uncaught GuzzleHttp\Exception\ServerException: Server error: `POST https://api.ebay.com/ws/api.dll` resulted in a `503 Service Unavailable` response:
 <html><head><title>Apache Tomcat/5.5.15-150 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;col (truncated...)
  in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php:113
 Stack trace:
@@ -324,563 +77,28 @@ Stack trace:
 #1 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(203): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Response))
 #2 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(156): GuzzleHttp\Promise\Promise::callHandler(1, Object(GuzzleHttp\Psr7\Response), Array)
 #3 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/TaskQueue.php(47) in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php on line 113
-[24-Mar-2020 11:20:51 America/Chicago] PHP Fatal error:  Uncaught GuzzleHttp\Exception\ServerException: Server error: `POST https://api.ebay.com/ws/api.dll` resulted in a `503 Service Unavailable` response:
-<html><head><title>Apache Tomcat/5.5.15-150 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;col (truncated...)
- in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php:113
+[22-Apr-2020 12:21:15 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Middleware.php(66): GuzzleHttp\Exception\RequestException::create(Object(GuzzleHttp\Psr7\Request), Object(GuzzleHttp\Psr7\Response))
-#1 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(203): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Response))
-#2 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(156): GuzzleHttp\Promise\Promise::callHandler(1, Object(GuzzleHttp\Psr7\Response), Array)
-#3 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/TaskQueue.php(47) in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php on line 113
-[25-Mar-2020 10:58:55 America/Chicago] PHP Fatal error:  Uncaught GuzzleHttp\Exception\ServerException: Server error: `POST https://api.ebay.com/ws/api.dll` resulted in a `503 Service Unavailable` response:
-<html><head><title>Apache Tomcat/5.5.15-150 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;col (truncated...)
- in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php:113
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Middleware.php(66): GuzzleHttp\Exception\RequestException::create(Object(GuzzleHttp\Psr7\Request), Object(GuzzleHttp\Psr7\Response))
-#1 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(203): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Response))
-#2 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(156): GuzzleHttp\Promise\Promise::callHandler(1, Object(GuzzleHttp\Psr7\Response), Array)
-#3 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/TaskQueue.php(47) in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php on line 113
-[25-Mar-2020 13:16:33 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[22-Apr-2020 12:33:27 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[25-Mar-2020 13:18:41 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+[23-Apr-2020 12:10:05 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[25-Mar-2020 13:18:43 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[26-Mar-2020 08:58:25 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:00:17 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:00:52 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:06:53 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:07:31 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:09:06 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:09:32 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:11:32 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:12:33 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:13:29 America/Chicago] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
-[26-Mar-2020 09:25:36 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[26-Mar-2020 09:44:14 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/public_html/assets/php/upload-product-img.php on line 66
-[26-Mar-2020 09:51:44 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[26-Mar-2020 13:42:55 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[26-Mar-2020 13:45:44 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[26-Mar-2020 13:48:09 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[26-Mar-2020 14:31:09 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[26-Mar-2020 14:55:11 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[26-Mar-2020 15:05:38 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[26-Mar-2020 15:44:40 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[27-Mar-2020 09:05:43 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[27-Mar-2020 14:12:36 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[27-Mar-2020 14:27:29 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[27-Mar-2020 14:43:06 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[27-Mar-2020 15:01:31 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[27-Mar-2020 16:13:44 America/Chicago] PHP Parse error:  syntax error, unexpected 'Not' (T_STRING) in /home1/reseller/public_html/assets/php/upload-product-img.php on line 53
-[27-Mar-2020 16:14:35 America/Chicago] PHP Parse error:  syntax error, unexpected 'Not' (T_STRING) in /home1/reseller/public_html/assets/php/upload-product-img.php on line 53
-[28-Mar-2020 13:49:31 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[28-Mar-2020 14:11:04 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[29-Mar-2020 06:59:19 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[29-Mar-2020 13:22:29 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[29-Mar-2020 14:18:09 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 10:05:41 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 11:13:38 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 11:22:29 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 11:22:32 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 11:22:49 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 11:22:50 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 11:22:53 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 11:22:56 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 11:22:57 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 11:23:23 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[30-Mar-2020 11:23:50 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 12:11:12 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 13:37:42 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 13:50:38 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 14:01:54 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 14:02:50 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 20:32:53 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 20:34:23 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 20:35:14 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for eBayAuthToken. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'eBayAuthToken', NULL)
-#2 /home1/reseller/public_html/assets/php/get-store.php(42): DTS\eBaySDK\Types\BaseType->__set('eBayAuthToken', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 21:25:10 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for refresh_token. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#2 /home1/reseller/public_html/assets/php/refresh-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('refresh_token', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 21:25:45 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for refresh_token. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#2 /home1/reseller/public_html/assets/php/refresh-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('refresh_token', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[30-Mar-2020 21:26:18 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for refresh_token. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#2 /home1/reseller/public_html/assets/php/refresh-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('refresh_token', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[31-Mar-2020 09:56:12 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for refresh_token. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#2 /home1/reseller/public_html/assets/php/refresh-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('refresh_token', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[31-Mar-2020 09:56:17 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for refresh_token. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#2 /home1/reseller/public_html/assets/php/refresh-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('refresh_token', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[31-Mar-2020 09:56:21 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for refresh_token. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#2 /home1/reseller/public_html/assets/php/refresh-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('refresh_token', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[31-Mar-2020 09:56:49 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for refresh_token. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#2 /home1/reseller/public_html/assets/php/refresh-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('refresh_token', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[31-Mar-2020 09:59:41 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for refresh_token. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#2 /home1/reseller/public_html/assets/php/refresh-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('refresh_token', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[31-Mar-2020 10:07:39 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for refresh_token. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'refresh_token', NULL)
-#2 /home1/reseller/public_html/assets/php/refresh-token-test.php(48): DTS\eBaySDK\Types\BaseType->__set('refresh_token', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[31-Mar-2020 10:26:23 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[31-Mar-2020 10:28:49 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[31-Mar-2020 14:04:58 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for Value. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php:181
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php(86): DTS\eBaySDK\Types\RepeatableType->ensurePropertyType(NULL)
-#1 /home1/reseller/public_html/assets/php/add-item.php(197): DTS\eBaySDK\Types\RepeatableType->offsetSet(NULL, NULL)
-#2 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php on line 181
-[31-Mar-2020 14:05:12 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for Value. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php:181
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php(86): DTS\eBaySDK\Types\RepeatableType->ensurePropertyType(NULL)
-#1 /home1/reseller/public_html/assets/php/add-item.php(197): DTS\eBaySDK\Types\RepeatableType->offsetSet(NULL, NULL)
-#2 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php on line 181
-[31-Mar-2020 14:06:41 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for Value. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php:181
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php(86): DTS\eBaySDK\Types\RepeatableType->ensurePropertyType(NULL)
-#1 /home1/reseller/public_html/assets/php/add-item.php(197): DTS\eBaySDK\Types\RepeatableType->offsetSet(NULL, NULL)
-#2 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php on line 181
-[31-Mar-2020 14:09:03 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for Value. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php:181
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php(86): DTS\eBaySDK\Types\RepeatableType->ensurePropertyType(NULL)
-#1 /home1/reseller/public_html/assets/php/add-item.php(197): DTS\eBaySDK\Types\RepeatableType->offsetSet(NULL, NULL)
-#2 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php on line 181
-[31-Mar-2020 14:09:14 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for Value. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php:181
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php(86): DTS\eBaySDK\Types\RepeatableType->ensurePropertyType(NULL)
-#1 /home1/reseller/public_html/assets/php/add-item.php(197): DTS\eBaySDK\Types\RepeatableType->offsetSet(NULL, NULL)
-#2 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php on line 181
-[31-Mar-2020 14:09:51 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for Value. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php:181
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php(86): DTS\eBaySDK\Types\RepeatableType->ensurePropertyType(NULL)
-#1 /home1/reseller/public_html/assets/php/add-item.php(197): DTS\eBaySDK\Types\RepeatableType->offsetSet(NULL, NULL)
-#2 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/RepeatableType.php on line 181
-[31-Mar-2020 14:11:15 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for SKU. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\Tra...', 'SKU', NULL)
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\Tra...', 'SKU', NULL)
-#2 /home1/reseller/public_html/assets/php/add-item.php(168): DTS\eBaySDK\Types\BaseType->__set('SKU', NULL)
-#3 {main}
-  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-[01-Apr-2020 12:19:57 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[01-Apr-2020 12:20:38 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[01-Apr-2020 12:23:57 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[01-Apr-2020 12:25:48 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[02-Apr-2020 10:43:26 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[02-Apr-2020 10:44:20 America/Chicago] PHP Warning:  file_get_contents(http://api.walmartlabs.com/v1/items?apiKey=rfjbc7str5mjyf6ta4ed76jf&amp;upc=): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
- in /home1/reseller/public_html/assets/php/wm-test.php on line 7
-[02-Apr-2020 10:44:20 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/public_html/assets/php/wm-test.php on line 7
-[02-Apr-2020 10:44:53 America/Chicago] PHP Warning:  file_get_contents(http://api.walmartlabs.com/v1/items?apiKey=rfjbc7str5mjyf6ta4ed76jf&amp;upc=): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
- in /home1/reseller/public_html/assets/php/wm-test.php on line 9
-[02-Apr-2020 10:44:53 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/public_html/assets/php/wm-test.php on line 9
-[02-Apr-2020 10:45:43 America/Chicago] PHP Warning:  file_get_contents(http://api.walmartlabs.com/v1/items?apiKey=rfjbc7str5mjyf6ta4ed76jf&amp;upc=0883096536116): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
- in /home1/reseller/public_html/assets/php/wm-test.php on line 9
-[02-Apr-2020 10:45:43 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/public_html/assets/php/wm-test.php on line 9
-[02-Apr-2020 10:46:07 America/Chicago] PHP Warning:  file_get_contents(http://api.walmartlabs.com/v1/items?apiKey=rfjbc7str5mjyf6ta4ed76jf&amp;upc=0883096536116): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
- in /home1/reseller/public_html/assets/php/wm-test.php on line 9
-[02-Apr-2020 10:46:07 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/public_html/assets/php/wm-test.php on line 9
-[02-Apr-2020 10:46:55 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/public_html/assets/php/wm-test.php on line 9
-[02-Apr-2020 10:48:49 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/public_html/assets/php/wm-test.php on line 9
-[02-Apr-2020 11:50:53 America/Chicago] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in /home1/reseller/public_html/assets/php/wm-test.php on line 29
-[03-Apr-2020 08:37:33 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[03-Apr-2020 13:08:41 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[06-Apr-2020 12:45:25 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[06-Apr-2020 12:46:50 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[06-Apr-2020 12:47:18 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[06-Apr-2020 12:47:59 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[06-Apr-2020 14:13:56 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[06-Apr-2020 14:16:10 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[06-Apr-2020 14:16:16 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[06-Apr-2020 15:53:34 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
-Stack trace:
-#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
-#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
-#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Services/BaseService.php(57): DTS\eBaySDK\ConfigurationResol in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
-[06-Apr-2020 15:54:24 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[23-Apr-2020 12:10:21 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()

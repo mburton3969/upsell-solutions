@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(0);
+//print_r($_SESSION);
 include 'assets/php/connection.php';
 $config = require 'assets/php/ebay-config.php';
 $maint = 'No';//Site Under Maintenance? Yes or No...
@@ -62,13 +64,27 @@ if($_GET['retry'] == 'Yes'){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />  <link rel="stylesheet" href="assets/css/modal-style.css">
   <link rel="stylesheet" href="assets/css/loader.css">
   <link rel="stylesheet" href="assets/css/custom.css">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   <style>
     td{
       padding: 5px;
     }
+    .toggle-group .toggle-handle{
+      background-color: #fff !important;
+      border: 1px solid #000 !important;
+    }
+    .toggle-group .btn{
+      border: 1px solid #000 !important;
+    }
+    .toggle-group .btn-default{
+      color: #333;
+      background-color: #e6e6e6;
+      border-color: #adadad;
+    }
   </style>
 </head>
-<body onload="get_cats(1);get_store_cats(1,'',25334048017);format_ebay();">
+<body onload="get_cats(1);get_store_cats(1,'',25334048017);format_ebay();<?php if($_REQUEST['rety'] != 'Yes'){ echo 'get_81_store_cats(1,\'0\');';} ?>">
   <div id="loader" class="loader" style="display:<?php if($_GET['retry'] == 'Yes'){echo 'inline';}else{echo 'none';} ?>;">Loading...</div>
     <div>
         <div class="container">
@@ -116,10 +132,15 @@ if($_GET['retry'] == 'Yes'){
                   }
                 }
               
-                //Listings...
-                $ldq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing' AND `listed` = 'Yes' AND `date` = CURRENT_DATE";
-                $ldg = mysqli_query($conn, $ldq) or die($conn->error);
-                $listings = mysqli_num_rows($ldg);
+                //Store Listings...
+                $sldq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_Store' AND `listed` = 'Yes' AND `date` = CURRENT_DATE";
+                $sldg = mysqli_query($conn, $sldq) or die($conn->error);
+                $s_listings = mysqli_num_rows($sldg);
+              
+                //Ebay Listings...
+                $eldq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_Ebay' AND `listed` = 'Yes' AND `date` = CURRENT_DATE";
+                $eldg = mysqli_query($conn, $eldq) or die($conn->error);
+                $e_listings = mysqli_num_rows($eldg);
               
                   echo '<div class="col-md-4 text-center alert alert-info">
                           <h4>Barcodes Scanned:</h4> 
@@ -133,7 +154,8 @@ if($_GET['retry'] == 'Yes'){
                         
                   echo '<div class="col-md-4 text-center alert alert-info">
                           <h4>Items Listed:</h4>
-                          <p>' . $listings . '</p>
+                          <p>81O Store: ' . $s_listings . '</p>
+                          <p>Ebay Store: ' . $e_listings . '</p>
                         </div>';
               
                 if($_GET['dev'] == 'Yes'){
@@ -228,7 +250,7 @@ if($_GET['retry'] == 'Yes'){
                   <input type="text" id="product_brand" style="width:31%;display:inline;" name="product_brand" class="form-control is-field" placeholder="Brand" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_brand'];}?>" required>
                   <input type="text" id="product_material" style="width:31%;display:inline;" name="product_material" class="form-control is-field" placeholder="Material" maxlength="50" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_material'];}?>" required>
                   <input type="text" id="product_color" style="width:31%;display:inline;" name="product_color" class="form-control is-field" placeholder="Color" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_color'];}?>" required>
-                  <input type="text" id="product_Size" style="width:31%;display:inline;" name="product_Size" class="form-control is-field" placeholder="Size" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_Size'];}?>" required>
+                  <input type="text" id="product_Size" style="width:31%;display:inline;" name="product_Size" class="form-control is-field" placeholder="Size" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_Size'];}?>" >
                   <span id="item_specifics"></span>
                   <!--
                   <input type="text" id="product_color" style="width: 32%;display:inline;" name="product_color" class="form-control" placeholder="Color">
@@ -288,21 +310,21 @@ if($_GET['retry'] == 'Yes'){
                         <button type="button" class="btn btn-success text-center text-body border rounded shadow-sm" onclick="add_item_img();">
                           <i class="fas fa-plus"></i> Add Image
                         </button>
-                        <button type="button" class="btn btn-primary text-center text-body border rounded shadow-sm" data-toggle="modal" data-target="#imageUploadModal">
+                        <button type="button" class="btn btn-primary text-center text-body border rounded shadow-sm" onclick="document.getElementById('new_img_url').value = '';" data-toggle="modal" data-target="#imageUploadModal">
                           <i class="fas fa-upload"></i> Upload Image From File
                         </button>
                     </div>
                 </div>
                 <div class="col-md-6">
-                  <a id="img1_link" href="#" onclick="remove_item_img('1');return false;" target="_blank"><img id="product_image1" name="product_image1" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url1'] != ''){echo 'src="' . $_SESSION['form_data']['img_url1'] . '"';}?>></a>
+                  <a id="img1_link" href="#" onclick="remove_item_img('1');return false;" target="_blank"><img id="product_image1" name="product_image1" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url1'] != ''){echo 'src="' . $_SESSION['form_data']['img_url1'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url1" name="img_url1" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url1'];}?>" />
-                  <a id="img2_link" href="#" onclick="remove_item_img('2');return false;" target="_blank"><img id="product_image2" name="product_image2" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url2'] != ''){echo 'src="' . $_SESSION['form_data']['img_url2'] . '"';}?>></a>
+                  <a id="img2_link" href="#" onclick="remove_item_img('2');return false;" target="_blank"><img id="product_image2" name="product_image2" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url2'] != ''){echo 'src="' . $_SESSION['form_data']['img_url2'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url2" name="img_url2" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url2'];}?>" />
-                  <a id="img3_link" href="#" onclick="remove_item_img('3');return false;" target="_blank"><img id="product_image3" name="product_image3" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url3'] != ''){echo 'src="' . $_SESSION['form_data']['img_url3'] . '"';}?>></a>
+                  <a id="img3_link" href="#" onclick="remove_item_img('3');return false;" target="_blank"><img id="product_image3" name="product_image3" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url3'] != ''){echo 'src="' . $_SESSION['form_data']['img_url3'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url3" name="img_url3" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url3'];}?>" />
-                  <a id="img4_link" href="#" onclick="remove_item_img('4');return false;" target="_blank"><img id="product_image4" name="product_image4" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url4'] != ''){echo 'src="' . $_SESSION['form_data']['img_url4'] . '"';}?>></a>
+                  <a id="img4_link" href="#" onclick="remove_item_img('4');return false;" target="_blank"><img id="product_image4" name="product_image4" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url4'] != ''){echo 'src="' . $_SESSION['form_data']['img_url4'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url4" name="img_url4" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url4'];}?>" />
-                  <a id="img5_link" href="#" onclick="remove_item_img('5');return false;" target="_blank"><img id="product_image5" name="product_image5" style="width: 32%;" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url5'] != ''){echo 'src="' . $_SESSION['form_data']['img_url5'] . '"';}?>></a>
+                  <a id="img5_link" href="#" onclick="remove_item_img('5');return false;" target="_blank"><img id="product_image5" name="product_image5" style="width: 32%;padding:5px;" draggable="true" ondragstart="drag(event,this);" ondrop="drop(event,this);" ondragover="allowDrop(event);" <?php if($_GET['retry'] == 'Yes' && $_SESSION['form_data']['img_url5'] != ''){echo 'src="' . $_SESSION['form_data']['img_url5'] . '"';}else{/*echo 'src="https://via.placeholder.com/150"';*/}?>></a>
                     <input type="hidden" id="img_url5" name="img_url5" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['img_url5'];}?>" />
                 </div>
             </div>
@@ -313,11 +335,25 @@ if($_GET['retry'] == 'Yes'){
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
+                    <h4 class="text-left">Ebay Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
                 </div>
                 <div class="col-md-6" id="store_cat_box">
                   <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);" Required>
                     <option value="">Select Store Category</option>
+                  </select>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">81O Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
+                </div>
+                <div class="col-md-6" id="81_store_cat_box">
+                  <select id="product_81_store_category" name="product_81_store_category" class="form-control" Required>
+                    <option value="">Select 81O Store Category</option>
                   </select>
               </div>
             </div>
@@ -380,13 +416,33 @@ if($_GET['retry'] == 'Yes'){
             </div>
         </div>
     </div>
+    <div style="padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-left">Listing Locations:</h4>
+                </div>
+                <div class="col-md-6 ml-15">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" checked data-toggle="toggle" name="submit_to_store" id="submit_to_store" /> 81O-Store
+                  </label>
+                  <br>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" checked data-toggle="toggle" name="submit_to_ebay" id="submit_to_ebay" /> Ebay Store
+                  </label>
+                </div>
+            </div>
+        </div>
+    </div>
   <br>
     <input type="hidden" id="cur_cat" name="cur_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_cat'];}?>" />
     <input type="hidden" id="cur_store_cat" name="cur_store_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_store_cat'];}?>" />
+    <input type="hidden" id="cur_81_cat" name="cur_81_cat" value="" />
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
             <input type="hidden" name="env_mode" value="PRODUCTION"><!--'SANDBOX' or 'PRODUCTION'-->
+            <input type="hidden" name="api_key" value="ScSDadVl4tQLQ2NLMnLpuFbibQGQySNbJZLVKyQvhi1Zmt4u60U72HdqETS0ZRT3mUnr5IN2a14VnEO37kXLxHf40CHmCWuNhiHkdoIrXgYBmvJX1tK87nzlX5dLEji0U11BdhgvpGH0SEXJPHY0HNRSqC8XMphG65tcnxLSj7Ppa6fKgTFdMo6JsQJMO61pS1jTo6A3lKPSQSZYvTD4d6vFTIBD6fepMvh3zHzijSpVG15gVuxgizwetm84vjmQ" />
             <?php ?>
             <button type="submit" id="submit_btn" class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm">Submit To Ebay</button>
         </div>
@@ -422,7 +478,7 @@ if($_GET['retry'] == 'Yes'){
     
     echo '<script>';
     echo '(function(){';
-    
+    echo 'document.getElementById("loader").style.display = "inline";';
     //eBay Categories...
     $timer = 500;
     $clvl = 1;
@@ -461,7 +517,7 @@ if($_GET['retry'] == 'Yes'){
             getItemSpecifics(cl);
             document.getElementById("cur_cat").value = "' . $_SESSION['form_data']['product_category_'.$clvl] . '";
             console.log("clvl: "+cl);
-          },' . ($timer + 1000) . ');
+          },' . ($timer + 1500) . ');
           ';
     
     //Item Specifics...
@@ -470,19 +526,19 @@ if($_GET['retry'] == 'Yes'){
     foreach($isa as $is){
       //echo 'new_specific("' . $is . '","Bypass");';
       echo 'document.getElementById("product_' . $is . '").value = "' . $_SESSION['form_data']['product_' . $is] . '";';
-      echo 'document.getElementById("loader").style.display = "none";';
+      
     }
     echo '},' . ($timer + 6000) . ');';
     
     //Store Categories...
-    echo 'setTimeout(function(){document.getElementById("product_store_category_1").value = "' . $_SESSION['form_data']['product_store_category_1'] . '";},1000);
+    echo 'setTimeout(function(){document.getElementById("product_store_category_1").value = "' . $_SESSION['form_data']['product_store_category_1'] . '";},' . ($timer + 4500) . ');
     ';
     $stimer = 0;
     $sclvl = 0;
     if(isset($_SESSION['form_data']['product_category_2']) && $_SESSION['form_data']['product_store_category_2'] != ''){
       echo 'setTimeout(function(){get_store_cats(2,' . $_SESSION['form_data']['product_store_category_1'] . ',"' . $_SESSION['form_data']['product_store_category_2'] . '");},750);
       console.log("StoreCat2");';
-      $stimer = $stimer + 2000;
+      $stimer = $stimer + 2500;
       $sclvl = 1;
       echo 'setTimeout(function(){
               document.getElementById("product_store_category_2").value = "' . $_SESSION['form_data']['product_store_category_2'] . '";
@@ -491,9 +547,38 @@ if($_GET['retry'] == 'Yes'){
     }
     
     
+    //81 Store Cat 1...
+    if(isset($_SESSION['form_data']['product_81_store_category_1']) && $_SESSION['form_data']['product_81_store_category_1'] != ''){
+      echo 'console.warn("81 Store Category 1: ' . $_SESSION['form_data']['product_81_store_category_1'] . '");';
+      echo 'setTimeout(function(){get_81_store_cats(1,"0","' . $_SESSION['form_data']['product_81_store_category_1'] . '");
+      document.getElementById("cur_81_cat").value = "' . $_SESSION['form_data']['product_81_store_category_1'] . '";},' . $timer . ');
+      console.log("81StoreCat1");';
+      $timer = $timer + 500;
+    }
+    //81 Store Cat 2...
+    if(isset($_SESSION['form_data']['product_81_store_category_2']) && $_SESSION['form_data']['product_81_store_category_2'] != ''){
+      echo 'console.warn("81 Store Category 2: ' . $_SESSION['form_data']['product_81_store_category_2'] . '");';
+      echo 'setTimeout(function(){get_81_store_cats(2,"' . $_SESSION['form_data']['product_81_store_category_1'] . '","' . $_SESSION['form_data']['product_81_store_category_2'] . '");
+      document.getElementById("cur_81_cat").value = "' . $_SESSION['form_data']['product_81_store_category_2'] . '";
+      document.getElementById("loader").style.display = "none";},' . $timer . ');
+      console.log("81StoreCat2");';
+      $timer = $timer + 500;
+    }
+    
+    echo 'setTimeout(function(){
+            document.getElementById("loader").style.display = "none";
+          },' . $timer . ');';
     
     echo '})();';
     echo '</script>';
+  }
+  
+  if($_REQUEST['upc_code'] != ''){
+    echo '<script>
+            (function(){
+              lookup_upc(\'BYPASS\',\'' . $_REQUEST['upc_code'] . '\');
+            })();
+          </script>';
   }
 ?>
 </html>

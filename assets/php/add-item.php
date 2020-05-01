@@ -26,6 +26,138 @@ use \DTS\eBaySDK\Constants;
 use \DTS\eBaySDK\Trading\Services;
 use \DTS\eBaySDK\Trading\Types;
 use \DTS\eBaySDK\Trading\Enums;
+
+error_reporting(0);
+
+//Load Form Variables...
+$product_code = $_REQUEST['product_code'];
+$product_title = $_REQUEST['product_title'];
+
+$pd = $_REQUEST['product_description'];
+$pd_extra = $_REQUEST['product_description_extra'];
+$pd_footer = $_REQUEST['product_description_footer'];
+$pd_img = '<img src="https://beta.reseller-solutions.com/assets/imgs/81-logo.png" style="width:500px;" />';
+$fpd = '<p>' . $pd . '</p>' . $pd_extra . '</p><p>' . $pd_footer . '</p>' . $pd_img;
+$product_description = nl2br($fpd);
+//$product_description = nl2br($_REQUEST['product_description']);
+
+//Product Details...
+$product_brand = $_REQUEST['product_brand'];
+$product_color = $_REQUEST['product_color'];
+$product_size_type = $_REQUEST['product_Size_Type'];
+$product_style = $_REQUEST['product_Style'];
+$product_sleevelength = $_REQUEST['product_sleevelength'];
+$product_material = $_REQUEST['product_material'];
+$product_size = $_REQUEST['product_Size'];
+
+$product_label = $_REQUEST['product_label'];
+
+//$product_category = $_REQUEST['product_category'];
+$product_section = $_REQUEST['product_section'];
+$product_category = $_REQUEST['cur_cat'];
+$product_store_category = $_REQUEST['cur_store_cat'];
+$prod_81_cat = $_REQUEST['cur_81_cat'];
+$product_81_store_category = $_REQUEST['product_81_store_category_' . $prod_81_cat];
+
+$product_condition = $_REQUEST['product_condition'];
+
+//Images...
+$product_image1 = $_REQUEST['img_url1'];
+$product_image2 = $_REQUEST['img_url2'];
+$product_image3 = $_REQUEST['img_url3'];
+$product_image4 = $_REQUEST['img_url4'];
+$product_image5 = $_REQUEST['img_url5'];
+
+$img_array = [];
+if($product_image1 != '' && $product_image1 != 'undefined'){
+  array_push($img_array, $product_image1);
+}
+if($product_image2 != '' && $product_image2 != 'undefined'){
+  array_push($img_array, $product_image2);
+}
+if($product_image3 != '' && $product_image3 != 'undefined'){
+  array_push($img_array, $product_image3);
+}
+if($product_image4 != '' && $product_image4 != 'undefined'){
+  array_push($img_array, $product_image4);
+}
+if($product_image5 != '' && $product_image5 != 'undefined'){
+  array_push($img_array, $product_image5);
+}
+  
+
+$product_price = $_REQUEST['product_price'];
+$product_quantity = $_REQUEST['product_quantity'];
+
+//Package Dimensions...
+//$product_pkg_width = $_REQUEST['product_pkg_width'];
+//$product_pkg_length = $_REQUEST['product_pkg_length'];
+//$product_pkg_depth = $_REQUEST['product_pkg_depth'];
+$product_pkg_width = '11';
+$product_pkg_length = '14';
+$product_pkg_depth = '2';
+
+//Package Weight...
+$product_pkg_lbs = $_REQUEST['product_pkg_lbs'];
+$product_pkg_oz = $_REQUEST['product_pkg_oz'];
+$oz_to_lbs = ($product_pkg_oz / 16);
+$pkg_weight = ($product_pkg_lbs + $oz_to_lbs);
+//check if under or over 1 pound...
+if($pkg_weight <= 1){
+    $shipping_service_option = 'USPSFirstClass';
+}else{
+    $shipping_service_option = 'USPSPriority';
+}
+
+//Shipping Service...
+//$shipping_service_option = $_REQUEST['product_ship_option'];
+
+//Returns Options...
+//$returns_option = $_REQUEST['returns_accepted_option'];
+//$returns_within = $_REQUEST['returns_accepted_within_option'];
+//$refund_method = $_REQUEST['refund_option'];
+//$return_shipping_option = $_REQUEST['return_shipping_option'];
+
+
+//Setup Response HTML...
+echo '<html>
+      <head>
+        <title>Add Item</title>
+      </head>
+      <body>';
+
+echo '<div id="status">
+        <h1 id="lStatus"></h1>
+      </div>';
+
+echo '<div id="errors" style="padding:10px;background:rgba(255,49,3,0.5);">
+        <h3 style=""><u>Required Edits [These must be corrected for the item to be listed]:</u></h3>
+      </div>';
+
+echo '<div id="warnings" style="padding:10px;background:rgba(255,251,0,0.5);">
+        <h3 style=""><u>Suggested Edits:</u></h3>
+      </div>';
+
+echo '<div id="success" style="padding:10px;background:rgba(92,184,92,0.5);">
+        <h3 style=""><u>Success Messages:</u></h3>
+      </div>';
+
+//Echo Ending HTML...
+  echo '<div id="success_btns" style="width:100%;text-align:center;display:none;">
+        <br><br>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/assets/php/refresh-token-test.php" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
+        <br><br><br><br><br><br>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/assets/php/refresh-token-test.php?retry=Yes" style="background:green;padding:10px;border-radius:25px;color:white;">Similar Item</a>
+      </div>';
+
+echo '<div id="failed_btns" style="width:100%;text-align:center;display:none;">
+        <br><br>
+        <a href="http://' . $_SERVER['HTTP_HOST'] . '/assets/php/refresh-token-test.php?retry=Yes" style="background:blue;padding:10px;border-radius:25px;color:white;">Retry</a>
+      </div>';
+
+
+//Submit to Ebay if turned on...
+if($_REQUEST['submit_to_ebay'] == 'on'){
 /**
  * Specify the numerical site id that we want the listing to appear on.
  *
@@ -63,76 +195,6 @@ $request = new Types\AddFixedPriceItemRequestType();
  * Begin creating the fixed price item.
  */
 $item = new Types\ItemType();
-
-//Load Form Variables...
-$product_code = $_POST['product_code'];
-$product_title = $_POST['product_title'];
-
-$pd = $_POST['product_description'];
-$pd_extra = $_POST['product_description_extra'];
-$pd_footer = $_POST['product_description_footer'];
-$pd_img = '<img src="https://beta.reseller-solutions.com/assets/imgs/81-logo.png" style="width:500px;" />';
-$fpd = '<p>' . $pd . '</p>' . $pd_extra . '</p><p>' . $pd_footer . '</p>' . $pd_img;
-$product_description = nl2br($fpd);
-//$product_description = nl2br($_POST['product_description']);
-
-//Product Details...
-$product_brand = $_POST['product_brand'];
-$product_color = $_POST['product_color'];
-$product_sizetype = $_POST['product_Sizetype'];
-$product_style = $_POST['product_Style'];
-$product_sleevelength = $_POST['product_sleevelength'];
-$product_material = $_POST['product_material'];
-$product_size = $_POST['product_Size'];
-
-$product_label = $_POST['product_label'];
-
-//$product_category = $_POST['product_category'];
-$product_section = $_POST['product_section'];
-$product_category = $_POST['cur_cat'];
-$product_store_category = $_POST['cur_store_cat'];
-
-$product_condition = $_POST['product_condition'];
-
-//Images...
-$product_image1 = $_POST['img_url1'];
-$product_image2 = $_POST['img_url2'];
-$product_image3 = $_POST['img_url3'];
-$product_image4 = $_POST['img_url4'];
-$product_image5 = $_POST['img_url5'];
-
-$product_price = $_POST['product_price'];
-$product_quantity = $_POST['product_quantity'];
-
-//Package Dimensions...
-//$product_pkg_width = $_POST['product_pkg_width'];
-//$product_pkg_length = $_POST['product_pkg_length'];
-//$product_pkg_depth = $_POST['product_pkg_depth'];
-$product_pkg_width = '11';
-$product_pkg_length = '15';
-$product_pkg_depth = '5';
-
-//Package Weight...
-$product_pkg_lbs = $_POST['product_pkg_lbs'];
-$product_pkg_oz = $_POST['product_pkg_oz'];
-$oz_to_lbs = ($product_pkg_oz / 16);
-$pkg_weight = ($product_pkg_lbs + $oz_to_lbs);
-//check if under or over 1 pound...
-if($pkg_weight <= 1){
-    $shipping_service_option = 'USPSFirstClass';
-}else{
-    $shipping_service_option = 'USPSPriority';
-}
-
-//Shipping Service...
-//$shipping_service_option = $_POST['product_ship_option'];
-
-//Returns Options...
-//$returns_option = $_POST['returns_accepted_option'];
-//$returns_within = $_POST['returns_accepted_within_option'];
-//$refund_method = $_POST['refund_option'];
-//$return_shipping_option = $_POST['return_shipping_option'];
-
 /**
  * We want a multiple quantity fixed price listing.
  */
@@ -202,13 +264,24 @@ $specific->Name = 'Size';
 $specific->Value[] = $product_size;
 $item->ItemSpecifics->NameValueList[] = $specific;
 
+if($product_section == 'Mens'){
+  $specific = new Types\NameValueListType();
+  $specific->Name = 'Size (Men\'s)';
+  $specific->Value[] = $product_size;
+  $item->ItemSpecifics->NameValueList[] = $specific;
+}elseif($product_section == 'Womens'){
+  $specific = new Types\NameValueListType();
+  $specific->Name = 'Size (Women\'s)';
+  $specific->Value[] = $product_size;
+  $item->ItemSpecifics->NameValueList[] = $specific;
+}
 
-$is_array = explode(',',$_POST['item_specifics_array']);
+$is_array = explode(',',$_REQUEST['item_specifics_array']);
 foreach($is_array as $is){
-    if($_POST['product_'.$is] != ''){
+    if($_REQUEST['product_'.$is] != ''){
         $specific = new Types\NameValueListType();
         $specific->Name = str_replace('_',' ',$is);
-        $specific->Value[] = $_POST['product_'.$is];
+        $specific->Value[] = $_REQUEST['product_'.$is];
         $item->ItemSpecifics->NameValueList[] = $specific;
     }
 }
@@ -238,44 +311,6 @@ $item->Currency = 'USD';
  */
 $item->PictureDetails = new Types\PictureDetailsType();
 $item->PictureDetails->GalleryType = Enums\GalleryTypeCodeType::C_GALLERY;
-//$item->PictureDetails->PictureURL = ['http://lorempixel.com/1500/1024/abstract'];
-/*if($product_image1 != '' && $product_image1 != 'undefined'){
-  $item->PictureDetails->PictureURL = [
-      $product_image1
-  ];
-}elseif($product_image2 != '' && $product_image2 != 'undefined'){
-  $item->PictureDetails->PictureURL = [
-      $product_image1,
-      $product_image2
-  ];
-}elseif($product_image3 != '' && $product_image3 != 'undefined'){
-  $item->PictureDetails->PictureURL = [
-      $product_image1,
-      $product_image2,
-      $product_image3
-  ];
-}else{
-  $item->PictureDetails->PictureURL = [
-      
-  ];
-}*/
-$img_array = [];
-if($product_image1 != '' && $product_image1 != 'undefined'){
-  array_push($img_array, $product_image1);
-}
-if($product_image2 != '' && $product_image2 != 'undefined'){
-  array_push($img_array, $product_image2);
-}
-if($product_image3 != '' && $product_image3 != 'undefined'){
-  array_push($img_array, $product_image3);
-}
-if($product_image4 != '' && $product_image4 != 'undefined'){
-  array_push($img_array, $product_image4);
-}
-if($product_image5 != '' && $product_image5 != 'undefined'){
-  array_push($img_array, $product_image5);
-}
-  
 $item->PictureDetails->PictureURL = $img_array;
 /**
  * List item in the selected category.
@@ -405,27 +440,7 @@ $request->Item = $item;
  */
 $response = $service->addFixedPriceItem($request);
 
-echo '<html>
-      <head>
-        <title>Add Item</title>
-      </head>
-      <body>';
 
-echo '<div id="status">
-        <h1 id="lStatus"></h1>
-      </div>';
-
-echo '<div id="errors" style="padding:10px;background:rgba(255,49,3,0.5);">
-        <h3 style=""><u>Required Additions [These must be corrected for the item to be listed]:</u></h3>
-      </div>';
-
-echo '<div id="warnings" style="padding:10px;background:rgba(255,251,0,0.5);">
-        <h3 style=""><u>Suggested Additions:</u></h3>
-      </div>';
-/**
- * Set Form Data to SESSION Variable
-**/
-$_SESSION['form_data'] = $_REQUEST;
 /**
  * Output the result of calling the service operation.
  */
@@ -459,45 +474,86 @@ if (isset($response->Errors)) {
     }
 }
 if ($response->Ack !== 'Failure') {
-    /*printf(
-        "The item was listed on eBay with the Item number %s\n",
-        $response->ItemID
-    );*/
     echo '<script>
-            document.getElementById("lStatus").innerHTML = "<span style=\"color:green;\">Listing Status: LISTED [Item#: ' . $response->ItemID . ']</span>";
+            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: LISTED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";
+            document.getElementById("success_btns").style.display = "inline-block";
+            document.getElementById("failed_btns").style.display = "none";
           </script>';
   
     $iq = "INSERT INTO `upc_search_log` 
       (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$response) . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$response) . "','No')";
     mysqli_query($conn, $iq);
-  
-  echo '<div style="width:100%;text-align:center;">
-        <br><br>
-        <a href="http://' . $_SERVER['HTTP_HOST'] . '/" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
-        <br><br><br><br><br><br>
-        <a href="http://' . $_SERVER['HTTP_HOST'] . '/?retry=Yes" style="background:green;padding:10px;border-radius:25px;color:white;">Similar Item</a>
-
-      </div>';
-  
 }else{
     echo '<script>
-            document.getElementById("lStatus").innerHTML = "<span style=\"color:red;\">Listing Status: NOT LISTED</span>";
+            document.getElementById("lStatus").innerHTML += " <span style=\"color:red;\">Ebay Store: NOT LISTED</span><br><br>";
+            document.getElementById("success_btns").style.display = "none";
+            document.getElementById("failed_btns").style.display = "inline-block";
           </script>';
   
   $iq = "INSERT INTO `upc_search_log` 
       (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$response) . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$response) . "','No')";
     mysqli_query($conn, $iq);
-  
-  echo '<div style="width:100%;text-align:center;">
-        <br><br>
-        <a href="http://' . $_SERVER['HTTP_HOST'] . '/?retry=Yes" style="background:blue;padding:10px;border-radius:25px;color:white;">Retry</a>
-      </div>';
 }
+
+  
+}//End Submit to Ebay...
+
+
+//Submit to Store if turned on...
+if($_REQUEST['submit_to_store'] == 'on'){
+  include 'http://beta.81outfitters.com/api/connection.php';
+  include 'add-to-store-api.php';
+  
+  if($store_response->response == 'GOOD'){
+    
+     echo '<script>
+            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">81O Store: LISTED <a href=\"http://beta.81outfitters.com/index.php?route=product/product&product_id=' . $store_response->product_id . '\" target=\"_blank\">[Item#: ' . $store_response->product_id . ']</a></span><br><br>";
+            document.getElementById("success_btns").style.display = "inline-block";
+            document.getElementById("failed_btns").style.display = "none";
+            var warnings = document.getElementById("success");
+            var h4 = document.createElement("h4");
+            h4.innerHTML = "' . $store_response->message . '";
+            warnings.appendChild(h4);
+          </script>';
+  
+    $iq = "INSERT INTO `upc_search_log` 
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
+      VALUES
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$store_response) . "','No')";
+    mysqli_query($conn, $iq);
+    
+  }else{
+    echo '<script>
+            document.getElementById("lStatus").innerHTML += " <span style=\"color:red;\">81O Store: NOT LISTED</span><br><br>";
+            document.getElementById("success_btns").style.display = "none";
+            document.getElementById("failed_btns").style.display = "inline-block";
+            var errors = document.getElementById("errors");
+            var h4 = document.createElement("h4");
+            h4.innerHTML = "' . $store_response->message . '";
+            errors.appendChild(h4);
+          </script>';
+  
+  $iq = "INSERT INTO `upc_search_log` 
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
+      VALUES
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$store_response) . "','No')";
+    mysqli_query($conn, $iq);
+    
+  }
+  
+}//End Submit to Store...
+
+
+/**
+ * Set Form Data to SESSION Variable
+**/
+$_SESSION['form_data'] = $_REQUEST;
+  
+
 
 echo '</body>
       </html>';
-?>

@@ -17,11 +17,18 @@ var wm_apikey = 'rfjbc7str5mjyf6ta4ed76jf';
 
 function lookup_upc(e,upc){
   if(e.keyCode !== 13){
-    //console.log('NOT ENTER...');
-    return;
+    if(e === 'BYPASS'){
+      //continue...
+      document.getElementById('upc_code').value = upc;
+    }else{
+      //console.log('NOT ENTER...');
+      return;
+    }
+  }else{
+    upc = upc.trim();
   }
   //Move space from beginning and end of the UPC code...
-  upc = upc.trim();
+  //upc = upc.trim();
   document.getElementById('loader').style.display = 'inline';
 	if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -102,8 +109,24 @@ function lookup_upc(e,upc){
           trip = true;
         }else{
           console.log('No BrickSeek Results...');
+          if(response.bs_data !== ''){
+            var ra_r = JSON.parse(response.ra_data);
+          }else{
+            var ra_r = false;
+          }
         }
       }
+      
+      if(trip === false){
+        if(ra_r !== false){
+          ra_parse(ra_r);
+          trip = true;
+        }else{
+          console.log('No Reseller App Results...');
+        }
+      }
+      
+      
       
       //No Results Found...
       if(trip === false){
@@ -114,7 +137,7 @@ function lookup_upc(e,upc){
         var btn = document.createElement('button');
         btn.setAttribute('type','button');
         btn.setAttribute('class','btn btn-primary');
-        btn.setAttribute('onclick','window.open("http://brickseek.com","_blank");');
+        btn.setAttribute('onclick','window.open("https://brickseek.com/products/?search='+upc+'","_blank");');
         btn.innerHTML = 'Search BrickSeek.com';
         em.appendChild(btn);
         //Title, Message, Button Text...

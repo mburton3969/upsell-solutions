@@ -2,6 +2,7 @@ function add_item_img(){
   var iimg = document.getElementById('new_img_url');
   if(iimg.value === ''){
     alert('You must enter an image URL!');
+    iimg.value = '';
     return;
   }
   
@@ -10,7 +11,7 @@ function add_item_img(){
       //alert(this.width + 'x' + this.height);
       //document.getElementById('img_size').innerHTML = this.width + 'x' + this.height;
       if(this.width < 500 && this.height < 500){
-        
+        iimg.value = '';
         alert('Your image ('+this.width+'x'+this.height+') is too small! Must be at least 500 Pixels in Height or Width.');
         
       }else{
@@ -52,15 +53,48 @@ function add_item_img(){
      }
     img.src = iimg.value;
   
-  
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev,elem) {
+  ev.dataTransfer.setData("ID", ev.target.id);
+}
+
+function drop(ev,elem) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("ID");
+  var new_id = data.substr(data.length - 1);
+  var new_src = document.getElementById('product_image'+new_id).src;
+  var cur_src = elem.src;
+  var cur_id = elem.id;
+  cur_id = cur_id.substr(cur_id.length - 1);
+  //Swap the images...
+  document.getElementById('product_image'+new_id).src = cur_src;
+  document.getElementById('img_url'+new_id).src = cur_src;
+  document.getElementById('product_image'+cur_id).src = new_src;
+  document.getElementById('img_url'+cur_id).src = new_src;
+  console.log('Images Swapped!');
 }
 
 
 function remove_item_img(iid){
+  var conf = confirm("Are you sure you want to remove this image?");
+  if(conf === false){
+    return;
+  }
   var img = document.getElementById('product_image'+iid);
   var img_src = document.getElementById('img_url'+iid);
   
-  img.src = '';
+  img.src = 'https://via.placeholder.com/150';
+  //img.removeAttribute('src');
   img_src.value = '';
   console.log('Image '+iid+' removed...');
+}
+
+
+function reorder_imgs(){
+  
 }

@@ -35,6 +35,7 @@ $upc_url = 'https://api.upcitemdb.com/prod/trial/lookup?upc=' . $upc_code;
 $wm_url = 'http://api.walmartlabs.com/v1/items?apiKey=rfjbc7str5mjyf6ta4ed76jf&upc=' . $upc_code;
 
 //Data Response Variables...
+$x->ra_data = false;
 $x->bs_data = false;
 $x->de_data = false;
 $x->bl_data = false;
@@ -53,10 +54,60 @@ $trip = false;
 //Set Data Source to NONE...
 $data_source = 'NONE';
 
+$x->mess = 'Message';
+
+$upcq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `upc_code` = '" . $upc_code . "'";
+$upcg = mysqli_query($conn, $upcq) or die($conn->error);
+if(mysqli_num_rows($upcg) > 0 && $_REQUEST['scrape'] != 'Yes'){
+  $upcr = mysqli_fetch_array($upcg);
+  //UPC Found...
+  if($upcr['accurate'] == 'No'){
+    $d->upc = $upcr['upc_code'];
+    $d->description = htmlentities($upcr['item_description']);
+    $d->long_description = '';
+    $d->brand = '';
+    $d->size = '';
+    $d->color = '';
+    $d->img1 = '';
+    $d->img2 = '';
+    $d->img3 = '';
+    $d->img4 = '';
+    $d->img5 = '';
+    $d->price = '';
+    $d->weight = '';
+    $d->accurate = $upcr['accurate'];
+  }else{
+    $d->upc = $upcr['upc_code'];
+    $d->title = $upcr['item_title'];
+    $d->description = htmlentities($upcr['item_description']);
+    $d->long_description = htmlentities($upcr['long_description']);
+    $d->brand = $upcr['brand'];
+    $d->size = $upcr['size'];
+    $d->color = $upcr['color'];
+    $d->img1 = $upcr['img1'];
+    $d->img2 = $upcr['img2'];
+    $d->img3 = $upcr['img3'];
+    $d->img4 = $upcr['img4'];
+    $d->img5 = $upcr['img5'];
+    $d->price = $upcr['retail_price'];
+    $d->weight = $upcr['item_weight'];
+    $d->accurate = $upcr['accurate'];
+  }
+  $x->ra_data = json_encode($d);
+  $data_source = 'Reseller App';
+  $trip = true;
+  $x->mess = 'Message - ra_data Searched';
+  echo $ej;
+}else{
+  $x->ra_data = false;
+}
+
+if($x->ra_data == false && $trip == false){
+
 //Check BarcodeLookup.com...
-$x->mess = 'Message - bl_data Searched';
+$x->mess .= ' - bl_data Searched';
 $x->bl_data = file_get_contents($bl_url);
-if($x->bl_data == '' || $x->bl_data == null || $upc_code == '035000521019'){
+if($x->bl_data == '' || $x->bl_data == null || $upc_code == '035000521019' || $upc_code == '883096536116'){
   $x->debug = 'Triggered';
   $x->bl_data = false;
 }
@@ -66,7 +117,7 @@ if($x->bl_data == false && $trip != true){
   $x->mess .= ' - de_data Searched';
   $x->de_data = file_get_contents($de_url);
   $de_json = json_decode($x->de_data);
-  if($de_json->return_code == 4 || $upc_code == '035000521019'){
+  if($de_json->return_code == 4 || $de_json->return_code == '001' || $upc_code == '035000521019'){
     $x->de_data = false;
   }
 }else{
@@ -129,7 +180,7 @@ if($x->wm_data == false && $trip != true){
   }
 }
 
-
+}//End if ra_data is false...
 /*
 $x->bs_data = file_get_contents($bs_url);
 $x->de_data = file_get_contents($de_url);
@@ -149,7 +200,9 @@ $iq = "INSERT INTO `upc_search_log`
       (`date`,`time`,`log_type`,`upc_code`,`data_found`,`data_source`,`notes`,`inactive`)
       VALUES
       (CURRENT_DATE,CURRENT_TIME,'UPC Scan','" . mysqli_real_escape_string($conn,$upc_code) . "','" . $found . "','" . $data_source . "','" . $x->mess . "','No')";
-mysqli_query($conn, $iq);
+if($_REQUEST['scrape'] != 'Yes'){
+  mysqli_query($conn, $iq) or die('Log Error: ' . $conn->error);
+}
 
 $data = json_encode($x,JSON_PRETTY_PRINT);
 

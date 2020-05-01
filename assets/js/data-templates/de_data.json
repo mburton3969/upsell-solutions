@@ -1,0 +1,42 @@
+{
+  "return_code ": "000 ",
+  "language ": "en ",
+  "description ": "Designer Tommy Bahama S  / M Plush Robe Navy Textured Mens Small  / Medium ",
+  "gcp_gcp ": "40758 ",
+  "usage ": " ",
+  "gcp ": {
+    "fax ": null,
+    "postal_code ": "10016 ",
+    "city ": "New York ",
+    "gln ": "47543000005 ",
+    "address2 ": null,
+    "gcp ": "0040758 ",
+    "address ": "16 E 34th St 10th Fl ",
+    "state ": "NY ",
+    "phone ": "(212) 481-1408 ",
+    "country ": "US ",
+    "contact ": null,
+    "company ": "Charles Komar & Sons, Inc. "
+  },
+  "uom ": null,
+  "return_message ": "Success ",
+  "website ": "api.upcitemdb.com / ",
+  "brand ": "Tommy Bahama ",
+  "manufacturer ": {
+    "city ": null,
+    "address2 ": null,
+    "postal_code ": null,
+    "contact ": null,
+    "company ": null,
+    "state ": null,
+    "address ": null,
+    "country ": null,
+    "phone ": null
+  },
+  "image ": null,
+  "product_web_page ": "https: / /api.upcitemdb.com /prod /v1 /lookup ",
+  "nutrition ": null,
+  "upc_code ": "0040758817802 ",
+  "formattedNutrition ": null,
+  "ingredients ": null
+}
