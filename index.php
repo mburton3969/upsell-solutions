@@ -444,7 +444,7 @@ if($_GET['retry'] == 'Yes'){
             <input type="hidden" name="env_mode" value="PRODUCTION"><!--'SANDBOX' or 'PRODUCTION'-->
             <input type="hidden" name="api_key" value="ScSDadVl4tQLQ2NLMnLpuFbibQGQySNbJZLVKyQvhi1Zmt4u60U72HdqETS0ZRT3mUnr5IN2a14VnEO37kXLxHf40CHmCWuNhiHkdoIrXgYBmvJX1tK87nzlX5dLEji0U11BdhgvpGH0SEXJPHY0HNRSqC8XMphG65tcnxLSj7Ppa6fKgTFdMo6JsQJMO61pS1jTo6A3lKPSQSZYvTD4d6vFTIBD6fepMvh3zHzijSpVG15gVuxgizwetm84vjmQ" />
             <?php ?>
-            <button type="submit" id="submit_btn" class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm">Submit To Ebay</button>
+            <button type="submit" id="submit_btn" class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm">Submit Item</button>
         </div>
     </div>
     <input type="hidden" id="item_specifics_array" name="item_specifics_array" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['item_specifics_array'];}?>" />
