@@ -29,7 +29,6 @@ use \DTS\eBaySDK\Trading\Enums;
 
 error_reporting(0);
 
-var_dump($_REQUEST);
 //Load Form Variables...
 $product_code = $_REQUEST['product_code'];
 $product_title = $_REQUEST['product_title'];
