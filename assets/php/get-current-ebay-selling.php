@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+error_reporting(0);
 session_start();$env_mode = $_SESSION['ebay_mode'];
 $env_mode_val = $_SESSION['ebay_mode_val'];
 /**
@@ -66,7 +68,7 @@ $request->ActiveList->Pagination->EntriesPerPage = 10;
 $request->ActiveList->Sort = Enums\ItemSortTypeCodeType::C_CURRENT_PRICE_DESCENDING;
 
 $pageNum = 1;
-
+$i = 0;
 do {
     $request->ActiveList->Pagination->PageNumber = $pageNum;
 
@@ -78,7 +80,7 @@ do {
     /**
      * Output the result of calling the service operation.
      */
-    echo "==================\nResults for page $pageNum\n==================\n";
+    //echo "==================\nResults for page $pageNum\n==================\n";
 
     if (isset($response->Errors)) {
         foreach ($response->Errors as $error) {
@@ -92,17 +94,26 @@ do {
     }
 
     if ($response->Ack !== 'Failure' && isset($response->ActiveList)) {
+      
         foreach ($response->ActiveList->ItemArray->Item as $item) {
-            printf(
+            /*printf(
                 "(%s) %s: %s %.2f\n",
                 $item->ItemID,
                 $item->Title,
                 $item->SellingStatus->CurrentPrice->currencyID,
                 $item->SellingStatus->CurrentPrice->value
-            );
+            );*/
+          //$x->item[$i]->item_data = json_decode($item);
+          $x->item[$i]->itemID = $item->ItemID;
+          $x->item[$i]->title = $item->Title;
+          //$x->item[$i]->itemStatus = $item->ListingStatus;
+          $i++;
         }
     }
 
     $pageNum += 1;
 
 } while (isset($response->ActiveList) && $pageNum <= 3/*$response->ActiveList->PaginationResult->TotalNumberOfPages*/);
+
+$res = json_encode($x, JSON_PRETTY_PRINT);
+echo $res;
