@@ -1,5 +1,6 @@
 
 function uploadProdImg() {
+  
   var form = document.getElementById('img-form');
   var fileInput = document.getElementById('img-file');
   var file = fileInput.files[0];
@@ -7,7 +8,16 @@ function uploadProdImg() {
   formData.append('file', file);
   
   //UPC Code...
-  var iUPC = document.getElementById('upc_code').value;
+  var iUPC = document.getElementById('product_code').value;
+  if(iUPC === ''){
+    var iUPC = document.getElementById('upc_code').value;
+    if(iUPC === ''){
+      alert('The barcode must be entered in order to add images...');
+      //Empty the File Input...
+      document.getElementById('img-file').value = '';
+      return;
+    }
+  }
   formData.append('img_upc',iUPC);
 
   if (window.XMLHttpRequest) {
@@ -25,6 +35,8 @@ function uploadProdImg() {
         //document.getElementById('img_preview').src = r.img_url;
         document.getElementById('close-img-modal').click();
         document.getElementById('new_img_url').value = r.img_url;
+        //Empty the File Input...
+        document.getElementById('img-file').value = '';
       }
       
     }
