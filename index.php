@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+$_SESSION['app_version'] = '3.3.1';
 include 'assets/php/connection.php';
 $config = require 'assets/php/ebay-config.php';
 $maint = 'No';//Site Under Maintenance? Yes or No...
@@ -47,7 +48,7 @@ if($_GET['retry'] == 'Yes'){
 ?>
 <html>
 <head>
-	<title>API Test</title>
+	<title>Reseller App</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
@@ -88,7 +89,7 @@ if($_GET['retry'] == 'Yes'){
           
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center bg-light shadow" style="margin: 8px;padding: 10px;">Product Detail Form <small>[<a href="destroy.php">Refresh Session</a>]</small></h1>
+                    <h1 class="text-center bg-light shadow" style="margin: 8px;padding: 10px;">Product Listing Form <small>[<a href="destroy.php">Refresh Session</a>]</small></h1>
                 </div>
             </div>
         </div>
@@ -445,7 +446,7 @@ if($_GET['retry'] == 'Yes'){
 </form>
   
 <!-- Footer -->
-  <p style="text-align:center;">&copy; Reseller Solutions <i class="fa fa-code-branch"> V2.7.1</i> | Developed By <a href="http://ignition-innovations.com" target="_blank">Ignition Innovations</a></p>
+  <p style="text-align:center;">&copy; Reseller Solutions <i class="fa fa-code-branch"> V<?php echo $_SESSION['app_version']; ?></i> | Developed By <a href="http://ignition-innovations.com" target="_blank">Ignition Innovations</a></p>
     <br>
   <?php include 'list-item/modals/success-modal.php'; ?>
   <?php include 'list-item/modals/error-modal.php'; ?>
