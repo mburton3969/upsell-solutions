@@ -1,7 +1,6 @@
 <?php
 session_start();
 error_reporting(0);
-//print_r($_SESSION);
 include 'assets/php/connection.php';
 $config = require 'assets/php/ebay-config.php';
 $maint = 'No';//Site Under Maintenance? Yes or No...
@@ -32,7 +31,6 @@ if($_SESSION['user_token'] == '' || !isset($_SESSION['user_token'])){
           </script>';
   }else{
     $trurl = 'assets/php/refresh-token-test.php';
-    //header('Location: '.$trurl);
     echo '<script>
             window.location = "' . $trurl . '";
           </script>';
@@ -42,16 +40,11 @@ $cache_buster = uniqid();
 
 //Check for Previous form-data...
 if($_GET['retry'] == 'Yes'){
-  //print_r($_SESSION['form_data']);
-  //echo $_SESSION['form_data']['product_title'];
-  //echo '<br><br>';
-  //echo $_SESSION['pd'];
   echo '<script>
           var retry = true;
         </script>';
 }
 ?>
-<?php //if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data'][''];}?>
 <html>
 <head>
 	<title>API Test</title>
@@ -66,6 +59,7 @@ if($_GET['retry'] == 'Yes'){
   <link rel="stylesheet" href="assets/css/custom.css">
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <script src="assets/js/globals.js"></script>
   <style>
     td{
       padding: 5px;
@@ -443,8 +437,8 @@ if($_GET['retry'] == 'Yes'){
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->
             <input type="hidden" name="env_mode" value="PRODUCTION"><!--'SANDBOX' or 'PRODUCTION'-->
             <input type="hidden" name="api_key" value="ScSDadVl4tQLQ2NLMnLpuFbibQGQySNbJZLVKyQvhi1Zmt4u60U72HdqETS0ZRT3mUnr5IN2a14VnEO37kXLxHf40CHmCWuNhiHkdoIrXgYBmvJX1tK87nzlX5dLEji0U11BdhgvpGH0SEXJPHY0HNRSqC8XMphG65tcnxLSj7Ppa6fKgTFdMo6JsQJMO61pS1jTo6A3lKPSQSZYvTD4d6vFTIBD6fepMvh3zHzijSpVG15gVuxgizwetm84vjmQ" />
-            <?php ?>
-            <button type="submit" id="submit_btn" class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm">Submit Item</button>
+            
+            <button type="submit" id="submit_btn" class="btn btn-success btn-lg text-white border rounded-0 border-dark shadow-sm">Submit</button>
         </div>
     </div>
     <input type="hidden" id="item_specifics_array" name="item_specifics_array" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['item_specifics_array'];}?>" />
@@ -580,7 +574,7 @@ if($_GET['retry'] == 'Yes'){
     
     echo '})();';
     echo '</script>';
-  }
+  }//End of Retry mode...
   
   if($_REQUEST['upc_code'] != ''){
     echo '<script>
