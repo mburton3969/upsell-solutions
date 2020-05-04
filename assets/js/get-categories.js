@@ -265,7 +265,7 @@ function get_81_store_cats(lvl,parentID,set81Cat){
         }
       
       
-      if(lvl === 2){
+      if(lvl !== 1){
         if(document.getElementById('product_81_store_category_'+lvl)){
           document.getElementById('product_81_store_category_'+lvl).remove();
         }

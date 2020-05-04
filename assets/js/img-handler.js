@@ -93,8 +93,3 @@ function remove_item_img(iid){
   img_src.value = '';
   console.log('Image '+iid+' removed...');
 }
-
-
-function reorder_imgs(){
-  
-}

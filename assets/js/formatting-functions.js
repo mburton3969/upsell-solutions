@@ -25,7 +25,7 @@ function format_ebay(){
     alert('The eBay Title is currently longer than the maximum 80 characters allowed for a listing!');
   }else{
     document.getElementById('submit_btn').disabled = false;
-    document.getElementById('submit_btn').innerHTML = 'Submit To Ebay';
+    document.getElementById('submit_btn').innerHTML = sub_btn_txt;
   }
   
   //Set Title...
