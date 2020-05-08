@@ -131,6 +131,7 @@ if(mysqli_num_rows($ag) <= 0){
           //Check if Attribute Exists...
           $aq = "SELECT * FROM `oc_attribute_description` WHERE `language_id` = '1' AND `name` LIKE '%" . mysqli_real_escape_string($s_conn,str_replace('_',' ',$is)) . "%'";
           $ag = mysqli_query($s_conn, $aq) or die('Select oc_attribute_description error ' . $s_conn->error . ' on line 133 of add-to-store-api.php');
+          $attribute_exists = false;
           if(mysqli_num_rows($ag) <= 0){
             //Get new Attribute ID...
             $aiq = "INSERT INTO `oc_attribute` (`attribute_group_id`,`sort_order`) VALUES ('6','0')";
@@ -143,6 +144,7 @@ if(mysqli_num_rows($ag) <= 0){
             //Get Current Attribute ID...
             $ar = mysqli_fetch_array($ag);
             $new_attribute_id = $ar['attribute_id'];
+            $attribute_exists = true;
           }
           
           //Insert Attribute Info for Product...
@@ -160,8 +162,10 @@ if(mysqli_num_rows($ag) <= 0){
                     '1',
                     '" . mysqli_real_escape_string($s_conn,$_REQUEST['product_'.$is]) . "'
                     )";
-          mysqli_query($s_conn, $paiq) or die('Insert oc_product_attribute error: ' . $s_conn->error . ' on line 163 of add-to-store-api.php ' . $new_attribute_id . ' -> ' . $_REQUEST['product_'.$is]);
-          $x->message .= ' - item specific [' . str_replace('_',' ',$is) . '] inserted';
+          if($attribute_exists == false){
+            mysqli_query($s_conn, $paiq) or die('Insert oc_product_attribute error: ' . $s_conn->error . ' on line 163 of add-to-store-api.php ' . $new_attribute_id . ' -> ' . $_REQUEST['product_'.$is]);
+            $x->message .= ' - item specific [' . str_replace('_',' ',$is) . '] inserted';
+          }
           
         }
     }//End foreach loop on attributes...
