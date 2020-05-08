@@ -86,12 +86,13 @@ while($r = mysqli_fetch_array($g)){
     }else{
       //$x->response = 'ERROR';
       //$x->message = $conn-error;
-      var_dump($data);echo '<h1 style="color:red;">Error: ' . $conn->error . '</h1>';
+      var_dump($data);
+      echo '<h1 style="color:red;">Error: ' . $conn->error . '</h1>';
     }
   
   }else{
     //echo 'ERROR->';
-    echo '<h1 style="color:red;">Error: ' . $d->message . '</h1>';
+    echo '<h1 style="color:red;">Error:</h1>';
     var_dump($data);
     $uq = "UPDATE `upc_codes` SET ";
     $uq .= "`data_source` = 'None',";
@@ -100,6 +101,9 @@ while($r = mysqli_fetch_array($g)){
         `upc_code` = '" . $upc . "'";
     mysqli_query($conn, $uq) or die($conn->error);
     echo '<button type="button" onclick="window.location.reload();">Continue</button>';
+    echo '<script>
+            alert("An Error Occurred!");
+          </script>';
   }
   
 }//End while loop...
