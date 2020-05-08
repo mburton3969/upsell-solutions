@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-$_SESSION['app_version'] = '3.3.2';
+$_SESSION['app_version'] = '3.3.3';
 include 'assets/php/connection.php';
 $config = require 'assets/php/ebay-config.php';
 $maint = 'No';//Site Under Maintenance? Yes or No...
@@ -407,7 +407,12 @@ if($_GET['retry'] == 'Yes'){
                 <div class="col-md-6">
                     <h4 class="text-left">UPC Code:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required></div>
+                <div class="col-md-6">
+                  <input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required>
+                  <button type="button" class="btn btn-warning btn-sm" onclick="document.getElementById('product_code').value = 'Does not apply';">
+                    Does not apply
+                  </button>
+                </div>
             </div>
         </div>
     </div>
