@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-$_SESSION['app_version'] = '3.3.3';
+$_SESSION['app_version'] = '3.4.0';
 include 'assets/php/connection.php';
 $config = require 'assets/php/ebay-config.php';
 $maint = 'No';//Site Under Maintenance? Yes or No...
