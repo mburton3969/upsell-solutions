@@ -36,7 +36,7 @@ $product_title = $_REQUEST['product_title'];
 $pd = $_REQUEST['product_description'];
 $pd_extra = $_REQUEST['product_description_extra'];
 $pd_footer = $_REQUEST['product_description_footer'];
-$pd_img = '<img src="https://beta.reseller-solutions.com/assets/imgs/81-logo.png" style="width:500px;" />';
+$pd_img = '<img src="https://' . $_SERVER['HTTP_HOST'] . '/assets/imgs/81-logo.png" style="width:500px;" />';
 $fpd = '<p>' . $pd . '</p>' . $pd_extra . '</p><p>' . $pd_footer . '</p>' . $pd_img;
 $product_description = nl2br($fpd);
 //$product_description = nl2br($_REQUEST['product_description']);
@@ -159,6 +159,8 @@ echo '<div id="failed_btns" style="width:100%;text-align:center;display:none;">
         <a href="http://' . $_SERVER['HTTP_HOST'] . '/assets/php/refresh-token-test.php?retry=Yes" style="background:blue;padding:10px;border-radius:25px;color:white;">Retry</a>
       </div>';
 
+//Store or Update the UPC Data from Listing Submission...
+include '../store/save-upc-submit.php';
 
 //Submit to Ebay if turned on...
 if($_REQUEST['submit_to_ebay'] == 'on'){
@@ -464,9 +466,6 @@ if (isset($response->Errors)) {
                 h4.innerHTML = "' . $error->LongMessage . '";
                 errors.appendChild(h4);
               </script>';
-        //echo '<h1>' . $error_type . '</h1>';
-        //echo '<h4>' . $error->ShortMessage . '</h4>';
-        //echo '<h4>' . $error->LongMessage . '</h4>';
       }elseif($error_type == 'Warning'){
         echo '<script>
                 var warnings = document.getElementById("warnings");
@@ -511,6 +510,7 @@ if ($response->Ack !== 'Failure') {
 if($_REQUEST['submit_to_store'] == 'on'){
   include 'http://beta.81outfitters.com/api/connection.php';
   include 'add-to-store-api.php';
+  $request_data = json_encode($_REQUEST);
   
   if($store_response->response == 'GOOD'){
     
@@ -525,9 +525,9 @@ if($_REQUEST['submit_to_store'] == 'on'){
           </script>';
   
     $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$store_response) . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$store_response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','No')";
     mysqli_query($conn, $iq);
     
   }else{
@@ -542,9 +542,9 @@ if($_REQUEST['submit_to_store'] == 'on'){
           </script>';
   
   $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$store_response) . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$store_response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','No')";
     mysqli_query($conn, $iq);
     
   }
