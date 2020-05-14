@@ -1,0 +1,45 @@
+<div class="fixed-sidebar-left">
+			<ul class="nav navbar-nav side-nav nicescroll-bar">
+				<li class="navigation-header">
+					<span>Navigation</span> 
+					<i class="zmdi zmdi-more"></i>
+				</li>
+<!-------------------------------------------------------------------DASHBOARD-------------------------------------------------------------------------------->
+				<?php
+				
+			echo '<li>
+					<a href="dashboard.php">
+						<div class="pull-left"><i class="fas fa-tachometer-alt mr-20"></i><span class="right-nav-text">Dashboard</span></div>';
+						
+			echo '<div class="clearfix"></div>
+					</a>
+				  </li>';
+				
+				?>
+        
+<!-------------------------------------------------------------------Product Lister-------------------------------------------------------------------------------->
+				<?php
+				
+			echo '<li>
+					<a href="index.php">
+						<div class="pull-left"><i class="fas fa-satellite-dish mr-20"></i><span class="right-nav-text">Product Lister</span></div>';
+						
+			echo '<div class="clearfix"></div>
+					</a>
+				  </li>';
+				
+				?>
+				
+<!-------------------------------------------------------------------Make A Suggestion-------------------------------------------------------------------------------->
+									<!--<li style="background:#6E6E6E;border:1px solid #222222;">
+												<a href="suggestion.php"><i class="fas fa-lightbulb-o mr-20"></i> Make A Suggestion</a>
+									</li>-->
+				
+<!-------------------------------------------------------------------Report An Issue-------------------------------------------------------------------------------->
+                  <li style="background:#6E6E6E;border:1px solid #222222;">
+												<a href="https://ignitioninnovations.teamwork.com/support/" target="_blank"><i class="fas fa-ticket-alt mr-15"></i> Help Desk Ticket</a>
+									</li>
+				
+				
+	</ul>
+</div>

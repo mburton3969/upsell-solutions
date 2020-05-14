@@ -85,6 +85,6 @@ if ($response->getStatusCode() !== 200) {
         $response->refresh_token
     );*/
   echo '<script>
-        window.location = "http://' . $_SERVER['HTTP_HOST'] . $qs . '";
+        window.location = "http://' . $_SERVER['HTTP_HOST'] . '/index.php' . $qs . '";
         </script>';
 }
