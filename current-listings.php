@@ -42,6 +42,7 @@ $pageIcon = 'far fa-list-alt';
 	
 	<!--Footer-->
 	<?php include 'global/sections/includes.php'; ?>
+	<script src="current-listings/js/item-card-functions.js"></script>
 </body>
 
 </html>
