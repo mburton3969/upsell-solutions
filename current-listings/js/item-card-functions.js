@@ -23,6 +23,10 @@ function get_current_selling(){
 }
 
 
+function create_card(){
+    
+}
+
 (function(){
     get_current_selling();
 })();
