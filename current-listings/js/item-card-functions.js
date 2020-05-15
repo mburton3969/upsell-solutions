@@ -21,3 +21,8 @@ function get_current_selling(){
       xmlhttp.open('GET', "assets/ebay/get-ebay-current-selling.php", true);
       xmlhttp.send();
 }
+
+
+(function(){
+    get_current_selling();
+})();
