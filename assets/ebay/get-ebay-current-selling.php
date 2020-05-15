@@ -70,6 +70,7 @@ $request->ActiveList->Sort = Enums\ItemSortTypeCodeType::C_CURRENT_PRICE_DESCEND
 $pageNum = 1;
 $i = 0;
 do {
+    $x->response = 'GOOD';
     $request->ActiveList->Pagination->PageNumber = $pageNum;
 
     /**
