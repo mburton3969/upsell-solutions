@@ -22,7 +22,7 @@
 				
 			echo '<li>
 					<a href="current-listings.php">
-						<div class="pull-left"><i class="far fa-list-alt mr-20"></i><span class="right-nav-text">Current Listings</span></div>';
+						<div class="pull-left"><i class="fab fa-ebay mr-20"></i><span class="right-nav-text">Current Listings</span></div>';
 						
 			echo '<div class="clearfix"></div>
 					</a>

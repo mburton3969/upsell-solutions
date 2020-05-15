@@ -1,6 +1,6 @@
 <?php
 $pageName = 'Current Listings';
-$pageIcon = 'far fa-list-alt';
+$pageIcon = 'fab fa-ebay';
 ?>
 <!DOCTYPE html>
 <html lang="en">
