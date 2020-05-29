@@ -364,8 +364,7 @@ $item->PaymentMethods = [
 ];
 $item->PayPalEmailAddress = '81outfitters@gmail.com';
 $item->DispatchTimeMax = 1;
-  
-if($_REQUEST['import_ebay_listing'] != ''){
+
 /**
  * Setting up the shipping details.
  * We will use a Flat shipping rate for both domestic and international.
@@ -440,8 +439,6 @@ $shippingService->ShippingService = $shipping_service_option;
 $shippingService->ShippingServiceCost = new Types\AmountType(['value' => 0.00]);//Shipping Cost for 1st Item
 //$shippingService->ShippingServiceAdditionalCost = new Types\AmountType(['value' => 2.00]);//Shipping cost for additional items
 $item->ShippingDetails->ShippingServiceOptions[] = $shippingService;
-  
-}//End if Ebay Import for Shipping Update...
 
 /**
  * The return policy.
