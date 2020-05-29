@@ -148,7 +148,7 @@ function get_ebay_cats(cid){
             }else{
                 console.warn('pre-pre-check: '+(iii)+','+r.cats[iii-1]+','+r.cats[iii]);
                 get_cats((iii),r.cats[iii-1],r.cats[iii]);
-                sleep(500);
+                sleep(1000);
                 document.getElementById('cur_cat').value = r.cats[iii];
                 console.log('cur_cat set to: '+r.cats[iii]);
             }
