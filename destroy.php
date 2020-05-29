@@ -1,10 +1,15 @@
 <?php
 session_start();
-session_destroy();
+//session_destroy();
+unset($_SESSION['auth_code']);
+unset($_SESSION['app_token']);
+unset($_SESSION['user_token']);
+unset($_SESSION['refresh_token']);
 print_r($_SESSION);
-echo '<h2>Session Destroyed...</h2>';
+
+echo '<h2>Ebay Session Variables Removed...</h2>';
 
 echo '<script>
-      window.location = "http://' . $_SERVER['HTTP_HOST'] . '";
+      //window.location = "http://' . $_SERVER['HTTP_HOST'] . '";
       </script>';
 ?>

@@ -51,7 +51,7 @@ $request->ItemID = $itemID;
 /**
  * Specify that additional fields need to be returned in the response.
  */
-$request->IncludeSelector = 'ItemSpecifics,Variations,Compatibility,Details';
+$request->IncludeSelector = 'ItemSpecifics,Variations,Compatibility,Details,Description';
 
 /**
  * Send the request.

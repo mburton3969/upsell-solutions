@@ -129,22 +129,18 @@
 							<!--<span class="user-online-status"></span>-->
 						</a>
 						<ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-							<li>
+							<!--<li>
 								<a href="access.php"><i class="zmdi zmdi-accounts"></i><span>Manage Users</span></a>
 							</li>
 							<li>
 								<a href="settings.php"><i class="zmdi zmdi-settings"></i><span>My Account</span></a>
 							</li>
-							<?php
-                if($_SESSION['user_id'] == '1'){
-                  echo '<li>
-                          <a href="knowledge-base.php"><i class="zmdi zmdi-graduation-cap"></i><span>Knowledge Base</span></a>
-                        </li>';
-                }
-               ?>
+							<li>
+                <a href="knowledge-base.php"><i class="zmdi zmdi-graduation-cap"></i><span>Knowledge Base</span></a>
+              </li>
 							<li>
 								<a href="../cron/labels.php" target="_blank"><i class="zmdi zmdi-labels"></i><span>Print Labels</span></a>
-							</li>
+							</li>-->
 							<!--<li class="divider"></li>
 							<li class="sub-menu show-on-hover">
 								<a href="#" class="dropdown-toggle pr-0 level-2-drp"><i class="zmdi zmdi-check text-success"></i> available</a>

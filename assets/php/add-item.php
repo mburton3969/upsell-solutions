@@ -27,7 +27,7 @@ use \DTS\eBaySDK\Trading\Services;
 use \DTS\eBaySDK\Trading\Types;
 use \DTS\eBaySDK\Trading\Enums;
 
-error_reporting(0);
+//error_reporting(0);
 
 //Load Form Variables...
 $product_code = $_REQUEST['product_code'];
@@ -36,9 +36,10 @@ $product_title = $_REQUEST['product_title'];
 $pd = $_REQUEST['product_description'];
 $pd_extra = $_REQUEST['product_description_extra'];
 $pd_footer = $_REQUEST['product_description_footer'];
-$pd_img = '<img src="https://' . $_SERVER['HTTP_HOST'] . '/assets/imgs/81-logo.png" style="width:500px;" />';
-$fpd = '<p>' . $pd . '</p>' . $pd_extra . '</p><p>' . $pd_footer . '</p>' . $pd_img;
+$fpd = '<p>' . $pd . '</p><p>' . $pd_extra . '</p><p>' . $pd_footer . '</p>';
+$wfpd = '<p>' . $pd . '</p><p>' . $pd_extra . '</p>';
 $product_description = nl2br($fpd);
+$website_product_description = nl2br($wfpd);
 //$product_description = nl2br($_REQUEST['product_description']);
 
 //Product Details...
@@ -51,6 +52,7 @@ $product_material = $_REQUEST['product_material'];
 $product_size = $_REQUEST['product_Size'];
 
 $product_label = $_REQUEST['product_label'];
+$website_product_title = $product_brand . ' ' . $product_title;
 
 //$product_category = $_REQUEST['product_category'];
 $product_section = $_REQUEST['product_section'];
@@ -160,7 +162,9 @@ echo '<div id="failed_btns" style="width:100%;text-align:center;display:none;">
       </div>';
 
 //Store or Update the UPC Data from Listing Submission...
-include '../store/save-upc-submit.php';
+//error_reporting(E_ALL);
+//include '../store/save-upc-submit.php';
+//error_reporting(0);
 
 //Submit to Ebay if turned on...
 if($_REQUEST['submit_to_ebay'] == 'on'){
@@ -190,7 +194,14 @@ $service = new Services\TradingService([
 /**
  * Create the request object.
  */
-$request = new Types\AddFixedPriceItemRequestType();
+if($_REQUEST['import_ebay_listing'] == ''){
+  $request = new Types\AddFixedPriceItemRequestType();
+}else{
+  $request = new Types\ReviseFixedPriceItemRequestType();
+}
+  
+
+  
 /**
  * An user token is required when using the Trading service.
  */
@@ -201,6 +212,13 @@ $request = new Types\AddFixedPriceItemRequestType();
  * Begin creating the fixed price item.
  */
 $item = new Types\ItemType();
+  
+if($_REQUEST['import_ebay_listing'] != ''){
+  /**
+   * Tell eBay which item we are revising.
+   */
+  $item->ItemID = $_REQUEST['import_ebay_listing'];
+}  
 /**
  * We want a multiple quantity fixed price listing.
  */
@@ -444,8 +462,11 @@ $request->Item = $item;
 /**
  * Send the request.
  */
-$response = $service->addFixedPriceItem($request);
-
+if($_REQUEST['import_ebay_listing'] == ''){
+  $response = $service->addFixedPriceItem($request);
+}else{
+  $response = $service->reviseFixedPriceItem($request);
+}
 
 /**
  * Output the result of calling the service operation.
@@ -477,11 +498,17 @@ if (isset($response->Errors)) {
     }
 }
 if ($response->Ack !== 'Failure') {
-    echo '<script>
-            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: LISTED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";
-            document.getElementById("success_btns").style.display = "inline-block";
-            document.getElementById("failed_btns").style.display = "none";
-          </script>';
+    $ebay_item_id = $response->ItemID;
+    echo '<script>';
+    if($_REQUEST['import_ebay_listing'] != ''){
+      echo 'document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: REVISED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";';
+    }else{
+      echo 'document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: LISTED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";';
+    }
+            //document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: LISTED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";
+    echo 'document.getElementById("success_btns").style.display = "inline-block";
+          document.getElementById("failed_btns").style.display = "none";
+        </script>';
   
     $iq = "INSERT INTO `upc_search_log` 
       (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`user_id`,`user_name`,`inactive`)
@@ -514,9 +541,13 @@ if($_REQUEST['submit_to_store'] == 'on'){
   
   if($store_response->response == 'GOOD'){
     
-     echo '<script>
-            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">81O Store: LISTED <a href=\"http://beta.81outfitters.com/index.php?route=product/product&product_id=' . $store_response->product_id . '\" target=\"_blank\">[Item#: ' . $store_response->product_id . ']</a></span><br><br>";
-            document.getElementById("success_btns").style.display = "inline-block";
+     echo '<script>';
+        //if($_REQUEST['import_ebay_listing'] == ''){
+          echo 'document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">81O Store: LISTED <a href=\"http://beta.81outfitters.com/index.php?route=product/product&product_id=' . $store_response->product_id . '\" target=\"_blank\">[Item#: ' . $store_response->product_id . ']</a></span><br><br>";';
+        //}else{
+        //  echo 'document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">81O Store: ITEM ALREADY EXISTS <a href=\"http://beta.81outfitters.com/index.php?route=product/product&product_id=' . $store_response->product_id . '\" target=\"_blank\">[Item#: ' . $store_response->product_id . ']</a></span><br><br>";';
+        //}
+      echo 'document.getElementById("success_btns").style.display = "inline-block";
             document.getElementById("failed_btns").style.display = "none";
             var warnings = document.getElementById("success");
             var h4 = document.createElement("h4");

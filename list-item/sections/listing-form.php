@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="text-left">Description:</h4>
-                    <small>Preview:</small>
+                    <small>Preview: (Actual description may look different on ebay)</small>
                     <div id="desc_preview" class="desc_preview" style="border:1px solid blue;height:400px;background:rgba(0,0,255,0.1);overflow:scroll;" contenteditable="false">
                       
                     </div>
@@ -72,7 +72,16 @@
                   <!--<input type="text" id="product_description" style="width: 100%;" name="product_description" class="form-control" placeholder="Description" Required>-->
                   <textarea id="product_description" style="width: 100%;height:150px;" name="product_description" class="form-control" placeholder="Description" onchange="format_ebay();" Required><?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_description'];}?></textarea>
                   <textarea id="product_description_extra" style="width: 100%;height:150px;" name="product_description_extra" class="form-control" placeholder="Description Extras" onchange="format_ebay();" Required><?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_description_extra'];}?></textarea>
-                  <textarea id="product_description_footer" style="width: 100%;height:150px;" name="product_description_footer" class="form-control" placeholder="Description Footer" onchange="format_ebay();" Required><?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_description_footer'];}else{echo 'Thank you for shopping with 81 Outfitters. With our top rating and consistently lowest prices, we look forward to exceeding your expectations. ';}?></textarea>
+                  <textarea id="product_description_footer" style="width: 100%;height:150px;" name="product_description_footer" class="form-control" placeholder="Description Footer" onchange="format_ebay();" readonly="readonly" Required>
+                    <?php if($_GET['retry'] == 'Yes'){
+                            echo $_SESSION['form_data']['product_description_footer'];
+                          }else{
+                            //echo 'Thank you for shopping with 81 Outfitters. With our top rating and consistently lowest prices, we look forward to exceeding your expectations. ';
+                            include 'list-item/templates/description2.php';
+                            echo $ebay_description_template;
+                          }
+                    ?>
+                  </textarea>
                 </div>
             </div>
         </div>
@@ -239,6 +248,8 @@
     <input type="hidden" id="cur_cat" name="cur_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_cat'];}?>" />
     <input type="hidden" id="cur_store_cat" name="cur_store_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_store_cat'];}?>" />
     <input type="hidden" id="cur_81_cat" name="cur_81_cat" value="" />
+    <input type="hidden" id="ebay_import" name="ebay_import" value="" />
+    <input type="hidden" id="import_ebay_listing" name="import_ebay_listing" value="<?php echo $_REQUEST['import_ebay_listing']; ?>" />
     <div class="text-center">
         <div class="btn-group" role="group" style="margin: 0px;padding: 10px;">
             <!--<button class="btn btn-light btn-lg border rounded-0 shadow-sm" type="button">Cancel</button>-->

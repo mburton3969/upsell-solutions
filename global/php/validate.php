@@ -22,10 +22,12 @@ if(mysqli_num_rows($g) <= 0){//if User does NOT exist...
   $r = mysqli_fetch_array($g);
   
   //Setup Session Variables...
+  $_SESSION['logged_in'] = 'Yes';
   $_SESSION['user_id'] = $r['ID'];
   $_SESSION['fname'] = $r['fname'];
   $_SESSION['lname'] = $r['lname'];
   $_SESSION['user_name'] = $r['fname'] . ' ' . $r['lname'];
+  $_SESSION['app_version'] = '3.4.0';
   
   echo '<script>
           window.location = "../../dashboard.php";

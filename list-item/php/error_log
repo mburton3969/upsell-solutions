@@ -1,0 +1,2 @@
+[22-May-2020 09:38:31 America/Chicago] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in /home1/reseller/beta/list-item/php/get-ebay-categories.php on line 14
+[22-May-2020 09:49:29 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/beta/list-item/php/get-ebay-categories.php on line 32

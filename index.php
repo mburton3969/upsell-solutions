@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-$_SESSION['app_version'] = '3.4.0';//Soon this will be moved to the validate script...
+include 'security/check-login.php';
 include 'assets/php/connection.php';
 $config = require 'assets/php/ebay-config.php';
 $maint = 'No';//Site Under Maintenance? Yes or No...
@@ -31,7 +31,7 @@ if($_SESSION['user_token'] == '' || !isset($_SESSION['user_token'])){
             window.location = "http://' . $_SERVER['HTTP_HOST'] . '";
           </script>';
   }else{
-    $trurl = 'assets/php/refresh-token-test.php';
+    $trurl = 'assets/ebay/refresh-ebay-token.php';
     echo '<script>
             window.location = "' . $trurl . '";
           </script>';
@@ -66,9 +66,11 @@ $pageIcon = 'fas fa-satellite-dish';
   <script src="assets/js/globals.js"></script>
   <link href="global/css/toggle.css" rel="stylesheet" />
 </head>
-
+<!--
 <body onload="get_cats(1);get_store_cats(1,'',25334048017);format_ebay();<?php if($_REQUEST['rety'] != 'Yes'){ echo 'get_81_store_cats(1,\'0\');';} ?>">
-	<!-- Preloader -->
+-->
+<body>
+  <!-- Preloader -->
 	<?php include 'global/sections/preloader.php'; ?>
 	<!-- /Preloader -->
     <div class="wrapper theme-4-active pimary-color-red">
@@ -129,10 +131,22 @@ $pageIcon = 'fas fa-satellite-dish';
 
   <?php include 'list-item/js/retry-functions.php'; ?>
   <?php 
-    if($_REQUEST['read'] != ''){
-      echo '<script>
-              get_item_details(' . $_REQUEST['read'] . ');
-            </script>';
-    }
+    echo '<script>
+            (function(){';
+  
+              if($_REQUEST['import_ebay_listing'] != ''){
+               echo 'get_item_details(' . $_REQUEST['import_ebay_listing'] . ');';
+              }else{
+               echo 'get_cats(1);';
+              }
+              echo "get_store_cats(1,'',25334048017);";
+              echo 'format_ebay();';
+              if($_REQUEST['rety'] != 'Yes'){ 
+                echo "get_81_store_cats(1,'0');";
+              }
+  
+       echo '})();
+          </script>';
+          
   ?>
 </html>

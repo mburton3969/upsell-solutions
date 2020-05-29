@@ -22,10 +22,15 @@ if(mysqli_num_rows($ag) <= 0){
   if(mysqli_num_rows($cg) > 0){
     $cr = mysqli_fetch_array($cg);
     //Adjust Inventory Level up by the quantity...
-    $iuq = "UPDATE `oc_product` SET `quantity` = `quantity` + " . intval($product_quantity) . " WHERE `upc` = '" . mysqli_real_escape_string($s_conn,$product_code) . "'";
-    mysqli_query($s_conn, $iuq) or die($s_conn->error . ' on line 26 of add-to-store-api.php');
-    $x->message = 'Product already exists in database. Inventory level adjusted';
-    $x->product_id = $cr['product_id'];
+    if($_REQUEST['import_ebay_listing'] != ''){
+      $x->message = 'Product already exists in database. Import to Store Ignored.';
+      $x->product_id = $cr['product_id'];
+    }else{
+      $iuq = "UPDATE `oc_product` SET `quantity` = `quantity` + " . intval($product_quantity) . " WHERE `upc` = '" . mysqli_real_escape_string($s_conn,$product_code) . "'";
+      mysqli_query($s_conn, $iuq) or die($s_conn->error . ' on line 26 of add-to-store-api.php');
+      $x->message = 'Product already exists in database. Inventory level adjusted';
+      $x->product_id = $cr['product_id'];
+    }
     
   }else{
     $x->message = 'Event Thread';
@@ -70,7 +75,7 @@ if(mysqli_num_rows($ag) <= 0){
           )
           VALUES
           (
-          'Classic',
+          '" . mysqli_real_escape_string($s_conn,$product_code) . "',
           '" . mysqli_real_escape_string($s_conn,$product_code) . "',
           '" . mysqli_real_escape_string($s_conn,$product_quantity) . "',
           '7',
@@ -113,8 +118,8 @@ if(mysqli_num_rows($ag) <= 0){
             (
             '" . $new_product_id . "',
             '1',
-            '" . mysqli_real_escape_string($s_conn,$product_title) . " - " . mysqli_real_escape_string($s_conn,$product_size) . "',
-            '" . mysqli_real_escape_string($s_conn,htmlentities($product_description)) . "',
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " - " . mysqli_real_escape_string($s_conn,$product_size) . "',
+            '" . mysqli_real_escape_string($s_conn,htmlentities($website_product_description)) . "',
             '" . mysqli_real_escape_string($s_conn,$product_title) . " | 81 Outfitters',
             '" . mysqli_real_escape_string($s_conn,$product_title) . " | 81 Outfitters',
             '" . mysqli_real_escape_string($s_conn,$product_title) . " | 81 Outfitters',
@@ -125,6 +130,7 @@ if(mysqli_num_rows($ag) <= 0){
     
     //Insert Product Attributes...
     $is_array = explode(',',$_REQUEST['item_specifics_array']);
+    array_push($is_array,'color','brand','Size','Style');
     foreach($is_array as $is){
         if($_REQUEST['product_'.$is] != ''){
             
@@ -455,19 +461,19 @@ if(mysqli_num_rows($ag) <= 0){
       $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
       if(mysqli_num_rows($cfg) <= 0){
         $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_1 . "','" . $filter_id . "')";
-        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 458 of add-to-store-api.php');
       }
       $cfq = "SELECT * FROM `oc_category_filter` WHERE `category_id` = '" . $prod_81_cat_2 . "' AND `filter_id` = '" . $filter_id . "'";
-      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
+      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 462 of add-to-store-api.php');
       if(mysqli_num_rows($cfg) <= 0){
         $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_2 . "','" . $filter_id . "')";
-        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 464 of add-to-store-api.php');
       }
       $cfq = "SELECT * FROM `oc_category_filter` WHERE `category_id` = '" . $prod_81_cat_3 . "' AND `filter_id` = '" . $filter_id . "'";
-      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
+      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 467 of add-to-store-api.php');
       if(mysqli_num_rows($cfg) <= 0){
         $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_3 . "','" . $filter_id . "')";
-        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 470 of add-to-store-api.php');
       }
     }
     
@@ -479,52 +485,229 @@ if(mysqli_num_rows($ag) <= 0){
       $gcq = "SELECT * FROM `oc_category_description` WHERE `category_id` = '" . $prod_81_cat_3 . "'";
       $gcg = mysqli_query($s_conn, $gcq) or die($s_conn->error);
       $gcr = mysqli_fetch_array($gcg);
+      $raw_store_category_text = $gcr['name'];
       $cat3 = $gcr['name'];
       $cat3 = str_replace('Womens ','',$cat3);
       $cat3 = str_replace('Mens ','',$cat3);
       $cat3 = str_replace('Kids ','',$cat3);
       
       $fq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '" . $groupID . "' AND `language_id` = '1' AND `name` = '" . $cat3 . "'";
-      $fg = mysqli_query($s_conn, $fq) or die($s_conn->error . ' on line 355 of add-to-store-api.php');
+      $fg = mysqli_query($s_conn, $fq) or die($s_conn->error . ' on line 488 of add-to-store-api.php');
       if(mysqli_num_rows($fg) > 0){
         $fr = mysqli_fetch_array($fg);
         $filter_id = $fr['filter_id'];
       }else{
         $ifq = "INSERT INTO `oc_filter` (`filter_group_id`,`sort_order`) VALUES ('" . $groupID . "','0')";
-        mysqli_query($s_conn, $ifq) or die($s_conn->error . ' on line 361 of add-to-store-api.php');
+        mysqli_query($s_conn, $ifq) or die($s_conn->error . ' on line 494 of add-to-store-api.php');
         $filter_id = $s_conn->insert_id;
         $ifdq = "INSERT INTO `oc_filter_description` (`filter_id`,`language_id`,`filter_group_id`,`name`) VALUES ('" . $filter_id . "','1','" . $groupID . "','" . $cat3 . "')";
-        mysqli_query($s_conn, $ifdq) or die($s_conn->error . ' on line 364 of add-to-store-api.php');
+        mysqli_query($s_conn, $ifdq) or die($s_conn->error . ' on line 497 of add-to-store-api.php');
       }
       $ipfq = "INSERT INTO `oc_product_filter` (`product_id`,`filter_id`) VALUES ('" . $new_product_id . "','" . $filter_id . "')";
-      mysqli_query($s_conn, $ipfq) or die($s_conn->error . ' on line 367 of add-to-store-api.php');
+      mysqli_query($s_conn, $ipfq) or die($s_conn->error . ' on line 500 of add-to-store-api.php');
       $x->message .= ' - Item Category filter inserted';
       
       //Insert Filter to Category...
       $cfq = "SELECT * FROM `oc_category_filter` WHERE `category_id` = '" . $prod_81_cat_1 . "' AND `filter_id` = '" . $filter_id . "'";
-      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
+      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 505 of add-to-store-api.php');
       if(mysqli_num_rows($cfg) <= 0){
         $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_1 . "','" . $filter_id . "')";
-        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 508 of add-to-store-api.php');
       }
       $cfq = "SELECT * FROM `oc_category_filter` WHERE `category_id` = '" . $prod_81_cat_2 . "' AND `filter_id` = '" . $filter_id . "'";
-      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
+      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 511 of add-to-store-api.php');
       if(mysqli_num_rows($cfg) <= 0){
         $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_2 . "','" . $filter_id . "')";
-        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 514 of add-to-store-api.php');
       }
       $cfq = "SELECT * FROM `oc_category_filter` WHERE `category_id` = '" . $prod_81_cat_3 . "' AND `filter_id` = '" . $filter_id . "'";
-      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
+      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 517 of add-to-store-api.php');
       if(mysqli_num_rows($cfg) <= 0){
         $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_3 . "','" . $filter_id . "')";
-        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 520 of add-to-store-api.php');
       }
     }
     
     //Add Product to the Store...
     $siq = "INSERT INTO `oc_product_to_store` (`product_id`,`store_id`) VALUES ('" . $new_product_id . "','0')";
-    mysqli_query($s_conn, $siq) or die($s_conn->error . ' on line 381 of add-to-store-api.php');
+    mysqli_query($s_conn, $siq) or die($s_conn->error . ' on line 526 of add-to-store-api.php');
     $x->message .= ' - oc_product_to_store inserted';
+    
+    
+  //Setup Ebay Profile for Syncing...
+  if(($_REQUEST['submit_to_ebay'] == 'on' && $_REQUEST['submit_to_store'] == 'on') || $_REQUEST['ebay_import'] == 'Yes'){
+      
+      if($_REQUEST['ebay_import'] == 'Yes'){
+        $ebay_listing_id = $_REQUEST['import_ebay_listing'];
+      }else{
+        $ebay_listing_id = $ebay_item_id;
+      }
+      
+    #Check if profile exists for category pair...
+    $pcq = "SELECT * FROM `oc_kb_ebay_profiles` WHERE `ebay_category_id` = '" . $product_category . "' AND `store_category_id` = '" . $product_81_store_category . "'";
+    $pcg = mysqli_query($s_conn, $pcq) or die($s_conn->error . ' on line 532 of add-to-store-api.php');
+    if(mysqli_num_rows($pcg) > 0){
+      #Profile found and ID retrieved...
+      $pcr = mysqli_fetch_array($pcg);
+      $profile_id = $pcr['id_ebay_profiles'];
+      $x->message .= ' - oc_kb_ebay_profiles inserted';
+    }else{
+      #Get Ebay Category Text...
+      $ectq = "SELECT * FROM `oc_kb_ebay_categories` WHERE `ebay_categories` = '" . $product_category . "'";
+      $ectg = mysqli_query($s_conn, $ectq) or die($s_conn->error);
+      $ectr = mysqli_fetch_array($ectg);
+      $ebay_category_text = mysqli_real_escape_string($s_conn, $ectr['ebay_category_name']);
+      
+      #Profile not found, adding new profile...
+      $npq = "INSERT INTO `oc_kb_ebay_profiles` 
+              (
+              `profile_name`,
+              `ebay_site`,
+              `ebay_category_id`,
+              `ebay_catgeory_text`,
+              `ebay_payment_method`,
+              `ebay_currency`,
+              `ebay_language`,
+              `ebay_shipping_profile`,
+              `store_category_id`,
+              `store_category_text`,
+              `duration`,
+              `product_quantity`,
+              `dispatch_days`,
+              `price_management`,
+              `increase_decrease`,
+              `product_price`,
+              `product_threshold_price`,
+              `percentage_fixed`,
+              `product_condition`,
+              `status`,
+              `return_enable`,
+              `return_days`,
+              `refund`,
+              `return_description`,
+              `return_shipping`,
+              `active`,
+              `site_id`,
+              `date_added`,
+              `date_modified`,
+              `vat_percentage`,
+              `html_template`,
+              `store_category`
+              )
+              VALUES
+              (
+              'ebay " . mysqli_real_escape_string($s_conn, $ebay_category_text) . " > website " . mysqli_real_escape_string($s_conn, $raw_store_category_text) . "',
+              '0',
+              '" . $product_category . "',
+              '" . mysqli_real_escape_string($s_conn, $ebay_category_text) . "',
+              'PayPal',
+              'USD',
+              '1',
+              '1',
+              '" . $product_81_store_category . "',
+              '" . mysqli_real_escape_string($s_conn, $raw_store_category_text) . "',
+              'GTC',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '1000',
+              'completed',
+              'ReturnsAccepted',
+              'Days_30',
+              'MoneyBack',
+              '',
+              'Seller',
+              '1',
+              '0',
+              CURRENT_TIMESTAMP,
+              CURRENT_TIMESTAMP,
+              '0',
+              '" . $website_product_description . "',
+              '" . $product_store_category . "'
+              )";
+        mysqli_query($s_conn, $npq) or die($s_conn->error);
+        $x->message .= ' - oc_kb_ebay_profiles created';
+        $profile_id = $s_conn->insert_id;
+        
+    }
+    
+    #Check for product in the profile...
+    $icq = "SELECT * FROM `oc_kb_ebay_profile_products` WHERE `id_ebay_profiles` = '" . $profile_id . "' AND `id_product` = '" . $new_product_id . "'";
+    $icg = mysqli_query($s_conn, $icq) or die($s_conn->error);
+    if(mysqli_num_rows($icg) > 0){
+      $x->message .= ' - oc_kb_ebay_profile_products already exists...';
+    }else{
+      $ipq = "INSERT INTO `oc_kb_ebay_profile_products`
+              (
+              `id_ebay_profiles`,
+              `id_product`,
+              `id_product_attribute`,
+              `product_reference`,
+              `upc`,
+              `ebay_listiing_id`,
+              `status`,
+              `ebay_status`,
+              `local_sync_flag`,
+              `relist`,
+              `revise`,
+              `end`,
+              `date_added`,
+              `item_url`,
+              `is_disabled`
+              )
+              VALUES
+              (
+              '" . $profile_id . "',
+              '" . $new_product_id . "',
+              '0',
+              'Classic',
+              '" . $product_code . "',
+              '" . $ebay_listing_id . "',
+              'Deleted',
+              'Ended',
+              '0',
+              '0',
+              '0',
+              '0',
+              CURRENT_TIMESTAMP,
+              'https://www.ebay.com/itm/" . $ebay_listing_id . "',
+              '0'
+              )";
+      mysqli_query($s_conn, $ipq) or die($s_conn->error);
+      $x->message .= ' - oc_kb_ebay_profile_products inserted';
+    }
+      
+    #Insert Import Record...
+    $iirq = "INSERT INTO `ebay_imports`
+              (
+              `date`,
+              `listing_id`,
+              `item_title`,
+              `item_upc`,
+              `user_id`,
+              `user_name`,
+              `inactive`
+              )
+              VALUES
+              (
+              CURRENT_TIMESTAMP,
+              '" . $ebay_listing_id . "',
+              '" . $product_title . "',
+              '" . $product_code . "',
+              '" . $_SESSION['user_id'] . "',
+              '" . $_SESSION['user_name'] . "',
+              'No'
+              )";
+    //if($_REQUEST['ebay_import'] == 'Yes'){
+      mysqli_query($conn, $iirq) or die($conn->error);
+      $x->message .= ' - ebay_imports record inserted';
+    //}
+    
+   }//End of Ebay_Sync Script...
     
   }//End If Item Exists Check...
   

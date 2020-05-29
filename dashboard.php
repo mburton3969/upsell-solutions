@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'security/check-login.php';
 $pageName = 'Dashboard';
 $pageIcon = 'fas fa-tachometer-alt';
 ?>

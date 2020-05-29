@@ -1,5 +1,4 @@
 <?php
-//include 'global/security/session-settings.php';
 session_start();
 include 'global/php/connection.php';
 if($_GET['logout'] == 'yes'){

@@ -1,4 +1,6 @@
 <?php
+session_start();
+include 'security/check-login.php';
 $pageName = 'Current Listings';
 $pageIcon = 'fab fa-ebay';
 ?>
@@ -42,7 +44,7 @@ $pageIcon = 'fab fa-ebay';
 	
 	<!--Footer-->
 	<?php include 'global/sections/includes.php'; ?>
-	<script src="current-listings/js/item-card-functions.js"></script>
+	<script src="current-listings/js/item-card-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 </body>
 
 </html>

@@ -1,7 +1,9 @@
 <?php
 header('Content-Type: application/json');
+include '../php/connection.php';
 error_reporting(0);
-session_start();$env_mode = $_SESSION['ebay_mode'];
+session_start();
+$env_mode = $_SESSION['ebay_mode'];
 $env_mode_val = $_SESSION['ebay_mode_val'];
 /**
  * Copyright 2017 David T. Sadler
@@ -64,10 +66,11 @@ $request->RequesterCredentials->eBayAuthToken = $config[$env_mode]['oauthUserTok
 $request->ActiveList = new Types\ItemListCustomizationType();
 $request->ActiveList->Include = true;
 $request->ActiveList->Pagination = new Types\PaginationType();
-$request->ActiveList->Pagination->EntriesPerPage = 10;
+$request->ActiveList->Pagination->EntriesPerPage = 100;
 $request->ActiveList->Sort = Enums\ItemSortTypeCodeType::C_CURRENT_PRICE_DESCENDING;
 
 $pageNum = 1;
+$item_count = 1;
 $i = 0;
 do {
     $x->response = 'GOOD';
@@ -104,19 +107,40 @@ do {
                 $item->SellingStatus->CurrentPrice->currencyID,
                 $item->SellingStatus->CurrentPrice->value
             );*/
-          $x->item[$i]->item_data = json_decode($item);
-          $x->item[$i]->itemID = $item->ItemID;
-          $x->item[$i]->title = $item->Title;
-          $x->item[$i]->iid = $i;
+          //Check if item exists in 81O Website...
+          //$exists = file_get_contents('http://beta.81outfitters.com/api/get-product-info.php?api_key=&upc=')
+          //Setup Response JSON Data...
+          //$x->item[$i]->item_data = json_decode($item);
+          //$x->item[$i]->itemID = $item->ItemID;
+          //$x->item[$i]->title = $item->Title;
+          //$x->item[$i]->iid = $i;
           //$x->item[$i]->itemStatus = $item->ListingStatus;
-          $i++;
+          
+          //$pic_data = file_get_contents('http://beta.reseller-solutions.com/assets/ebay/get-ebay-listing-by-id.php?iid=' . $x->item[$i]->itemID);
+          //$pic_data = json_decode($pic_data->item_data);
+          //$x->item[$i]->pic_data = $pic_data->PictureURL[0];
+          //$x->item[$i]->pic_data = json_decode($pic_data);
+          
+          $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `listing_id` = '" . $item->ItemID . "'";
+          $icg = mysqli_query($conn, $icq) or die($conn->error);
+          if(mysqli_num_rows($icg) <= 0){
+            //Setup Response JSON Data...
+            $x->item[$i]->item_data = json_decode($item);
+            $x->item[$i]->itemID = $item->ItemID;
+            $x->item[$i]->title = $item->Title;
+            $x->item[$i]->iid = $i;
+            $item_count += 1;
+            $i++;
+          }
+          
+          
         }
     }
 
     $pageNum += 1;
 
 //} while (isset($response->ActiveList) && $pageNum <= $response->ActiveList->PaginationResult->TotalNumberOfPages);
-} while (isset($response->ActiveList) && $pageNum <= 1);
+} while (isset($response->ActiveList) && $item_count <= 24);
   
 $res = json_encode($x, JSON_PRETTY_PRINT);
 echo $res;
