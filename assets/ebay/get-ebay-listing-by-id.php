@@ -81,7 +81,8 @@ if ($response->Ack !== 'Failure') {
     $x->response = 'GOOD';
     $x->item_status = $item->ListingStatus;
     $x->item_data = json_decode($item);
-
+    $iw = file_get_contents("http://beta.reseller-solutions.com/assets/ebay/get-ebay-listing-weight-by-id.php?iid=" . $itemID);
+    $x->weight_data = $iw;
 }
 
 $res = json_encode($x, JSON_PRETTY_PRINT);
