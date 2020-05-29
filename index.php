@@ -4,7 +4,7 @@ error_reporting(0);
 $_SESSION['app_version'] = '3.4.0';
 include 'assets/php/connection.php';
 $config = require 'assets/php/ebay-config.php';
-$maint = 'No';//Site Under Maintenance? Yes or No...
+$maint = 'Yes';//Site Under Maintenance? Yes or No...
 if($maint == 'Yes' && $_GET['bypass'] != 'Yes'){
 	header('Location: maintenance.php');
 }
