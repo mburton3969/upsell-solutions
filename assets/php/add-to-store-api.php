@@ -82,7 +82,7 @@ if(mysqli_num_rows($ag) <= 0){
           '" . mysqli_real_escape_string($s_conn,$product_image1) . "',
           '" . $product_manufacturer_id . "',
           '1',
-          '" . mysqli_real_escape_string($s_conn,$product_price) . "',
+          '" . mysqli_real_escape_string($s_conn,$website_product_price) . "',
           '9',
           CURRENT_DATE,
           '" . mysqli_real_escape_string($s_conn,$pkg_weight) . "',

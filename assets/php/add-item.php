@@ -93,6 +93,7 @@ if($product_image5 != '' && $product_image5 != 'undefined'){
   
 
 $product_price = $_REQUEST['product_price'];
+$website_product_price = $_REQUEST['website_product_price'];
 $product_quantity = $_REQUEST['product_quantity'];
 
 //Package Dimensions...
