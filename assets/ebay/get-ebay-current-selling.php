@@ -123,7 +123,7 @@ do {
           
           $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `listing_id` = '" . $item->ItemID . "'";
           $icg = mysqli_query($conn, $icq) or die($conn->error);
-          if(mysqli_num_rows($icg) <= 0){
+          if(mysqli_num_rows($icg) <= 0 && $item_count <= 6){
             //Setup Response JSON Data...
             $x->item[$i]->item_data = json_decode($item);
             $x->item[$i]->itemID = $item->ItemID;
@@ -140,7 +140,7 @@ do {
     $pageNum += 1;
 
 //} while (isset($response->ActiveList) && $pageNum <= $response->ActiveList->PaginationResult->TotalNumberOfPages);
-} while (isset($response->ActiveList) && $item_count <= 24);
+} while (isset($response->ActiveList) && $item_count <= 6);
   
 $res = json_encode($x, JSON_PRETTY_PRINT);
 echo $res;

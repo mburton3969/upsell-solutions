@@ -130,7 +130,7 @@ if(mysqli_num_rows($ag) <= 0){
     
     //Insert Product Attributes...
     $is_array = explode(',',$_REQUEST['item_specifics_array']);
-    array_push($is_array,'color','brand','Size','Style');
+    array_push($is_array,'color','brand','Size','Style','Type');
     foreach($is_array as $is){
         if($_REQUEST['product_'.$is] != ''){
             
