@@ -41,12 +41,54 @@ function create_card(data) {
       var r = JSON.parse(this.responseText);
       if (r.response == 'GOOD') {
         var x = r.item_data;
+        
+        //Get Item Specifics...
+        var brand;
+        var UPC;
+        var color;
+        var size;
+        var material;
+        var size_type;
+        var style;
+        for(var ii = 0; ii < x.ItemSpecifics.NameValueList.length; ii++){
+          var b = x.ItemSpecifics.NameValueList[ii];
+          if(b.Name === 'Brand'){
+            brand = b.Value;
+            console.log('Brand: '+brand);
+          }
+          if(b.Name === 'UPC'){
+            UPC = b.Value;
+            console.log('UPC: '+UPC);
+          }
+          if(b.Name === 'Color'){
+            color = b.Value;
+            console.log('color: '+color);
+          }
+          if(b.Name === 'Size'){
+            size = b.Value;
+            console.log('size: '+size);
+          }
+          if(b.Name === 'Material'){
+            material = b.Value;
+            console.log('material: '+material);
+          }
+          if(b.Name === 'Size Type'){
+            size_type = b.Value;
+            console.log('Size Type: '+size_type);
+          }
+          if(b.Name === 'Style'){
+            style = b.Value;
+            console.log('Size Type: '+style);
+          }
+
+        }
+        
         //Create the card elements...
         var card = document.createElement('div');
         card.setAttribute('class','col-lg-2 col-md-4 col-sm-4 col-xs-6');
         var panel = document.createElement('div');
         panel.setAttribute('class','panel panel-default card-view pa-0');
-        panel.setAttribute('style','height:346px;');
+        panel.setAttribute('style','height:400px;');
         var wrapper = document.createElement('div');
         wrapper.setAttribute('class','panel-wrapper collapse in');
         var body = document.createElement('div');
@@ -90,6 +132,10 @@ function create_card(data) {
         var price = document.createElement('span');
         price.setAttribute('class','head-font block text-warning font-16');
         price.innerHTML = '$'+data.SellingStatus.CurrentPrice.value;
+        var br = document.createElement('br');
+        var barcode = document.createElement('span');
+        barcode.setAttribute('class','head-font block text-success font-16');
+        barcode.innerHTML = 'UPC: '+UPC;
 
         //Compile the Card...
         //edit_btn.appendChild(edit_icon);
@@ -103,6 +149,8 @@ function create_card(data) {
         photo.appendChild(img_link);
         info.appendChild(h6);
         info.appendChild(price);
+        info.appendChild(br);
+        info.appendChild(barcode);
         article.appendChild(photo);
         article.appendChild(info);
         body.appendChild(article);
