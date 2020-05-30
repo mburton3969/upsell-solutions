@@ -495,14 +495,14 @@ if (isset($response->Errors)) {
         echo '<script>
                 var errors = document.getElementById("errors");
                 var h4 = document.createElement("h4");
-                h4.innerHTML = "' . $error->LongMessage . '";
+                h4.innerHTML = "' . mysqli_real_escape_string($conn, $error->LongMessage) . '";
                 errors.appendChild(h4);
               </script>';
       }elseif($error_type == 'Warning'){
         echo '<script>
                 var warnings = document.getElementById("warnings");
                 var h4 = document.createElement("h4");
-                h4.innerHTML = "' . $error->LongMessage . '";
+                h4.innerHTML = "' . mysqli_real_escape_string($conn, $error->LongMessage) . '";
                 warnings.appendChild(h4);
               </script>';
       }

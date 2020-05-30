@@ -19,7 +19,8 @@ if(mysqli_num_rows($ag) <= 0){
   //Check if product UPC Exists in Database...
   $cq = "SELECT * FROM `oc_product` WHERE `upc` = '" . mysqli_real_escape_string($s_conn,$product_code) . "'";
   $cg = mysqli_query($s_conn, $cq) or die($s_conn->error . ' on line 21 of add-to-store-api.php');
-  if(mysqli_num_rows($cg) > 0 && ($product_code == 'undefined' || $product_code == 'Does not apply')){
+  //echo 'Code: ' . $product_code;
+  if(mysqli_num_rows($cg) > 0 && $product_code != undefined && $product_code != 'undefined' && $product_code != 'Does not apply'){
     $cr = mysqli_fetch_array($cg);
     //Adjust Inventory Level up by the quantity...
     if($_REQUEST['import_ebay_listing'] != ''){
