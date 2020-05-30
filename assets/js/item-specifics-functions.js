@@ -79,7 +79,7 @@ function new_specific(spec, values) {
 
   var div = document.getElementById('item_specifics');
   console.warn('Item Specific: '+sName);
-  if(sName !== "Size_(Women's)" && sName !== "Size_(Men's)"){
+  if(sName !== "Size_(Women's)" && sName !== "Size_(Men's)" && sName !== "Type"){
     if(dd === false){
       div.appendChild(input);
     }else{

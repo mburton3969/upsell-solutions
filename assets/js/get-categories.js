@@ -233,13 +233,15 @@ function get_81_store_cats(lvl,parentID,set81Cat){
         return;
       }*/
       if(this.responseText === '' || this.responseText === 'null'){
-        console.log('Empty Result Set...');
+        console.log('No Results Found...');
         return;
       }
       var res = JSON.parse(this.responseText);
       var r_cat = res.categories;
       if(r_cat.length === 0){
         console.log('Empty Result Set...');
+        var type_text = $( "#product_81_store_category_"+(lvl-1)+" option:selected" ).text();
+        document.getElementById('product_Type').value = type_text;
         return;
       }
       document.getElementById('cur_81_cat').value = lvl;

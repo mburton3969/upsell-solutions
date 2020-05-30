@@ -50,6 +50,7 @@ $product_style = $_REQUEST['product_Style'];
 $product_sleevelength = $_REQUEST['product_sleevelength'];
 $product_material = $_REQUEST['product_material'];
 $product_size = $_REQUEST['product_Size'];
+$product_Type = $_REQUEST['product_Type'];
 
 $product_label = $_REQUEST['product_label'];
 $website_product_title = $product_brand . ' ' . $product_title;
@@ -63,6 +64,7 @@ $product_81_store_category = $_REQUEST['product_81_store_category_' . $prod_81_c
 $prod_81_cat_1 = $_REQUEST['product_81_store_category_1'];
 $prod_81_cat_2 = $_REQUEST['product_81_store_category_2'];
 $prod_81_cat_3 = $_REQUEST['product_81_store_category_3'];
+$prod_81_cat_4 = $_REQUEST['product_81_store_category_4'];
 
 
 $product_condition = $_REQUEST['product_condition'];
@@ -287,6 +289,13 @@ $item->ItemSpecifics->NameValueList[] = $specific;
 $specific = new Types\NameValueListType();
 $specific->Name = 'Size';
 $specific->Value[] = $product_size;
+$item->ItemSpecifics->NameValueList[] = $specific;
+  
+//Size Item Specific...
+//Item Custom Label...
+$specific = new Types\NameValueListType();
+$specific->Name = 'Type';
+$specific->Value[] = $product_Type;
 $item->ItemSpecifics->NameValueList[] = $specific;
 
 if($product_section == 'Mens'){
