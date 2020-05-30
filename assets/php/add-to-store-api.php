@@ -136,7 +136,8 @@ if(mysqli_num_rows($ag) <= 0){
         if($_REQUEST['product_'.$is] != ''){
             
           //Check if Attribute Exists...
-          $aq = "SELECT * FROM `oc_attribute_description` WHERE `language_id` = '1' AND `name` LIKE '%" . mysqli_real_escape_string($s_conn,str_replace('_',' ',$is)) . "%'";
+          //$aq = "SELECT * FROM `oc_attribute_description` WHERE `language_id` = '1' AND `name` LIKE '%" . mysqli_real_escape_string($s_conn,str_replace('_',' ',$is)) . "%'";
+          $aq = "SELECT * FROM `oc_attribute_description` WHERE `language_id` = '1' AND `name` = '" . mysqli_real_escape_string($s_conn,str_replace('_',' ',$is)) . "'";
           $ag = mysqli_query($s_conn, $aq) or die('Select oc_attribute_description error ' . $s_conn->error . ' on line 133 of add-to-store-api.php');
           $attribute_exists = false;
           if(mysqli_num_rows($ag) <= 0){
@@ -154,6 +155,14 @@ if(mysqli_num_rows($ag) <= 0){
             $attribute_exists = true;
           }
           
+          //Check if attribute exists for product...
+          $eaq = "SELECT * FROM `oc_product_attribute` WHERE `product_id` = '" . $new_product_id . "' AND `attribute_id` = '" . $new_attribute_id . "' AND `language_id` = '1'";
+          $eag = mysqli_query($s_conn, $eaq) or die($s_conn->error . ' on line 159 of add-to-store-api.php');
+          if(mysqli_num_rows($eag) > 0){
+            $product_attribute_exists = true;
+          }else{
+            $product_attribute_exists = false;
+          }
           //Insert Attribute Info for Product...
           $paiq = "INSERT INTO `oc_product_attribute`
                     (
@@ -169,9 +178,11 @@ if(mysqli_num_rows($ag) <= 0){
                     '1',
                     '" . mysqli_real_escape_string($s_conn,$_REQUEST['product_'.$is]) . "'
                     )";
-          if($attribute_exists == false){
+          if($product_attribute_exists == false){
             mysqli_query($s_conn, $paiq) or die('Insert oc_product_attribute error: ' . $s_conn->error . ' on line 163 of add-to-store-api.php ' . $new_attribute_id . ' -> ' . $_REQUEST['product_'.$is]);
             $x->message .= ' - item specific [' . str_replace('_',' ',$is) . '] inserted';
+          }else{
+            $x->message .= ' - item specific [' . str_replace('_',' ',$is) . '] ALREADY EXISTS!';
           }
           
         }
@@ -730,7 +741,6 @@ if(mysqli_num_rows($ag) <= 0){
               `upc`,
               `ebay_listiing_id`,
               `status`,
-              `ebay_status`,
               `local_sync_flag`,
               `relist`,
               `revise`,
@@ -744,11 +754,10 @@ if(mysqli_num_rows($ag) <= 0){
               '" . $profile_id . "',
               '" . $new_product_id . "',
               '0',
-              'Classic',
-              '" . $product_code . "',
+              '" . mysqli_real_escape_string($s_conn, $product_code) . "',
+              '" . mysqli_real_escape_string($s_conn, $product_code) . "',
               '" . $ebay_listing_id . "',
-              'Deleted',
-              'Ended',
+              'Listed',
               '0',
               '0',
               '0',
