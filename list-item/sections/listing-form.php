@@ -183,8 +183,8 @@
                     <h4 class="text-left">Price:</h4>
                 </div>
                 <div class="col-md-6">
-                  <label for="product_price">Ebay Price <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Ebay Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_price'];}?>" Required></label>
-                  <label for="website_product_price">Website Price <input type="text" id="website_product_price" style="width: 100%;" name="website_product_price" class="form-control" placeholder="Website Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['website_product_price'];}?>" Required></label>
+                  <label for="product_price">Ebay Price <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Ebay Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_price'];}?>" autocomplete="off" Required></label>
+                  <label for="website_product_price">Website Price <input type="text" id="website_product_price" style="width: 100%;" name="website_product_price" class="form-control" placeholder="Website Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['website_product_price'];}?>" autocomplete="off" Required></label>
                   <span id="suggested_prices"></span>
                 </div>
             </div>
