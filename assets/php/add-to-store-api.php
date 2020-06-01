@@ -26,6 +26,30 @@ if(mysqli_num_rows($ag) <= 0){
     if($_REQUEST['import_ebay_listing'] != ''){
       $x->message = 'Product already exists in database. Import to Store Ignored.';
       $x->product_id = $cr['product_id'];
+      #Insert Import Record...
+      $ebay_listing_id = $_REQUEST['import_ebay_listing'];
+      $iirq = "INSERT INTO `ebay_imports`
+                (
+                `date`,
+                `listing_id`,
+                `item_title`,
+                `item_upc`,
+                `user_id`,
+                `user_name`,
+                `inactive`
+                )
+                VALUES
+                (
+                CURRENT_TIMESTAMP,
+                '" . $ebay_listing_id . "',
+                '" . $product_title . "',
+                '" . $product_code . "',
+                '" . $_SESSION['user_id'] . "',
+                '" . $_SESSION['user_name'] . "',
+                'No'
+                )";
+        mysqli_query($conn, $iirq) or die($conn->error);
+        $x->message .= ' - ebay_imports record inserted';
     }else{
       $iuq = "UPDATE `oc_product` SET `quantity` = `quantity` + " . intval($product_quantity) . " WHERE `upc` = '" . mysqli_real_escape_string($s_conn,$product_code) . "'";
       mysqli_query($s_conn, $iuq) or die($s_conn->error . ' on line 26 of add-to-store-api.php');
