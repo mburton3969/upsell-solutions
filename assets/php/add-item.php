@@ -568,7 +568,7 @@ if($_REQUEST['submit_to_store'] == 'on'){
           </script>';
   
     $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_message`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
       VALUES
       (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . $store_response->message . "','" . mysqli_real_escape_string($conn,$store_response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
     mysqli_query($conn, $iq);
@@ -585,7 +585,7 @@ if($_REQUEST['submit_to_store'] == 'on'){
           </script>';
   
   $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_message`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
       VALUES
       (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . $store_response->message . "','" . mysqli_real_escape_string($conn,$store_response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
     mysqli_query($conn, $iq);
