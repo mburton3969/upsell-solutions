@@ -73,9 +73,9 @@ function drop(ev,elem) {
   cur_id = cur_id.substr(cur_id.length - 1);
   //Swap the images...
   document.getElementById('product_image'+new_id).src = cur_src;
-  document.getElementById('img_url'+new_id).src = cur_src;
+  document.getElementById('img_url'+new_id).value = cur_src;
   document.getElementById('product_image'+cur_id).src = new_src;
-  document.getElementById('img_url'+cur_id).src = new_src;
+  document.getElementById('img_url'+cur_id).value = new_src;
   console.log('Images Swapped!');
 }
 
