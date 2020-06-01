@@ -1,0 +1,41 @@
+//New Listing on OpenCart - Not on Ebay Yet...
+{
+  "id_ebay_profile_products": "188",
+  "id_ebay_profiles": "21",
+  "id_product": "3246",
+  "id_product_attribute": "0",
+  "product_reference": "0883096536116",
+  "upc": null,
+  "ebay_listiing_id": null,
+  "status": "New",
+  "ebay_status": null,
+  "local_sync_flag": "0",
+  "relist": "0",
+  "revise": "0",
+  "end": "0",
+  "date_added": "2020-05-30 17:30:07",
+  "date_updated": null,
+  "item_url": null,
+  "is_disabled": "0"
+}
+
+//Item Listed to OpenCart AND Listed to Ebay...
+{
+  "id_ebay_profile_products": "190",
+  "id_ebay_profiles": "21",
+  "id_product": "3249",
+  "id_product_attribute": "0",
+  "product_reference": "0883096536116",
+  "upc": null,
+  "ebay_listiing_id": "283896935672",
+  "status": "Listed",
+  "ebay_status": null,
+  "local_sync_flag": "0",
+  "relist": "0",
+  "revise": "0",
+  "end": "0",
+  "date_added": "2020-05-30 18:00:51",
+  "date_updated": null,
+  "item_url": "https:\/\/www.ebay.com\/itm\/283896935672",
+  "is_disabled": "0"
+}

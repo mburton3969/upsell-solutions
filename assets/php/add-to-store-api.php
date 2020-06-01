@@ -203,20 +203,24 @@ if(mysqli_num_rows($ag) <= 0){
     //Add Category to Product...
     //Cat1...
     $cuq = "INSERT INTO `oc_product_to_category` (`product_id`,`category_id`) VALUES ('" . $new_product_id . "','" . $prod_81_cat_1 . "')";
-    mysqli_query($s_conn, $cuq) or die($s_conn->error . ' on line 197 of add-to-store-api.php');
+    mysqli_query($s_conn, $cuq) or die($s_conn->error . ' on line 206 of add-to-store-api.php');
     $x->message .= ' - Category1 Inserted [' . $prod_81_cat_1 . ']';
     //Cat2...
     $cuq = "INSERT INTO `oc_product_to_category` (`product_id`,`category_id`) VALUES ('" . $new_product_id . "','" . $prod_81_cat_2 . "')";
-    mysqli_query($s_conn, $cuq) or die($s_conn->error . ' on line 201 of add-to-store-api.php');
+    mysqli_query($s_conn, $cuq) or die($s_conn->error . ' on line 210 of add-to-store-api.php');
     $x->message .= ' - Category2 Inserted [' . $prod_81_cat_2 . ']';
     //Cat3...
+    if($prod_81_cat_3 != ''){
     $cuq = "INSERT INTO `oc_product_to_category` (`product_id`,`category_id`) VALUES ('" . $new_product_id . "','" . $prod_81_cat_3 . "')";
-    mysqli_query($s_conn, $cuq) or die($s_conn->error . ' on line 201 of add-to-store-api.php');
+    mysqli_query($s_conn, $cuq) or die($s_conn->error . ' on line 214 of add-to-store-api.php');
     $x->message .= ' - Category3 Inserted [' . $prod_81_cat_3 . ']';
+    }
+    if($prod_81_cat_4 != ''){
     //Cat4...
     $cuq = "INSERT INTO `oc_product_to_category` (`product_id`,`category_id`) VALUES ('" . $new_product_id . "','" . $prod_81_cat_4 . "')";
-    mysqli_query($s_conn, $cuq) or die($s_conn->error . ' on line 201 of add-to-store-api.php');
+    mysqli_query($s_conn, $cuq) or die($s_conn->error . ' on line 218 of add-to-store-api.php');
     $x->message .= ' - Category4 Inserted [' . $prod_81_cat_4 . ']';
+    }
     
     //Setup the Product Filters...
     //Size...
@@ -727,7 +731,7 @@ if(mysqli_num_rows($ag) <= 0){
     }
     
     #Check for product in the profile...
-    $icq = "SELECT * FROM `oc_kb_ebay_profile_products` WHERE `id_ebay_profiles` = '" . $profile_id . "' AND `id_product` = '" . $new_product_id . "'";
+    $icq = "SELECT * FROM `oc_kb_ebay_profile_products` WHERE `id_ebay_profiles` = '" . $profile_id . "' && `id_ebay_profiles` IS NOT NULL AND `id_product` = '" . $new_product_id . "' AND `id_product` IS NOT NULL";
     $icg = mysqli_query($s_conn, $icq) or die($s_conn->error);
     if(mysqli_num_rows($icg) > 0){
       $x->message .= ' - oc_kb_ebay_profile_products already exists...';
