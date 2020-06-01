@@ -34,6 +34,7 @@ if(mysqli_num_rows($ag) <= 0){
                 `listing_id`,
                 `item_title`,
                 `item_upc`,
+                `product_id`,
                 `user_id`,
                 `user_name`,
                 `inactive`
@@ -44,11 +45,12 @@ if(mysqli_num_rows($ag) <= 0){
                 '" . $ebay_listing_id . "',
                 '" . $product_title . "',
                 '" . $product_code . "',
+                '" . $product_id . "',
                 '" . $_SESSION['user_id'] . "',
                 '" . $_SESSION['user_name'] . "',
                 'No'
                 )";
-        mysqli_query($conn, $iirq) or die($conn->error);
+        mysqli_query($conn, $iirq) or die($conn->error . ' on line 53 of add-to-store-api.php');
         $x->message .= ' - ebay_imports record inserted';
     }else{
       $iuq = "UPDATE `oc_product` SET `quantity` = `quantity` + " . intval($product_quantity) . " WHERE `upc` = '" . mysqli_real_escape_string($s_conn,$product_code) . "'";
@@ -673,7 +675,7 @@ if(mysqli_num_rows($ag) <= 0){
     }else{
       #Get Ebay Category Text...
       $ectq = "SELECT * FROM `oc_kb_ebay_categories` WHERE `ebay_categories` = '" . $product_category . "'";
-      $ectg = mysqli_query($s_conn, $ectq) or die($s_conn->error);
+      $ectg = mysqli_query($s_conn, $ectq) or die($s_conn->error . ' on line 678 of add-to-store-api.php');
       $ectr = mysqli_fetch_array($ectg);
       $ebay_category_text = mysqli_real_escape_string($s_conn, $ectr['ebay_category_name']);
       
@@ -745,10 +747,10 @@ if(mysqli_num_rows($ag) <= 0){
               CURRENT_TIMESTAMP,
               CURRENT_TIMESTAMP,
               '0',
-              '" . $website_product_description . "',
+              '" . mysqli_real_escape_string($s_conn,htmlentities($website_product_description)) . "',
               '" . $product_store_category . "'
               )";
-        mysqli_query($s_conn, $npq) or die($s_conn->error);
+        mysqli_query($s_conn, $npq) or die($s_conn->error . ' on line 753 of add-to-store-api.php');
         $x->message .= ' - oc_kb_ebay_profiles created';
         $profile_id = $s_conn->insert_id;
         
@@ -794,7 +796,7 @@ if(mysqli_num_rows($ag) <= 0){
               'https://www.ebay.com/itm/" . $ebay_listing_id . "',
               '0'
               )";
-      mysqli_query($s_conn, $ipq) or die($s_conn->error);
+      mysqli_query($s_conn, $ipq) or die($s_conn->error . ' on line 799 of add-to-store-api.php');
       $x->message .= ' - oc_kb_ebay_profile_products inserted';
     }
       
@@ -820,7 +822,7 @@ if(mysqli_num_rows($ag) <= 0){
               'No'
               )";
     //if($_REQUEST['ebay_import'] == 'Yes'){
-      mysqli_query($conn, $iirq) or die($conn->error);
+      mysqli_query($conn, $iirq) or die($conn->error . ' on line 825 of add-to-store-api.php');
       $x->message .= ' - ebay_imports record inserted';
     //}
     
