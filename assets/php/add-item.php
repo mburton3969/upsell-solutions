@@ -169,6 +169,8 @@ echo '<div id="failed_btns" style="width:100%;text-align:center;display:none;">
 //include '../store/save-upc-submit.php';
 //error_reporting(0);
 
+$request_data = json_encode($_REQUEST);
+
 //Submit to Ebay if turned on...
 if($_REQUEST['submit_to_ebay'] == 'on'){
 /**
@@ -522,9 +524,9 @@ if ($response->Ack !== 'Failure') {
         </script>';
   
     $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`user_id`,`user_name`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$response) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
     mysqli_query($conn, $iq);
 }else{
     echo '<script>
@@ -534,9 +536,9 @@ if ($response->Ack !== 'Failure') {
           </script>';
   
   $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`user_id`,`user_name`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$response) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
     mysqli_query($conn, $iq);
 }
 
@@ -548,7 +550,6 @@ if ($response->Ack !== 'Failure') {
 if($_REQUEST['submit_to_store'] == 'on'){
   include 'http://beta.81outfitters.com/api/connection.php';
   include 'add-to-store-api.php';
-  $request_data = json_encode($_REQUEST);
   
   if($store_response->response == 'GOOD'){
     
