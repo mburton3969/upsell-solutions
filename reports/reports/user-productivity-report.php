@@ -81,7 +81,7 @@ if(!$_POST['submit'] && !$_POST['submit_all']){
         <tbody>';
 
 //Get User List...
-$ulq = "SELECT * FROM `users` WHERE `inactive` != 'Yes' ORDER BY `fname` ASC";
+$ulq = "SELECT * FROM `users` WHERE `inactive` != 'Yes' AND `ID` != '1' ORDER BY `fname` ASC";
 $ulg = mysqli_query($conn, $ulq) or die($conn->error);
 while($ulr = mysqli_fetch_array($ulg)){
   //Counters...

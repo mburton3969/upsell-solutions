@@ -22,8 +22,47 @@
 					</div>
 				</form>
 			</div>
+      <?php
+      include 'global/php/connection.php';
+      //Get Activity...
+      $ulq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `log_type` = 'UPC Scan' AND `date` = CURRENT_DATE";
+      $ulg = mysqli_query($conn, $ulq) or die($conn->error);
+      $slq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `log_type` = 'Listing_Store' AND `date` = CURRENT_DATE AND `listed` = 'Yes'";
+      $slg = mysqli_query($conn, $slq) or die($conn->error);
+      $elq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `log_type` = 'Listing_Ebay' AND `date` = CURRENT_DATE AND `listed` = 'Yes'";
+      $elg = mysqli_query($conn, $elq) or die($conn->error);
+      $ilq = "SELECT * FROM `ebay_imports` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `status` = 'Imported' AND `date` = CURRENT_DATE";
+      $ilg = mysqli_query($conn, $ilq) or die($conn->error);
+      //Counts...
+      $upc_count = mysqli_num_rows($ulg);
+      $store_count = mysqli_num_rows($slg);
+      $ebay_count = mysqli_num_rows($elg);
+      $import_count = mysqli_num_rows($ilg);
+      $total_store_count = $store_count - $import_count;
+      $total_ebay_count = $ebay_count - $import_count;
+      ?>
 			<div id="mobile_only_nav" class="mobile-only-nav pull-right">
 				<ul class="nav navbar-right top-nav pull-right">
+          <li class="text-center mr-20">
+            <p>
+              UPC Scans<br> <?php echo $upc_count; ?>
+            </p>
+          </li>
+          <li class="text-center mr-20">
+            <p>
+              81O Listings<br> <?php echo $total_store_count; ?>
+            </p>
+          </li>
+          <li class="text-center mr-20">
+            <p>
+              Ebay Listings<br> <?php echo $total_ebay_count; ?>
+            </p>
+          </li>
+          <li class="text-center mr-20">
+            <p>
+              Ebay Imports<br> <?php echo $import_count; ?>
+            </p>
+          </li>
 					<!--<li>
 						<a id="open_right_sidebar" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
 					</li>-->
