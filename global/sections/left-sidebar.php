@@ -62,9 +62,11 @@
 									</li>-->
 				
 <!-------------------------------------------------------------------Report An Issue-------------------------------------------------------------------------------->
+                  <!--
                   <li style="background:#6E6E6E;border:1px solid #222222;">
 												<a href="https://ignitioninnovations.teamwork.com/support/" target="_blank"><i class="fas fa-ticket-alt mr-15"></i> Help Desk Ticket</a>
 									</li>
+                  -->
 				
 				
 	</ul>
