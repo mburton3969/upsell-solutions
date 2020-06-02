@@ -2,10 +2,15 @@
 session_start();
 include '../../assets/php/connection.php';
 
+//Load Variables...
+$sdate = date("Y-m-d", strtotime($_REQUEST['sdate']));
+$edate = date("Y-m-d", strtotime($_REQUEST['edate']));
+
 echo '
 <html>
 <head>
 <title>User Productivity Report</title>
+<link href="../../global/jquery/jquery-ui.css" rel="stylesheet" />
 <style>
 /* page */
 
@@ -40,6 +45,28 @@ td:empty{
 <h1 style="text-align:center;">User Productivity Report</h1>
 ';
 
+if(!$_POST['submit'] && !$_POST['submit_all']){
+  
+  echo '<div style="margin:auto;text-align:center;">
+          <h2><u>Select Date Range for Report</u></h2>
+          <form action="user-productivity-report.php" method="post" />
+            <input type="text" class="date" name="sdate" placeholder="Start Date" autocomplete="off" />
+            <input type="text" class="date" name="edate" placeholder="End Date" autocomplete="off" />
+            <input type="submit" name="submit" value="Submit" />
+            <input type="submit" name="submit_all" value="View All Dates" />
+          </form>
+        </div>';
+}else{
+  echo '<b>Activity From:';
+  if($_REQUEST['submit_all']){
+    echo 'ALL ACTIVITY';
+  }else{
+    echo $_POST['sdate'] . ' to ' . $_POST['edate'];
+  }
+  echo '<b> 
+          <a href="user-productivity-report.php" style="color:blue;">(Change Date Range)</a>
+          <br><br>';
+
  echo '<table>
         <thead>
          <tr style="background:lightgray;">
@@ -65,7 +92,12 @@ while($ulr = mysqli_fetch_array($ulg)){
   $total_actions = 0;
   
   //Get UPC Log info...
-  $lq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $ulr['ID'] . "'";
+  if($_REQUEST['submit_all']){
+    $lq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $ulr['ID'] . "'";
+  }else{
+    $lq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $ulr['ID'] . "' AND `date` >= '" . $sdate . "' AND `date` <= '" . $edate . "'";
+  }
+  
   $lg = mysqli_query($conn, $lq) or die($conn->error);
   while($lr = mysqli_fetch_array($lg)){
     if($lr['log_type'] == 'UPC Scan'){
@@ -80,15 +112,25 @@ while($ulr = mysqli_fetch_array($ulg)){
   }
   
   //Check if imported through the Reseller App...
-  $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `user_id` = '" . $ulr['ID'] . "' AND `status` = 'Imported'";
+  if($_REQUEST['submit_all']){
+    $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `user_id` = '" . $ulr['ID'] . "' AND `status` = 'Imported'";
+  }else{
+    $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `user_id` = '" . $ulr['ID'] . "' AND `status` = 'Imported' AND `date` >= '" . $sdate . "' AND `date` <= '" . $edate . "'";
+  }
   $icg = mysqli_query($conn, $icq) or die($conn->error);
   $import_count = mysqli_num_rows($icg);
   $ebay_imports = $import_count;
   
   //Setup Totals...
   $total_ebay_listings = $ebay_listings - $ebay_imports;
+  if($total_ebay_listings < 0){
+    $total_ebay_listings = 0;
+  }
   $total_store_listings = $store_listings - $ebay_imports;
-  $total_actions = $total_ebay_listings + $store_listings + $upc_scans + $ebay_imports;
+  if($total_store_listings < 0){
+    $total_store_listings = 0;
+  }
+  $total_actions = $total_ebay_listings + $total_store_listings + $upc_scans + $ebay_imports;
 
   echo '<tr>
           <td>' . $ulr['fname'] . ' ' . $ulr['lname'] . '</td>
@@ -104,8 +146,18 @@ while($ulr = mysqli_fetch_array($ulg)){
 
 echo '</tbody>
       </table>';
+  
+}//End Main IF Statement...
 
 echo '</body>
+<!--JQuery Files-->
+<script src="../../global/jquery/jquery.js"></script>
+<script src="../../global/jquery/jquery-ui.js"></script>
+<script>
+  $(document).ready(function(){
+    $( ".date" ).datepicker();
+  });
+</script>
 </html>';
 
 ?>
