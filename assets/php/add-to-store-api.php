@@ -148,10 +148,10 @@ if(mysqli_num_rows($ag) <= 0){
             '1',
             '" . mysqli_real_escape_string($s_conn,$website_product_title) . " - " . mysqli_real_escape_string($s_conn,$product_size) . "',
             '" . mysqli_real_escape_string($s_conn,htmlentities($website_product_description)) . "',
-            '" . mysqli_real_escape_string($s_conn,$product_title) . " | 81 Outfitters',
-            '" . mysqli_real_escape_string($s_conn,$product_title) . " | 81 Outfitters',
-            '" . mysqli_real_escape_string($s_conn,$product_title) . " | 81 Outfitters',
-            '" . mysqli_real_escape_string($s_conn,$product_title) . " | 81 Outfitters'
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " | 81 Outfitters',
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " | 81 Outfitters',
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " | 81 Outfitters',
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " | 81 Outfitters'
             )";
     mysqli_query($s_conn, $diq) or die('Insert oc_product_description error: ' . $s_conn->error . ' on line 123 of add-to-store-api.php');
     $x->message .= ' - oc_product_description inserted';
@@ -391,8 +391,8 @@ if(mysqli_num_rows($ag) <= 0){
     //Brand...
     if($product_brand != ''){
       $groupID = 7;
-      $fq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '" . $groupID . "' AND `language_id` = '1' AND `name` = '" . $product_brand . "'";
-      $fg = mysqli_query($s_conn, $fq) or die($s_conn->error . ' on line 293 of add-to-store-api.php');
+      $fq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '" . $groupID . "' AND `language_id` = '1' AND `name` = '" . mysqli_real_escape_string($s_conn, $product_brand) . "'";
+      $fg = mysqli_query($s_conn, $fq) or die($s_conn->error . ' on line 395 of add-to-store-api.php');
       if(mysqli_num_rows($fg) > 0){
         $fr = mysqli_fetch_array($fg);
         $filter_id = $fr['filter_id'];
@@ -400,7 +400,7 @@ if(mysqli_num_rows($ag) <= 0){
         $ifq = "INSERT INTO `oc_filter` (`filter_group_id`,`sort_order`) VALUES ('" . $groupID . "','0')";
         mysqli_query($s_conn, $ifq) or die($s_conn->error . ' on line 299 of add-to-store-api.php');
         $filter_id = $s_conn->insert_id;
-        $ifdq = "INSERT INTO `oc_filter_description` (`filter_id`,`language_id`,`filter_group_id`,`name`) VALUES ('" . $filter_id . "','1','" . $groupID . "','" . $product_brand . "')";
+        $ifdq = "INSERT INTO `oc_filter_description` (`filter_id`,`language_id`,`filter_group_id`,`name`) VALUES ('" . $filter_id . "','1','" . $groupID . "','" . mysqli_real_escape_string($s_conn, $product_brand) . "')";
         mysqli_query($s_conn, $ifdq) or die($s_conn->error . ' on line 302 of add-to-store-api.php');
       }
       $ipfq = "INSERT INTO `oc_product_filter` (`product_id`,`filter_id`) VALUES ('" . $new_product_id . "','" . $filter_id . "')";
