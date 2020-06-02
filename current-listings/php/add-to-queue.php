@@ -15,6 +15,7 @@ $title = mysqli_real_escape_string($conn, $_REQUEST['title']);
 $iq = "INSERT INTO `ebay_imports`
        (
        `date`,
+       `time`,
        `listing_id`,
        `item_title`,
        `item_upc`,
@@ -27,6 +28,7 @@ $iq = "INSERT INTO `ebay_imports`
        )
        VALUES
        (
+       CURRENT_TIMESTAMP,
        CURRENT_TIMESTAMP,
        '" . $item_id . "',
        '" . $title . "',
