@@ -24,3 +24,13 @@ $(function () {
 function init_tooltips(){
   $('[data-toggle="tooltip"]').tooltip();
 }
+
+//Delay Function...
+function sleep(milliseconds) {
+  console.warn('Sleeping For '+milliseconds+' milliseconds...');
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}

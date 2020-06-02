@@ -28,7 +28,8 @@ if(mysqli_num_rows($ag) <= 0){
       $x->product_id = $cr['product_id'];
       #Insert Import Record...
       $ebay_listing_id = $_REQUEST['import_ebay_listing'];
-      $iirq = "INSERT INTO `ebay_imports`
+      $iirq = "UPDATE `ebay_imports` SET `status` = 'Imported', `product_id` = '" . $product_id . "' WHERE `listing_id` = '" . $ebay_listing_id . "' AND `user_id` = '" . $_SESSION['user_id'] . "'";
+      /*$iirq = "INSERT INTO `ebay_imports`
                 (
                 `date`,
                 `listing_id`,
@@ -49,7 +50,7 @@ if(mysqli_num_rows($ag) <= 0){
                 '" . $_SESSION['user_id'] . "',
                 '" . $_SESSION['user_name'] . "',
                 'No'
-                )";
+                )";*/
         mysqli_query($conn, $iirq) or die($conn->error . ' on line 53 of add-to-store-api.php');
         $x->message .= ' - ebay_imports record inserted';
     }else{
@@ -801,7 +802,8 @@ if(mysqli_num_rows($ag) <= 0){
     }
       
     #Insert Import Record...
-    $iirq = "INSERT INTO `ebay_imports`
+    $iirq = "UPDATE `ebay_imports` SET `status` = 'Imported', `product_id` = '" . $product_id . "' WHERE `listing_id` = '" . $ebay_listing_id . "' AND `user_id` = '" . $_SESSION['user_id'] . "'";
+    /*$iirq = "INSERT INTO `ebay_imports`
               (
               `date`,
               `listing_id`,
@@ -820,7 +822,7 @@ if(mysqli_num_rows($ag) <= 0){
               '" . $_SESSION['user_id'] . "',
               '" . $_SESSION['user_name'] . "',
               'No'
-              )";
+              )";*/
     //if($_REQUEST['ebay_import'] == 'Yes'){
       mysqli_query($conn, $iirq) or die($conn->error . ' on line 825 of add-to-store-api.php');
       $x->message .= ' - ebay_imports record inserted';

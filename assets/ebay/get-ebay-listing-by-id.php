@@ -2,6 +2,7 @@
 header('Content-Type: application/json');
 error_reporting(0);
 session_start();
+include '../php/connection.php';
 $env_mode = $_SESSION['ebay_mode'];
 $env_mode_val = $_SESSION['ebay_mode_val'];
 
@@ -83,6 +84,7 @@ if ($response->Ack !== 'Failure') {
     $x->item_data = json_decode($item);
     $iw = file_get_contents("http://beta.reseller-solutions.com/assets/ebay/get-ebay-listing-weight-by-id.php?iid=" . $itemID);
     $x->weight_data = $iw;
+  
 }
 
 $res = json_encode($x, JSON_PRETTY_PRINT);

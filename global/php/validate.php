@@ -27,6 +27,9 @@ if(mysqli_num_rows($g) <= 0){//if User does NOT exist...
   $_SESSION['fname'] = $r['fname'];
   $_SESSION['lname'] = $r['lname'];
   $_SESSION['user_name'] = $r['fname'] . ' ' . $r['lname'];
+  //Permissions...
+  $_SESSION['admin'] = $r['admin'];
+  //App Info...
   $_SESSION['app_version'] = '3.4.0';
   
   echo '<script>

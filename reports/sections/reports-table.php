@@ -17,6 +17,19 @@
         </button>
       </td>
     </tr>
-
+    
+    <?php
+      if($_SESSION['admin'] == 'Yes'){
+        echo '<tr>
+                <td><b>User Productivity Report</b></td>
+                <td>This report displays all activities broken down by user.</td>
+                <td>
+                  <button type="button" class="btn btn-primary btn-sm" onclick="window.open(\'reports/reports/user-productivity-report.php\',\'_blank\');">
+                    <i class="fa fa-eye"> View</i>
+                  </button>
+                </td>
+              </tr>';
+      }
+    ?>
   </tbody>
 </table>

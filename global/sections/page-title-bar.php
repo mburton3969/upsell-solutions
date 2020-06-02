@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">
+        <h1 class="page-header" id="page-header">
            <!-- Dashboard <small>Statistics Overview</small>-->
           <?php 
             if($_SESSION['org_logo'] != ''){

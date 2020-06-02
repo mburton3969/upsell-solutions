@@ -45,6 +45,7 @@ $pageIcon = 'fab fa-ebay';
 	<!--Footer-->
 	<?php include 'global/sections/includes.php'; ?>
 	<script src="current-listings/js/item-card-functions.js?cb=<?php echo $cache_buster; ?>"></script>
+	<script src="current-listings/js/queue-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 </body>
 
 </html>
