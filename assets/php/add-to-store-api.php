@@ -28,7 +28,7 @@ if(mysqli_num_rows($ag) <= 0){
       $x->product_id = $cr['product_id'];
       #Insert Import Record...
       $ebay_listing_id = $_REQUEST['import_ebay_listing'];
-      $iirq = "UPDATE `ebay_imports` SET `status` = 'Imported', `product_id` = '" . $cr['product_id'] . "' WHERE `listing_id` = '" . $ebay_listing_id . "' AND `user_id` = '" . $_SESSION['user_id'] . "'";
+      $iirq = "UPDATE `ebay_imports` SET `date` = CURRENT_TIMESTAMP, `time` = CURRENT_TIMESTAMP, `status` = 'Imported', `product_id` = '" . $cr['product_id'] . "' WHERE `listing_id` = '" . $ebay_listing_id . "' AND `user_id` = '" . $_SESSION['user_id'] . "'";
       /*$iirq = "INSERT INTO `ebay_imports`
                 (
                 `date`,
@@ -802,7 +802,7 @@ if(mysqli_num_rows($ag) <= 0){
     }
       
     #Insert Import Record...
-    $iirq = "UPDATE `ebay_imports` SET `status` = 'Imported', `product_id` = '" . $new_product_id . "' WHERE `listing_id` = '" . $ebay_listing_id . "' AND `user_id` = '" . $_SESSION['user_id'] . "'";
+    $iirq = "UPDATE `ebay_imports` SET `date` = CURRENT_TIMESTAMP, `time` = CURRENT_TIMESTAMP, `status` = 'Imported', `product_id` = '" . $new_product_id . "' WHERE `listing_id` = '" . $ebay_listing_id . "' AND `user_id` = '" . $_SESSION['user_id'] . "'";
     /*$iirq = "INSERT INTO `ebay_imports`
               (
               `date`,
