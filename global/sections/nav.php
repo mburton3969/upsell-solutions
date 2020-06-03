@@ -45,6 +45,11 @@
 				<ul class="nav navbar-right top-nav pull-right">
           <li class="text-center mr-20">
             <p>
+              API Calls<br><span id="api_calls"></span>
+            </p>
+          </li>
+          <li class="text-center mr-20">
+            <p>
               UPC Scans<br> <?php echo $upc_count; ?>
             </p>
           </li>

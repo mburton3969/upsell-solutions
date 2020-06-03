@@ -34,3 +34,36 @@ function sleep(milliseconds) {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
 }
+
+
+function get_api_usage(){
+  document.getElementById('loader').style.display = 'inline';
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+      console.log(this.responseText);
+      var r = JSON.parse(this.responseText);
+      for(var i = 0; i < r.data.ApiAccessRule.length; i++){
+        var x = r.data.ApiAccessRule[i];
+        if(x.CallName === 'ApplicationAggregate'){
+          document.getElementById('api_calls').innerHTML = x.DailyUsage+' / '+x.DailyHardLimit;
+        }
+      }
+      
+    }
+  }
+  xmlhttp.open('GET', "assets/ebay/get-ebay-api-usage.php", true);
+  xmlhttp.send();
+}
+
+get_api_usage();
+
+setInterval(function(){
+  get_api_usage();
+},30000);
