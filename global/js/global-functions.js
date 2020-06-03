@@ -37,7 +37,6 @@ function sleep(milliseconds) {
 
 
 function get_api_usage(){
-  document.getElementById('loader').style.display = 'inline';
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
