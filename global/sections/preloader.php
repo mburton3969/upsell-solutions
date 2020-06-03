@@ -1,4 +1,4 @@
-<div id="loader" class="preloader-it" style="background: url('global/imgs/loading-gif-block.gif'), rgba(0,0,0,0.7); background-size:contain 50%;background-repeat:no-repeat;background-position:50% 50%;">
+<div id="loader" class="preloader-it" onclick="document.getElementById(this.id).style.display='none';" style="background: url('global/imgs/loading-gif-block.gif'), rgba(0,0,0,0.7); background-size:contain 50%;background-repeat:no-repeat;background-position:50% 50%;">
 		
   <div class="la-anim-1"></div>
   
