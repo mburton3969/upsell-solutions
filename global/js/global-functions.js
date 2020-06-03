@@ -61,8 +61,8 @@ function get_api_usage(){
   xmlhttp.send();
 }
 
-get_api_usage();
+//get_api_usage();
 
 setInterval(function(){
-  get_api_usage();
+  //get_api_usage();
 },30000);

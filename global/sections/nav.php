@@ -44,6 +44,11 @@
 			<div id="mobile_only_nav" class="mobile-only-nav pull-right">
 				<ul class="nav navbar-right top-nav pull-right">
           <li class="text-center mr-20">
+            <button type="button" class="btn btn-success btn-sm mt-15" style="padding:5px;" onclick="get_api_usage();">
+              <i class="fa fa-refresh"></i>
+            </button>
+          </li>
+          <li class="text-center mr-20">
             <p>
               API Calls<br><span id="api_calls"></span>
             </p>
