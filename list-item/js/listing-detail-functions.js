@@ -149,6 +149,7 @@ function parse_ebay_data(data,wdata){
 
 
 function get_ebay_cats(cid){
+  console.log('Getting Ebay Cats...');
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
@@ -161,22 +162,26 @@ function get_ebay_cats(cid){
       console.log(this.responseText);
       var r = JSON.parse(this.responseText);
       if (r.response == 'GOOD') {
-        var timer = 500;
-        for(var iii = 1; iii <= r.max_cat_level; iii++){
-          console.log('Category Test: '+r.cats[iii]);
-          timer = timer + 500;
-          
-            if(iii === 1){
-              console.warn('pre-pre-check: Base Level');
-              get_cats(iii,'bypass');
-            }else{
+        if(r.max_cat_level !== null){
+          var timer = 500;
+          for(var iii = 1; iii <= r.max_cat_level; iii++){
+            console.log('Category Test: '+r.cats[iii]);
+            timer = timer + 500;
+
+              if(iii === 1){
+                console.warn('pre-pre-check: Base Level');
+                get_cats(iii,'bypass');
+              }else{
                 console.warn('pre-pre-check: '+(iii)+','+r.cats[iii-1]+','+r.cats[iii]);
                 get_cats((iii),r.cats[iii-1],r.cats[iii]);
                 sleep(1000);
                 document.getElementById('cur_cat').value = r.cats[iii];
                 console.log('cur_cat set to: '+r.cats[iii]);
-            }
-            
+              }
+
+          }
+        }else{
+          get_cats(1);
         }
 
       }
