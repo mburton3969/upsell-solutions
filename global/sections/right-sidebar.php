@@ -4,14 +4,16 @@
 					<div  class="tab-struct custom-tab-1">
 						<ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
 							<li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">chat</a></li>
-							<li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">messages</a></li>
+							<!--
+              <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">messages</a></li>
 							<li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
-						</ul>
+						  -->
+            </ul>
 						<div class="tab-content" id="right_sidebar_content">
 							<div  id="chat_tab" class="tab-pane fade active in" role="tabpanel">
 								<div class="chat-cmplt-wrap">
 									<div class="chat-box-wrap">
-										<div class="add-friend">
+										<!--<div class="add-friend">
 											<a href="javascript:void(0)" class="inline-block txt-grey">
 												<i class="zmdi zmdi-more"></i>
 											</a>	
@@ -26,7 +28,7 @@
 												<button type="button" class="btn  btn-default"><i class="zmdi zmdi-search"></i></button>
 												</span>
 											</div>
-										</form>
+										</form>-->
 										<div id="chat_list_scroll">
 											<div class="nicescroll-bar">
 												<ul class="chat-list-wrap">
@@ -34,16 +36,27 @@
 														<div class="chat-body">
 															<a  href="javascript:void(0)">
 																<div class="chat-data">
-																	<img class="user-img img-circle"  src="dist/img/user.png" alt="user"/>
+																	<img class="user-img img-circle"  src="https://via.placeholder.com/100/FF0000/000000?text=81O" alt="user"/>
 																	<div class="user-data">
-																		<span class="name block capitalize-font">Clay Masse</span>
-																		<span class="time block truncate txt-grey">No one saves us but ourselves.</span>
+																		<span class="name block capitalize-font">81 Outfitters</span>
+																		<span class="time block truncate txt-grey">Internal Team Chat.</span>
 																	</div>
 																	<div class="status away"></div>
 																	<div class="clearfix"></div>
 																</div>
 															</a>
-															<a  href="javascript:void(0)">
+                              <a  href="javascript:void(0)">
+																<div class="chat-data">
+																	<img class="user-img img-circle"  src="https://via.placeholder.com/100/FF0000/000000?text=S" alt="user"/>
+																	<div class="user-data">
+																		<span class="name block capitalize-font">Support Chat</span>
+																		<span class="time block truncate txt-grey">Help Desk Chat.</span>
+																	</div>
+																	<div class="status away"></div>
+																	<div class="clearfix"></div>
+																</div>
+															</a>
+															<!--<a  href="javascript:void(0)">
 																<div class="chat-data">
 																	<img class="user-img img-circle"  src="dist/img/user1.png" alt="user"/>
 																	<div class="user-data">
@@ -130,7 +143,7 @@
 																	<div class="status away"></div>
 																	<div class="clearfix"></div>
 																</div>
-															</a>
+															</a>-->
 														</div>
 													</li>
 												</ul>

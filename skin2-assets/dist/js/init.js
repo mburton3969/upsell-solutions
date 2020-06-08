@@ -341,7 +341,7 @@ var doodle = function(){
 /***** doodle function end *****/
 
 /***** Chat App function Start *****/
-var chatAppTarget = $('.chat-for-widgets-1.chat-cmplt-wrap');
+/*var chatAppTarget = $('.chat-for-widgets-1.chat-cmplt-wrap');
 var chatApp = function() {
 	$(document).on("click",".chat-for-widgets-1.chat-cmplt-wrap .chat-data",function (e) {
 		var width = $(window).width();
@@ -357,7 +357,7 @@ var chatApp = function() {
 		}	
 		return false;
 	});
-};
+};*/
 /***** Chat App function End *****/
 
 var boxLayout = function() {

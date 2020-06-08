@@ -46,7 +46,43 @@
                   <input type="text" id="product_brand" style="width:31%;display:inline;" name="product_brand" class="form-control is-field" placeholder="Brand" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_brand'];}?>" required>
                   <input type="text" id="product_material" style="width:31%;display:inline;" name="product_material" class="form-control is-field" placeholder="Material" maxlength="50" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_material'];}?>" required>
                   <input type="text" id="product_color" style="width:31%;display:inline;" name="product_color" class="form-control is-field" placeholder="Color" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_color'];}?>" required>
+                  <select id="Test"  style="width:31%;display:inline;" class="form-control is-field">
+                    <option value="">Select a Size</option>
+                  <?php
+                    $s_conn = mysqli_connect('localhost','outfitte_store','+F%JW[$YDOR(','outfitte_opencart') or die('Error: ' . $s_conn->error . ' on line 4 of add-to-store-api.php');
+                    //Juniors...
+                    echo '<option value="">****Junior Sizes****</option>';
+                    $jsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Juniors' ORDER BY `name` ASC";
+                    $jsog = mysqli_query($s_conn, $jsoq) or die($s_conn->error . 'ERROR');
+                    while($jsor = mysqli_fetch_array($jsog)){
+                      echo '<option value="' . $jsor['name'] . '">' . $jsor['name'] . '</option>';
+                    }
+                    //Regular...
+                    echo '<option value="">****Regular Sizes****</option>';
+                    $rsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Regular' ORDER BY `name` ASC";
+                    $rsog = mysqli_query($s_conn, $rsoq) or die($s_conn->error . 'ERROR');
+                    while($rsor = mysqli_fetch_array($rsog)){
+                      echo '<option value="' . $rsor['name'] . '">' . $rsor['name'] . '</option>';
+                    }
+                    //Plus...
+                    echo '<option value="">****Plus Sizes****</option>';
+                    $plsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Plus' ORDER BY `name` ASC";
+                    $plsog = mysqli_query($s_conn, $plsoq) or die($s_conn->error . 'ERROR');
+                    while($plsor = mysqli_fetch_array($plsog)){
+                      echo '<option value="' . $plsor['name'] . '">' . $plsor['name'] . '</option>';
+                    }
+                    //Petite...
+                    echo '<option value="">****Petite Sizes****</option>';
+                    $psoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Petite' ORDER BY `name` ASC";
+                    $psog = mysqli_query($s_conn, $psoq) or die($s_conn->error . 'ERROR');
+                    while($psor = mysqli_fetch_array($psog)){
+                      echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
+                    }
+                  ?>
+                  </select>
+                  <!--
                   <input type="text" id="product_Size" style="width:31%;display:inline;" name="product_Size" class="form-control is-field" placeholder="Size" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_Size'];}?>" >
+                  -->
                   <input type="hidden" id="product_Type" name="product_Type" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_Type'];}?>" />
                   <span id="item_specifics"></span>
                   <!--

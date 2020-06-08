@@ -8,16 +8,6 @@
   </thead>
   <tbody>
 
-    <tr>
-      <td><b>Item Cross-Check Report</b></td>
-      <td>This report displays any items that indicate they are not syncronized correctly.</td>
-      <td>
-        <button type="button" class="btn btn-primary btn-sm" onclick="window.open('reports/reports/item-cross-check-report.php','_blank');">
-          <i class="fa fa-eye"> View</i>
-        </button>
-      </td>
-    </tr>
-    
     <?php
       if($_SESSION['admin'] == 'Yes'){
         echo '<tr>
@@ -31,5 +21,36 @@
               </tr>';
       }
     ?>
+    
+    <tr>
+      <td><b>Item Cross-Check Report</b></td>
+      <td>This report displays any items that indicate they are not syncronized correctly.</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm" onclick="window.open('reports/reports/item-cross-check-report.php','_blank');">
+          <i class="fa fa-eye"> View</i>
+        </button>
+      </td>
+    </tr>
+    
+    <tr>
+      <td><b>Invalid Size Report</b></td>
+      <td>This report displays any items that are attached to invalid Sizes or not Size at all.</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm" onclick="window.open('reports/reports/invalid-size-report.php','_blank');">
+          <i class="fa fa-eye"> View</i>
+        </button>
+      </td>
+    </tr>
+    
+    <tr>
+      <td><b>Unused Size Report</b></td>
+      <td>This report displays any size options that are currently unused.</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm" onclick="window.open('reports/reports/unused-size-report.php','_blank');">
+          <i class="fa fa-eye"> View</i>
+        </button>
+      </td>
+    </tr>
+    
   </tbody>
 </table>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 include 'security/check-login.php';
 include 'assets/php/connection.php';
 $config = require 'assets/php/ebay-config.php';
