@@ -81,6 +81,13 @@
                     while($psor = mysqli_fetch_array($psog)){
                       echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
                     }
+                    //Infants/Toddlers...
+                    echo '<option value="">****Infant/Toddler Sizes****</option>';
+                    $psoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Infant/Toddler' ORDER BY `name` ASC";
+                    $psog = mysqli_query($s_conn, $psoq) or die($s_conn->error . 'ERROR');
+                    while($psor = mysqli_fetch_array($psog)){
+                      echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
+                    }
                   ?>
                   </select>
                   </label>
