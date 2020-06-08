@@ -125,6 +125,7 @@ function parse_ebay_data(data,wdata){
   document.getElementById('product_color').value = color;
 	document.getElementById('product_quantity').value = r.Quantity;
 	document.getElementById('product_brand').value = brand;
+  document.getElementById('size_label').innerHTML = 'Ebay: '+size;
 	document.getElementById('product_Size').value = size;
 	document.getElementById('product_material').value = material;
   document.getElementById('product_pkg_lbs').value = rr.ShippingPackageDetails.WeightMajor.value;
