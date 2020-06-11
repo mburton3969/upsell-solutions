@@ -19,3 +19,39 @@ Stack trace:
 #2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
 #3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[04-Jun-2020 14:06:44 America/Chicago] PHP Fatal error:  Uncaught GuzzleHttp\Exception\ServerException: Server error: `POST https://api.ebay.com/ws/api.dll` resulted in a `503 Service Unavailable` response:
+<html><head><title>Apache Tomcat/5.5.15-150 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;col (truncated...)
+ in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php:113
+Stack trace:
+#0 /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Middleware.php(66): GuzzleHttp\Exception\RequestException::create(Object(GuzzleHttp\Psr7\Request), Object(GuzzleHttp\Psr7\Response))
+#1 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(203): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Response))
+#2 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(156): GuzzleHttp\Promise\Promise::callHandler(1, Object(GuzzleHttp\Psr7\Response), Array)
+#3 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/TaskQueue.php(47) in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php on line 113
+[08-Jun-2020 13:29:09 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+Stack trace:
+#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[08-Jun-2020 13:29:16 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+Stack trace:
+#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[08-Jun-2020 13:29:19 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+Stack trace:
+#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+[10-Jun-2020 10:26:57 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
+Stack trace:
+#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(56): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#2 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/functions.php(84): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
+#3 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
+#4 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\Configurati in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
