@@ -491,7 +491,9 @@ if(mysqli_num_rows($ag) <= 0){
       $cat1 = $gcr['name'];
       $cat1 = str_replace('Womens ','',$cat1);
       $cat1 = str_replace('Mens ','',$cat1);
-      $cat1 = str_replace('Kids ','',$cat1);
+      $cat1 = str_replace('Boys ','',$cat1);
+      $cat1 = str_replace('Girls ','',$cat1);
+      $cat1 = str_replace('Infants/Toddlers ','',$cat1);
       
       $fq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '" . $groupID . "' AND `language_id` = '1' AND `name` = '" . $cat1 . "'";
       $fg = mysqli_query($s_conn, $fq) or die($s_conn->error . ' on line 325 of add-to-store-api.php');
@@ -546,9 +548,11 @@ if(mysqli_num_rows($ag) <= 0){
       $gcg = mysqli_query($s_conn, $gcq) or die($s_conn->error);
       $gcr = mysqli_fetch_array($gcg);
       $cat2 = $gcr['name'];
-      $cat2 = str_replace('Womens ','',$cat2);
-      $cat2 = str_replace('Mens ','',$cat2);
-      $cat2 = str_replace('Kids ','',$cat2);
+      $cat1 = str_replace('Womens ','',$cat1);
+      $cat1 = str_replace('Mens ','',$cat1);
+      $cat1 = str_replace('Boys ','',$cat1);
+      $cat1 = str_replace('Girls ','',$cat1);
+      $cat1 = str_replace('Infants/Toddlers ','',$cat1);
       
       $fq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '" . $groupID . "' AND `language_id` = '1' AND `name` = '" . $cat2 . "'";
       $fg = mysqli_query($s_conn, $fq) or die($s_conn->error . ' on line 355 of add-to-store-api.php');
@@ -603,9 +607,11 @@ if(mysqli_num_rows($ag) <= 0){
       $gcr = mysqli_fetch_array($gcg);
       $raw_store_category_text = $gcr['name'];
       $cat3 = $gcr['name'];
-      $cat3 = str_replace('Womens ','',$cat3);
-      $cat3 = str_replace('Mens ','',$cat3);
-      $cat3 = str_replace('Kids ','',$cat3);
+      $cat1 = str_replace('Womens ','',$cat1);
+      $cat1 = str_replace('Mens ','',$cat1);
+      $cat1 = str_replace('Boys ','',$cat1);
+      $cat1 = str_replace('Girls ','',$cat1);
+      $cat1 = str_replace('Infants/Toddlers ','',$cat1);
       
       $fq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '" . $groupID . "' AND `language_id` = '1' AND `name` = '" . $cat3 . "'";
       $fg = mysqli_query($s_conn, $fq) or die($s_conn->error . ' on line 488 of add-to-store-api.php');
