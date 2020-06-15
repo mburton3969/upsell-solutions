@@ -90,6 +90,9 @@
                     }
                   ?>
                   </select>
+                  <!--<select class="form-control is-field" id="product_Inseam" name="product_Inseam" >
+                    <option value="">Inseam Size</option>  
+                  </select>-->
                   </label>
                   <!--
                   <input type="text" id="product_Size" style="width:31%;display:inline;" name="product_Size" class="form-control is-field" placeholder="Size" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_Size'];}?>" >
