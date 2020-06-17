@@ -480,6 +480,53 @@ if(mysqli_num_rows($ag) <= 0){
       }
     }
     
+    
+    //Inseam...
+    if($product_Inseam != ''){
+      $groupID = 12;
+      $fq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '" . $groupID . "' AND `language_id` = '1' AND `name` = '" . $product_Inseam . "'";
+      $fg = mysqli_query($s_conn, $fq) or die($s_conn->error . ' on line 383 of add-to-store-api.php');
+      if(mysqli_num_rows($fg) > 0){
+        $fr = mysqli_fetch_array($fg);
+        $filter_id = $fr['filter_id'];
+      }else{
+        $ifq = "INSERT INTO `oc_filter` (`filter_group_id`,`sort_order`) VALUES ('" . $groupID . "','0')";
+        mysqli_query($s_conn, $ifq) or die($s_conn->error . ' on line 389 of add-to-store-api.php');
+        $filter_id = $s_conn->insert_id;
+        $ifdq = "INSERT INTO `oc_filter_description` (`filter_id`,`language_id`,`filter_group_id`,`name`) VALUES ('" . $filter_id . "','1','" . $groupID . "','" . $product_Inseam . "')";
+        mysqli_query($s_conn, $ifdq) or die($s_conn->error . ' on line 392 of add-to-store-api.php');
+      }
+      $ipfq = "INSERT INTO `oc_product_filter` (`product_id`,`filter_id`) VALUES ('" . $new_product_id . "','" . $filter_id . "')";
+      mysqli_query($s_conn, $ipfq) or die($s_conn->error . ' on line 305 of add-to-store-api.php');
+      $x->message .= ' - Type product filter inserted';
+      
+      //Insert Filter to Category...
+      $cfq = "SELECT * FROM `oc_category_filter` WHERE `category_id` = '" . $prod_81_cat_1 . "' AND `filter_id` = '" . $filter_id . "'";
+      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
+      if(mysqli_num_rows($cfg) <= 0){
+        $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_1 . "','" . $filter_id . "')";
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+      }
+      $cfq = "SELECT * FROM `oc_category_filter` WHERE `category_id` = '" . $prod_81_cat_2 . "' AND `filter_id` = '" . $filter_id . "'";
+      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
+      if(mysqli_num_rows($cfg) <= 0){
+        $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_2 . "','" . $filter_id . "')";
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+      }
+      $cfq = "SELECT * FROM `oc_category_filter` WHERE `category_id` = '" . $prod_81_cat_3 . "' AND `filter_id` = '" . $filter_id . "'";
+      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
+      if(mysqli_num_rows($cfg) <= 0){
+        $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_3 . "','" . $filter_id . "')";
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+      }
+      $cfq = "SELECT * FROM `oc_category_filter` WHERE `category_id` = '" . $prod_81_cat_4 . "' AND `filter_id` = '" . $filter_id . "'";
+      $cfg = mysqli_query($s_conn, $cfq) or die($s_conn->error . ' on line 226 of add-to-store-api.php');
+      if(mysqli_num_rows($cfg) <= 0){
+        $cfiq = "INSERT INTO `oc_category_filter` (`category_id`,`filter_id`) VALUES ('" . $prod_81_cat_4 . "','" . $filter_id . "')";
+        mysqli_query($s_conn, $cfiq) or die($s_conn->error . ' on line 229 of add-to-store-api.php');
+      }
+    }
+    
     //Product Category Filtering...
     if($prod_81_cat_1 != ''){//Item Gender...
       $groupID = 10;

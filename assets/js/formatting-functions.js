@@ -12,6 +12,7 @@ function format_ebay(){
   
   //Format the eBay Fields...
   var ebay_title = psection+' '+pbrand+' '+ptitle+' '+pcolor+' '+psize;
+  var website_title = pbrand+' '+ptitle+' - '+psize;
   var ebay_desc = psection+' '+pbrand+' '+ptitle+' '+pcolor+' '+psize+'\r\n'+'\r\n'+pmaterial;
   
   //Check Title String Length...
@@ -30,6 +31,7 @@ function format_ebay(){
   
   //Set Title...
   document.getElementById('product_title_display').innerHTML = ebay_title;
+  document.getElementById('web_product_title_display').innerHTML = website_title;
   
   //Set Description...
   document.getElementById('product_description').value = ebay_desc;
