@@ -50,6 +50,8 @@ if($user_token == ''){
             <input type="text" class="form-control" name="user_token" id="user_token" placeholder="User Token" autocomplete="off" />
             <input type="submit" name="submit" value="Submit" />
           </form>
+          <br><br>
+          <img src="imgs/token-how-to.png" style="margin:auto;width:100%;" />
         </div>';
   
 }else{

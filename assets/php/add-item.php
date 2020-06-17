@@ -51,6 +51,7 @@ $product_sleevelength = $_REQUEST['product_sleevelength'];
 $product_material = $_REQUEST['product_material'];
 $product_size = $_REQUEST['product_Size'];
 $product_Type = $_REQUEST['product_Type'];
+$product_Inseam = $_REQUEST['product_Inseam'];
 
 $product_label = $_REQUEST['product_label'];
 $website_product_title = $product_brand . ' ' . $product_title;
@@ -291,6 +292,12 @@ $item->ItemSpecifics->NameValueList[] = $specific;
 $specific = new Types\NameValueListType();
 $specific->Name = 'Size';
 $specific->Value[] = $product_size;
+$item->ItemSpecifics->NameValueList[] = $specific;
+  
+//Inseam Item Specific...
+$specific = new Types\NameValueListType();
+$specific->Name = 'Inseam';
+$specific->Value[] = $product_Inseam;
 $item->ItemSpecifics->NameValueList[] = $specific;
   
 //Size Item Specific...

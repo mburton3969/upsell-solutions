@@ -4,10 +4,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="text-left">Title:</h4>
+                    <p><b><u>Ebay Title:</u></b></p>
+                    <p id="product_title_display"></p>
+                    <br>
+                    <p><b><u>Website Title:</u></b></p>
+                    <p id="web_product_title_display"></p>
                 </div>
                 <div class="col-md-6">
                   <input type="text" id="product_title" style="width: 100%;" name="product_title" class="form-control" placeholder="Title" maxlength="80" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_title'];}?>" onchange="format_ebay();" Required>
-                  <p id="product_title_display"></p>
                 </div>
             </div>
         </div>
@@ -46,7 +50,7 @@
                   <input type="text" id="product_brand" style="width:31%;display:inline;" name="product_brand" class="form-control is-field" placeholder="Brand" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_brand'];}?>" required>
                   <input type="text" id="product_material" style="width:31%;display:inline;" name="product_material" class="form-control is-field" placeholder="Material" maxlength="50" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_material'];}?>" required>
                   <input type="text" id="product_color" style="width:31%;display:inline;" name="product_color" class="form-control is-field" placeholder="Color" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_color'];}?>" required>
-                  <label for="product_Size" style="width:31%;">
+                  <label for="product_Size" style="width:31%;margin-right:5px;">
                     <span id="size_label"></span>
                     <br>
                   <select id="product_Size" name="product_Size" onchange="format_ebay();" style="display:inline;" class="form-control is-field">
@@ -91,6 +95,17 @@
                   ?>
                   </select>
                   </label>
+                  <select class="form-control is-field" id="product_Inseam" name="product_Inseam" style="width:31%;display:none;" >
+                    <option value="">Inseam Size</option>
+                    <?php
+                      //Infants/Toddlers...
+                      $psoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '12' ORDER BY `name` ASC";
+                      $psog = mysqli_query($s_conn, $psoq) or die($s_conn->error . 'ERROR');
+                      while($psor = mysqli_fetch_array($psog)){
+                        echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
+                      }
+                    ?>
+                  </select>
                   <!--
                   <input type="text" id="product_Size" style="width:31%;display:inline;" name="product_Size" class="form-control is-field" placeholder="Size" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_Size'];}?>" >
                   -->

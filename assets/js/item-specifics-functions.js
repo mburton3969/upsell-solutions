@@ -79,12 +79,16 @@ function new_specific(spec, values) {
 
   var div = document.getElementById('item_specifics');
   console.warn('Item Specific: '+sName);
-  if(sName !== "Size_(Women's)" && sName !== "Size_(Men's)" && sName !== "Type"){
+  if(sName !== "Size_(Women's)" && sName !== "Size_(Men's)" && sName !== "Type" && sName !== 'Inseam'){
     if(dd === false){
       div.appendChild(input);
     }else{
       div.appendChild(select);
     }
+  }
+  
+  if(sName === 'Inseam'){
+    document.getElementById('product_Inseam').style.display = 'inline';
   }
   
     item_specifics.push(sName);

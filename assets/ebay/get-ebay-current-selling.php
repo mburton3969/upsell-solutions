@@ -124,6 +124,7 @@ do {
           $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `listing_id` = '" . $item->ItemID . "'";
           $icg = mysqli_query($conn, $icq) or die($conn->error);
           if(mysqli_num_rows($icg) <= 0 && $item_count <= 6){
+          //if(mysqli_num_rows($icg) <= 0){
             //Setup Response JSON Data...
             $x->item[$i]->item_data = json_decode($item);
             $x->item[$i]->itemID = $item->ItemID;
