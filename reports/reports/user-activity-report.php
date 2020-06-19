@@ -3,17 +3,14 @@ session_start();
 include '../../assets/php/connection.php';
 
 //Load Variables...
+$uid = $_REQUEST['uid'];
 $sdate = date("Y-m-d", strtotime($_REQUEST['sdate']));
 $edate = date("Y-m-d", strtotime($_REQUEST['edate']));
-if($_REQUEST['submit_all']){
-  $sub = '&submit_all=y';
-}else{
-  $sub = '&submit=y';
-}
+
 echo '
 <html>
 <head>
-<title>User Productivity Report</title>
+<title>User Activity Report</title>
 <link href="../../global/jquery/jquery-ui.css" rel="stylesheet" />
 <style>
 /* page */
@@ -29,10 +26,10 @@ th, td{
   padding:5px;
 }
 
-td:empty{
+/*td:empty{
   background: red;
   color: white;
-}
+}*/
 
 @media print {
 	* { -webkit-print-color-adjust: exact; }
@@ -46,14 +43,22 @@ td:empty{
 </style>
 </head>
 <body>
-<h1 style="text-align:center;">User Productivity Report</h1>
+<h1 style="text-align:center;">User Activity Report</h1>
 ';
 
-if(!$_REQUEST['submit'] && !$_REQUEST['submit_all']){
+if($uid == ''){
   
   echo '<div style="margin:auto;text-align:center;">
           <h2><u>Select Date Range for Report</u></h2>
-          <form action="user-productivity-report.php" method="post" />
+          <form action="user-activity-report.php" method="post" />
+            <select name="uid" required>
+              <option value="">Select User</option>';
+            $uq = "SELECT * FROM `users` WHERE `inactive` != 'Yes' ORDER BY `fname` ASC";
+            $ug = mysqli_query($conn, $uq) or die($conn->error);
+            while($ur = mysqli_fetch_array($ug)){
+              echo '<option value="' . $ur['ID'] . '">' . $ur['fname'] . ' ' . $ur['lname'] . '</option>';
+            }
+      echo '</select>
             <input type="text" class="date" name="sdate" placeholder="Start Date" autocomplete="off" />
             <input type="text" class="date" name="edate" placeholder="End Date" autocomplete="off" />
             <input type="submit" name="submit" value="Submit" />
@@ -68,26 +73,27 @@ if(!$_REQUEST['submit'] && !$_REQUEST['submit_all']){
     echo $_REQUEST['sdate'] . ' to ' . $_REQUEST['edate'];
   }
   echo '<b> 
-          <a href="user-productivity-report.php" style="color:blue;">(Change Date Range)</a>
+          <a href="user-activity-report.php" style="color:blue;">(Change User or Date Range)</a>
           <br><br>';
 
- echo '<table>
+ echo '<table id="report_table" style="font-size:13px;">
         <thead>
          <tr style="background:lightgray;">
-         <th>User</td>
-         <th>UPC Scans</th>
-         <th>81O Listings</th>
-         <th>Qty to 81O</th>
-         <th>ebay Listings</th>
-         <th>Qty to ebay</th>
-         <th>ebay Imports</th>
-         <th>Total Actions</th>
+         <th>Date</th>
+         <th>Time</th>
+         <th>Type</th>
+         <th>Barcode</th>
+         <th>Item</th>
+         <th>Qty</th>
+         <th>Data Found?</th>
+         <th>Data Source</th>
+         <th>Listed?</th>
          </tr>
         </thead>
         <tbody>';
 
 //Get User List...
-$ulq = "SELECT * FROM `users` WHERE `inactive` != 'Yes' AND `ID` != '1' ORDER BY `fname` ASC";
+$ulq = "SELECT * FROM `users` WHERE `inactive` != 'Yes' AND `ID` != '1' AND `ID` = '" . $uid . "' ORDER BY `fname` ASC";
 $ulg = mysqli_query($conn, $ulq) or die($conn->error);
 while($ulr = mysqli_fetch_array($ulg)){
   //Counters...
@@ -105,7 +111,6 @@ while($ulr = mysqli_fetch_array($ulg)){
   }else{
     $lq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $ulr['ID'] . "' AND `date` >= '" . $sdate . "' AND `date` <= '" . $edate . "'";
   }
-  
   $lg = mysqli_query($conn, $lq) or die($conn->error);
   while($lr = mysqli_fetch_array($lg)){
     if($lr['log_type'] == 'UPC Scan'){
@@ -122,6 +127,25 @@ while($ulr = mysqli_fetch_array($ulg)){
       $store_qty_listed = $store_qty_listed + (int)$qty->product_quantity;
     }
     
+    $x = json_decode($lr['request_data']);
+    echo '<tr>
+            <td>' . date("m/d/y",strtotime($lr['date'])) . '</td>
+            <td>' . date("h:i A",strtotime($lr['time'])) . '</td>
+            <td>' . $lr['log_type'] . '</td>
+            <td>' . $lr['upc_code'] . '</td>
+            <td>
+              ' . $x->product_title;
+            if($lr['log_type'] != 'UPC Scan'){
+              echo '<br>
+              <img src="' . $x->img_url1 . '" style="width:100%;" />';
+            }
+      echo '</td>
+            <td>' . $x->product_quantity . '</td>
+            <td>' . $lr['data_found'] . '</td>
+            <td>' . $lr['data_source'] . '</td>
+            <td>' . $lr['listed'] . '</td>
+          </tr>';
+    
   }
   
   //Check if imported through the Reseller App...
@@ -131,6 +155,23 @@ while($ulr = mysqli_fetch_array($ulg)){
     $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `user_id` = '" . $ulr['ID'] . "' AND `status` = 'Imported' AND `date` >= '" . $sdate . "' AND `date` <= '" . $edate . "'";
   }
   $icg = mysqli_query($conn, $icq) or die($conn->error);
+  while($icr = mysqli_fetch_array($icg)){
+    echo '<tr>
+          <td>' . date("m/d/y",strtotime($icr['date'])) . '</td>
+          <td>' . date("h:i A",strtotime($icr['time'])) . '</td>
+          <td>ebay Import</td>
+          <td>' . $icr['item_upc'] . '</td>
+          <td>
+            ' . $icr['item_title'] . '
+            <br>
+            <img src="' . $icr['product_img'] . '" style="width:100%;" />  
+          </td>
+          <td>N/A</td>
+          <td>N/A</td>
+          <td>ebay.com</td>
+          <td>' . $icr['listing_id'] . '</td>
+        </tr>';
+  }
   $import_count = mysqli_num_rows($icg);
   $ebay_imports = $import_count;
   
@@ -144,21 +185,8 @@ while($ulr = mysqli_fetch_array($ulg)){
     $total_store_listings = 0;
   }
   $total_actions = $total_ebay_listings + $total_store_listings + $upc_scans + $ebay_imports;
+
   
-  echo '<tr>
-          <td>
-            <a href="user-activity-report.php?uid=' . $ulr['ID'] . '&sdate=' . $sdate . '&edate=' . $edate . $sub . '" target="_blank">
-              ' . $ulr['fname'] . ' ' . $ulr['lname'] . '
-            </a>
-          </td>
-          <td>' . $upc_scans . '</td>
-          <td>' . $total_store_listings . '</td>
-          <td>' . $store_qty_listed . '</td>
-          <td>' . $total_ebay_listings . '</td>
-          <td>' . $ebay_qty_listed . '</td>
-          <td>' . $ebay_imports . '</td>
-          <td>' . $total_actions . '</td>
-        </tr>';
   
 }
 
@@ -183,8 +211,12 @@ echo '</body>
 <script>
   $("#report_table").dataTable({
     "paging": false,
+    "columnDefs": [
+                    { type: "time-uni", targets: 1 }
+                  ],
     "order": [
-              [ 0, "asc" ]
+              [ 0, "asc" ],
+              [ 1, "asc" ]
              ]
   });
 </script>
