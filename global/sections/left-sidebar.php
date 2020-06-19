@@ -57,9 +57,9 @@
 				?>
 				
 <!-------------------------------------------------------------------Make A Suggestion-------------------------------------------------------------------------------->
-									<!--<li style="background:#6E6E6E;border:1px solid #222222;">
-												<a href="suggestion.php"><i class="fas fa-lightbulb-o mr-20"></i> Make A Suggestion</a>
-									</li>-->
+									<li style="background:#6E6E6E;border:1px solid #222222;">
+												<a href="support.php"><i class="fas fa-ticket-alt mr-15"></i> Support Tickets</a>
+									</li>
 				
 <!-------------------------------------------------------------------Report An Issue-------------------------------------------------------------------------------->
                   <!--

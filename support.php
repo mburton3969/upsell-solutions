@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'security/check-login.php';
-$pageName = 'Blank';
+$pageName = 'Support';
 $pageIcon = 'fas fa-file';
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ $pageIcon = 'fas fa-file';
       <div class="container-fluid pt-25"><!--Main Content Here-->
 				<?php include 'global/sections/page-title-bar.php'; ?>
 
-        
+        <?php include 'support/sections/tickets-display.php'; ?>
         
 			</div>
 			
@@ -44,6 +44,7 @@ $pageIcon = 'fas fa-file';
 	
 	<!--Footer-->
 	<?php include 'global/sections/includes.php'; ?>
+  <script src="support/js/ticket-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 </body>
 
 </html>
