@@ -41,6 +41,9 @@ $pageIcon = 'fas fa-file';
 
     </div>
     <!-- /#wrapper -->
+  
+  <!-- Modals -->
+  <?php include 'support/modals/view-ticket-modal.php'; ?>
 	
 	<!--Footer-->
 	<?php include 'global/sections/includes.php'; ?>
