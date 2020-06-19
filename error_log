@@ -27,3 +27,7 @@
 [17-Jun-2020 13:13:55 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
 [17-Jun-2020 13:44:44 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
 
+[18-Jun-2020 14:30:02 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[18-Jun-2020 14:53:08 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[19-Jun-2020 13:29:07 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[19-Jun-2020 13:58:36 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
