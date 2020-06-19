@@ -258,8 +258,12 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  */
   
 //$item->Title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
-$item->Title = substr($product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size, 0, 80);
- 
+if($product_Inseam == ''){
+  $item->Title = substr($product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size, 0, 80);
+}else{
+  $item->Title = substr($product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size . 'x' . $product_Inseam, 0, 80);
+}
+  
 //$item->Title = $product_title;
 $item->Description = $product_description;
 $item->SKU = $product_label;//Was $product_code...

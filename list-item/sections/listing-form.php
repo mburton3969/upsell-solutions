@@ -95,7 +95,7 @@
                   ?>
                   </select>
                   </label>
-                  <select class="form-control is-field" id="product_Inseam" name="product_Inseam" style="width:31%;display:none;" >
+                  <select class="form-control is-field" id="product_Inseam" name="product_Inseam" onchange="format_ebay();" style="width:31%;display:none;" >
                     <option value="">Inseam Size</option>
                     <?php
                       //Infants/Toddlers...

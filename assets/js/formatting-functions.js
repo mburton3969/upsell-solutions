@@ -11,6 +11,10 @@ function format_ebay(){
   var pmaterial = document.getElementById('product_material').value;
   
   //Format the eBay Fields...
+  var inseam = document.getElementById('product_Inseam').value;
+  if(inseam !== ''){
+    psize += 'x'+inseam;
+  }
   var ebay_title = psection+' '+pbrand+' '+ptitle+' '+pcolor+' '+psize;
   var website_title = pbrand+' '+ptitle+' - '+psize;
   var ebay_desc = psection+' '+pbrand+' '+ptitle+' '+pcolor+' '+psize+'\r\n'+'\r\n'+pmaterial;
