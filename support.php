@@ -9,6 +9,11 @@ $pageIcon = 'fas fa-file';
 <head>
 	<title><?php echo $pageName; ?> | Reseller Solutions</title>
     <?php include 'global/sections/head.php'; ?>
+  <style>
+    blockquote{
+      color: #6e6e6e !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -47,7 +52,7 @@ $pageIcon = 'fas fa-file';
 	
 	<!--Footer-->
 	<?php include 'global/sections/includes.php'; ?>
-  <script src="support/js/ticket-functions.js?cb=<?php echo $cache_buster; ?>"></script>
+  <script src="support/js/jira-ticket-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 </body>
 
 </html>
