@@ -117,25 +117,32 @@ function add_ticket(t){
 
     //Priority...
     var cell = document.createElement('td');
-    var icon = document.createElement('i');
-    icon.setAttribute('class','fas fa-exclamation-triangle');
-    icon.setAttribute('style','white-space: nowrap;');
+    //var icon = document.createElement('i');
+    //icon.setAttribute('class','fas fa-exclamation-triangle');
+    //icon.setAttribute('style','white-space: nowrap;');
+    var div = document.createElement('div');
+    div.setAttribute('style','white-space:nowrap;');
+    var img = document.createElement('img');
+    img.src = t.fields.priority.iconUrl;
+    img.setAttribute('width','16px');
+    img.setAttribute('height','16px');
     var text = document.createTextNode(' '+t.fields.priority.name.toUpperCase());
-    icon.appendChild(text);
-    cell.appendChild(icon);
+    div.appendChild(img);
+    div.appendChild(text);
+    cell.appendChild(div);
     row.appendChild(cell);
 
     //Status...
     var cell = document.createElement('td');
-    var bClass;
+    var bClass = 'default';
     var bColor = '#000';
     if(t.fields.status.name === 'Waiting for support'){
-      bClass = 'success';
+      bClass = 'warning';
       bColor = '#000';
     }
     if(t.fields.status.name === 'Open'){
-      bClass = 'primary';
-      bColor = '#FFF';
+      bClass = 'default';
+      bColor = '#000';
     }
     if(t.fields.status.name === 'On-hold'){
       bClass = 'danger';
@@ -144,6 +151,10 @@ function add_ticket(t){
     if(t.fields.status.name === 'Waiting on customer'){
       bClass = 'warning';
       bColor = '#000';
+    }
+    if(t.fields.status.name === 'Work in progress'){
+      bClass = 'primary';
+      bColor = '#FFF';
     }
     var badge = document.createElement('span');
     badge.setAttribute('class','badge badge-'+bClass);

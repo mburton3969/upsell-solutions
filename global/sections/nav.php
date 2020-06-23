@@ -25,13 +25,13 @@
       <?php
       include 'global/php/connection.php';
       //Get Activity...
-      $ulq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `log_type` = 'UPC Scan' AND `date` = CURRENT_DATE";
+      $ulq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `log_type` = 'UPC Scan' AND `date` = CURRENT_DATE AND `user_id` = '" . $_SESSION['user_id'] . "'";
       $ulg = mysqli_query($conn, $ulq) or die($conn->error);
-      $slq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `log_type` = 'Listing_Store' AND `date` = CURRENT_DATE AND `listed` = 'Yes'";
+      $slq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `log_type` = 'Listing_Store' AND `date` = CURRENT_DATE AND `listed` = 'Yes' AND `user_id` = '" . $_SESSION['user_id'] . "'";
       $slg = mysqli_query($conn, $slq) or die($conn->error);
-      $elq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `log_type` = 'Listing_Ebay' AND `date` = CURRENT_DATE AND `listed` = 'Yes'";
+      $elq = "SELECT * FROM `upc_search_log` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `log_type` = 'Listing_Ebay' AND `date` = CURRENT_DATE AND `listed` = 'Yes' AND `user_id` = '" . $_SESSION['user_id'] . "'";
       $elg = mysqli_query($conn, $elq) or die($conn->error);
-      $ilq = "SELECT * FROM `ebay_imports` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `status` = 'Imported' AND `date` = CURRENT_DATE";
+      $ilq = "SELECT * FROM `ebay_imports` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `status` = 'Imported' AND `date` = CURRENT_DATE AND `user_id` = '" . $_SESSION['user_id'] . "'";
       $ilg = mysqli_query($conn, $ilq) or die($conn->error);
       //Counts...
       $upc_count = mysqli_num_rows($ulg);
