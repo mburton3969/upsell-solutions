@@ -146,12 +146,12 @@ if(mysqli_num_rows($ag) <= 0){
             (
             '" . $new_product_id . "',
             '1',
-            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " - " . mysqli_real_escape_string($s_conn,$product_size) . "x" . mysqli_real_escape_string($s_conn,$product_Inseam) . "',
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . "',
             '" . mysqli_real_escape_string($s_conn,htmlentities($website_product_description)) . "',
-            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " - " . mysqli_real_escape_string($s_conn,$product_size) . "x" . mysqli_real_escape_string($s_conn,$product_Inseam) . " | 81 Outfitters',
-            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " - " . mysqli_real_escape_string($s_conn,$product_size) . "x" . mysqli_real_escape_string($s_conn,$product_Inseam) . " | 81 Outfitters',
-            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " - " . mysqli_real_escape_string($s_conn,$product_size) . "x" . mysqli_real_escape_string($s_conn,$product_Inseam) . " | 81 Outfitters',
-            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " - " . mysqli_real_escape_string($s_conn,$product_size) . "x" . mysqli_real_escape_string($s_conn,$product_Inseam) . " | 81 Outfitters'
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " | 81 Outfitters',
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " | 81 Outfitters',
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " | 81 Outfitters',
+            '" . mysqli_real_escape_string($s_conn,$website_product_title) . " | 81 Outfitters'
             )";
     mysqli_query($s_conn, $diq) or die('Insert oc_product_description error: ' . $s_conn->error . ' on line 123 of add-to-store-api.php');
     $x->message .= ' - oc_product_description inserted';

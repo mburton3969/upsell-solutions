@@ -15,6 +15,10 @@ function format_ebay(){
   if(inseam !== ''){
     psize += 'x'+inseam;
   }
+  if(document.getElementById('product_Cup_Size')){
+    var cupSize = document.getElementById('product_Cup_Size').value;
+    psize += cupSize;
+  }
   var ebay_title = psection+' '+pbrand+' '+ptitle+' '+pcolor+' '+psize;
   var website_title = pbrand+' '+ptitle+' - '+psize;
   var ebay_desc = psection+' '+pbrand+' '+ptitle+' '+pcolor+' '+psize+'\r\n'+'\r\n'+pmaterial;

@@ -44,6 +44,9 @@ function new_specific(spec, values) {
     input.setAttribute('class','form-control is-field');
     input.setAttribute('placeholder',sName);
     input.setAttribute('required','required');
+    if(sName === 'Cup_Size'){
+      input.setAttribute('onchange','format_ebay();');
+    }
     if(sName === 'Inseam'){
       input.setAttribute('value','Does Not Apply');
       input.style.display = 'none';

@@ -54,7 +54,13 @@ $product_Type = $_REQUEST['product_Type'];
 $product_Inseam = $_REQUEST['product_Inseam'];
 
 $product_label = $_REQUEST['product_label'];
-$website_product_title = $product_brand . ' ' . $product_title;
+$website_product_title = $product_brand . ' ' . $product_title . ' - ' . $product_size;
+if($_REQUEST['product_Inseam'] != ''){
+  $website_product_title .=  'x' . $product_Inseam;
+}
+if($_REQUEST['product_Cup_Size'] != ''){
+  $website_product_title .= $_REQUEST['product_Cup_Size'];
+}
 
 //$product_category = $_REQUEST['product_category'];
 $product_section = $_REQUEST['product_section'];
@@ -257,13 +263,14 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  * Note that any HTML in the title or description must be converted to HTML entities.
  */
   
-//$item->Title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
-if($product_Inseam == ''){
-  $item->Title = substr($product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size, 0, 80);
-}else{
-  $item->Title = substr($product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size . 'x' . $product_Inseam, 0, 80);
+$ebay_title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
+if($product_Inseam != ''){
+  $ebay_title .= 'x' . $product_Inseam;
 }
-  
+if($_REQUEST['product_Cup_Size'] != ''){
+  $ebay_title .= $_REQUEST['product_Cup_Size'];
+}
+$item->Title = substr($ebay_title, 0, 80);
 //$item->Title = $product_title;
 $item->Description = $product_description;
 $item->SKU = $product_label;//Was $product_code...
