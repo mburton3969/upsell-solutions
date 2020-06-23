@@ -1,9 +1,13 @@
+<audio id="chat-notification">
+  <source src="global/mp3/chat-notification.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 <div class="fixed-sidebar-right">
 			<ul class="right-sidebar">
 				<li>
 					<div  class="tab-struct custom-tab-1">
 						<ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-							<li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">chat</a></li>
+              <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab" style="white-space:nowrap;">Chat <span style="color:blue;">[BETA]</span></a></li>
 							<!--
               <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">messages</a></li>
 							<li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
@@ -34,28 +38,23 @@
 												<ul class="chat-list-wrap">
 													<li class="chat-list">
 														<div class="chat-body">
-															<a  href="javascript:void(0)">
-																<div class="chat-data">
-																	<img class="user-img img-circle"  src="https://via.placeholder.com/100/FF0000/000000?text=81O" alt="user"/>
-																	<div class="user-data">
-																		<span class="name block capitalize-font">81 Outfitters</span>
-																		<span class="time block truncate txt-grey">Internal Team Chat.</span>
-																	</div>
-																	<div class="status away"></div>
-																	<div class="clearfix"></div>
-																</div>
-															</a>
-                              <a  href="javascript:void(0)">
-																<div class="chat-data">
-																	<img class="user-img img-circle"  src="https://via.placeholder.com/100/FF0000/000000?text=S" alt="user"/>
-																	<div class="user-data">
-																		<span class="name block capitalize-font">Support Chat</span>
-																		<span class="time block truncate txt-grey">Help Desk Chat.</span>
-																	</div>
-																	<div class="status away"></div>
-																	<div class="clearfix"></div>
-																</div>
-															</a>
+                          <?php
+                            $cq = "SELECT * FROM `chat_channels` WHERE `inactive` != 'Yes'";
+                            $cg = mysqli_query($conn, $cq) or die($conn->error);
+                            while($cr = mysqli_fetch_array($cg)){
+                              echo '<a href="javascript:set_current_channel(' . $cr['ID'] . ', \'' . $cr['channel_name'] . '\');load_chat(\'ALL\');">
+                                      <div class="chat-data">
+                                        <img class="user-img img-circle"  src="https://via.placeholder.com/100/FF0000/000000?text=' . $cr['channel_initials'] . '" alt="channel"/>
+                                        <div class="user-data">
+                                          <span class="name block capitalize-font">' . $cr['channel_name'] . '</span>
+                                          <span class="time block truncate txt-grey">' . $cr['channel_description'] . '</span>
+                                        </div>
+                                        <div class="status away"></div>
+                                        <div class="clearfix"></div>
+                                      </div>
+                                    </a>';
+                            }
+                          ?>
 															<!--<a  href="javascript:void(0)">
 																<div class="chat-data">
 																	<img class="user-img img-circle"  src="dist/img/user1.png" alt="user"/>
@@ -154,18 +153,18 @@
 										<div class="recent-chat-wrap">
 											<div class="panel-heading ma-0">
 												<div class="goto-back">
-													<a  id="goto_back" href="javascript:void(0)" class="inline-block txt-grey">
+													<a  id="goto_back" href="javascript:set_current_channel(0,'Chat');" class="inline-block txt-grey">
 														<i class="zmdi zmdi-chevron-left"></i>
 													</a>	
-													<span class="inline-block txt-dark">ryan</span>
-													<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-more"></i></a>
+													<span class="inline-block txt-dark" id="chat_name_title" style="white-space:nowrap;">Chat</span>
+													<!--<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-more"></i></a>-->
 													<div class="clearfix"></div>
 												</div>
 											</div>
 											<div class="panel-wrapper collapse in">
 												<div class="panel-body pa-0">
 													<div class="chat-content">
-														<ul class="nicescroll-bar pt-20">
+														<ul class="nicescroll-bar pt-20" id="chat_window">
 															<li class="friend">
 																<div class="friend-msg-wrap">
 																	<img class="user-img img-circle block pull-left"  src="dist/img/user.png" alt="user"/>

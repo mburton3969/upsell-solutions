@@ -46,4 +46,4 @@
 	<!--<script src="../skin2-assets/dist/js/dashboard-data.js"></script>-->
 
 	<script src="global/js/global-functions.js"></script>
-	<!--<script src="global/js/chat-functions.js"></script>-->
+	<script src="global/js/chat-functions.js"></script>

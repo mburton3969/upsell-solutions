@@ -207,7 +207,7 @@ var doodle = function(){
 	});
 	
 	/*Chat*/
-	$(document).on("keypress","#input_msg_send",function (e) {
+	/*$(document).on("keypress","#input_msg_send",function (e) {
 		if ((e.which == 13)&&(!$(this).val().length == 0)) {
 			$('<li class="self mb-10"><div class="self-msg-wrap"><div class="msg block pull-right">' + $(this).val() + '<div class="msg-per-detail mt-5"><span class="msg-time txt-grey">3:30 pm</span></div></div></div><div class="clearfix"></div></li>').insertAfter(".fixed-sidebar-right .chat-content  ul li:last-child");
 			$(this).val('');
@@ -233,15 +233,15 @@ var doodle = function(){
 			alert('Please type asomthing!');
 		}
 		return;
-	});
+	});*/
 	
 	$(document).on("click",".fixed-sidebar-right .chat-cmplt-wrap .chat-data",function (e) {
 		$(".fixed-sidebar-right .chat-cmplt-wrap").addClass('chat-box-slide');
-		return false;
+		//return false;
 	});
 	$(document).on("click",".fixed-sidebar-right #goto_back",function (e) {
 		$(".fixed-sidebar-right .chat-cmplt-wrap").removeClass('chat-box-slide');
-		return false;
+		//return false;
 	});
 	
 	/*Chat for Widgets*/
@@ -341,7 +341,7 @@ var doodle = function(){
 /***** doodle function end *****/
 
 /***** Chat App function Start *****/
-/*var chatAppTarget = $('.chat-for-widgets-1.chat-cmplt-wrap');
+var chatAppTarget = $('.chat-for-widgets-1.chat-cmplt-wrap');
 var chatApp = function() {
 	$(document).on("click",".chat-for-widgets-1.chat-cmplt-wrap .chat-data",function (e) {
 		var width = $(window).width();
@@ -357,7 +357,7 @@ var chatApp = function() {
 		}	
 		return false;
 	});
-};*/
+};
 /***** Chat App function End *****/
 
 var boxLayout = function() {

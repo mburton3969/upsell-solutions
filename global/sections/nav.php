@@ -74,7 +74,7 @@
             </p>
           </li>
 					<li>
-						<a id="open_right_sidebar" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+						<a id="open_right_sidebar" href="#"><i class="fas fa-comments top-nav-icon"></i><span class="top-nav-icon-badge" id="chat-badge" style="display:none;">!</span></a>
 					</li>
 					<!--<li class="dropdown alert-drp">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
