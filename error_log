@@ -1,0 +1,2 @@
+[27-Jun-2020 20:06:48 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/beta/security/check-login.php:4) in /home1/reseller/beta/index.php on line 21
+[28-Jun-2020 11:23:58 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/beta/security/check-login.php:4) in /home1/reseller/beta/index.php on line 21

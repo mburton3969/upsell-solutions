@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 error_reporting(0);
 include 'connection.php';
@@ -197,9 +198,9 @@ if($trip == false){
   $x->mess .= ' - Found [Yes]';
 }
 $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`data_source`,`notes`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`data_source`,`notes`,`user_id`,`user_name`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'UPC Scan','" . mysqli_real_escape_string($conn,$upc_code) . "','" . $found . "','" . $data_source . "','" . $x->mess . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'UPC Scan','" . mysqli_real_escape_string($conn,$upc_code) . "','" . $found . "','" . $data_source . "','" . $x->mess . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
 if($_REQUEST['scrape'] != 'Yes'){
   mysqli_query($conn, $iq) or die('Log Error: ' . $conn->error);
 }

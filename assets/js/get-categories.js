@@ -1,10 +1,16 @@
 var catLevel = 0;
 function get_cats(lvl,pid,setCat){
-  //console.warn(setCat);
+  console.warn('Pre-Check: lvl:'+lvl+' pid:'+pid+' setCat:'+setCat);
   //Clear Item Specifics Inputs...
   document.getElementById('item_specifics').innerHTML = '';
   
   var cb = document.getElementById('cat_box');
+  /*if(lvl === 1){
+    cb.innerHTML = '';
+  }*/
+  if(document.getElementById('product_category')){
+    document.getElementById('product_category').remove();
+  }
   
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -27,7 +33,7 @@ function get_cats(lvl,pid,setCat){
       var r = res.cat;
       console.log(r);
       
-      if(lvl === 1){
+      if(lvl === 1 && pid !== 'bypass'){
         cb.innerHTML = '';
       }
       
@@ -71,14 +77,18 @@ function get_cats(lvl,pid,setCat){
         cb.appendChild(s);
       
       //Set Current Category...
-      if((lvl - 1) !== 0){
+      if((lvl - 1) !== 0 && setCat === ''){
         var cc = document.getElementById('product_category_'+(lvl - 1));
         var ccf = document.getElementById('cur_cat');
         ccf.value = cc.value;
         console.log('Category set to: '+cc.value);
+      }else if(setCat !== ''){
+        var ccf = document.getElementById('cur_cat');
+        ccf.value = setCat;
+        console.log('Category set to: '+setCat);
       }
       
-      if(lvl === 1){
+      if(lvl === 1 && pid !== 'bypass'){
         get_cats(2,11450);
       }
 
@@ -102,7 +112,7 @@ function get_store_cats(lvl,cid,setStoreCat){
   xmlhttp.onreadystatechange=function() {
     if (this.readyState==4 && this.status==200) {
       if(this.responseText.includes("Auth token is hard expired")){
-        window.location = 'assets/php/refresh-token-test.php';
+        window.location = 'assets/ebay/refresh-ebay-token.php';
         return;
       }
       if(this.responseText === '' || this.responseText === 'null'){
@@ -223,13 +233,15 @@ function get_81_store_cats(lvl,parentID,set81Cat){
         return;
       }*/
       if(this.responseText === '' || this.responseText === 'null'){
-        console.log('Empty Result Set...');
+        console.log('No Results Found...');
         return;
       }
       var res = JSON.parse(this.responseText);
       var r_cat = res.categories;
       if(r_cat.length === 0){
         console.log('Empty Result Set...');
+        var type_text = $( "#product_81_store_category_"+(lvl-1)+" option:selected" ).text();
+        document.getElementById('product_Type').value = type_text;
         return;
       }
       document.getElementById('cur_81_cat').value = lvl;

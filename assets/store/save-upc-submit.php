@@ -1,5 +1,4 @@
 <?php
-//error_reporting(E_ALL);
 /*
 * Script to save the UPC Data on submit...
 */
@@ -164,4 +163,3 @@ if(mysqli_num_rows($eg) > 0){
   //mysqli_query($conn, $idq) or die($conn->error);
   
 }
-//error_reporting(0);

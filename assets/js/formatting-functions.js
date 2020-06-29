@@ -11,7 +11,16 @@ function format_ebay(){
   var pmaterial = document.getElementById('product_material').value;
   
   //Format the eBay Fields...
+  var inseam = document.getElementById('product_Inseam').value;
+  if(inseam !== ''){
+    psize += 'x'+inseam;
+  }
+  if(document.getElementById('product_Cup_Size')){
+    var cupSize = document.getElementById('product_Cup_Size').value;
+    psize += cupSize;
+  }
   var ebay_title = psection+' '+pbrand+' '+ptitle+' '+pcolor+' '+psize;
+  var website_title = pbrand+' '+ptitle+' - '+psize;
   var ebay_desc = psection+' '+pbrand+' '+ptitle+' '+pcolor+' '+psize+'\r\n'+'\r\n'+pmaterial;
   
   //Check Title String Length...
@@ -30,6 +39,7 @@ function format_ebay(){
   
   //Set Title...
   document.getElementById('product_title_display').innerHTML = ebay_title;
+  document.getElementById('web_product_title_display').innerHTML = website_title;
   
   //Set Description...
   document.getElementById('product_description').value = ebay_desc;
@@ -38,6 +48,6 @@ function format_ebay(){
   var d = document.getElementById('product_description').value.replace(/\r?\n/g, "<br />");
   var de = document.getElementById('product_description_extra').value.replace(/\r?\n/g, "<br />");
   var df = document.getElementById('product_description_footer').value.replace(/\r?\n/g, "<br />");
-  var df_img = '<img src="https://beta.reseller-solutions.com/assets/imgs/81-logo.png" style="width:500px;" />';
-  document.getElementById('desc_preview').innerHTML = d+'</br></br>'+de+'</br></br>'+df+'</br>'+df_img;
+  //var df_img = '<img src="https://beta.reseller-solutions.com/assets/imgs/81-logo.png" style="width:500px;" />';
+  document.getElementById('desc_preview').innerHTML = d+'</br></br>'+de+'</br></br>'+df;
 }

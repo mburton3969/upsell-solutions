@@ -27,7 +27,7 @@ use \DTS\eBaySDK\Trading\Services;
 use \DTS\eBaySDK\Trading\Types;
 use \DTS\eBaySDK\Trading\Enums;
 
-error_reporting(0);
+//error_reporting(0);
 
 //Load Form Variables...
 $product_code = $_REQUEST['product_code'];
@@ -36,9 +36,10 @@ $product_title = $_REQUEST['product_title'];
 $pd = $_REQUEST['product_description'];
 $pd_extra = $_REQUEST['product_description_extra'];
 $pd_footer = $_REQUEST['product_description_footer'];
-$pd_img = '<img src="https://' . $_SERVER['HTTP_HOST'] . '/assets/imgs/81-logo.png" style="width:500px;" />';
-$fpd = '<p>' . $pd . '</p>' . $pd_extra . '</p><p>' . $pd_footer . '</p>' . $pd_img;
+$fpd = '<p>' . $pd . '</p><p>' . $pd_extra . '</p><p>' . $pd_footer . '</p>';
+$wfpd = '<p>' . $pd . '</p><p>' . $pd_extra . '</p>';
 $product_description = nl2br($fpd);
+$website_product_description = nl2br($wfpd);
 //$product_description = nl2br($_REQUEST['product_description']);
 
 //Product Details...
@@ -49,8 +50,17 @@ $product_style = $_REQUEST['product_Style'];
 $product_sleevelength = $_REQUEST['product_sleevelength'];
 $product_material = $_REQUEST['product_material'];
 $product_size = $_REQUEST['product_Size'];
+$product_Type = $_REQUEST['product_Type'];
+$product_Inseam = $_REQUEST['product_Inseam'];
 
 $product_label = $_REQUEST['product_label'];
+$website_product_title = $product_brand . ' ' . $product_title . ' - ' . $product_size;
+if($_REQUEST['product_Inseam'] != ''){
+  $website_product_title .=  'x' . $product_Inseam;
+}
+if($_REQUEST['product_Cup_Size'] != ''){
+  $website_product_title .= $_REQUEST['product_Cup_Size'];
+}
 
 //$product_category = $_REQUEST['product_category'];
 $product_section = $_REQUEST['product_section'];
@@ -61,6 +71,7 @@ $product_81_store_category = $_REQUEST['product_81_store_category_' . $prod_81_c
 $prod_81_cat_1 = $_REQUEST['product_81_store_category_1'];
 $prod_81_cat_2 = $_REQUEST['product_81_store_category_2'];
 $prod_81_cat_3 = $_REQUEST['product_81_store_category_3'];
+$prod_81_cat_4 = $_REQUEST['product_81_store_category_4'];
 
 
 $product_condition = $_REQUEST['product_condition'];
@@ -91,6 +102,7 @@ if($product_image5 != '' && $product_image5 != 'undefined'){
   
 
 $product_price = $_REQUEST['product_price'];
+$website_product_price = $_REQUEST['website_product_price'];
 $product_quantity = $_REQUEST['product_quantity'];
 
 //Package Dimensions...
@@ -160,7 +172,13 @@ echo '<div id="failed_btns" style="width:100%;text-align:center;display:none;">
       </div>';
 
 //Store or Update the UPC Data from Listing Submission...
+
+//error_reporting(E_ALL);
 //include '../store/save-upc-submit.php';
+//error_reporting(0);
+
+$request_data = json_encode($_REQUEST);
+
 
 //Submit to Ebay if turned on...
 if($_REQUEST['submit_to_ebay'] == 'on'){
@@ -190,7 +208,14 @@ $service = new Services\TradingService([
 /**
  * Create the request object.
  */
-$request = new Types\AddFixedPriceItemRequestType();
+if($_REQUEST['import_ebay_listing'] == ''){
+  $request = new Types\AddFixedPriceItemRequestType();
+}else{
+  $request = new Types\ReviseFixedPriceItemRequestType();
+}
+  
+
+  
 /**
  * An user token is required when using the Trading service.
  */
@@ -201,6 +226,13 @@ $request = new Types\AddFixedPriceItemRequestType();
  * Begin creating the fixed price item.
  */
 $item = new Types\ItemType();
+  
+if($_REQUEST['import_ebay_listing'] != ''){
+  /**
+   * Tell eBay which item we are revising.
+   */
+  $item->ItemID = $_REQUEST['import_ebay_listing'];
+}  
 /**
  * We want a multiple quantity fixed price listing.
  */
@@ -233,9 +265,14 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  * Note that any HTML in the title or description must be converted to HTML entities.
  */
   
-//$item->Title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
-$item->Title = substr($product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size, 0, 80);
- 
+$ebay_title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
+if($product_Inseam != ''){
+  $ebay_title .= 'x' . $product_Inseam;
+}
+if($_REQUEST['product_Cup_Size'] != ''){
+  $ebay_title .= $_REQUEST['product_Cup_Size'];
+}
+$item->Title = substr($ebay_title, 0, 80);
 //$item->Title = $product_title;
 $item->Description = $product_description;
 $item->SKU = $product_label;//Was $product_code...
@@ -268,6 +305,19 @@ $item->ItemSpecifics->NameValueList[] = $specific;
 $specific = new Types\NameValueListType();
 $specific->Name = 'Size';
 $specific->Value[] = $product_size;
+$item->ItemSpecifics->NameValueList[] = $specific;
+  
+//Inseam Item Specific...
+$specific = new Types\NameValueListType();
+$specific->Name = 'Inseam';
+$specific->Value[] = $product_Inseam;
+$item->ItemSpecifics->NameValueList[] = $specific;
+  
+//Size Item Specific...
+//Item Custom Label...
+$specific = new Types\NameValueListType();
+$specific->Name = 'Type';
+$specific->Value[] = $product_Type;
 $item->ItemSpecifics->NameValueList[] = $specific;
 
 if($product_section == 'Mens'){
@@ -345,6 +395,7 @@ $item->PaymentMethods = [
 ];
 $item->PayPalEmailAddress = '81outfitters@gmail.com';
 $item->DispatchTimeMax = 1;
+
 /**
  * Setting up the shipping details.
  * We will use a Flat shipping rate for both domestic and international.
@@ -444,8 +495,11 @@ $request->Item = $item;
 /**
  * Send the request.
  */
-$response = $service->addFixedPriceItem($request);
-
+if($_REQUEST['import_ebay_listing'] == ''){
+  $response = $service->addFixedPriceItem($request);
+}else{
+  $response = $service->reviseFixedPriceItem($request);
+}
 
 /**
  * Output the result of calling the service operation.
@@ -463,30 +517,36 @@ if (isset($response->Errors)) {
         echo '<script>
                 var errors = document.getElementById("errors");
                 var h4 = document.createElement("h4");
-                h4.innerHTML = "' . $error->LongMessage . '";
+                h4.innerHTML = "' . mysqli_real_escape_string($conn, $error->LongMessage) . '";
                 errors.appendChild(h4);
               </script>';
       }elseif($error_type == 'Warning'){
         echo '<script>
                 var warnings = document.getElementById("warnings");
                 var h4 = document.createElement("h4");
-                h4.innerHTML = "' . $error->LongMessage . '";
+                h4.innerHTML = "' . mysqli_real_escape_string($conn, $error->LongMessage) . '";
                 warnings.appendChild(h4);
               </script>';
       }
     }
 }
 if ($response->Ack !== 'Failure') {
-    echo '<script>
-            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: LISTED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";
-            document.getElementById("success_btns").style.display = "inline-block";
-            document.getElementById("failed_btns").style.display = "none";
-          </script>';
+    $ebay_item_id = $response->ItemID;
+    echo '<script>';
+    if($_REQUEST['import_ebay_listing'] != ''){
+      echo 'document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: REVISED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";';
+    }else{
+      echo 'document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: LISTED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";';
+    }
+            //document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">Ebay Store: LISTED <a href=\"https://www.ebay.com/itm/' . $response->ItemID . '\" target=\"_blank\">[Item#: ' . $response->ItemID . ']</a></span><br><br>";
+    echo 'document.getElementById("success_btns").style.display = "inline-block";
+          document.getElementById("failed_btns").style.display = "none";
+        </script>';
   
     $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$response) . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
     mysqli_query($conn, $iq);
 }else{
     echo '<script>
@@ -496,9 +556,9 @@ if ($response->Ack !== 'Failure') {
           </script>';
   
   $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$response) . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Ebay','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
     mysqli_query($conn, $iq);
 }
 
@@ -510,13 +570,16 @@ if ($response->Ack !== 'Failure') {
 if($_REQUEST['submit_to_store'] == 'on'){
   include 'http://beta.81outfitters.com/api/connection.php';
   include 'add-to-store-api.php';
-  $request_data = json_encode($_REQUEST);
   
   if($store_response->response == 'GOOD'){
     
-     echo '<script>
-            document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">81O Store: LISTED <a href=\"http://beta.81outfitters.com/index.php?route=product/product&product_id=' . $store_response->product_id . '\" target=\"_blank\">[Item#: ' . $store_response->product_id . ']</a></span><br><br>";
-            document.getElementById("success_btns").style.display = "inline-block";
+     echo '<script>';
+        //if($_REQUEST['import_ebay_listing'] == ''){
+          echo 'document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">81O Store: LISTED <a href=\"http://beta.81outfitters.com/index.php?route=product/product&product_id=' . $store_response->product_id . '\" target=\"_blank\">[Item#: ' . $store_response->product_id . ']</a></span><br><br>";';
+        //}else{
+        //  echo 'document.getElementById("lStatus").innerHTML += " <span style=\"color:green;\">81O Store: ITEM ALREADY EXISTS <a href=\"http://beta.81outfitters.com/index.php?route=product/product&product_id=' . $store_response->product_id . '\" target=\"_blank\">[Item#: ' . $store_response->product_id . ']</a></span><br><br>";';
+        //}
+      echo 'document.getElementById("success_btns").style.display = "inline-block";
             document.getElementById("failed_btns").style.display = "none";
             var warnings = document.getElementById("success");
             var h4 = document.createElement("h4");
@@ -525,9 +588,9 @@ if($_REQUEST['submit_to_store'] == 'on'){
           </script>';
   
     $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_message`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . mysqli_real_escape_string($conn,$store_response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','Yes','" . $store_response->message . "','" . mysqli_real_escape_string($conn,$store_response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
     mysqli_query($conn, $iq);
     
   }else{
@@ -542,9 +605,9 @@ if($_REQUEST['submit_to_store'] == 'on'){
           </script>';
   
   $iq = "INSERT INTO `upc_search_log` 
-      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_data`,`request_data`,`inactive`)
+      (`date`,`time`,`log_type`,`upc_code`,`data_found`,`listed`,`listing_message`,`listing_data`,`request_data`,`user_id`,`user_name`,`inactive`)
       VALUES
-      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . mysqli_real_escape_string($conn,$store_response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','No')";
+      (CURRENT_DATE,CURRENT_TIME,'Listing_Store','" . mysqli_real_escape_string($conn,$product_code) . "','N/A','No','" . $store_response->message . "','" . mysqli_real_escape_string($conn,$store_response) . "','" . mysqli_real_escape_string($conn, $request_data) . "','" . $_SESSION['user_id'] . "','" . $_SESSION['user_name'] . "','No')";
     mysqli_query($conn, $iq);
     
   }
