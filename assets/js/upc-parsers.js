@@ -134,62 +134,205 @@ function bs_parse(res,surl){
 
 
 function ra_parse(res){
+  
 	var r = res;
 	console.log(r);
-  if(r.title){
-	  var nTitle = r.title.substring(0,80);
+  if(r.source === 'upc_search_log DB'){
+    
+    //Set Ebay Categories...
+    /*if(r.product_category_1){
+      get_cats(1,'',r.product_category_1);
+      sleep(1000);
+    }*/
+    //if(r.product_category_2){
+      //document.getElementById('product_category_2').value = r.product_category_2;
+      get_cats(2,r.product_category_1,r.product_category_2);
+      sleep(500);
+    //}
+    //if(r.product_category_3){
+      //document.getElementById('product_category_3').value = r.product_category_3;
+      get_cats(3,r.product_category_2,r.product_category_3);
+      sleep(500);
+    //}
+    //if(r.product_category_4){
+      //document.getElementById('product_category_4').value = r.product_category_4;
+      get_cats(4,r.product_category_3,r.product_category_4);
+      sleep(500);
+    //}
+    
+    //Set Ebay Store Cats...
+    if(r.product_store_category_1){
+      get_store_cats(1,'',parseInt(r.product_store_category_1));
+      sleep(500);
+    }
+    if(r.product_store_category_2){
+      get_store_cats(2,parseInt(r.product_store_category_1),parseInt(r.product_store_category_2));
+      sleep(500);
+    }
+    
+    //Get 81 Store Cats...
+    if(r.product_81_store_category_1){
+      get_81_store_cats(1,'',r.product_81_store_category_1);
+      sleep(500);
+    }
+    if(r.product_81_store_category_2){
+      get_81_store_cats(2,r.product_81_store_category_1,r.product_81_store_category_2);
+      sleep(500);
+    }
+    if(r.product_81_store_category_3){
+      get_81_store_cats(3,r.product_81_store_category_2,r.product_81_store_category_3);
+      sleep(500);
+    }
+    if(r.product_81_store_category_4){
+      get_81_store_cats(4,r.product_81_store_category_3,r.product_81_store_category_4);
+      sleep(500);
+    }
+    
+    if(r.product_title){
+      var nTitle = r.product_title.substring(0,80);
+    }else{
+      var nTitle = r.description.substring(0,80);
+    }
+    nTitle =  nTitle.replace(r.brand,'');
+    document.getElementById('product_title').value = nTitle;
+    //Img1
+    if(r.img_url1 !== ''){
+      document.getElementById('product_image1').src = r.img_url1;
+      document.getElementById('img1_link').href = r.img_url1;
+      document.getElementById('img_url1').value = r.img_url1;
+    }
+    //Img2
+    if(r.img_url2 !== ''){
+      document.getElementById('product_image2').src = r.img_url2;
+      document.getElementById('img2_link').href = r.img_url2;
+      document.getElementById('img_url2').value = r.img_url2;
+    }
+    //Img3...
+    if(r.img_url3 !== ''){
+      document.getElementById('product_image3').src = r.img_url3;
+      document.getElementById('img3_link').href = r.img_url3;
+      document.getElementById('img_url3').value = r.img_url3;
+    }
+    //Img4...
+    if(r.img_url4 !== ''){
+      document.getElementById('product_image4').src = r.img_url4;
+      document.getElementById('img4_link').href = r.img_url4;
+      document.getElementById('img_url4').value = r.img_url4;
+    }
+    //Img5...
+    if(r.img_url5 !== ''){
+      document.getElementById('product_image5').src = r.img_url5;
+      document.getElementById('img5_link').href = r.img_url5;
+      document.getElementById('img_url5').value = r.img_url5;
+    }
+    
+    //Setup dont_use array...
+    var dont_use = [
+      'source',
+      'product_title',
+      'product_category_1',
+      'product_category_2',
+      'product_category_3',
+      'product_category_4',
+      'new_img_url',
+      'img_url1',
+      'img_url2',
+      'img_url3',
+      'img_url4',
+      'img_url5',
+      'product_store_category_1',
+      'product_store_category_2',
+      'product_81_store_category_1',
+      'product_81_store_category_2',
+      'product_81_store_category_3',
+      'product_81_store_category_4',
+      'submit_to_store',
+      'submit_to_ebay',
+      'cur_cat',
+      'cur_store_cat',
+      'ebay_import',
+      'import_ebay_listing',
+      'env_mode',
+      'api_key'
+    ];
+    //loop through remaining data...
+    Object.keys(r).forEach(function(key) {
+      if(dont_use.includes(key)){
+         console.log(key+' Included...');
+       }else{
+         console.log(key+' Not Included...'+r[key]);
+         if(document.getElementById(key)){
+           document.getElementById(key).value = r[key];
+         }else{
+           setTimeout(function(){
+             document.getElementById(key).value = r[key];
+           },4000);
+         }
+       }
+      //console.table('Key : ' + key + ', Value : ' + data[key]);
+    });
+    format_ebay();
+    document.getElementById('loader').style.display = 'none';
+    
   }else{
-    var nTitle = r.description.substring(0,80);
+    
+    if(r.title){
+      var nTitle = r.title.substring(0,80);
+    }else{
+      var nTitle = r.description.substring(0,80);
+    }
+    nTitle =  nTitle.replace(r.brand,'');
+    document.getElementById('product_title').value = nTitle;
+    document.getElementById('product_code').value = r.upc;
+    document.getElementById('product_description_extra').value = r.description;
+    //Img1
+    if(r.img1 !== ''){
+      document.getElementById('product_image1').src = r.img1;
+      document.getElementById('img1_link').href = r.img1;
+      document.getElementById('img_url1').value = r.img1;
+    }
+    //Img2
+    if(r.img2 !== ''){
+      document.getElementById('product_image2').src = r.img2;
+      document.getElementById('img2_link').href = r.img2;
+      document.getElementById('img_url2').value = r.img2;
+    }
+    //Img3...
+    if(r.img3 !== ''){
+      document.getElementById('product_image3').src = r.img3;
+      document.getElementById('img3_link').href = r.img3;
+      document.getElementById('img_url3').value = r.img3;
+    }
+    //Img4...
+    if(r.img4 !== ''){
+      document.getElementById('product_image4').src = r.img4;
+      document.getElementById('img4_link').href = r.img4;
+      document.getElementById('img_url4').value = r.img4;
+    }
+    //Img5...
+    if(r.img5 !== ''){
+      document.getElementById('product_image5').src = r.img5;
+      document.getElementById('img5_link').href = r.img5;
+      document.getElementById('img_url5').value = r.img5;
+    }
+    //Other info...
+    document.getElementById('product_color').value = r.color;
+    document.getElementById('product_brand').value = r.brand;
+    document.getElementById('product_Size').value = r.size;
+    if(r.accurate == 'No'){
+      document.getElementById('response_message').innerHTML = '*Info Found via Reseller App\'s Internal UPC Database';
+    }else{
+      document.getElementById('response_message').innerHTML = '*Info Found via Reseller App\'s Internal UPC Database <button type="button" class="btn btn-danger btn-sm" onclick="flag_upc('+r.upc+',this);">Mark Inaccurate</button>';
+    }
+    document.getElementById('loader').style.display = 'none';
+    if(r.price !== ''){
+      add_suggested_price(r.price,'Reseller App');
+    }
+    add_suggested_price('Google');
+    format_ebay();
+    
   }
-  nTitle =  nTitle.replace(r.brand,'');
-	document.getElementById('product_title').value = nTitle;
-	document.getElementById('product_code').value = r.upc;
-	document.getElementById('product_description_extra').value = r.description;
-  //Img1
-  if(r.img1 !== ''){
-    document.getElementById('product_image1').src = r.img1;
-    document.getElementById('img1_link').href = r.img1;
-    document.getElementById('img_url1').value = r.img1;
-  }
-  //Img2
-  if(r.img2 !== ''){
-    document.getElementById('product_image2').src = r.img2;
-    document.getElementById('img2_link').href = r.img2;
-    document.getElementById('img_url2').value = r.img2;
-  }
-  //Img3...
-  if(r.img3 !== ''){
-    document.getElementById('product_image3').src = r.img3;
-    document.getElementById('img3_link').href = r.img3;
-    document.getElementById('img_url3').value = r.img3;
-  }
-  //Img4...
-  if(r.img4 !== ''){
-    document.getElementById('product_image4').src = r.img4;
-    document.getElementById('img4_link').href = r.img4;
-    document.getElementById('img_url4').value = r.img4;
-  }
-  //Img5...
-  if(r.img5 !== ''){
-    document.getElementById('product_image5').src = r.img5;
-    document.getElementById('img5_link').href = r.img5;
-    document.getElementById('img_url5').value = r.img5;
-  }
-  //Other info...
-  document.getElementById('product_color').value = r.color;
-	document.getElementById('product_brand').value = r.brand;
-	document.getElementById('product_Size').value = r.size;
-  if(r.accurate == 'No'){
-	  document.getElementById('response_message').innerHTML = '*Info Found via Reseller App\'s Internal UPC Database';
-  }else{
-	  document.getElementById('response_message').innerHTML = '*Info Found via Reseller App\'s Internal UPC Database <button type="button" class="btn btn-danger btn-sm" onclick="flag_upc('+r.upc+',this);">Mark Inaccurate</button>';
-  }
-  document.getElementById('loader').style.display = 'none';
-  if(r.price !== ''){
-    add_suggested_price(r.price,'Reseller App');
-  }
-  add_suggested_price('Google');
-  format_ebay();
+  
 }
 
 

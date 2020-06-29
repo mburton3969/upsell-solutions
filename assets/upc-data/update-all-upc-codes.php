@@ -7,16 +7,33 @@ include '../php/connection.php';
 
 
 //Loop Through UPC Codes in Database...
-$q = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` = '' AND `item_source` != '' LIMIT 1";
+$q = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` = '' AND `item_source` != '' AND `ID` > '7747' LIMIT 1";
 $g = mysqli_query($conn, $q) or die($conn->error);
 $rnums = mysqli_num_rows($g);
 if($rnums <= 0){
+  $rq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `item_source` != '' AND `ID` > '7747'";
+  $rg = mysqli_query($conn, $rq) or die($conn->error);
+  $rcount = mysqli_num_rows($rg);
+  $rrq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` != 'None' AND `data_source` != '' AND `item_source` != '' AND `ID` > '7747'";
+  $rrg = mysqli_query($conn, $rrq) or die($conn->error);
+  $rrcount = mysqli_num_rows($rrg);
+  $percent = number_format($rrcount / $rcount,3);
   echo '<h1 style="color:green;">UPC Update Scan Completed...</h1>';
+  echo '<h2>Rows Found: ' . $rrcount . ' Rows Total: ' . $rcount . ' Percent Found: ' . $percent . '%</h2>';
 }else{
 while($r = mysqli_fetch_array($g)){
   
+  //Get Stats...
+  $rq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `item_source` != '' AND `ID` > '7747'";
+  $rg = mysqli_query($conn, $rq) or die($conn->error);
+  $rcount = mysqli_num_rows($rg);
+  $rrq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` != 'None' AND `data_source` != '' AND `item_source` != '' AND `ID` > '7747'";
+  $rrg = mysqli_query($conn, $rrq) or die($conn->error);
+  $rrcount = mysqli_num_rows($rrg);
+  $percent = number_format($rrcount / $rcount,3);
+  
   //Get Number of Records...
-  $nq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` = '' AND `item_source` != ''";
+  $nq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` = '' AND `item_source` != '' AND `ID` > '7747'";
   $ng = mysqli_query($conn, $nq) or die($conn->error);
   $nrnums = mysqli_num_rows($ng);
   
@@ -84,6 +101,8 @@ while($r = mysqli_fetch_array($g)){
       echo '<h1>UPC Code: ' . $upc . ' was updated successfully.<br>
                 Using ' . $d->data_source . '!<br>
                 UPC Codes To Be Scanned: ' . $nrnums . '</h1>';
+      $cp = number_format($rcount / $nrnums,3);
+      echo '<h2>Rows Found: ' . $rrcount . ' Rows Total: ' . $rcount . ' Current Percent Found: ' . $cp . '% Percent Found: ' . $percent . '%</h2>';
       echo '<script>setTimeout(function(){window.location.reload();},500);</script>';
       //echo '<button type="button" onclick="window.location.reload();">Continue</button>';
     }else{
@@ -98,6 +117,8 @@ while($r = mysqli_fetch_array($g)){
     echo '<h1 style="color:red;">Error!<br><br>
           UPC Codes To Be Scanned: ' . $nrnums . '</h1>
           </h1>';
+    $cp = number_format($rcount / $nrnums,3);
+    echo '<h2>Rows Found: ' . $rrcount . ' Rows Total: ' . $rcount . ' Current Percent Found: ' . $cp . '% Percent Found: ' . $percent . '%</h2>';
     var_dump($data);
     $uq = "UPDATE `upc_codes` SET ";
     $uq .= "`data_source` = 'None',";
