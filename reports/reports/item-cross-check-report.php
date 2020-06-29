@@ -83,19 +83,22 @@ while($ilr = mysqli_fetch_array($ilg)){
     $import_count = '';
   }
 
-  echo '<tr>
-          <td>' . $i . '</td>
-          <td>' . $ilr['name'] . '</td>
-          <td>' . $ilr['product_id'] . '</td>
-          <td>' . $dppr['upc'] . '</td>
-          <td>' . $ilr['quantity'] . '</td>
-          <td>' . $dppr['ebay_listiing_id'] . '</td>
-          <td>' . $status . '</td>
-          <td>' . $dppr['profile_count'] . '</td>
-          <td>' . $import_count . '</td>
-        </tr>';
+  if(mysqli_num_rows($dppg) <= 0 || $dppr['ebay_listiing_id'] == '' || $ilr['model'] == ''){
+    echo '<tr>
+            <td>' . $i . '</td>
+            <td>' . $ilr['name'] . '</td>
+            <td>' . $ilr['product_id'] . '</td>
+            <td>' . $dppr['upc'] . '</td>
+            <td>' . $ilr['quantity'] . '</td>
+            <td>' . $dppr['ebay_listiing_id'] . '</td>
+            <td>' . $status . '</td>
+            <td>' . $dppr['profile_count'] . '</td>
+            <td>' . $import_count . '</td>
+          </tr>';
+    $i++;
+  }
   
-  $i++;
+  
 }
 
 echo '</tbody>

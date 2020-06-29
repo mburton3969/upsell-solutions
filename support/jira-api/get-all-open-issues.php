@@ -6,12 +6,13 @@ error_reporting(0);
 $username = 'michael@ignition-innovations.com';
 $password = 'Mths3969!';
 $api_key = 'TgWhRTuJ9lEw0bbJ6thXB667';
+$project_key = $_REQUEST['project'];
 
 // create curl resource
 $ch = curl_init();
 
 // set url
-$q = "project=RSA+AND+status+NOT+IN+(Done,Closed,Resolved)";
+$q = 'project=' . $project_key . '+AND+status+NOT+IN+(Done,Closed,Resolved)';
 $url = 'https://ignition-innovations.atlassian.net/rest/api/2/search?jql=' . $q;//Search via JQL...
 
 

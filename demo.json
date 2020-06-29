@@ -1,0 +1,190 @@
+{
+  "Timestamp": "2020-06-24T14:46:57.000Z",
+  "Ack": "Warning",
+  "Errors": [{
+    "ShortMessage": "Seller Profiles will soon be mandatory while creating a new listing for business policies opted in sellers.",
+    "LongMessage": "Seller Profiles will soon be mandatory while creating a new listing. Support for Legacy Shipping, Payment and Returns fields will be going away for business policies opted in sellers.",
+    "ErrorCode": "21919456",
+    "SeverityCode": "Warning",
+    "ErrorClassification": "RequestError"
+  }],
+  "Version": "1159",
+  "Build": "E1159_UNI_API5_19215736_R1",
+  "ItemID": "283925591121",
+  "StartTime": "2020-06-24T14:46:56.000Z",
+  "EndTime": "2020-07-24T14:46:56.000Z",
+  "Fees": {
+    "Fee": [{
+      "Name": "AuctionLengthFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "BoldFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "BuyItNowFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "CategoryFeaturedFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "FeaturedFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "GalleryPlusFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "FeaturedGalleryFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "FixedPriceDurationFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "GalleryFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "GiftIconFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "HighLightFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "InsertionFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      },
+      "PromotionalDiscount": {
+        "value": 0.05000000000000000277555756156289135105907917022705078125,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "InternationalInsertionFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "ListingDesignerFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "ListingFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      },
+      "PromotionalDiscount": {
+        "value": 0.05000000000000000277555756156289135105907917022705078125,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "PhotoDisplayFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "PhotoFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "ReserveFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "SchedulingFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "SubtitleFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "BorderFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "ProPackBundleFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "BasicUpgradePackBundleFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "ValuePackBundleFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "PrivateListingFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "ProPackPlusBundleFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }, {
+      "Name": "MotorsGermanySearchFee",
+      "Fee": {
+        "value": 0,
+        "currencyID": "USD"
+      }
+    }]
+  },
+  "DiscountReason": ["SpecialOffer"]
+}

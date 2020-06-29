@@ -40,7 +40,7 @@ if($mode == 'ALL'){
     $d->user = $mr['user_name'];
     //Parse for initials...
     $in = explode(' ',$mr['user_name']);
-    $d->initials = substr($in[0],0,1) . substr($in[1],0,1);
+    $d->initials = substr($in[0],0,1) . '+' . substr($in[1],0,1);
     //Add message to array...
     array_push($x->messages,$d);
   }
@@ -77,7 +77,7 @@ if($mode == 'Fetch'){
     $d->user = $mr['user_name'];
     //Parse for initials...
     $in = explode(' ',$mr['user_name']);
-    $d->initials = substr($in[0],0,1) . substr($in[1],0,1);
+    $d->initials = substr($in[0],0,1) . '+' . substr($in[1],0,1);
     //Add message to array...
     array_push($x->messages,$d);
     //Insert View Record...

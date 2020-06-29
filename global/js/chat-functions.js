@@ -133,7 +133,7 @@ function add_message(mode,mess,time,user,initials){
     $('<li class="self mb-10"><div class="self-msg-wrap"><div class="msg block pull-right">' + mess + '<div class="msg-per-detail mt-5"><span class="msg-time txt-grey">' + time + '</span></div></div></div><div class="clearfix"></div></li>').insertAfter(".fixed-sidebar-right .chat-content  ul li:last-child");
   }
   if(mode == 'friend'){
-    $('<li class="friend"><div class="friend-msg-wrap"><img class="user-img img-circle block pull-left" src="https://via.placeholder.com/100/FF0000/000000?text=' + initials + '" alt="user"><div class="msg pull-left"><p>' + mess + '</p><div class="msg-per-detail  text-right"><span class="msg-time txt-grey">' + user + ' - ' + time + '</span></div></div><div class="clearfix"></div></div></li>').insertAfter(".fixed-sidebar-right .chat-content  ul li:last-child");
+    $('<li class="friend" style="max-width:270px;"><div class="friend-msg-wrap"><img class="user-img img-circle block pull-left" src="https://via.placeholder.com/100/FF0000/000000?text=' + initials + '" alt="user"><div class="msg pull-left"><p>' + mess + '</p><div class="msg-per-detail  text-right"><span class="msg-time txt-grey">' + user + ' - ' + time + '</span></div></div><div class="clearfix"></div></div></li>').insertAfter(".fixed-sidebar-right .chat-content  ul li:last-child");
   }
 }
 

@@ -27,6 +27,8 @@ while($r = mysqli_fetch_array($g)){*/
   
   //$upc = '035000521019';
   $lu_url = 'http://' . $_SERVER['HTTP_HOST'] . '/assets/php/upc-lookup.php?upc=' . $upc . '&scrape=Yes' . $qs;
+  //echo $lu_url;
+  //break;
   $data = file_get_contents($lu_url);
   $data = json_decode($data);
   $x = '';
@@ -172,6 +174,7 @@ while($r = mysqli_fetch_array($g)){*/
     $x->message = 'No Data Found for UPC Code ' . $upc;
     $res = json_encode($x);
     echo $res;
+    $x->data_source = 'ERROR';
     //echo 'UPC ' . $upc . ' not found! -> ';
     $trip = true;
   }
