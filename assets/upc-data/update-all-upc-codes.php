@@ -7,7 +7,7 @@ include '../php/connection.php';
 
 
 //Loop Through UPC Codes in Database...
-$q = "SELECT * FROM `upc_codes` WHERE `data_source` = '' AND `item_source` = 'Target' LIMIT 1";
+$q = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` = '' AND `item_source` != '' LIMIT 1";
 $g = mysqli_query($conn, $q) or die($conn->error);
 $rnums = mysqli_num_rows($g);
 if($rnums <= 0){
@@ -16,12 +16,15 @@ if($rnums <= 0){
 while($r = mysqli_fetch_array($g)){
   
   //Get Number of Records...
-  $nq = "SELECT * FROM `upc_codes` WHERE `data_source` = '' AND `item_source` = 'Target'";
+  $nq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` = '' AND `item_source` != ''";
   $ng = mysqli_query($conn, $nq) or die($conn->error);
   $nrnums = mysqli_num_rows($ng);
   
   $upc = $r['upc_code'];
-  $data = file_get_contents('http://' . $_SERVER['HTTP_HOST'] . '/assets/upc-data/scrape-additional-data.php?upc=' . $upc . '&src=' . $r['item_source']);
+  $durl = 'http://' . $_SERVER['HTTP_HOST'] . '/assets/upc-data/scrape-additional-data.php?upc=' . $upc . '&src=' . $r['item_source'];
+  //echo $durl;
+  //break;
+  $data = file_get_contents($durl);
   $d = json_decode($data);
   //var_dump($d);
   if($data != false && $d->response != 'ERROR'){
@@ -92,7 +95,9 @@ while($r = mysqli_fetch_array($g)){
   
   }else{
     //echo 'ERROR->';
-    echo '<h1 style="color:red;">Error:</h1>';
+    echo '<h1 style="color:red;">Error!<br><br>
+          UPC Codes To Be Scanned: ' . $nrnums . '</h1>
+          </h1>';
     var_dump($data);
     $uq = "UPDATE `upc_codes` SET ";
     $uq .= "`data_source` = 'None',";
@@ -100,10 +105,11 @@ while($r = mysqli_fetch_array($g)){
         WHERE 
         `upc_code` = '" . $upc . "'";
     mysqli_query($conn, $uq) or die($conn->error);
-    echo '<button type="button" onclick="window.location.reload();">Continue</button>';
+    echo '<script>setTimeout(function(){window.location.reload();},500);</script>';
+    /*echo '<button type="button" onclick="window.location.reload();">Continue</button>';
     echo '<script>
             alert("An Error Occurred!");
-          </script>';
+          </script>';*/
   }
   
 }//End while loop...
