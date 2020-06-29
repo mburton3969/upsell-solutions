@@ -59,7 +59,9 @@ $x->mess = 'Message';
 
 $upcq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `upc_code` = '" . $upc_code . "'";
 $upcg = mysqli_query($conn, $upcq) or die($conn->error);
-if(mysqli_num_rows($upcg) > 0 && $_REQUEST['scrape'] != 'Yes'){
+$sdq = "SELECT * FROM `upc_search_log` WHERE `upc_code` = '" . $upc_code . "' AND (`log_type` = 'Listing_Ebay' OR `log_type` = 'Listing_Store') AND `request_data` != '' LIMIT 1";
+$sdg = mysqli_query($conn, $sdq) or die($conn->error);
+if(mysqli_num_rows($upcg) > 0 && $_REQUEST['scrape'] != 'Yes' && mysqli_num_rows($sdg) <= 0){
   $upcr = mysqli_fetch_array($upcg);
   //UPC Found...
   if($upcr['accurate'] == 'No'){
@@ -99,6 +101,17 @@ if(mysqli_num_rows($upcg) > 0 && $_REQUEST['scrape'] != 'Yes'){
   $trip = true;
   $x->mess = 'Message - ra_data Searched';
   echo $ej;
+}elseif(mysqli_num_rows($sdg) > 0 && $_REQUEST['scrape'] != 'Yes'){
+  $sdr = mysqli_fetch_array($sdg);
+  $d->source = 'upc_search_log DB';
+  $r = json_decode($sdr['request_data']);
+  foreach($r as $key => $value){
+    $d->$key = $value;
+  }
+  $x->ra_data = json_encode($d);
+  $data_source = 'Reseller App';
+  $trip = true;
+  $x->mess = 'Message - ra_data Searched';
 }else{
   $x->ra_data = false;
 }
