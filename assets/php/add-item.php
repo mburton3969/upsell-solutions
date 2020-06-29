@@ -172,11 +172,13 @@ echo '<div id="failed_btns" style="width:100%;text-align:center;display:none;">
       </div>';
 
 //Store or Update the UPC Data from Listing Submission...
+
 //error_reporting(E_ALL);
 //include '../store/save-upc-submit.php';
 //error_reporting(0);
 
 $request_data = json_encode($_REQUEST);
+
 
 //Submit to Ebay if turned on...
 if($_REQUEST['submit_to_ebay'] == 'on'){
