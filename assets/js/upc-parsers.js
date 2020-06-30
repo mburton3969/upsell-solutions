@@ -1,6 +1,7 @@
 function de_parse(r,surl){
 	document.getElementById('product_description_extra').value = r.description;
 	document.getElementById('product_label').value = '';
+	document.getElementById('brand_label').value = r.brand;
 	document.getElementById('product_brand').value = r.brand;
 	document.getElementById('product_code').value = r.upc_code;
 	document.getElementById('product_image1').src = r.image;
@@ -37,8 +38,10 @@ function bl_parse(res,surl){
   document.getElementById('product_color').value = r.color;
   document.getElementById('product_Size').value = r.size;
   if(r.brand !== ''){
+	  document.getElementById('brand_label').value = r.brand;
     document.getElementById('product_brand').value = r.brand;
   }else{
+	  document.getElementById('brand_label').value = r.manufacturer;
     document.getElementById('product_brand').value = r.manufacturer;
   }
 	document.getElementById('response_message').innerHTML = '*Info Found via Barcodelookup.com [<a href="'+surl+'" target="_blank">View Source</a>]';
@@ -60,6 +63,7 @@ function upc_parse(res,surl){
 	document.getElementById('product_label').value = '';
 	document.getElementById('product_description_extra').value = r.description;
 	document.getElementById('product_code').value = r.upc;
+	document.getElementById('brand_label').value = r.brand;
 	document.getElementById('product_brand').value = r.brand;
 	document.getElementById('product_image1').src = r.images[0];
   document.getElementById('img1_link').href = r.images[0];
@@ -100,6 +104,7 @@ function wm_parse(res,surl){
 	document.getElementById('product_price').value = '';
   document.getElementById('product_color').value = r.color;
 	document.getElementById('product_quantity').value = '';
+	document.getElementById('brand_label').value = r.brandName;
 	document.getElementById('product_brand').value = r.brandName;
 	document.getElementById('product_Size').value = r.size;
 	document.getElementById('response_message').innerHTML = '*Info Found via walmart.com [<a href="'+surl+'" target="_blank">View Source</a>]';
@@ -121,6 +126,7 @@ function bs_parse(res,surl){
   document.getElementById('img1_link').href = r.img_url;
   document.getElementById('img_url1').value = r.img_url;
   document.getElementById('product_color').value = r.color;
+	document.getElementById('brand_label').value = r.brand;
 	document.getElementById('product_brand').value = r.brand;
 	document.getElementById('product_Size').value = r.size;
 	document.getElementById('response_message').innerHTML = '*Info Found via BrickSeek.com [<a href="'+surl+'" target="_blank">View Source</a>]';
@@ -317,6 +323,7 @@ function ra_parse(res){
     }
     //Other info...
     document.getElementById('product_color').value = r.color;
+	  document.getElementById('brand_label').value = r.brand;
     document.getElementById('product_brand').value = r.brand;
     document.getElementById('product_Size').value = r.size;
     if(r.accurate == 'No'){

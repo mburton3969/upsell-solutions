@@ -47,7 +47,26 @@
                     </h4>
                 </div>
                 <div class="col-md-6">
+                  <!--
                   <input type="text" id="product_brand" style="width:31%;display:inline;" name="product_brand" class="form-control is-field" placeholder="Brand" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_brand'];}?>" required>
+                  -->
+                  <label for="product_brand" style="width:31%;margin-right:5px;">
+                    <span id="brand_label"></span>
+                    <br>
+                  <select id="product_brand" name="product_brand" onchange="format_ebay();" style="display:inline;" class="form-control is-field">
+                    <option value="">Select a Brand</option>
+                  <?php
+                    $s_conn = mysqli_connect('localhost','outfitte_store','+F%JW[$YDOR(','outfitte_opencart') or die('Error: ' . $s_conn->error . ' on line 4 of add-to-store-api.php');
+                    //Juniors...
+                    echo '<option value="">Select Brand</option>';
+                    $jsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '7' ORDER BY `name` ASC";
+                    $jsog = mysqli_query($s_conn, $jsoq) or die($s_conn->error . 'ERROR');
+                    while($jsor = mysqli_fetch_array($jsog)){
+                      echo '<option value="' . mysqli_real_escape_string($s_conn, $jsor['name']) . '">' . mysqli_real_escape_string($s_conn, $jsor['name']) . '</option>';
+                    }
+                  ?>
+                  </select>
+                  </label>
                   <input type="text" id="product_material" style="width:31%;display:inline;" name="product_material" class="form-control is-field" placeholder="Material" maxlength="50" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_material'];}?>" required>
                   <input type="text" id="product_color" style="width:31%;display:inline;" name="product_color" class="form-control is-field" placeholder="Color" onchange="format_ebay();" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_color'];}?>" required>
                   <label for="product_Size" style="width:31%;margin-right:5px;">
