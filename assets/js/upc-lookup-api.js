@@ -103,13 +103,29 @@ function lookup_upc(e,upc){
         }
       }
       
+      
       if(trip === false){
         if(bs_r !== false){
           bs_parse(bs_r,response.bs_url);
           trip = true;
         }else{
           console.log('No BrickSeek Results...');
-          if(response.bs_data !== ''){
+          if(response.di_data !== ''){
+            var di_r = JSON.parse(response.di_data);
+          }else{
+            var di_r = false;
+          }
+        }
+      }
+      
+      
+      if(trip === false){
+        if(di_r !== false){
+          di_parse(di_r,response.di_url);
+          trip = true;
+        }else{
+          console.log('No DataInfiniti Results...');
+          if(response.ra_data !== ''){
             var ra_r = JSON.parse(response.ra_data);
           }else{
             var ra_r = false;

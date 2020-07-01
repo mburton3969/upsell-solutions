@@ -35,6 +35,8 @@ $upc_url = 'https://api.upcitemdb.com/prod/trial/lookup?upc=' . $upc_code;
 
 $wm_url = 'http://api.walmartlabs.com/v1/items?apiKey=rfjbc7str5mjyf6ta4ed76jf&upc=' . $upc_code;
 
+$di_url = 'http://' . $_SERVER['HTTP_HOST'] . '/assets/data-infiniti/get-data-by-title.php?upc=' . $upc_code;
+
 //Data Response Variables...
 $x->ra_data = false;
 $x->bs_data = false;
@@ -42,6 +44,7 @@ $x->de_data = false;
 $x->bl_data = false;
 $x->upc_data = false;
 $x->wm_data = false;
+$x->di_data = false;
 
 //API Search Link URLs...
 $x->bs_url = $bs_url;
@@ -49,6 +52,7 @@ $x->de_url = $de_url;
 $x->wm_url = $wm_url;
 $x->upc_url = $upc_url;
 $x->bl_url = $bl_url;
+$x->di_url = $di_url;
 
 //Set the Trip Variable to false...
 $trip = false;
@@ -121,7 +125,7 @@ if($x->ra_data == false && $trip == false){
 //Check BarcodeLookup.com...
 $x->mess .= ' - bl_data Searched';
 $x->bl_data = file_get_contents($bl_url);
-if($x->bl_data == '' || $x->bl_data == null || $upc_code == '035000521019' || $upc_code == '883096536116'){
+if($x->bl_data == '' || $x->bl_data == null || $upc_code == '035000521019' || $upc_code == '883096536116' || $upc_code = '191685584227'){
   $x->debug = 'Triggered';
   $x->bl_data = false;
 }
@@ -131,7 +135,7 @@ if($x->bl_data == false && $trip != true){
   $x->mess .= ' - de_data Searched';
   $x->de_data = file_get_contents($de_url);
   $de_json = json_decode($x->de_data);
-  if($de_json->return_code == 4 || $de_json->return_code == '001' || $upc_code == '035000521019'){
+  if($de_json->return_code == 4 || $de_json->return_code == '001' || $upc_code == '035000521019' || $upc_code = '191685584227'){
     $x->de_data = false;
   }
 }else{
@@ -147,7 +151,7 @@ if($x->de_data == false && $trip != true){
   $x->mess .= ' - upc_data Searched';
   $x->upc_data = file_get_contents($upc_url);
   $jd = json_decode($x->upc_data);
-  if($x->upc_data != false && $jd->total == 0 || $upc_code == '035000521019'){
+  if($x->upc_data != false && $jd->total == 0 || $upc_code == '035000521019' || $upc_code = '191685584227'){
     $x->upc_data = false;
   }
 }else{
@@ -163,7 +167,7 @@ if($x->upc_data == false && $trip != true){
   $x->mess .= ' - wm_data Searched';
   $x->wm_data = file_get_contents($wm_url);
   $rwmd = json_decode($x->wm_data);
-  if(!isset($rwmd->items) || $x->wm_data == false){
+  if(!isset($rwmd->items) || $x->wm_data == false || $upc_code = '191685584227'){
     $x->wm_data = false;
   }else{
     $data_source = 'walmart.com';
@@ -180,7 +184,7 @@ if($x->upc_data == false && $trip != true){
 if($x->wm_data == false && $trip != true){
   $x->mess .= ' - bs_data Searched';
   $x->bs_data = file_get_contents($bs_url);
-  if($x->bs_data == false){
+  if($x->bs_data == false || $upc_code = '191685584227'){
     $x->bs_data = false;
   }else{
     $data_source = 'brickseek.com';
@@ -191,6 +195,25 @@ if($x->wm_data == false && $trip != true){
   if($trip != true){
     $trip = true;
     $data_source = 'walmart.com';
+  }
+}
+  
+  
+//Check datainfiniti.com...
+if($x->bs_data == false && $trip != true){
+  $x->mess .= ' - di_data Searched';
+  $x->di_data = file_get_contents($di_url);
+  if($x->di_data == false){
+    $x->di_data = false;
+  }else{
+    $data_source = 'datainifiniti.com';
+    $trip = true;
+  }
+}else{
+  $x->di_data = false;
+  if($trip != true){
+    $trip = true;
+    $data_source = 'brickseek.com';
   }
 }
 
