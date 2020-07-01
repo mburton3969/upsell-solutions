@@ -1,0 +1,87 @@
+{
+  "response": "GOOD",
+  "data": {
+    "num_found": 6,
+    "total_cost": 1,
+    "records": [{
+      "brand": "Marvel",
+      "categories": [
+        "Mens T-Shirts Tank Tops",
+        "Clothing",
+        "Mens Clothing",
+        "Mens Graphic Tees"
+      ],
+      "colors": [
+        "black"
+      ],
+      "dateAdded": "2020-05-22T09:14:54Z",
+      "dateUpdated": "2020-06-28T09:32:53Z",
+      "domains": [
+        "www.walmart.com"
+      ],
+      "ean": [
+        "0191685584227"
+      ],
+      "ean13": "0191685584227",
+      "gtins": [
+        "191685584227",
+        "0191685584227"
+      ],
+      "imageURLs": [
+        "https:\/\/i5.walmartimages.com\/asr\/b0e1dba5-8637-48f3-a42a-30277d8727f9_1.ddba7ce5c572aa0930d0bdd9119ceede.jpeg",
+        "https:\/\/i5.walmartimages.com\/asr\/6156ae8b-5700-4d4e-befd-d47545e057af_1.48ab06996966cf05d58cac0838cc27d4.jpeg",
+        "https:\/\/i5.walmartimages.com\/asr\/dbd21af9-2fbe-4db4-9c3c-072ec5ad9e75_1.d7b96dbbe989e325e767525e2344b50f.jpeg",
+        "https:\/\/i5.walmartimages.com\/asr\/d05d5368-e253-4f4a-8722-34c22ae37f4d_1.443ee2df49762bbb83fdc0c14a27f030.jpeg",
+        "https:\/\/i5.walmartimages.com\/asr\/7a99a002-39b3-4ea8-92b2-c2f7363b01ed_2.8e0a004b12946c7f27822b43c69c29f2.jpeg",
+        "https:\/\/i5.walmartimages.com\/asr\/c8dcc5ab-426a-47fb-aafc-850b3364435c_1.e4489d1eec603ae82c76c135de645034.jpeg"
+      ],
+      "keys": [
+        "191685584227",
+        "mensmarvelcomicsclassiclogographictshirt\/00191685584227",
+        "walmart.com-863937295",
+        "0191685584227"
+      ],
+      "manufacturer": "MARVEL",
+      "name": "Men's Marvel Comics Classic Logo Graphic T-shirt",
+      "prices": [{
+        "amountMax": 11.8699999999999992184029906638897955417633056640625,
+        "amountMin": 11.8699999999999992184029906638897955417633056640625,
+        "availability": "false",
+        "color": "black",
+        "currency": "USD",
+        "dateSeen": [
+          "2020-06-17T07:54:00.000Z",
+          "2020-06-14T06:30:00.000Z",
+          "2020-06-28T09:33:00.000Z"
+        ],
+        "size": "3xl",
+        "sourceURLs": [
+          "https:\/\/www.walmart.com\/ip\/6DUMCOFZQDLS"
+        ]
+      }],
+      "primaryCategories": [
+        "Apparel & Accessories"
+      ],
+      "sizes": [
+        "3xl"
+      ],
+      "skus": [{
+        "value": "00191685584227",
+        "sourceURLs": [
+          "https:\/\/www.walmart.com\/ip\/6DUMCOFZQDLS"
+        ]
+      }],
+      "sourceURLs": [
+        "https:\/\/www.walmart.com\/ip\/6DUMCOFZQDLS"
+      ],
+      "upc": [
+        "191685584227"
+      ],
+      "upca": "191685584227",
+      "websiteIDs": [
+        "walmart.com-863937295"
+      ],
+      "id": "2E-pO3IBo6SyyXo0-GQz"
+    }]
+  }
+}

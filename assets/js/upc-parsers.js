@@ -139,6 +139,35 @@ function bs_parse(res,surl){
 }
 
 
+function di_parse(res,surl){
+	var r = res.data.records[0];
+	console.log(r);
+	var nTitle = r.name.substring(0,80);
+  //nTitle =  nTitle.replace(r.brandName,'');
+	document.getElementById('product_title').value = nTitle;
+	document.getElementById('product_code').value = r.upc;
+	//document.getElementById('product_description_extra').value = r.shortDescription;
+  for(var i = 0; i < 5; i++){
+    if(r.imageURLs[i]){
+      document.getElementById('product_image'+(i+1)+'').src = r.imageURLs[i];
+      document.getElementById('img'+(i+1)+'_link').href = r.imageURLs[i];
+      document.getElementById('img_url'+(i+1)+'').value = r.imageURLs[i];
+    }
+  }
+  document.getElementById('product_color').value = r.colors[0];
+	document.getElementById('brand_label').value = r.brand;
+	//document.getElementById('product_brand').value = r.brand;
+	//document.getElementById('product_Size').value = r.size;
+	document.getElementById('response_message').innerHTML = '*Info Found via DataInfiniti.com [<a href="'+surl+'" target="_blank">View Source</a>]';
+  document.getElementById('loader').style.display = 'none';
+  if(r.price !== ''){
+    //add_suggested_price(r.price,'DataInfiniti');
+  }
+  add_suggested_price('Google');
+  format_ebay();
+}
+
+
 function ra_parse(res){
   
 	var r = res;
