@@ -31,6 +31,9 @@ use \DTS\eBaySDK\Trading\Enums;
 
 //Load Form Variables...
 $product_code = $_REQUEST['product_code'];
+if($product_code[0] == '0'){
+  $product_code = substr($product_code,1);
+}
 $product_title = $_REQUEST['product_title'];
 
 $pd = $_REQUEST['product_description'];
@@ -103,6 +106,7 @@ if($product_image5 != '' && $product_image5 != 'undefined'){
 
 $product_price = $_REQUEST['product_price'];
 $website_product_price = $_REQUEST['website_product_price'];
+$product_msrp = $_REQUEST['product_msrp'];
 $product_quantity = $_REQUEST['product_quantity'];
 
 //Package Dimensions...
@@ -125,6 +129,15 @@ if($pkg_weight <= 1){
     $shipping_service_option = 'USPSPriority';
 }
 
+
+$ebay_title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
+if($product_Inseam != ''){
+  $ebay_title .= 'x' . $product_Inseam;
+}
+if($_REQUEST['product_Cup_Size'] != ''){
+  $ebay_title .= $_REQUEST['product_Cup_Size'];
+}
+
 //Shipping Service...
 //$shipping_service_option = $_REQUEST['product_ship_option'];
 
@@ -139,8 +152,54 @@ if($pkg_weight <= 1){
 echo '<html>
       <head>
         <title>Add Item</title>
+        <script src="http://labelwriter.com/software/dls/sdk/js/DYMO.Label.Framework.latest.js" type="text/javascript" charset="UTF-8"></script>
       </head>
       <body>';
+
+//Setup Labels for Printing...
+$label_original_price = number_format($product_msrp,2);
+$label_current_price = number_format($website_product_price,2);
+$label_upc_code = $product_code;
+$label_ebay_title = wordwrap($ebay_title,30,"\n");
+$label_website_title = wordwrap($website_product_title,30,"\n");
+//Include Label Templates...
+include '../dymo/label-templates/hang-tag-1.php';
+include '../dymo/label-templates/hang-tag-2.php';
+
+echo '<script>
+    function print_label(tag_num){
+    
+      switch(tag_num) {
+        case 1:
+          var label = dymo.label.framework.openLabelXml(hang_tag_1);
+          break;
+        case 2:
+          var label = dymo.label.framework.openLabelXml(hang_tag_2);
+          break;
+        default:
+          return;
+      }
+      
+      
+
+        var printers = dymo.label.framework.getPrinters();
+        if (printers.length == 0)
+        throw "No DYMO printers are installed. Install DYMO printers.";
+        var printerName = "";
+        console.log(printers);
+        for (var i = 0; i < printers.length; ++i)
+        {
+            var printer = printers[i];
+            if (printer.printerType == "LabelWriterPrinter")
+            {
+                printerName = printer.name;
+                label.print(printerName);
+                //break;
+            }
+        }
+      //label.print(printerName);
+    }  
+    </script>';
 
 echo '<div id="status">
         <h1 id="lStatus"></h1>
@@ -162,8 +221,10 @@ echo '<div id="success" style="padding:10px;background:rgba(92,184,92,0.5);">
   echo '<div id="success_btns" style="width:100%;text-align:center;display:none;">
         <br><br>
         <a href="http://' . $_SERVER['HTTP_HOST'] . '/assets/php/refresh-token-test.php" style="background:blue;padding:10px;border-radius:25px;color:white;">Continue</a>
-        <br><br><br><br><br><br>
+        <br><br><br>
         <a href="http://' . $_SERVER['HTTP_HOST'] . '/assets/php/refresh-token-test.php?retry=Yes" style="background:green;padding:10px;border-radius:25px;color:white;">Similar Item</a>
+        <br><br><br>
+        <a href="javascript:print_batch();" style="background:blue;padding:10px;border-radius:25px;color:white;">Re-Print Labels</a>
       </div>';
 
 echo '<div id="failed_btns" style="width:100%;text-align:center;display:none;">
@@ -265,13 +326,7 @@ $item->BestOfferDetails->BestOfferEnabled = false;
  * Note that any HTML in the title or description must be converted to HTML entities.
  */
   
-$ebay_title = $product_section . ' ' . $product_brand . ' ' . $product_title . ' ' . $product_color . ' ' . $product_size;
-if($product_Inseam != ''){
-  $ebay_title .= 'x' . $product_Inseam;
-}
-if($_REQUEST['product_Cup_Size'] != ''){
-  $ebay_title .= $_REQUEST['product_Cup_Size'];
-}
+
 $item->Title = substr($ebay_title, 0, 80);
 //$item->Title = $product_title;
 $item->Description = $product_description;
@@ -614,6 +669,18 @@ if($_REQUEST['submit_to_store'] == 'on'){
   
 }//End Submit to Store...
 
+//Print Hang Tag Labels...
+echo '<script>
+        function print_batch(){';
+    //if($tag_1_switch == 'on'){
+      echo 'print_label(1);';
+    //}
+    //if($tag_1_switch == 'on'){
+      echo 'print_label(2);';
+    //}   
+  echo '}
+        print_batch();
+      </script>';
 
 /**
  * Set Form Data to SESSION Variable

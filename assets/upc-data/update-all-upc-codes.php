@@ -24,103 +24,7 @@ if($rnums <= 0){
   
   while($r = mysqli_fetch_array($g)){
     
-    if($r['item_source'] == 'Walmart'){
-      
-      $pTitle = mysqli_real_escape_string($conn, $r['item_description']);
-      $durl = 'http://' . $_SERVER['HTTP_HOST'] . '/assets/data-infiniti/get-data-by-title.php?pTitle=' . $pTitle;
-      $data = file_get_contents($durl);
-      $d = json_decode($data);
-      //Process Data...
-      if($data != false && $d->response != 'ERROR' && $d->data->num_found > 0){
-        $p = $d->data->records[0];
-        //UPDATE UPC Data...
-        $uq = "UPDATE `upc_codes` SET ";
-        $uq .= "`date` = CURRENT_DATE,`time` = CURRENT_TIME,";
-        if($r['brand'] == ''){
-          $uq .= "`brand` = '" . mysqli_real_escape_string($conn,$p->brand) . "',";
-        }
-        if($r['item_title'] == ''){
-          $uq .= "`item_title` = '" . mysqli_real_escape_string($conn,$p->name) . "',";
-        }
-        if($r['item_description'] == ''){
-          //$uq .= "`item_description` = '" . mysqli_real_escape_string($conn,$p->description) . "',";
-        }
-        if($r['long_description'] == ''){
-          //$uq .= "`long_description` = '" . mysqli_real_escape_string($conn,$p->description) . "',";
-        }
-        if($r['size'] == ''){
-          $uq .= "`size` = '" . mysqli_real_escape_string($conn,$d->size) . "',";
-        }
-        if($r['color'] == ''){
-          $uq .= "`color` = '" . mysqli_real_escape_string($conn,$d->color) . "',";
-        }
-        if($r['img1'] == ''){
-          $uq .= "`img1` = '" . mysqli_real_escape_string($conn,$d->img1) . "',";
-        }
-        if($r['img2'] == ''){
-          $uq .= "`img2` = '" . mysqli_real_escape_string($conn,$d->img2) . "',";
-        }
-        if($r['img3'] == ''){
-          $uq .= "`img3` = '" . mysqli_real_escape_string($conn,$d->img3) . "',";
-        }
-        if($r['img4'] == ''){
-          $uq .= "`img4` = '" . mysqli_real_escape_string($conn,$d->img4) . "',";
-        }
-        if($r['img5'] == ''){
-          $uq .= "`img5` = '" . mysqli_real_escape_string($conn,$d->img5) . "',";
-        }
-        if($r['retail_price'] == ''){
-          $uq .= "`retail_price` = '" . mysqli_real_escape_string($conn,$d->price) . "',";
-        }
-        if($r['item_weight'] == ''){
-          $uq .= "`item_weight` = '" . mysqli_real_escape_string($conn,$d->weight) . "',";
-        }
-        if($r['data_source'] == ''){
-          $uq .= "`data_source` = '" . mysqli_real_escape_string($conn,$d->data_source) . "',";
-        }
-        $uq .= "`inactive` = 'No'
-              WHERE 
-              `ID` = '" . $r['ID'] . "'";
-
-        if(mysqli_query($conn, $uq)){
-          //$x->response = 'GOOD';
-          //$x->message = 'UPC ' . $upc . ' has been updated!';
-          echo '<h1>UPC Code: ' . $upc . ' was updated successfully.<br>
-                    Using ' . $d->data_source . '!<br>
-                    UPC Codes To Be Scanned: ' . $nrnums . '</h1>';
-          $cp = number_format($rrcount / ($rcount - $nrnums),3);
-          echo '<h2>Rows Found: ' . $rrcount . ' Rows Total: ' . $rcount . ' Current Percent Found: ' . $cp . '% Percent Found: ' . $percent . '%</h2>';
-          echo '<script>setTimeout(function(){window.location.reload();},500);</script>';
-          //echo '<button type="button" onclick="window.location.reload();">Continue</button>';
-        }else{
-          //$x->response = 'ERROR';
-          //$x->message = $conn-error;
-          var_dump($data);
-          echo '<h1 style="color:red;">Error: ' . $conn->error . '</h1>';
-        }
-
-      }else{
-        //echo 'ERROR->';
-        echo '<h1 style="color:red;">Error!<br><br>
-              UPC Codes To Be Scanned: ' . $nrnums . '</h1>
-              </h1>';
-        $cp = number_format($rrcount / ($rcount - $nrnums),3);
-        echo '<h2>Rows Found: ' . $rrcount . ' Rows Total: ' . $rcount . ' Current Percent Found: ' . $cp . '% Percent Found: ' . $percent . '%</h2>';
-        var_dump($data);
-        $uq = "UPDATE `upc_codes` SET ";
-        $uq .= "`data_source` = 'None',";
-        $uq .= "`inactive` = 'No'
-            WHERE 
-            `upc_code` = '" . $upc . "'";
-        mysqli_query($conn, $uq) or die($conn->error);
-        echo '<script>setTimeout(function(){window.location.reload();},500);</script>';
-        /*echo '<button type="button" onclick="window.location.reload();">Continue</button>';
-        echo '<script>
-                alert("An Error Occurred!");
-              </script>';*/
-      }
-      
-    }else{
+    
       
       //Get Stats...
       $rq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `item_source` != '' AND `ID` > '9152'";
@@ -232,7 +136,6 @@ if($rnums <= 0){
               </script>';*/
       }
       
-   }//End if else item_source = Walmart...
 
   }//End while loop...
   

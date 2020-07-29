@@ -177,7 +177,7 @@
                 <div class="col-md-6">
                   <select id="product_condition" style="width: 100%;" name="product_condition" class="form-control" Required>
                     <option value="">Select Condition</option>
-                    <option value="1000" selected>New with tags/box</option>
+                    <option value="1000">New with tags/box</option>
                     <option value="1500">New without tags/box</option>
                     <option value="1750">New with defects</option>
                     <option value="3000">Pre-owned</option>
@@ -262,6 +262,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="text-left">Price:</h4>
+                    <p>MSRP: <input type="text" class="form-control" style="width:25%;" id="product_msrp" name="product_msrp" /></p>
                 </div>
                 <div class="col-md-6">
                   <label for="product_price">Ebay Price <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Ebay Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_price'];}?>" autocomplete="off" Required></label>
@@ -302,7 +303,7 @@
                 </div>
                 <div class="col-md-6">
                   <input type="text" id="product_code" style="width: 100%;" name="product_code" class="form-control" placeholder="UPC Code" value="<?php if($_GET['retry'] == 'Yes'){/*echo $_SESSION['form_data']['product_code'];*/}?>" Required>
-                  <button type="button" class="btn btn-warning btn-sm" onclick="document.getElementById('product_code').value = 'Does not apply';">
+                  <button type="button" class="btn btn-warning btn-sm" style="color:#000;" onclick="document.getElementById('product_code').value = 'Does not apply';">
                     Does not apply
                   </button>
                 </div>
