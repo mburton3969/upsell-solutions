@@ -1,5 +1,0 @@
-[01-Jul-2020 08:29:23 America/Chicago] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home1/reseller/beta/assets/data-infiniti/test.php on line 5
-[01-Jul-2020 08:29:24 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/beta/assets/data-infiniti/test.php on line 41
-[01-Jul-2020 08:30:17 America/Chicago] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home1/reseller/beta/assets/data-infiniti/test.php on line 5
-[01-Jul-2020 08:30:18 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/beta/assets/data-infiniti/test.php on line 41
-[01-Jul-2020 08:30:54 America/Chicago] PHP Warning:  Creating default object from empty value in /home1/reseller/beta/assets/data-infiniti/test.php on line 42

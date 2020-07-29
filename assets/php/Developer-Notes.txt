@@ -1,9 +1,0 @@
-Moved the following files:
-
-app-token-test.php -> ebay/get-app-token.php
-
-user-token-test.php -> ebay/get-user-token.php
-
-
-Modified the "Mburton9" ebay developer account to direct through the new file locations...Modified
-

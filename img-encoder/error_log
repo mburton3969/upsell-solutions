@@ -1,1 +1,0 @@
-[05-Jun-2020 13:26:52 America/Chicago] PHP Warning:  imagepng(/files/demo-filename.png): failed to open stream: No such file or directory in /home1/reseller/beta/img-encoder/demo.php on line 23
