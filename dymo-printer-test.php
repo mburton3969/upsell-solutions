@@ -78,7 +78,7 @@ include 'assets/php/connection.php';
       
     function printTags(){
       GetDYMOPrinters(1);
-      //GetDYMOPrinters(2);
+      GetDYMOPrinters(2);
       //GetDYMOPrinters(3);
     }
     </script>
