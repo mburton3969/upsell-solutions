@@ -142,6 +142,28 @@ while($r = mysqli_fetch_array($g)){*/
     echo $res;
     //break;
     
+  }elseif($data->di_data != false){
+    
+    $d = json_decode($data->di_data);
+    $p = $d->data->records[0];
+    $x->response = 'GOOD';
+    $x->message = 'UPC Code Found!';
+    $x->data_source = 'DataInfiniti.com';
+    $x->title = $p->name;
+    $x->brand = $p->brand;
+    $x->color = $p->colors[0];
+    $x->size = $p->size;
+    //$x->price = $p->price;
+    //$x->weight = $p->weight;
+    //Get item images...
+    $x->img1 = $p->imageURLs[0];
+    $x->img2 = $p->imageURLs[1];
+    $x->img3 = $p->imageURLs[2];
+    $x->img4 = $p->imageURLs[3];
+    $x->img5 = $p->imageURLs[4];
+    $res = json_encode($x);
+    echo $res;
+    
   }elseif($source == 'Target'){
     $iq = "SELECT * FROM `upc_codes` WHERE `upc_code` = '" . $upc . "'";
     $ig = mysqli_query($conn, $iq) or die($conn->error);
