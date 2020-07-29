@@ -454,11 +454,3 @@ Stack trace:
 #3 {main}
   thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
 
-[29-Jul-2020 16:36:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
-[29-Jul-2020 11:36:10 America/Chicago] PHP Deprecated:  Directive 'allow_url_include' is deprecated in Unknown on line 0
-[29-Jul-2020 11:36:10 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home1/reseller/public_html/assets/php/connection.php:13
-Stack trace:
-#0 /home1/reseller/public_html/assets/php/get-categories.php(2): include()
-#1 {main}
-  thrown in /home1/reseller/public_html/assets/php/connection.php on line 13
-[29-Jul-2020 12:17:22 America/Chicago] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home1/reseller/public_html/assets/php/add-item.php on line 160
