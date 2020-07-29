@@ -72,6 +72,7 @@ function upc_parse(res,surl){
 	document.getElementById('product_quantity').value = '';
 	document.getElementById('product_Size').value = r.size;
 	document.getElementById('product_color').value = r.color;
+  document.getElementById('product_msrp').value = r.highest_recorded_price.toFixed(2);
 	document.getElementById('response_message').innerHTML = '*Info Found via upcitemdb.com [<a href="'+surl+'" target="_blank">View Source</a>]';
   document.getElementById('loader').style.display = 'none';
   if(r.lowest_recorded_price !== '' || r.highest_recorded_price !== ''){
@@ -107,6 +108,7 @@ function wm_parse(res,surl){
 	document.getElementById('brand_label').value = r.brandName;
 	document.getElementById('product_brand').value = r.brandName;
 	document.getElementById('product_Size').value = r.size;
+  document.getElementById('product_msrp').value = r.msrp.toFixed(2);
 	document.getElementById('response_message').innerHTML = '*Info Found via walmart.com [<a href="'+surl+'" target="_blank">View Source</a>]';
   document.getElementById('loader').style.display = 'none';
   get_ebay_item_prices(r.upc);
@@ -154,10 +156,13 @@ function di_parse(res,surl){
       document.getElementById('img_url'+(i+1)+'').value = r.imageURLs[i];
     }
   }
-  document.getElementById('product_color').value = r.colors[0];
+  if(r.colors){
+    document.getElementById('product_color').value = r.colors[0];
+  }
 	document.getElementById('brand_label').value = r.brand;
 	//document.getElementById('product_brand').value = r.brand;
 	//document.getElementById('product_Size').value = r.size;
+	document.getElementById('product_msrp').value = r.prices[0].amountMax.toFixed(2);
 	document.getElementById('response_message').innerHTML = '*Info Found via DataInfiniti.com [<a href="'+surl+'" target="_blank">View Source</a>]';
   document.getElementById('loader').style.display = 'none';
   if(r.price !== ''){
@@ -355,6 +360,7 @@ function ra_parse(res){
 	  document.getElementById('brand_label').value = r.brand;
     document.getElementById('product_brand').value = r.brand;
     document.getElementById('product_Size').value = r.size;
+    document.getElementById('product_msrp').value = r.price.toFixed(2);
     if(r.accurate == 'No'){
       document.getElementById('response_message').innerHTML = '*Info Found via Reseller App\'s Internal UPC Database';
     }else{
