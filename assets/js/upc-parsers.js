@@ -162,7 +162,9 @@ function di_parse(res,surl){
 	document.getElementById('brand_label').value = r.brand;
 	//document.getElementById('product_brand').value = r.brand;
 	//document.getElementById('product_Size').value = r.size;
-	document.getElementById('product_msrp').value = r.prices[0].amountMax.toFixed(2);
+  if(r.prices){
+	  document.getElementById('product_msrp').value = r.prices[0].amountMax.toFixed(2);
+  }
 	document.getElementById('response_message').innerHTML = '*Info Found via DataInfiniti.com [<a href="'+surl+'" target="_blank">View Source</a>]';
   document.getElementById('loader').style.display = 'none';
   if(r.price !== ''){
