@@ -454,3 +454,13 @@ Stack trace:
 #3 {main}
   thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
 
+[29-Jul-2020 14:49:42 America/Chicago] PHP Fatal error:  Uncaught GuzzleHttp\Exception\ServerException: Server error: `POST https://api.ebay.com/ws/api.dll` resulted in a `503 Service Unavailable` response:
+<html><head><title>Apache Tomcat/5.5.15-150 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;col (truncated...)
+ in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php:113
+Stack trace:
+#0 /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Middleware.php(66): GuzzleHttp\Exception\RequestException::create(Object(GuzzleHttp\Psr7\Request), Object(GuzzleHttp\Psr7\Response))
+#1 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(203): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Response))
+#2 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/Promise.php(156): GuzzleHttp\Promise\Promise::callHandler(1, Object(GuzzleHttp\Psr7\Response), Array)
+#3 /home1/reseller/public_html/assets/vendor/guzzlehttp/promises/src/TaskQueue.php(47) in /home1/reseller/public_html/assets/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php on line 113
+[29-Jul-2020 14:57:19 America/Chicago] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home1/reseller/public_html/assets/php/add-item.php on line 160
+[29-Jul-2020 16:55:14 America/Chicago] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home1/reseller/public_html/assets/php/add-item.php on line 160
