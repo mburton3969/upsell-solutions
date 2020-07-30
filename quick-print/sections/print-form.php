@@ -10,6 +10,11 @@
       <div class="panel-body text-center">
 
         <label for="originally">
+          Size: 
+          <input type="text" class="form-control" id="size" name="size" placeholder="" />
+        </label>
+        <br><br><br>
+        <label for="originally">
           Originally: 
           <input type="text" class="form-control" id="originally" name="originally" placeholder="0.00" />
         </label>
