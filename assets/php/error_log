@@ -453,7 +453,6 @@ Stack trace:
 #2 /home1/reseller/public_html/assets/php/user-token-test.php(50): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
 #3 {main}
   thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
-
 [29-Jul-2020 11:47:24 America/Chicago] PHP Fatal error:  Uncaught InvalidArgumentException: Cannot read credentials from /.ebay_sdk/credentials in /home1/reseller/beta/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php:132
 Stack trace:
 #0 /home1/reseller/beta/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php(82): DTS\eBaySDK\Credentials\CredentialsProvider::DTS\eBaySDK\Credentials\{closure}()
@@ -470,3 +469,4 @@ Stack trace:
 #3 /home1/reseller/beta/assets/vendor/dts/ebay-sdk-php/src/ConfigurationResolver.php(59): DTS\eBaySDK\applyCredentials(Object(Closure), Array)
 #4 /home1/reseller/beta/assets/vendor/dts/ebay-sdk-php/src/OAuth/Services/OAuthService.php(72): DTS\eBaySDK\ConfigurationResolver->resolve(Array)
 #5 /home1/resel in /home1/reseller/beta/assets/vendor/dts/ebay-sdk-php/src/Credentials/CredentialsProvider.php on line 132
+
