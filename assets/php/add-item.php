@@ -162,6 +162,13 @@ $label_current_price = number_format($website_product_price,2);
 $label_upc_code = $product_code;
 $label_ebay_title = wordwrap($ebay_title,30,"\n");
 $label_website_title = wordwrap($website_product_title,30,"\n");
+$tag_size = $product_size;
+if($_REQUEST['product_Inseam'] != ''){
+  $tag_size .= 'x' . $product_Inseam;
+}
+if($_REQUEST['product_Cup_Size'] != ''){
+  $tag_size .= $_REQUEST['product_Cup_Size'];
+}
 //Include Label Templates...
 include '../dymo/label-templates/hang-tag-1.php';
 include '../dymo/label-templates/hang-tag-2.php';
