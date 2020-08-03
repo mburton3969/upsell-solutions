@@ -1,4 +1,30 @@
-[03-Aug-2020 17:00:57 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
-[03-Aug-2020 12:00:57 America/Chicago] PHP Deprecated:  Directive 'allow_url_include' is deprecated in Unknown on line 0
-[03-Aug-2020 12:00:57 America/Chicago] PHP Warning:  require(/home1/reseller/beta/root/app/Config/../../vendor/codeigniter4/framework/system/bootstrap.php): failed to open stream: No such file or directory in /home1/reseller/beta/root/public/index.php on line 36
-[03-Aug-2020 12:00:57 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home1/reseller/beta/root/app/Config/../../vendor/codeigniter4/framework/system/bootstrap.php' (include_path='.:/opt/php71/lib/php') in /home1/reseller/beta/root/public/index.php on line 36
+[03-Aug-2020 18:06:52 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[03-Aug-2020 13:06:52 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function json_decode() in /home1/reseller/beta/project-root/vendor/kint-php/kint/src/Utils.php:85
+Stack trace:
+#0 /home1/reseller/beta/project-root/vendor/kint-php/kint/src/Utils.php(117): Kint\Utils::composerGetExtras()
+#1 /home1/reseller/beta/project-root/vendor/kint-php/kint/init.php(54): Kint\Utils::composerSkipFlags()
+#2 /home1/reseller/beta/project-root/vendor/composer/autoload_real.php(66): require('/home1/reseller...')
+#3 /home1/reseller/beta/project-root/vendor/composer/autoload_real.php(56): composerRequiread4fdec479b9b145b20269e55b01fc5c('3917c79c5052b27...', '/home1/reseller...')
+#4 /home1/reseller/beta/project-root/vendor/autoload.php(7): ComposerAutoloaderInitad4fdec479b9b145b20269e55b01fc5c::getLoader()
+#5 /home1/reseller/beta/project-root/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(415): include('/home1/reseller...')
+#6 /home1/reseller/beta/project-root/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(129): CodeIgniter\Autoload in /home1/reseller/beta/project-root/vendor/kint-php/kint/src/Utils.php on line 85
+[03-Aug-2020 18:09:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[03-Aug-2020 13:09:16 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function json_decode() in /home1/reseller/beta/project-root/vendor/kint-php/kint/src/Utils.php:85
+Stack trace:
+#0 /home1/reseller/beta/project-root/vendor/kint-php/kint/src/Utils.php(117): Kint\Utils::composerGetExtras()
+#1 /home1/reseller/beta/project-root/vendor/kint-php/kint/init.php(54): Kint\Utils::composerSkipFlags()
+#2 /home1/reseller/beta/project-root/vendor/composer/autoload_real.php(66): require('/home1/reseller...')
+#3 /home1/reseller/beta/project-root/vendor/composer/autoload_real.php(56): composerRequire3a6302c85015d1de7f231667130b9cd3('3917c79c5052b27...', '/home1/reseller...')
+#4 /home1/reseller/beta/project-root/vendor/autoload.php(7): ComposerAutoloaderInit3a6302c85015d1de7f231667130b9cd3::getLoader()
+#5 /home1/reseller/beta/project-root/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(415): include('/home1/reseller...')
+#6 /home1/reseller/beta/project-root/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(129): CodeIgniter\Autoload in /home1/reseller/beta/project-root/vendor/kint-php/kint/src/Utils.php on line 85
+[03-Aug-2020 18:17:54 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[03-Aug-2020 13:17:55 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function json_decode() in /home1/reseller/beta/project-root/vendor/kint-php/kint/src/Utils.php:85
+Stack trace:
+#0 /home1/reseller/beta/project-root/vendor/kint-php/kint/src/Utils.php(117): Kint\Utils::composerGetExtras()
+#1 /home1/reseller/beta/project-root/vendor/kint-php/kint/init.php(54): Kint\Utils::composerSkipFlags()
+#2 /home1/reseller/beta/project-root/vendor/composer/autoload_real.php(66): require('/home1/reseller...')
+#3 /home1/reseller/beta/project-root/vendor/composer/autoload_real.php(56): composerRequire3a6302c85015d1de7f231667130b9cd3('3917c79c5052b27...', '/home1/reseller...')
+#4 /home1/reseller/beta/project-root/vendor/autoload.php(7): ComposerAutoloaderInit3a6302c85015d1de7f231667130b9cd3::getLoader()
+#5 /home1/reseller/beta/project-root/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(415): include('/home1/reseller...')
+#6 /home1/reseller/beta/project-root/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(129): CodeIgniter\Autoload in /home1/reseller/beta/project-root/vendor/kint-php/kint/src/Utils.php on line 85
