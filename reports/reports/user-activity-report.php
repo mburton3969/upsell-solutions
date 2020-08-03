@@ -150,9 +150,9 @@ while($ulr = mysqli_fetch_array($ulg)){
   
   //Check if imported through the Reseller App...
   if($_REQUEST['submit_all']){
-    $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `user_id` = '" . $ulr['ID'] . "' AND `status` = 'Imported'";
+    $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `user_id` = '" . $uid . "' AND `status` = 'Imported'";
   }else{
-    $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `user_id` = '" . $ulr['ID'] . "' AND `status` = 'Imported' AND `date` >= '" . $sdate . "' AND `date` <= '" . $edate . "'";
+    $icq = "SELECT * FROM `ebay_imports` WHERE `inactive` != 'Yes' AND `user_id` = '" . $uid . "' AND `status` = 'Imported' AND `date` >= '" . $sdate . "' AND `date` <= '" . $edate . "'";
   }
   $icg = mysqli_query($conn, $icq) or die($conn->error);
   while($icr = mysqli_fetch_array($icg)){
@@ -187,6 +187,27 @@ while($ulr = mysqli_fetch_array($ulg)){
   $total_actions = $total_ebay_listings + $total_store_listings + $upc_scans + $ebay_imports;
 
   
+  //Check if imported through the Reseller App...
+  if($_REQUEST['submit_all']){
+    $pq = "SELECT * FROM `qp_log` WHERE `inactive` != 'Yes' AND `user_id` = '" . $uid . "'";
+  }else{
+    $pq = "SELECT * FROM `qp_log` WHERE `inactive` != 'Yes' AND `user_id` = '" . $uid . "' AND `date` >= '" . $sdate . "' AND `date` <= '" . $edate . "'";
+  }
+  echo $pq;
+  $pg = mysqli_query($conn, $pq) or die($conn->error);
+  while($pr = mysqli_fetch_array($pg)){
+    echo '<tr>
+          <td>' . date("m/d/y",strtotime($pr['date'])) . '</td>
+          <td>' . date("h:i A",strtotime($pr['time'])) . '</td>
+          <td>Quick Print</td>
+          <td>N/A</td>
+          <td>N/A</td>
+          <td>N/A</td>
+          <td>N/A</td>
+          <td>N/A</td>
+          <td>N/A</td>
+        </tr>';
+  }
   
 }
 
