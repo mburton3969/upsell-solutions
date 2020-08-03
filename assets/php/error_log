@@ -500,3 +500,10 @@ Stack trace:
 [30-Jul-2020 13:34:12 America/Chicago] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home1/reseller/public_html/assets/php/add-item.php on line 160
 [30-Jul-2020 15:39:24 America/Chicago] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home1/reseller/public_html/assets/php/add-item.php on line 160
 [30-Jul-2020 17:26:21 America/Chicago] PHP Warning:  number_format() expects parameter 1 to be float, string given in /home1/reseller/public_html/assets/php/add-item.php on line 160
+[31-Jul-2020 09:40:05 America/Chicago] PHP Fatal error:  Uncaught DTS\eBaySDK\Exceptions\InvalidPropertyTypeException: Invalid property type provided for code. Expected string but got NULL in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php:497
+Stack trace:
+#0 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(310): DTS\eBaySDK\Types\BaseType::ensurePropertyType('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#1 /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php(87): DTS\eBaySDK\Types\BaseType->set('DTS\\eBaySDK\\OAu...', 'code', NULL)
+#2 /home1/reseller/public_html/assets/php/user-token-test.php(50): DTS\eBaySDK\Types\BaseType->__set('code', NULL)
+#3 {main}
+  thrown in /home1/reseller/public_html/assets/vendor/dts/ebay-sdk-php/src/Types/BaseType.php on line 497
