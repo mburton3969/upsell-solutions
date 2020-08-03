@@ -81,6 +81,7 @@ if(!$_REQUEST['submit'] && !$_REQUEST['submit_all']){
          <th>ebay Listings</th>
          <th>Qty to ebay</th>
          <th>ebay Imports</th>
+         <th>Quick Prints</th>
          <th>Total Actions</th>
          </tr>
         </thead>
@@ -98,6 +99,7 @@ while($ulr = mysqli_fetch_array($ulg)){
   $total_actions = 0;
   $ebay_qty_listed = 0;
   $store_qty_listed = 0;
+  $qp_count = 0;
   
   //Get UPC Log info...
   if($_REQUEST['submit_all']){
@@ -145,6 +147,16 @@ while($ulr = mysqli_fetch_array($ulg)){
   }
   $total_actions = $total_ebay_listings + $total_store_listings + $upc_scans + $ebay_imports;
   
+  //Get Quick Print Log info...
+  if($_REQUEST['submit_all']){
+    $qpq = "SELECT * FROM `qp_log` WHERE `inactive` != 'Yes' AND `user_id` = '" . $ulr['ID'] . "'";
+  }else{
+    $qpq = "SELECT * FROM `qp_log` WHERE `inactive` != 'Yes' AND `user_id` = '" . $ulr['ID'] . "' AND `date` >= '" . $sdate . "' AND `date` <= '" . $edate . "'";
+  }
+  
+  $qpg = mysqli_query($conn, $qpq) or die($conn->error);
+  $qp_count = mysqli_num_rows($qpg);
+  
   echo '<tr>
           <td>
             <a href="user-activity-report.php?uid=' . $ulr['ID'] . '&sdate=' . $sdate . '&edate=' . $edate . $sub . '" target="_blank">
@@ -157,6 +169,7 @@ while($ulr = mysqli_fetch_array($ulg)){
           <td>' . $total_ebay_listings . '</td>
           <td>' . $ebay_qty_listed . '</td>
           <td>' . $ebay_imports . '</td>
+          <td>' . $qp_count . '</td>
           <td>' . $total_actions . '</td>
         </tr>';
   

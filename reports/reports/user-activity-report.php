@@ -193,7 +193,6 @@ while($ulr = mysqli_fetch_array($ulg)){
   }else{
     $pq = "SELECT * FROM `qp_log` WHERE `inactive` != 'Yes' AND `user_id` = '" . $uid . "' AND `date` >= '" . $sdate . "' AND `date` <= '" . $edate . "'";
   }
-  echo $pq;
   $pg = mysqli_query($conn, $pq) or die($conn->error);
   while($pr = mysqli_fetch_array($pg)){
     echo '<tr>
@@ -201,7 +200,11 @@ while($ulr = mysqli_fetch_array($ulg)){
           <td>' . date("h:i A",strtotime($pr['time'])) . '</td>
           <td>Quick Print</td>
           <td>N/A</td>
-          <td>N/A</td>
+          <td>
+            Size: ' . $pr['size'] . '<br>
+            Originally: $' . $pr['original'] . '<br>
+            Now: $' . $pr['now'] . '
+          </td>
           <td>N/A</td>
           <td>N/A</td>
           <td>N/A</td>
