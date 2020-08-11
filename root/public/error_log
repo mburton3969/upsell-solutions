@@ -18124,3 +18124,45 @@ Stack trace:
 #1 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(184): CodeIgniter\HTTP\IncomingRequest->detectURI('REQUEST_URI', 'beta.reseller-s...')
 #2 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/Services.php(624): CodeIgniter\HTTP\IncomingRequest->__construct(Object(Config\App), Object(CodeIgniter\HTTP\URI), '', Object(CodeIgniter\HTTP\UserAgent))
 #3 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/BaseService.php(123): CodeIgniter\Config\Services::request(Object(Config\App) in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php on line 665
+[11-Aug-2020 10:39:52 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to CodeIgniter\HTTP\URI::setScheme() must be of the type string, null given, called in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php on line 615 and defined in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php:665
+Stack trace:
+#0 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(615): CodeIgniter\HTTP\URI->setScheme(NULL)
+#1 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(184): CodeIgniter\HTTP\IncomingRequest->detectURI('REQUEST_URI', 'beta.reseller-s...')
+#2 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/Services.php(624): CodeIgniter\HTTP\IncomingRequest->__construct(Object(Config\App), Object(CodeIgniter\HTTP\URI), '', Object(CodeIgniter\HTTP\UserAgent))
+#3 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/BaseService.php(123): CodeIgniter\Config\Services::request(Object(Config\App) in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php on line 665
+[11-Aug-2020 10:40:14 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to CodeIgniter\HTTP\URI::setScheme() must be of the type string, null given, called in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php on line 615 and defined in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php:665
+Stack trace:
+#0 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(615): CodeIgniter\HTTP\URI->setScheme(NULL)
+#1 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(184): CodeIgniter\HTTP\IncomingRequest->detectURI('REQUEST_URI', 'beta.reseller-s...')
+#2 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/Services.php(624): CodeIgniter\HTTP\IncomingRequest->__construct(Object(Config\App), Object(CodeIgniter\HTTP\URI), '', Object(CodeIgniter\HTTP\UserAgent))
+#3 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/BaseService.php(123): CodeIgniter\Config\Services::request(Object(Config\App) in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php on line 665
+[11-Aug-2020 10:40:14 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to CodeIgniter\HTTP\URI::setScheme() must be of the type string, null given, called in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php on line 615 and defined in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php:665
+Stack trace:
+#0 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(615): CodeIgniter\HTTP\URI->setScheme(NULL)
+#1 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(184): CodeIgniter\HTTP\IncomingRequest->detectURI('REQUEST_URI', 'beta.reseller-s...')
+#2 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/Services.php(624): CodeIgniter\HTTP\IncomingRequest->__construct(Object(Config\App), Object(CodeIgniter\HTTP\URI), '', Object(CodeIgniter\HTTP\UserAgent))
+#3 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/BaseService.php(123): CodeIgniter\Config\Services::request(Object(Config\App) in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php on line 665
+[11-Aug-2020 10:40:14 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to CodeIgniter\HTTP\URI::setScheme() must be of the type string, null given, called in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php on line 615 and defined in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php:665
+Stack trace:
+#0 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(615): CodeIgniter\HTTP\URI->setScheme(NULL)
+#1 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(184): CodeIgniter\HTTP\IncomingRequest->detectURI('REQUEST_URI', 'beta.reseller-s...')
+#2 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/Services.php(624): CodeIgniter\HTTP\IncomingRequest->__construct(Object(Config\App), Object(CodeIgniter\HTTP\URI), '', Object(CodeIgniter\HTTP\UserAgent))
+#3 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/BaseService.php(123): CodeIgniter\Config\Services::request(Object(Config\App) in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php on line 665
+[11-Aug-2020 10:40:14 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to CodeIgniter\HTTP\URI::setScheme() must be of the type string, null given, called in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php on line 615 and defined in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php:665
+Stack trace:
+#0 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(615): CodeIgniter\HTTP\URI->setScheme(NULL)
+#1 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(184): CodeIgniter\HTTP\IncomingRequest->detectURI('REQUEST_URI', 'beta.reseller-s...')
+#2 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/Services.php(624): CodeIgniter\HTTP\IncomingRequest->__construct(Object(Config\App), Object(CodeIgniter\HTTP\URI), '', Object(CodeIgniter\HTTP\UserAgent))
+#3 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/BaseService.php(123): CodeIgniter\Config\Services::request(Object(Config\App) in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php on line 665
+[11-Aug-2020 10:40:14 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to CodeIgniter\HTTP\URI::setScheme() must be of the type string, null given, called in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php on line 615 and defined in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php:665
+Stack trace:
+#0 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(615): CodeIgniter\HTTP\URI->setScheme(NULL)
+#1 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(184): CodeIgniter\HTTP\IncomingRequest->detectURI('REQUEST_URI', 'beta.reseller-s...')
+#2 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/Services.php(624): CodeIgniter\HTTP\IncomingRequest->__construct(Object(Config\App), Object(CodeIgniter\HTTP\URI), '', Object(CodeIgniter\HTTP\UserAgent))
+#3 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/BaseService.php(123): CodeIgniter\Config\Services::request(Object(Config\App) in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php on line 665
+[11-Aug-2020 10:41:18 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to CodeIgniter\HTTP\URI::setScheme() must be of the type string, null given, called in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php on line 615 and defined in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php:665
+Stack trace:
+#0 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(615): CodeIgniter\HTTP\URI->setScheme(NULL)
+#1 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/IncomingRequest.php(184): CodeIgniter\HTTP\IncomingRequest->detectURI('REQUEST_URI', 'beta.reseller-s...')
+#2 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/Services.php(624): CodeIgniter\HTTP\IncomingRequest->__construct(Object(Config\App), Object(CodeIgniter\HTTP\URI), '', Object(CodeIgniter\HTTP\UserAgent))
+#3 /home1/reseller/beta/root/vendor/codeigniter4/framework/system/Config/BaseService.php(123): CodeIgniter\Config\Services::request(Object(Config\App) in /home1/reseller/beta/root/vendor/codeigniter4/framework/system/HTTP/URI.php on line 665
