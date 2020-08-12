@@ -110,7 +110,7 @@ if(mysqli_num_rows($ag) <= 0){
           '" . mysqli_real_escape_string($s_conn,$product_image1) . "',
           '" . $product_manufacturer_id . "',
           '1',
-          '" . mysqli_real_escape_string($s_conn,$website_product_price) . "',
+          '" . mysqli_real_escape_string($s_conn,$product_msrp) . "',
           '9',
           CURRENT_DATE,
           '" . mysqli_real_escape_string($s_conn,$pkg_weight) . "',
@@ -155,6 +155,24 @@ if(mysqli_num_rows($ag) <= 0){
             )";
     mysqli_query($s_conn, $diq) or die('Insert oc_product_description error: ' . $s_conn->error . ' on line 123 of add-to-store-api.php');
     $x->message .= ' - oc_product_description inserted';
+    
+    //Insert Product Special (Normal Price)...
+    $siq = "INSERT INTO `oc_product_special` 
+            (
+            `product_id`,
+            `customer_group_id`,
+            `priority`,
+            `price`
+            )
+            VALUES
+            (
+            '" . $new_product_id . "',
+            '1',
+            '0',
+            '" . mysqli_real_escape_string($s_conn,$website_product_price) . "'
+            )";
+    mysqli_query($s_conn, $siq) or die('Insert oc_product_special error: ' . $s_conn->error . ' on line 182 of add-to-store-api.php');
+    $x->message .= ' - oc_product_special inserted';
     
     //Insert Product Attributes...
     $is_array = explode(',',$_REQUEST['item_specifics_array']);
