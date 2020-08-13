@@ -362,7 +362,9 @@ function ra_parse(res){
 	  document.getElementById('brand_label').value = r.brand;
     document.getElementById('product_brand').value = r.brand;
     document.getElementById('product_Size').value = r.size;
-    document.getElementById('product_msrp').value = r.price.toFixed(2);
+    if(r.price){
+    //document.getElementById('product_msrp').value = r.price.toFixed(2);
+    }
     if(r.accurate == 'No'){
       document.getElementById('response_message').innerHTML = '*Info Found via Reseller App\'s Internal UPC Database';
     }else{
