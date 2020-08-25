@@ -252,7 +252,7 @@
                 <div class="col-md-6">
                     <h4 class="text-left">Custom Label:</h4>
                 </div>
-                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label" class="form-control" placeholder="Custom Label" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_label'];}?>" Required></div>
+                <div class="col-md-6"><input type="text" id="product_label" style="width: 100%;" name="product_label" class="form-control" placeholder="Custom Label" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_label'];}?>"></div>
             </div>
         </div>
     </div>
