@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [12-Aug-2020 13:36:31 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
 [12-Aug-2020 13:45:40 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
 [12-Aug-2020 14:29:20 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
@@ -27,3 +28,53 @@
 [22-Aug-2020 10:26:26 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
 [22-Aug-2020 16:16:09 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
 [22-Aug-2020 16:16:20 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+=======
+[22-Jun-2020 14:36:11 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[22-Jun-2020 14:36:19 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[22-Jun-2020 15:52:26 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[22-Jun-2020 15:52:27 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[23-Jun-2020 13:33:52 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21[29-Jul-2020 16:36:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[29-Jul-2020 11:36:16 America/Chicago] PHP Deprecated:  Directive 'allow_url_include' is deprecated in Unknown on line 0
+[29-Jul-2020 11:36:16 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home1/reseller/public_html/global/php/connection.php:6
+Stack trace:
+#0 /home1/reseller/public_html/login.php(3): include()
+#1 {main}
+  thrown in /home1/reseller/public_html/global/php/connection.php on line 6
+[29-Jul-2020 13:32:58 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[30-Jul-2020 09:36:33 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[30-Jul-2020 09:36:34 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[30-Jul-2020 11:20:05 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/public_html/security/check-login.php:4) in /home1/reseller/public_html/index.php on line 21
+[03-Aug-2020 17:16:43 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[03-Aug-2020 12:16:43 America/Chicago] PHP Deprecated:  Directive 'allow_url_include' is deprecated in Unknown on line 0
+[03-Aug-2020 12:16:43 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home1/reseller/beta/assets/php/connection.php:13
+Stack trace:
+#0 /home1/reseller/beta/index.php(5): include()
+#1 {main}
+  thrown in /home1/reseller/beta/assets/php/connection.php on line 13
+[03-Aug-2020 17:16:44 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[03-Aug-2020 12:16:44 America/Chicago] PHP Deprecated:  Directive 'allow_url_include' is deprecated in Unknown on line 0
+[03-Aug-2020 12:16:44 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home1/reseller/beta/global/php/connection.php:6
+Stack trace:
+#0 /home1/reseller/beta/login.php(3): include()
+#1 {main}
+  thrown in /home1/reseller/beta/global/php/connection.php on line 6
+[03-Aug-2020 17:17:09 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[03-Aug-2020 12:17:09 America/Chicago] PHP Deprecated:  Directive 'allow_url_include' is deprecated in Unknown on line 0
+[03-Aug-2020 12:17:09 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home1/reseller/beta/assets/php/connection.php:13
+Stack trace:
+#0 /home1/reseller/beta/index.php(5): include()
+#1 {main}
+  thrown in /home1/reseller/beta/assets/php/connection.php on line 13
+[03-Aug-2020 17:17:09 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'ixed.7.1.lin' (tried: /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin: undefined symbol: _zval_ptr_dtor), /opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so (/opt/php71/lib/php/extensions/no-debug-non-zts-20160303/ixed.7.1.lin.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[03-Aug-2020 12:17:09 America/Chicago] PHP Deprecated:  Directive 'allow_url_include' is deprecated in Unknown on line 0
+[03-Aug-2020 12:17:09 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home1/reseller/beta/global/php/connection.php:6
+Stack trace:
+#0 /home1/reseller/beta/login.php(3): include()
+#1 {main}
+  thrown in /home1/reseller/beta/global/php/connection.php on line 6
+[13-Aug-2020 16:24:46 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/beta/security/check-login.php:4) in /home1/reseller/beta/index.php on line 21
+[14-Aug-2020 15:29:24 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/beta/security/check-login.php:4) in /home1/reseller/beta/index.php on line 21
+[15-Aug-2020 08:32:53 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/beta/security/check-login.php:4) in /home1/reseller/beta/index.php on line 21
+[19-Aug-2020 14:53:44 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/reseller/beta/security/check-login.php:4) in /home1/reseller/beta/index.php on line 21
+
+>>>>>>> f6c396e9a1db8811bf5d1cd9b7f67d1f02376e81
