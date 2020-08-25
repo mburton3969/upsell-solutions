@@ -1,0 +1,57 @@
+{
+    "data": {
+        "BuyItNowPrice": {
+            "value": 79.9899999999999948840923025272786617279052734375,
+            "currencyID": "USD"
+        },
+        "ItemID": "283861938119",
+        "ListingDetails": {
+            "StartTime": "2020-04-28T20:49:29.000Z",
+            "ViewItemURL": "https:\/\/www.ebay.com\/itm\/Womens-Habitual-Abigail-Side-Stripe-Ankle-Slit-Pants-Fig-Molten-Lava-2-\/283861938119",
+            "ViewItemURLForNaturalSearch": "http:\/\/cgi.ebay.com\/Womens-Habitual-Abigail-Side-Stripe-Ankle-Slit-Pants-Fig-Molten-Lava-2?item=283861938119&category=63863&cmd=ViewItem"
+        },
+        "ListingDuration": "GTC",
+        "ListingType": "FixedPriceItem",
+        "Quantity": 1,
+        "SellingStatus": {
+            "CurrentPrice": {
+                "value": 79.9899999999999948840923025272786617279052734375,
+                "currencyID": "USD"
+            }
+        },
+        "ShippingDetails": {
+            "ShippingServiceOptions": [{
+                "ShippingServiceCost": {
+                    "value": 0,
+                    "currencyID": "USD"
+                }
+            }],
+            "ShippingType": "Flat"
+        },
+        "TimeLeft": "P15DT3H8M4S",
+        "Title": "Womens Habitual Abigail Side Stripe Ankle Slit Pants Fig\/ Molten Lava 2",
+        "QuantityAvailable": 1,
+        "SKU": "Womens Pants DSH",
+        "PictureDetails": {
+            "GalleryURL": "http:\/\/thumbs.ebaystatic.com\/pict\/2838619381196464_1.jpg"
+        },
+        "ClassifiedAdPayPerLeadFee": {
+            "value": 0,
+            "currencyID": "USD"
+        },
+        "SellerProfiles": {
+            "SellerShippingProfile": {
+                "ShippingProfileID": 152180222025,
+                "ShippingProfileName": "Flat:USPS First Cla(Free),1 business day"
+            },
+            "SellerReturnProfile": {
+                "ReturnProfileID": 148319707025,
+                "ReturnProfileName": "Returns Accepted,Seller,30 Days,Money Back"
+            },
+            "SellerPaymentProfile": {
+                "PaymentProfileID": 148997210025,
+                "PaymentProfileName": "PayPal:Visa or Master Card#0"
+            }
+        }
+    }
+}
