@@ -203,7 +203,8 @@ if($x->wm_data == false && $trip != true){
 if($x->bs_data == false && $trip != true){
   $x->mess .= ' - di_data Searched';
   $x->di_data = file_get_contents($di_url);
-  if($x->di_data == false){
+  $didi = json_decode($x->di_data);
+  if($x->di_data == false || $didi->data->num_found <= 0){
     $x->di_data = false;
   }else{
     $data_source = 'datainifiniti.com';
