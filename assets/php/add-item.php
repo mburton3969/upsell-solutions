@@ -337,7 +337,9 @@ $item->BestOfferDetails->BestOfferEnabled = false;
 $item->Title = substr($ebay_title, 0, 80);
 //$item->Title = $product_title;
 $item->Description = $product_description;
-$item->SKU = $product_label;//Was $product_code...
+if(isset($_REQUEST['product_label']) && $_REQUEST['product_label'] != ''){
+  $item->SKU = $product_label;//Was $product_code...
+}
 
 //Add The Product UPC Code...
 $item->ProductListingDetails = new Types\ProductListingDetailsType();
