@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login | Reseller Solutions</title>
+	<title>Register | Reseller Solutions</title>
     <?php include 'global/sections/head.php'; ?>
 </head>
 
@@ -33,7 +33,7 @@
 											<h3 class="text-center txt-dark mb-10">
                         <img src="global/imgs/reseller-logo.png">
                       </h3>
-											<h6 class="text-center nonecase-font txt-grey">Enter your credentials below</h6>
+											<h6 class="text-center nonecase-font txt-grey">Register below</h6>
 										</div>	
 										<div class="form-wrap">
 											<form action="/" method="post">
@@ -44,7 +44,15 @@
                             </div>  
                           </div>
                         <?php endif; ?>
-                        <input type="hidden" name="user_mode" id="user_mode" value="login" />
+                        <input type="hidden" name="user_mode" id="user_mode" value="register" />
+                        <div class="form-group">
+													<label class="control-label mb-10" for="fname">First Name &nbsp;&nbsp; <span id="error_message" style="color:red;"><?= $error ?></span></label>
+													<input type="text" class="form-control" required="" id="fname" name="fname" placeholder="First Name">
+												</div>
+                        <div class="form-group">
+													<label class="control-label mb-10" for="lname">Last Name &nbsp;&nbsp; <span id="error_message" style="color:red;"><?= $error ?></span></label>
+													<input type="text" class="form-control" required="" id="lname" name="lname" placeholder="Last Name">
+												</div>
 												<div class="form-group">
 													<label class="control-label mb-10" for="username">Username &nbsp;&nbsp; <span id="error_message" style="color:red;"><?= $error ?></span></label>
 													<input type="text" class="form-control" required="" id="username" name="username" placeholder="Enter Username">
@@ -54,6 +62,12 @@
 													<!--<a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="forgot-password.html">forgot password ?</a>-->
 													<div class="clearfix"></div>
 													<input type="password" class="form-control" required="" id="password" name="password" placeholder="Enter Password">
+												</div>
+                        <div class="form-group">
+													<label class="pull-left control-label mb-10" for="password_confirm">Confirm Password</label>
+													<!--<a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="forgot-password.html">forgot password ?</a>-->
+													<div class="clearfix"></div>
+													<input type="password" class="form-control" required="" id="password_confirm" name="password_confirm" placeholder="Confirm Password">
 												</div>
 												
 												<div class="form-group">

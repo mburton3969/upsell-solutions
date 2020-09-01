@@ -24,10 +24,9 @@ class Users extends BaseController
         $rules = [
           'fname' => 'required|min_length[4]|max_length[50]',
           'lname' => 'required|min_length[4]|max_length[50]',
-          'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
+          'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username]',
           'password' => 'required|min_length[8]|max_length[255]',
           'password_confirm' => 'matches[password]',
-          'gender' => 'required|min_length[4]|max_length[20]',
         ];
 
         if(! $this->validate($rules)) {
@@ -41,9 +40,8 @@ class Users extends BaseController
           $newData = [
             'fname' => $this->request->getVar('fname'),
             'lname' => $this->request->getVar('lname'),
-            'email' => $this->request->getVar('email'),
+            'username' => $this->request->getVar('username'),
             'password' => $this->request->getVar('password'),
-            'gender' => $this->request->getVar('gender'),
           ];
           $model->save($newData);
           $data['registration_success'] = 'Registration Successful!';
@@ -55,8 +53,8 @@ class Users extends BaseController
       if($this->request->getVar('user_mode') == 'login'){
         //Setup Validation...
         $rules = [
-          'email' => 'required|min_length[6]|max_length[50]|valid_email',
-          'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
+          'username' => 'required|min_length[6]|max_length[50]',
+          'password' => 'required|min_length[8]|max_length[255]|validateUser[username,password]',
         ];
         
         $errors = [
@@ -81,7 +79,12 @@ class Users extends BaseController
       
     }
     
-    echo view('login', $data);
+    if($this->request->uri->getSegment(1) == 'register'){
+      echo view('register', $data);
+    }else{
+      echo view('login', $data);
+    }
+    
   }
   
   //--------------------------------------------------------------------
