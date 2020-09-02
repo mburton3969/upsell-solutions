@@ -1,38 +1,44 @@
 <?php
 header('Content-Type: application/json');
 error_reporting(0);
+session_start();
 include '../php/connection.php';
 
 //Load Variables...
+$listed = $_REQUEST['listed'];
 $upc_code = $_REQUEST['upc'];
+$request_data = json_encode($_REQUEST);
 
 //INSERT UPC Data...
-/*$q = "INSERT INTO `upc_codes` 
+$q = "INSERT INTO `upc_search_log` 
       (
       `date`,
       `time`,
-      `pallet_id`,
+      `log_type`,
       `upc_code`,
-      `category`,
-      `brand`,
-      `item_title`,
-      `item_description`,
-      `long_description`,
-      `size`,
-      `color`,
-      `img1`,
-      `img2`,
-      `img3`,
-      `img4`,
-      `img5`,
-      `retail_price`,
-      `item_weight`,
-      `item_source`,
+      `data_found`,
+      `listed`,
+      `listing_message`,
+      `listing_data`,
+      `request_data`,
+      `user_id`,
+      `user_name`,
       `inactive`
       )
       VALUES
       (
-      
+      CURRENT_TIMESTAMP,
+      CURRENT_TIMESTAMP,
+      'Listing',
+      '" . $upc_code . "',
+      'N/A',
+      '" . $listed . "',
+      '" . $listing_data . "',
+      '" . $listing_message . "',
+      '" . $request_data . "',
+      '" . $_SESSION['user_id'] . "',
+      '" . $_SESSION['user_name'] . "',
+      'No'
       )";
 $g = mysqli_query($conn, $q) or die($conn->error);
 
@@ -44,6 +50,6 @@ $x->upc = $upc_code;
 
 //Format Response...
 $response = json_encode($x, JSON_PRETTY_PRINT);
-echo $response;*/
+echo $response;
 
 ?>
