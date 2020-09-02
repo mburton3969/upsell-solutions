@@ -23,9 +23,9 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 $output = curl_exec($ch);
 // close curl resource to free up system resources
 curl_close($ch);
-echo count($output);
+//echo count($output);
 $x = json_decode($output);
-echo '<br>' . count($x) . '<br>';
+//echo '<br>' . count($x) . '<br>';
 
 //Setup Response Output...
 $response = json_encode($x,JSON_PRETTY_PRINT);
