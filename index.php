@@ -128,6 +128,7 @@ $pageIcon = 'fas fa-satellite-dish';
   <script src="assets/js/product-img-uploader.js?cb=<?php echo $cache_buster; ?>"></script>
   <script src="assets/js/formatting-functions.js?cb=<?php echo $cache_buster; ?>"></script>
   <script src="list-item/js/listing-detail-functions.js?cb=<?php echo $cache_buster; ?>"></script>
+  <script src="list-item/js/lister-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 
   <?php include 'list-item/js/retry-functions.php'; ?>
   <?php 
