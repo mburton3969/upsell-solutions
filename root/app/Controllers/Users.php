@@ -7,7 +7,7 @@ class Users extends BaseController
   public function index()
   {
     if(session()->get('in') == 'Yes'){
-      return redirect()->to('/dashboard');
+      //return redirect()->to('/dashboard');
     }
     $data = [
       'login_mode' => 'active',
@@ -46,6 +46,7 @@ class Users extends BaseController
           $model->save($newData);
           $data['registration_success'] = 'Registration Successful!';
         }
+        return redirect()->to('/register');
       }
       
       
@@ -68,7 +69,7 @@ class Users extends BaseController
         }else{
           $model = new UsersModel();
           
-          $user = $model->where('email',$this->request->getVar('email'))
+          $user = $model->where('username',$this->request->getVar('username'))
                         ->first();
           
           $this->setUserMethod($user);
@@ -96,8 +97,8 @@ class Users extends BaseController
       'fname' => $user['fname'],
       'lname' => $user['lname'],
       'user_name' => $user['fname'] . ' ' . $user['lname'],
-      'user_email' => $user['email'],
-      'avatar_url' => $user['avatar_url'],
+      //'user_email' => $user['email'],
+      //'avatar_url' => $user['avatar_url'],
       'admin' => $user['admin'],
       'in' => 'Yes'
     ];

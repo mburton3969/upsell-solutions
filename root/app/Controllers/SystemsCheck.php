@@ -11,8 +11,19 @@ class SystemsCheck extends BaseController
 
   public function hash_pass()
   {
-    $hashedPassword = password_hash($this->request->getVar('p'), PASSWORD_DEFAULT);
-    echo $hashedPassword;
+    $pwd = $this->request->getVar('p');
+    $hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
+    echo $hashedPassword . '<br>';
+    $dbpwd = $hashedPassword;
+    echo $dbpwd . '<br>';
+    if(password_verify(trim($pwd), $dbpwd))
+    {
+        echo 'Match<br>';
+    }
+    else
+    {
+        echo 'Match failed<br> ';
+    }
   }
 
   //--------------------------------------------------------------------
