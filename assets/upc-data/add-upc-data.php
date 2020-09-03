@@ -7,6 +7,7 @@ include '../php/connection.php';
 //Load Variables...
 $listed = $_REQUEST['listed'];
 $upc_code = $_REQUEST['upc'];
+$listing_message = $_REQUEST['message'];
 $request_data = json_encode($_REQUEST);
 
 //INSERT UPC Data...
@@ -29,12 +30,12 @@ $q = "INSERT INTO `upc_search_log`
       (
       CURRENT_TIMESTAMP,
       CURRENT_TIMESTAMP,
-      'Listing',
-      '" . $upc_code . "',
+      'Listing_SellBrite',
+      '" . mysqli_real_escape_string($conn, $upc_code) . "',
       'N/A',
       '" . $listed . "',
+      '" . mysqli_real_escape_string($conn, $listing_message) . "',
       '" . $listing_data . "',
-      '" . $listing_message . "',
       '" . $request_data . "',
       '" . $_SESSION['user_id'] . "',
       '" . $_SESSION['user_name'] . "',

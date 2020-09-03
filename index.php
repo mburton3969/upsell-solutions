@@ -150,4 +150,11 @@ $pageIcon = 'fas fa-satellite-dish';
           </script>';
           
   ?>
+  <?php
+if($_SESSION['form_data']){
+  echo '<script>
+          enable_similar_btn();
+        </script>';
+}
+?>
 </html>
