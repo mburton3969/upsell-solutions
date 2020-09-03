@@ -109,6 +109,9 @@ if(mysqli_num_rows($upcg) > 0 && $_REQUEST['scrape'] != 'Yes' && mysqli_num_rows
   $sdr = mysqli_fetch_array($sdg);
   $d->source = 'upc_search_log DB';
   $r = json_decode($sdr['request_data']);
+  if(is_null($r)){
+    $r = $sdr['request_data'];
+  }
   foreach($r as $key => $value){
     $d->$key = $value;
   }

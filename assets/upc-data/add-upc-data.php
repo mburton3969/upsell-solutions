@@ -36,7 +36,7 @@ $q = "INSERT INTO `upc_search_log`
       '" . $listed . "',
       '" . mysqli_real_escape_string($conn, $listing_message) . "',
       '" . $listing_data . "',
-      '" . $request_data . "',
+      '" . mysqli_real_escape_string($conn, $request_data) . "',
       '" . $_SESSION['user_id'] . "',
       '" . $_SESSION['user_name'] . "',
       'No'
