@@ -63,7 +63,7 @@ $x->mess = 'Message';
 
 $upcq = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `upc_code` = '" . $upc_code . "'";
 $upcg = mysqli_query($conn, $upcq) or die($conn->error);
-$sdq = "SELECT * FROM `upc_search_log` WHERE `upc_code` = '" . $upc_code . "' AND (`log_type` = 'Listing_Ebay' OR `log_type` = 'Listing_Store') AND `request_data` != '' LIMIT 1";
+$sdq = "SELECT * FROM `upc_search_log` WHERE `upc_code` = '" . $upc_code . "' AND (`log_type` = 'Listing_Ebay' OR `log_type` = 'Listing_Store' OR `log_type` = 'Listing_SellBrite') AND `request_data` != '' ORDER BY `ID` DESC LIMIT 1";
 $sdg = mysqli_query($conn, $sdq) or die($conn->error);
 if(mysqli_num_rows($upcg) > 0 && $_REQUEST['scrape'] != 'Yes' && mysqli_num_rows($sdg) <= 0){
   $upcr = mysqli_fetch_array($upcg);

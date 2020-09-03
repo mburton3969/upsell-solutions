@@ -4,6 +4,11 @@ include 'global/php/connection.php';
 if($_GET['logout'] == 'yes'){
   session_destroy();
 }
+if($_SESSION['logged_in'] == 'Yes'){
+  echo '<script>
+          window.location = "dashboard.php";
+        </script>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

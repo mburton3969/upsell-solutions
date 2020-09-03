@@ -1,4 +1,4 @@
-<form action="assets/php/add-item.php" method="post">
+<form id="lister_form" onsubmit="event.preventDefault(); validate_form();">
     <div style="padding: 15px;">
         <div class="container">
             <div class="row">
