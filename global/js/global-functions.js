@@ -4,14 +4,17 @@ function urlEncode(url){
 		return url;
 	}
 
-function toast_alert(title,mess,pos,mode){
+function toast_alert(title,mess,pos,mode,hide_time){
+  if(hide_time === ''){
+    hide_time = 3500;
+  }
   $.toast({
 		heading: title,
 		text: mess,
 		position: pos,
 		loaderBg:'#f2b701',
 		icon: mode,//success, error, info, warning...
-		hideAfter: 3500, 
+		hideAfter: hide_time, 
 		stack: 6
 	});
 }

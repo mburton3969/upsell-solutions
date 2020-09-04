@@ -24,11 +24,11 @@ function check_product(){
           if(r.error === 'not found'){
             list_product();
           }else{
-            toast_alert('ERROR',r.error,'top-right','error');
+            toast_alert('ERROR',r.error,'top-right','error',false);
             return;
           }
         }else{
-          toast_alert('ERROR','An Unknown Error Occurred...','top-right','error');
+          toast_alert('ERROR','An Unknown Error Occurred...','top-right','error',false);
           return;
         }
       }
@@ -48,10 +48,10 @@ function list_product(){
           update_inventory();
           save_upc_data('Yes','New Item');
         }else if(r.response === 'ERROR'){
-          toast_alert('ERROR',r.error,'top-right','error');
+          toast_alert('ERROR',r.error,'top-right','error',false);
           return;
         }else{
-          toast_alert('ERROR','An Unknown Error Occurred...','top-right','error');
+          toast_alert('ERROR','An Unknown Error Occurred...','top-right','error',false);
           return;
         }
       }
@@ -81,10 +81,10 @@ function update_inventory(qty){
             window.location = 'index.php';
           },1000);
         }else if(r.response === 'ERROR'){
-          toast_alert('ERROR',r.error,'top-right','error');
+          toast_alert('ERROR',r.error,'top-right','error',false);
           return;
         }else{
-          toast_alert('ERROR','An Unknown Error Occurred...','top-right','error');
+          toast_alert('ERROR','An Unknown Error Occurred...','top-right','error',false);
           return;
         }
       }
@@ -108,10 +108,10 @@ function save_upc_data(listed,message){
         if(r.response === 'GOOD'){
           toast_alert('Success','UPC Data saved successfully!','top-right','success');
         }else if(r.response === 'ERROR'){
-          toast_alert('ERROR','Error saving UPC Data...','top-right','error');
+          toast_alert('ERROR','Error saving UPC Data...','top-right','error',false);
           return;
         }else{
-          toast_alert('ERROR','An Unknown Error Occurred in save_upc_data...','top-right','error');
+          toast_alert('ERROR','An Unknown Error Occurred in save_upc_data...','top-right','error',false);
           return;
         }
       }
@@ -134,10 +134,10 @@ function sessionize_request(){
           enable_similar_btn();
           toast_alert('Success',r.message,'top-right','success');
         }else if(r.response === 'ERROR'){
-          toast_alert('ERROR','Error saving UPC Data...','top-right','error');
+          toast_alert('ERROR','Error saving UPC Data...','top-right','error',false);
           return;
         }else{
-          toast_alert('ERROR','An Unknown Error Occurred in sessionize_request...','top-right','error');
+          toast_alert('ERROR','An Unknown Error Occurred in sessionize_request...','top-right','error',false);
           return;
         }
       }

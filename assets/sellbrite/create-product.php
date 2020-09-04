@@ -123,13 +123,40 @@ if($_REQUEST['product_Cup_Size'] != ''){
   $ebay_title .= $_REQUEST['product_Cup_Size'];
 }
 
+//Custom Attributes...
+$custom_attributes = array();
+//$custom_attributes["Brand"] = $product_brand;
+$custom_attributes["Material"] = $product_material;
+$custom_attributes["Color"] = $product_color;
+$custom_attributes["Size"] = $product_size;
+$custom_attributes["Inseam"] = $product_Inseam;
+$custom_attributes["Type"] = $product_Type;
+
+/*if($product_section == 'Mens'){
+  $specific = new Types\NameValueListType();
+  $specific->Name = 'Size (Men\'s)';
+  $specific->Value[] = $product_size;
+  $item->ItemSpecifics->NameValueList[] = $specific;
+}elseif($product_section == 'Womens'){
+  $specific = new Types\NameValueListType();
+  $specific->Name = 'Size (Women\'s)';
+  $specific->Value[] = $product_size;
+  $item->ItemSpecifics->NameValueList[] = $specific;
+}*/
+
+$is_array = explode(',',$_REQUEST['item_specifics_array']);
+foreach($is_array as $is){
+    if($_REQUEST['product_'.$is] != ''){
+      $key = str_replace('_',' ',$is);
+      $value = $_REQUEST['product_'.$is];
+      $custom_attributes[$key] = $value;
+      //array_push($custom_attributes, array($key => $value,));
+    }
+}
+
 #Main Functions...
 
 //Create Product Object...
-/*$image_list = array(
-  "https://usabilitygeek.com/wp-content/uploads/2016/08/usability-testing-prototype.jpg"
-);*/
-
 $product = array(
   "condition" => $product_condition,
   "package_unit_of_length" => "inches",
@@ -147,6 +174,7 @@ $product = array(
   "package_width" => $product_pkg_width,
   "package_height" => $product_pkg_depth,
   "package_weight" => $pkg_weight,
+  "custom_attributes" => $custom_attributes
 );
 //echo json_encode($product,JSON_PRETTY_PRINT);
 //die();
