@@ -22,6 +22,7 @@ $q = "INSERT INTO `upc_search_log`
       `listing_message`,
       `listing_data`,
       `request_data`,
+      `shopify_tagged`,
       `user_id`,
       `user_name`,
       `inactive`
@@ -37,17 +38,20 @@ $q = "INSERT INTO `upc_search_log`
       '" . mysqli_real_escape_string($conn, $listing_message) . "',
       '" . $listing_data . "',
       '" . mysqli_real_escape_string($conn, $request_data) . "',
+      'No',
       '" . $_SESSION['user_id'] . "',
       '" . $_SESSION['user_name'] . "',
       'No'
       )";
-$g = mysqli_query($conn, $q) or die($conn->error);
 
-//Setup JSON Data...
-$x->response = 'GOOD';
-$x->message = 'Item Added Successfully!';
-$x->upc = $upc_code;
-
+if(mysqli_query($conn, $q)){
+  $x->response = 'GOOD';
+  $x->message = 'Item Added Successfully!';
+  $x->upc = $upc_code;
+}else{
+  $x->response = 'ERROR';
+  $x->message = $conn->error;
+}
 
 //Format Response...
 $response = json_encode($x, JSON_PRETTY_PRINT);
