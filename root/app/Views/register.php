@@ -37,10 +37,10 @@
 										</div>	
 										<div class="form-wrap">
 											<form action="/" method="post">
-                        <?php if(isset($login_validation)): ?>
+                        <?php if(isset($registration_validation)): ?>
                           <div class="col-12">
                             <div class="alert alert-danger" role="alert">
-                              <?= $login_validation->listErrors() ?>
+                              <?= $registration_validation->listErrors() ?>
                             </div>  
                           </div>
                         <?php endif; ?>

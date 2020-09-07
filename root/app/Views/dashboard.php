@@ -12,7 +12,7 @@
     <div class="wrapper theme-4-active pimary-color-red">
 
     	<!--Navigation-->
-    	<?php //include 'global/sections/nav.php'; ?>
+    	<?php include 'global/sections/nav.php'; ?>
 		
 		
         <!-- Main Content -->

@@ -33,7 +33,11 @@ $routes->setAutoRoute(true);
 $routes->match(['get','post'],'/', 'Users::index');
 $routes->match(['get','post'],'/register', 'Users::index');
 $routes->match(['get','post'],'/hasher', 'SystemsCheck::hash_pass');
+$routes->match(['get','post'],'/phpinfo', 'SystemsCheck::index');
 $routes->match(['get','post'],'/dashboard', 'Dashboard::index', ['filter' => 'auth-check']);
+
+//API
+$routes->match(['get','post'],'/api/header_data', 'ApiController::header_data');
 
 /**
  * --------------------------------------------------------------------

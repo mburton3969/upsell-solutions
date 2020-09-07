@@ -7,7 +7,7 @@ class Users extends BaseController
   public function index()
   {
     if(session()->get('in') == 'Yes'){
-      //return redirect()->to('/dashboard');
+      return redirect()->to('/dashboard');
     }
     $data = [
       'login_mode' => 'active',
