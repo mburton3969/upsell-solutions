@@ -89,8 +89,8 @@ function update_inventory(qty){
           print_tags(1);
           print_tags(2);
           setTimeout(function(){
-            window.location = 'index.php';
-          },1000);
+            //window.location = 'index.php';
+          },2000);
         }else if(r.response === 'ERROR'){
           toast_alert('ERROR',r.error,'top-right','error',false);
           return;
@@ -329,9 +329,9 @@ function print_tags(tag_num){
       <StyledText>
         <Element>
           <String>
-          (eBay)`+d.label_ebay_title+`
+          (eBay)`+d.label_ebay_title.replace(/&/g,'&amp;')+`
           
-          (81O)`+d.label_website_title+`
+          (81O)`+d.label_website_title.replace(/&/g,'&amp;')+`
           </String>
           <Attributes>
             <Font Family="Arial" Size="12" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
@@ -355,6 +355,7 @@ function print_tags(tag_num){
     throw "No DYMO printers are installed. Install DYMO printers.";
   var printerName = "";
   console.log(printers);
+  console.log(label);
   for (var i = 0; i < printers.length; ++i) {
     var printer = printers[i];
     if (printer.printerType == "LabelWriterPrinter") {
