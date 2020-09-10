@@ -42,8 +42,13 @@
 	<script src="../skin2-assets/vendors/bower_components/switchery/dist/switchery.min.js"></script>
 	
 	<!-- Init JavaScript -->
-	<script src="../skin2-assets/dist/js/init.js?cb=6789876"></script>
+	<script src="../skin2-assets/dist/js/init.js?cb=<?php $cache_buster; ?>"></script>
 	<!--<script src="../skin2-assets/dist/js/dashboard-data.js"></script>-->
 
-	<script src="global/js/global-functions.js?cb=6789876"></script>
-	<script src="global/js/chat-functions.js?cb=6789876"></script>
+	<script src="global/js/global-functions.js?cb=<?php $cache_buster; ?>"></script>
+	<script src="global/js/chat-functions.js?cb=<?php $cache_buster; ?>"></script>
+	<script src="global/js/sync-tags-functions.js?cb=<?php $cache_buster; ?>"></script>
+
+
+<!-- Modals -->
+<?php include 'global/modals/sync-tags-modal.php'; ?>
