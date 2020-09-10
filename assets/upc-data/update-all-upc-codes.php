@@ -5,6 +5,10 @@ include '../php/connection.php';
 
 //Load Variables...
 $batch_code = $_REQUEST['batch_code'];
+if($batch_code == ''){
+  echo '<h1>No Batch Code Provided...</h1>';
+  die();
+}
 
 //Loop Through UPC Codes in Database...
 $q = "SELECT * FROM `upc_codes` WHERE `inactive` != 'Yes' AND `data_source` = '' AND `item_source` != '' AND `batch_code` = '" . $batch_code . "' LIMIT 1";
@@ -122,7 +126,8 @@ if($rnums <= 0){
               </h1>';
         $cp = number_format(($rrcount / ($rcount - $nrnums) * 100),2);
         echo '<h2>Rows Found: ' . $rrcount . ' Rows Total: ' . $rcount . ' Current Percent Found: ' . $cp . '% Percent Complete: ' . $percent . '%</h2>';
-        var_dump($data);
+        $rs = json_decode($data);
+        echo json_encode($rs);
         $uq = "UPDATE `upc_codes` SET ";
         $uq .= "`data_source` = 'None',";
         $uq .= "`inactive` = 'No'

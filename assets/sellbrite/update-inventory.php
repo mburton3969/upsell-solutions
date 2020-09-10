@@ -9,6 +9,7 @@ $config = require 'config.php';
 $account_token = $config['account_token'];
 $secret_key = $config['secret_key'];
 $url = 'https://api.sellbrite.com/v1/inventory';
+$product_label = $_REQUEST['product_label'];
 
 #Main Functions...
 
@@ -23,7 +24,7 @@ $inventory = array(
   "sku" => $sku,
   "warehouse_uuid" => "dfa258cc-0286-496f-b736-7b7001800f1c",
   "available" => $new_qty,
-  //"bin_location" => "Bin 13"
+  "bin_location" => $product_label
 );
 
 $data['inventory'] = array();

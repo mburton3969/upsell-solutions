@@ -89,7 +89,7 @@ function update_inventory(qty){
           print_tags(1);
           print_tags(2);
           setTimeout(function(){
-            //window.location = 'index.php';
+            window.location = 'index.php';
           },2000);
         }else if(r.response === 'ERROR'){
           toast_alert('ERROR',r.error,'top-right','error',false);

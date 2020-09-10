@@ -32,6 +32,14 @@ if(mysqli_num_rows($g) <= 0){//if User does NOT exist...
   //App Info...
   $_SESSION['app_version'] = '3.4.0';
   
+  //Get Shopify Credentials...
+  $config = require '../../assets/shopify/config.php';
+  $sq = "SELECT * FROM `credentials` WHERE `shop` = '" . $config['shop'] . "'";
+  $sg = mysqli_query($conn, $sq) or die($conn->error);
+  $sr = mysqli_fetch_array($sg);
+  
+  $_SESSION['shopify_access_token'] = $sr['token'];
+  
   echo '<script>
           window.location = "../../dashboard.php";
         </script>';

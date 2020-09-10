@@ -2,6 +2,7 @@
 header('Content-Type: application/json');
 error_reporting(0);
 session_start();
+include '../php/connection.php';
 
 //Load Variables...
 $config = require 'config.php';
@@ -34,7 +35,32 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
 //The output string from execution
 $output = curl_exec($ch);
 $x = json_decode($output);
-$_SESSION['access_token'] = $x->access_token;
+$_SESSION['shopify_access_token'] = $x->access_token;
+
+$q = "SELECT * FROM `credentials` WHERE `shop` = '" . $shop . "'";
+$g = mysqli_query($conn, $q) or die($conn->error);
+if(mysqli_num_rows($g) > 0){
+  $uq = "UPDATE `credentials` SET `date` = CURRENT_TIMESTAMP, `time` = CURRENT_TIMESTAMP, `token` = '" . mysqli_real_escape_string($conn, $x->access_token) . "' WHERE `shop` = '" . $shop . "'";
+  mysqli_query($conn, $uq) or die($conn->error);
+}else{
+  $iq = "INSERT INTO `credentials` 
+         (
+         `date`,
+         `time`,
+         `shop`,
+         `token`,
+         `inactive`
+         )
+         VALUES
+         (
+         CURRENT_TIMESTAMP,
+         CURRENT_TIMESTAMP,
+         '" . $shop . "',
+         '" . mysqli_real_escape_string($conn, $x->access_token) . "',
+         'No'
+         )";
+  mysqli_query($conn, $iq) or die($conn->error);
+}
 
 // close curl resource to free up system resources
 curl_close($ch);
