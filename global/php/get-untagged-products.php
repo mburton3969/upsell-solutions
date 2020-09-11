@@ -10,18 +10,23 @@ include 'connection.php';
 #Main Functions...
 
 //Get Untagged Products...
-$q = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_SellBrite' AND `shopify_tagged` != 'Yes'";
-$g = mysqli_query($conn, $q) or die($conn->error);
-if(mysqli_num_rows($g) > 0){
-  $header = mysqli_fetch_array($g);
-  $head = array();
-  foreach($header as $key => $value){
-    if(!is_numeric($key)){
-      array_push($head, $key);
-    }
-  }
+$rq = "SELECT DISTINCT `upc_code` FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_SellBrite' AND `shopify_tagged` != 'Yes'";
+$rg = mysqli_query($conn, $rq) or die($conn->error);
+if(mysqli_num_rows($rg) > 0){
+  
   $products = array();
-  while($r = mysqli_fetch_array($g)){
+  while($rr = mysqli_fetch_array($rg)){
+    $q = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_SellBrite' AND `shopify_tagged` != 'Yes' AND `upc_code` = '" . $rr['upc_code'] . "' ORDER BY `ID` DESC LIMIT 1";
+    $g = mysqli_query($conn, $q) or die($conn->error);
+    //$header = mysqli_fetch_array($g);
+    
+    $r = mysqli_fetch_array($g);
+    $head = array();
+    foreach($r as $key => $value){
+      if(!is_numeric($key)){
+        array_push($head, $key);
+      }
+    }
     $product = '';
     foreach($head as $h){
       //echo $r[$h];

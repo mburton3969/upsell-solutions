@@ -1,7 +1,8 @@
 <?php
 header('Content-Type: application/json');
-error_reporting(E_ALL);
+error_reporting(0);
 //include 'connection.php';
+$s_conn = mysqli_connect('localhost','outfitte_store','+F%JW[$YDOR(','outfitte_opencart') or die('Error: ' . $s_conn->error . ' on line 4 of add-to-store-api.php');
 
 //Load Variables...
 $product_code = $_REQUEST['product_code'];
@@ -178,6 +179,55 @@ $hang_tag_data = array(
   'tag_size' => $tag_size
 );
 
+//Category Field...
+//Get Gender...
+$gcq = "SELECT * FROM `oc_category_description` WHERE `category_id` = '" . $prod_81_cat_1 . "'";
+$gcg = mysqli_query($s_conn, $gcq) or die($s_conn->error);
+$gcr = mysqli_fetch_array($gcg);
+$cat1 = $gcr['name'];
+$cat1 = str_replace('Womens ','',$cat1);
+$cat1 = str_replace('Mens ','',$cat1);
+$cat1 = str_replace('Boys ','',$cat1);
+$cat1 = str_replace('Girls ','',$cat1);
+$cat1 = str_replace('Infants/Toddlers ','',$cat1);
+      
+//Get Type...
+$gcq = "SELECT * FROM `oc_category_description` WHERE `category_id` = '" . $prod_81_cat_2 . "'";
+$gcg = mysqli_query($s_conn, $gcq) or die($s_conn->error);
+$gcr = mysqli_fetch_array($gcg);
+$cat2 = $gcr['name'];
+$cat2 = str_replace('Womens ','',$cat2);
+$cat2 = str_replace('Mens ','',$cat2);
+$cat2 = str_replace('Boys ','',$cat2);
+$cat2 = str_replace('Girls ','',$cat2);
+$cat2 = str_replace('Infants/Toddlers ','',$cat2);
+
+//Get Category...
+$gcq = "SELECT * FROM `oc_category_description` WHERE `category_id` = '" . $prod_81_cat_3 . "'";
+$gcg = mysqli_query($s_conn, $gcq) or die($s_conn->error);
+$gcr = mysqli_fetch_array($gcg);
+$raw_store_category_text = $gcr['name'];
+$cat3 = $gcr['name'];
+$cat3 = str_replace('Womens ','',$cat3);
+$cat3 = str_replace('Mens ','',$cat3);
+$cat3 = str_replace('Boys ','',$cat3);
+$cat3 = str_replace('Girls ','',$cat3);
+$cat3 = str_replace('Infants/Toddlers ','',$cat3);
+
+//Get Sub-Category...
+$gcq = "SELECT * FROM `oc_category_description` WHERE `category_id` = '" . $prod_81_cat_4 . "'";
+$gcg = mysqli_query($s_conn, $gcq) or die($s_conn->error);
+$gcr = mysqli_fetch_array($gcg);
+$raw_store_category_text = $gcr['name'];
+$cat4 = $gcr['name'];
+$cat4 = str_replace('Womens ','',$cat4);
+$cat4 = str_replace('Mens ','',$cat4);
+$cat4 = str_replace('Boys ','',$cat4);
+$cat4 = str_replace('Girls ','',$cat4);
+$cat4 = str_replace('Infants/Toddlers ','',$cat4);
+
+$final_category = $cat1 . ' ' . $cat2 . ' ' . $cat3 . ' ' . $cat4;
+
 #Main Functions...
 
 //Create Product Object...
@@ -192,7 +242,7 @@ $product = array(
   "description" => $website_product_description,
   "price" => $website_product_price,
   "msrp" => $product_msrp,
-  //"category_name" => "Test",
+  "category_name" => $final_category,
   "upc" => $product_code,
   "package_length" => $product_pkg_length,
   "package_width" => $product_pkg_width,
