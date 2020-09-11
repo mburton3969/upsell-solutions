@@ -3,7 +3,7 @@ var shopify_products;
 var untagged_products;
 var to_be_tagged = [];
 
-async function init_data(){
+async function init_tag_sync(){
   document.getElementById('sync-tag-loader').style.display = 'inherit';
   $('#syncTagsModal').modal('toggle');
   await setup_modal();
