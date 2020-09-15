@@ -1,0 +1,14 @@
+{
+  "package_unit_of_length": "inches",
+  "package_unit_of_weight": "pounds",
+  "image_list": ["https://images.ctfassets.net/czwjnyf8a9ri/4CW03Vvzt5TqL3W5CYPlMW/c626eced0cc00b8ca6046e5eae821697/vector-sauce-performance-hero_2x.png?fm=webp"],
+  "name": "Testing Name",
+  "condition": "new",
+  "brand": "My Brand",
+  "manufacturer": "My Brand",
+  "description": "This is my brand product for testing",
+  "price": 80,
+  "msrp": 179.99,
+  "category_name": "Test",
+  "upc": "12345"
+}

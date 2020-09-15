@@ -65,6 +65,7 @@ $pageIcon = 'fas fa-satellite-dish';
   <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   <script src="assets/js/globals.js"></script>
   <link href="global/css/toggle.css" rel="stylesheet" />
+  <script src="http://labelwriter.com/software/dls/sdk/js/DYMO.Label.Framework.latest.js" type="text/javascript" charset="UTF-8"></script>
 </head>
 <!--
 <body onload="get_cats(1);get_store_cats(1,'',25334048017);format_ebay();<?php if($_REQUEST['rety'] != 'Yes'){ echo 'get_81_store_cats(1,\'0\');';} ?>">
@@ -128,6 +129,7 @@ $pageIcon = 'fas fa-satellite-dish';
   <script src="assets/js/product-img-uploader.js?cb=<?php echo $cache_buster; ?>"></script>
   <script src="assets/js/formatting-functions.js?cb=<?php echo $cache_buster; ?>"></script>
   <script src="list-item/js/listing-detail-functions.js?cb=<?php echo $cache_buster; ?>"></script>
+  <script src="list-item/js/lister-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 
   <?php include 'list-item/js/retry-functions.php'; ?>
   <?php 
@@ -149,4 +151,11 @@ $pageIcon = 'fas fa-satellite-dish';
           </script>';
           
   ?>
+  <?php
+if($_SESSION['form_data']){
+  echo '<script>
+          enable_similar_btn();
+        </script>';
+}
+?>
 </html>

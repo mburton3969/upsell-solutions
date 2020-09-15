@@ -33,6 +33,8 @@
       $elg = mysqli_query($conn, $elq) or die($conn->error);
       $ilq = "SELECT * FROM `ebay_imports` WHERE `user_id` = '" . $_SESSION['user_id'] . "' AND `status` = 'Imported' AND `date` = CURRENT_DATE AND `user_id` = '" . $_SESSION['user_id'] . "'";
       $ilg = mysqli_query($conn, $ilq) or die($conn->error);
+      $utq = "SELECT DISTINCT `upc_code` FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_SellBrite' AND `shopify_tagged` != 'Yes'";
+      $utg = mysqli_query($conn, $utq) or die($conn->error);
       //Counts...
       $upc_count = mysqli_num_rows($ulg);
       $store_count = mysqli_num_rows($slg);
@@ -40,10 +42,16 @@
       $import_count = mysqli_num_rows($ilg);
       $total_store_count = $store_count - $import_count;
       $total_ebay_count = $ebay_count - $import_count;
+      $untagged_products = mysqli_num_rows($utg);
       ?>
 			<div id="mobile_only_nav" class="mobile-only-nav pull-right">
 				<ul class="nav navbar-right top-nav pull-right">
           <li class="text-center mr-20">
+            <button type="button" class="btn btn-success btn-sm mt-15" style="padding:5px;" onclick="init_tag_sync();">
+              <i class="fa fa-refresh"></i> Sync <?php echo $untagged_products; ?> Item Tags
+            </button>
+          </li>
+          <!--<li class="text-center mr-20">
             <button type="button" class="btn btn-success btn-sm mt-15" style="padding:5px;" onclick="get_api_usage();">
               <i class="fa fa-refresh"></i>
             </button>
@@ -52,7 +60,7 @@
             <p>
               API Calls<br><span id="api_calls"></span>
             </p>
-          </li>
+          </li>-->
           <li class="text-center mr-20">
             <p>
               UPC Scans<br> <?php echo $upc_count; ?>
