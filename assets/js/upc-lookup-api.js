@@ -46,7 +46,7 @@ function lookup_upc(e,upc){
       var de_r = JSON.parse(response.de_data);
 
       if(trip === false){
-        if(de_r.return_code === '000'){
+        if(de_r.return_code && de_r.return_code !== '4' && de_r.return_code !== '001'){
           de_parse(de_r,response.de_url);
           trip = true;
         }else{
