@@ -128,7 +128,7 @@ if($x->ra_data == false && $trip == false){
 //Check BarcodeLookup.com...
 $x->mess .= ' - bl_data Searched';
 $x->bl_data = file_get_contents($bl_url);
-if($x->bl_data == '' || $x->bl_data == null || $upc_code == '035000521019' || $upc_code == '883096536116' || $upc_code = '191685584227'){
+if($x->bl_data == '' || $x->bl_data == null || $upc_code == '035000521019' || $upc_code == '883096536116' || $upc_code == '191685584227'){
   $x->debug = 'Triggered';
   $x->bl_data = false;
 }
@@ -138,8 +138,9 @@ if($x->bl_data == false && $trip != true){
   $x->mess .= ' - de_data Searched';
   $x->de_data = file_get_contents($de_url);
   $de_json = json_decode($x->de_data);
-  if($de_json->return_code == 4 || $de_json->return_code == '001' || $upc_code == '035000521019' || $upc_code = '191685584227'){
+  if($de_json->return_code == 4 || $de_json->return_code == '001' || $upc_code == '035000521019' || $upc_code == '191685584227'){
     $x->de_data = false;
+    $x->testing = 'GOOD';
   }
 }else{
   $x->de_data = false;
@@ -154,7 +155,7 @@ if($x->de_data == false && $trip != true){
   $x->mess .= ' - upc_data Searched';
   $x->upc_data = file_get_contents($upc_url);
   $jd = json_decode($x->upc_data);
-  if($x->upc_data != false && $jd->total == 0 || $upc_code == '035000521019' || $upc_code = '191685584227'){
+  if($x->upc_data != false && $jd->total == 0 || $upc_code == '035000521019' || $upc_code == '191685584227'){
     $x->upc_data = false;
   }
 }else{
@@ -170,7 +171,7 @@ if($x->upc_data == false && $trip != true){
   $x->mess .= ' - wm_data Searched';
   $x->wm_data = file_get_contents($wm_url);
   $rwmd = json_decode($x->wm_data);
-  if(!isset($rwmd->items) || $x->wm_data == false || $upc_code = '191685584227'){
+  if(!isset($rwmd->items) || $x->wm_data == false || $upc_code == '191685584227'){
     $x->wm_data = false;
   }else{
     $data_source = 'walmart.com';
@@ -187,7 +188,7 @@ if($x->upc_data == false && $trip != true){
 if($x->wm_data == false && $trip != true){
   $x->mess .= ' - bs_data Searched';
   $x->bs_data = file_get_contents($bs_url);
-  if($x->bs_data == false || $upc_code = '191685584227'){
+  if($x->bs_data == false || $upc_code == '191685584227'){
     $x->bs_data = false;
   }else{
     $data_source = 'brickseek.com';
