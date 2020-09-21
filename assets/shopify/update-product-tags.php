@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-error_reporting(E_ALL);
+error_reporting(0);
 session_start();
 include '../php/connection.php';
 $s_conn = mysqli_connect('localhost','outfitte_store','+F%JW[$YDOR(','outfitte_opencart') or die('Error: ' . $s_conn->error . ' on line 5 of update-product-tags.php');
@@ -72,9 +72,48 @@ $cat4 = str_replace('Mens ','',$cat4);
 $cat4 = str_replace('Boys ','',$cat4);
 $cat4 = str_replace('Girls ','',$cat4);
 $cat4 = str_replace('Infants/Toddlers ','',$cat4);
-
-
+//Push Category Tags...
 array_push($tags_array,$td->product_section,$cat1,$cat2,$cat3,$cat4);
+
+//Product Details...
+$product_brand = $td->product_brand;
+$product_material = $td->product_material;
+$product_color = $td->product_color;
+$product_size = $td->product_Size;
+//Push Required Item Specific Tags...
+array_push($tags_array,'Brand_' . $product_brand);
+array_push($tags_array,'Material_' . $product_material);
+array_push($tags_array,'Color_' . $product_color);
+array_push($tags_array,'Size_' . $product_size);
+//optionals...
+$product_size_type = $td->product_Size_Type;
+if($product_size_type != ''){
+  array_push($tags_array,'Size_Type_' . $product_size_type);
+}
+$product_style = $td->product_Style;
+if($product_style != ''){
+  array_push($tags_array,'Style_' . $product_style);
+}
+$product_sleevelength = $td->product_sleevelength;
+if($product_sleevelength != ''){
+  array_push($tags_array,'Sleevelength_' . $product_sleevelength);
+}
+$product_Type = $td->product_Type;
+if($product_Type != ''){
+  array_push($tags_array,'Type_' . $product_Type);
+}
+$product_Inseam = $td->product_Inseam;
+if($product_Inseam != ''){
+  array_push($tags_array,'Inseam_' . $product_Inseam);
+}
+
+/*$is_array = explode(',',$td->item_specifics_array);
+foreach($is_array as $is){
+    if($td['product_'.$is] != ''){
+      array_push($tags_array,$is . '_' . $td['product_'.$is]);
+    }
+}*///These Item Specifics need additional coding for pulling out the data points from the object given...
+
 $tags = implode(',',$tags_array);
 
 //Setup POST Data...
