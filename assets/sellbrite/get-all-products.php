@@ -1,13 +1,17 @@
 <?php
 header('Content-Type: application/json');
-error_reporting(E_ALL);
+error_reporting(0);
 //include 'connection.php';
 
 //Load Variables...
 $config = require 'config.php';
 $account_token = $config['account_token'];
 $secret_key = $config['secret_key'];
+$page = $_REQUEST['page'];
 $url = 'https://api.sellbrite.com/v1/products/';
+if($_REQUEST['page']){
+  $url = $url . '?page=' . $page;
+}
 
 #Main Functions...
 // create curl resource
@@ -23,9 +27,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 $output = curl_exec($ch);
 // close curl resource to free up system resources
 curl_close($ch);
-//echo count($output);
-$x = json_decode($output);
-//echo '<br>' . count($x) . '<br>';
+
+$x->response = 'GOOD';
+$x->products = json_decode($output);
+
 
 //Setup Response Output...
 $response = json_encode($x,JSON_PRETTY_PRINT);

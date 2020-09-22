@@ -218,14 +218,14 @@
         </div>
     </div>
     <div style="background:#8A8A8A;">
-    <div style="padding: 15px;">
+    <div style="padding: 15px;display:none;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="text-left">Ebay Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
                 </div>
                 <div class="col-md-6" id="store_cat_box">
-                  <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);" Required>
+                  <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);" >
                     <option value="">Select Store Category</option>
                   </select>
               </div>
@@ -310,7 +310,7 @@
             </div>
         </div>
     </div>
-    <div style="padding: 15px;">
+    <div style="padding: 15px;display:none;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
