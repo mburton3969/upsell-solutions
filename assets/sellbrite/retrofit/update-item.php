@@ -7,6 +7,7 @@ include '../../php/connection.php';
 
 //Load Variables...
 $product_code = $_REQUEST['upc_code'];
+$pqty = $_REQUEST['qty'];
 $config = require '../config.php';
 $account_token = $config['account_token'];
 $secret_key = $config['secret_key'];
@@ -173,9 +174,16 @@ if($td->product_msrp != ''){
   $msrp = ($td->website_product_price * 2);
 }
 
+$product_condition = $td->product_condition;
+if($product_condition == '3000'){
+  $product_condition = 'used';
+}else{
+  $product_condition = 'new';
+}
+
 //Create Product Object...
 $product = array(
-  "condition" => $td->product_condition,
+  "condition" => $product_condition,
   "package_unit_of_length" => "inches",
   "package_unit_of_weight" => "pounds",
   "image_list" => $img_array,
@@ -193,8 +201,8 @@ $product = array(
   "package_weight" => $pkg_weight,
   "custom_attributes" => $custom_attributes
 );
-echo json_encode($product,JSON_PRETTY_PRINT);
-die();
+//echo json_encode($product,JSON_PRETTY_PRINT);
+//die();
 
 // create curl resource
 $ch = curl_init();
@@ -217,6 +225,8 @@ if($x->error){
   $x->response = 'ERROR';
 }else{
   $x->response = 'GOOD';
+  $x->message = 'Item Updated';
+  $x->product_label = $td->product_label;
 }
 
 //Setup Response Output...

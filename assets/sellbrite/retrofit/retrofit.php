@@ -24,6 +24,10 @@ $cache_buster = uniqid();
       Init Retrofit
     </button>
     
+    <button onclick="download_nf_items();">
+      Download Not Found
+    </button>
+    
   </body>
   <script src="retrofit-functions.js?cb=<?php echo $cache_buster; ?>"></script>
 </html>
