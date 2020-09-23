@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 error_reporting(0);
-//include 'connection.php';
+include '../php/connection.php';
 $s_conn = mysqli_connect('localhost','outfitte_store','+F%JW[$YDOR(','outfitte_opencart') or die('Error: ' . $s_conn->error . ' on line 4 of add-to-store-api.php');
 
 //Load Variables...
@@ -179,6 +179,7 @@ $hang_tag_data = array(
   'tag_size' => $tag_size
 );
 
+/*
 //Category Field...
 //Get Gender...
 $gcq = "SELECT * FROM `oc_category_description` WHERE `category_id` = '" . $prod_81_cat_1 . "'";
@@ -226,7 +227,75 @@ $cat4 = str_replace('Boys ','',$cat4);
 $cat4 = str_replace('Girls ','',$cat4);
 $cat4 = str_replace('Infants/Toddlers ','',$cat4);
 
-$final_category = $cat1 . ' ' . $cat2 . ' ' . $cat3 . ' ' . $cat4;
+$final_category = $cat1 . ' ' . $cat2 . ' ' . $cat3 . ' ' . $cat4;*/
+
+$final_category = '';
+if($_REQUEST['product_category_1']){
+  $q = "SELECT * FROM `ebay_categories` WHERE `inactive` != 'Yes' AND `category_id` = '" . $_REQUEST['product_category_1'] . "'";
+  $g = mysqli_query($conn, $q) or die($conn->error);
+  $r = mysqli_fetch_array($g);
+  $final_category .= $r['category_name'];
+}
+
+if($_REQUEST['product_category_2']){
+  $q = "SELECT * FROM `ebay_categories` WHERE `inactive` != 'Yes' AND `category_id` = '" . $_REQUEST['product_category_2'] . "'";
+  $g = mysqli_query($conn, $q) or die($conn->error);
+  $r = mysqli_fetch_array($g);
+  $final_category .= ' > ' . $r['category_name'];
+}
+
+if($_REQUEST['product_category_3']){
+  $q = "SELECT * FROM `ebay_categories` WHERE `inactive` != 'Yes' AND `category_id` = '" . $_REQUEST['product_category_3'] . "'";
+  $g = mysqli_query($conn, $q) or die($conn->error);
+  $r = mysqli_fetch_array($g);
+  $final_category .= ' > ' . $r['category_name'];
+}
+
+if($_REQUEST['product_category_4']){
+  $q = "SELECT * FROM `ebay_categories` WHERE `inactive` != 'Yes' AND `category_id` = '" . $_REQUEST['product_category_4'] . "'";
+  $g = mysqli_query($conn, $q) or die($conn->error);
+  $r = mysqli_fetch_array($g);
+  $final_category .= ' > ' . $r['category_name'];
+}
+
+//Apend Weight Prefix to Category...
+$weight_prefix = '';
+if($pkg_weight >= 1){
+  $weight_prefix = '1lb';
+}
+if($pkg_weight >= 2){
+  $weight_prefix = '2lb';
+}
+if($pkg_weight >= 3){
+  $weight_prefix = '3lb';
+}
+if($pkg_weight >= 4){
+  $weight_prefix = '4lb';
+}
+if($pkg_weight >= 5){
+  $weight_prefix = '5lb';
+}
+if($pkg_weight >= 6){
+  $weight_prefix = '6lb';
+}
+if($pkg_weight >= 7){
+  $weight_prefix = '7lb';
+}
+if($pkg_weight >= 8){
+  $weight_prefix = '8lb';
+}
+if($pkg_weight >= 9){
+  $weight_prefix = '9lb';
+}
+if($pkg_weight >= 10){
+  $weight_prefix = '+10lb';
+}
+
+if($weight_prefix != ''){
+  $final_category = $weight_prefix . ' - ' . $final_category;
+}
+
+
 
 #Main Functions...
 
