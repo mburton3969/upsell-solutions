@@ -329,7 +329,7 @@ function print_tags(tag_num){
       <StyledText>
         <Element>
           <String>
-          (eBay)`+d.label_ebay_title.replace(/&/g,'&amp;')+`
+          `+d.label_ebay_title.replace(/&/g,'&amp;')+`
           
           (81O)`+d.label_website_title.replace(/&/g,'&amp;')+`
           </String>
@@ -340,10 +340,32 @@ function print_tags(tag_num){
         </Element>
       </StyledText>
     </TextObject>
-    <Bounds X="538" Y="187" Width="4415.6" Height="2520.2"/>
+    <Bounds X="538" Y="779.1094" Width="4415.6" Height="1928.091"/>
+  </ObjectInfo>
+  <ObjectInfo>
+    <BarcodeObject>
+      <Name>BARCODE</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="255" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation0</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>False</IsVariable>
+      <Text>`+d.label_upc_code+`</Text>
+      <Type>Code39</Type>
+      <Size>Small</Size>
+      <TextPosition>Bottom</TextPosition>
+      <TextFont Family="Helvetica" Size="10" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+      <CheckSumFont Family="Helvetica" Size="10" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+      <TextEmbedding>None</TextEmbedding>
+      <ECLevel>0</ECLevel>
+      <HorizontalAlignment>Center</HorizontalAlignment>
+      <QuietZonesPadding Left="0" Right="0" Top="0" Bottom="0"/>
+    </BarcodeObject>
+    <Bounds X="570.647" Y="143.6719" Width="4193.281" Height="600"/>
   </ObjectInfo>
 </DieCutLabel>
-      `;
+    `;
       var label = dymo.label.framework.openLabelXml(hang_tag_2);
       break;
     default:
@@ -366,3 +388,45 @@ function print_tags(tag_num){
   }
   //label.print(printerName);
 }
+
+
+/*
+<DieCutLabel Version="8.0" Units="twips" MediaType="Default">
+  <PaperOrientation>Landscape</PaperOrientation>
+  <Id>Appointment</Id>
+  <PaperName>30374 Appointment Card</PaperName>
+  <DrawCommands>
+    <Rectangle X="0" Y="0" Width="2880" Height="5040"/>
+  </DrawCommands>
+  <ObjectInfo>
+    <TextObject>
+      <Name>Text</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="255" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation0</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>True</IsVariable>
+      <HorizontalAlignment>Center</HorizontalAlignment>
+      <VerticalAlignment>Middle</VerticalAlignment>
+      <TextFitMode>ShrinkToFit</TextFitMode>
+      <UseFullFontHeight>True</UseFullFontHeight>
+      <Verticalized>False</Verticalized>
+      <StyledText>
+        <Element>
+          <String>
+          (eBay)`+d.label_ebay_title.replace(/&/g,'&amp;')+`
+          
+          (81O)`+d.label_website_title.replace(/&/g,'&amp;')+`
+          </String>
+          <Attributes>
+            <Font Family="Arial" Size="12" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+            <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+          </Attributes>
+        </Element>
+      </StyledText>
+    </TextObject>
+    <Bounds X="538" Y="187" Width="4415.6" Height="2520.2"/>
+  </ObjectInfo>
+</DieCutLabel>
+*/
