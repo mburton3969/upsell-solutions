@@ -218,20 +218,20 @@
         </div>
     </div>
     <div style="background:#8A8A8A;">
-    <div style="padding: 15px;">
+    <!--<div style="padding: 15px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Ebay Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
+                    <h4 class="text-left">Ebay Store Category:</h4>
                 </div>
                 <div class="col-md-6" id="store_cat_box">
-                  <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);" Required>
+                  <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);">
                     <option value="">Select Store Category</option>
                   </select>
               </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div style="padding: 15px;">
         <div class="container">
             <div class="row">
@@ -265,8 +265,8 @@
                     <p>MSRP: <input type="text" class="form-control" style="width:25%;" id="product_msrp" name="product_msrp" /></p>
                 </div>
                 <div class="col-md-6">
-                  <label for="product_price">Ebay Price <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Ebay Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_price'];}?>" autocomplete="off" Required></label>
-                  <label for="website_product_price">Website Price <input type="text" id="website_product_price" style="width: 100%;" name="website_product_price" class="form-control" placeholder="Website Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['website_product_price'];}?>" autocomplete="off" Required></label>
+                  <label for="product_price">Store Price <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Store Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_price'];}?>" autocomplete="off" Required></label>
+                  <label for="website_product_price">SellBrite Price <input type="text" id="website_product_price" style="width: 100%;" name="website_product_price" class="form-control" placeholder="SellBrite Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['website_product_price'];}?>" autocomplete="off" Required></label>
                   <span id="suggested_prices"></span>
                 </div>
             </div>
@@ -310,7 +310,7 @@
             </div>
         </div>
     </div>
-    <div style="padding: 15px;">
+    <!--<div style="padding: 15px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -327,7 +327,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
   <br>
     <input type="hidden" id="cur_cat" name="cur_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_cat'];}?>" />
     <input type="hidden" id="cur_store_cat" name="cur_store_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_store_cat'];}?>" />
