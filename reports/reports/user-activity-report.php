@@ -104,6 +104,9 @@ while($ulr = mysqli_fetch_array($ulg)){
   $total_actions = 0;
   $ebay_qty_listed = 0;
   $store_qty_listed = 0;
+  $qp_count = 0;
+  $sb_listings = 0;
+  $sb_qty_listed = 0;
   
   //Get UPC Log info...
   if($_REQUEST['submit_all']){
@@ -125,6 +128,11 @@ while($ulr = mysqli_fetch_array($ulg)){
       $store_listings++;
       $qty = json_decode($lr['request_data']);
       $store_qty_listed = $store_qty_listed + (int)$qty->product_quantity;
+    }
+    if($lr['log_type'] == 'Listing_SellBrite' && $lr['listed'] == 'Yes'){
+      $sb_listings++;
+      $qty = json_decode($lr['request_data']);
+      $sb_qty_listed = $sb_qty_listed + (int)$qty->product_quantity;
     }
     
     $x = json_decode($lr['request_data']);
