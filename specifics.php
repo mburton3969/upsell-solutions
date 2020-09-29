@@ -27,7 +27,10 @@ $pageIcon = 'fas fa-tachometer-alt';
       	<div class="container-fluid pt-25"><!--Main Content Here-->
 			<?php include 'global/sections/page-title-bar.php'; ?>
 
-			<?php include 'specifics/sections/brands-list.php'; ?>
+			<div class="col-md-4">
+				<?php include 'specifics/sections/brands-list.php'; ?>
+			</div>
+			
         
 		</div>
 			
