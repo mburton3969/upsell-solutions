@@ -48,7 +48,7 @@
 				
 			echo '<li>
 					<a href="specifics.php">
-						<div class="pull-left"><i class="fas fa-satellite-dish mr-20"></i><span class="right-nav-text">Manage Specifics</span></div>';
+						<div class="pull-left"><i class="fas fa-list mr-20"></i><span class="right-nav-text">Manage Specifics</span></div>';
 						
 			echo '<div class="clearfix"></div>
 					</a>
