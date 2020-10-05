@@ -9,14 +9,12 @@ include '../../global/php/connection.php';
 
 # Main Functions...
 
-$q = "SELECT * FROM `oc_filter_description` WHERE `inactive` != 'Yes' AND `filter_group_id` = '7'";
+$q = "SELECT * FROM `oc_filter_description` WHERE `inactive` != 'Yes'";
 
 if($g = mysqli_query($conn, $q)){
     $options = array();
     while($r = mysqli_fetch_array($g)){
-        if($r['filter_group_id'] == '7'){
-            array_push($options, $r);
-        }
+        array_push($options, $r);
     }
     $x->response = 'GOOD';
     $x->message = 'Option removed successfully!';

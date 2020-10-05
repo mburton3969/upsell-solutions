@@ -1,4 +1,4 @@
-<div class="card">
+<div class="table-card">
     <table class="table table-bordered table-hover table-striped" id="brands_table">
         <thead class="bg-primary">
             <tr style="padding:5px;">

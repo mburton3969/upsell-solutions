@@ -8,7 +8,8 @@ $pageIcon = 'fas fa-list';
 <html lang="en">
 <head>
 	<title>Reseller Solutions App</title>
-    <?php include 'global/sections/head.php'; ?>
+	<?php include 'global/sections/head.php'; ?>
+	<link href="specifics/css/custom-tables.css" rel="stylesheet" />
 </head>
 
 <body>
