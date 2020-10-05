@@ -1,7 +1,6 @@
 function add_specific(mode,value){
-    if(mode === 7){
-        value = document.getElementById('new_brand_option').value;
-    }
+    field = document.getElementById('new_'+mode+'_option');
+    value = field.value;
     if(value === ''){
         toast_alert('ERROR','Please enter a valid option...','top-right','error',false);
         return;
@@ -14,6 +13,7 @@ function add_specific(mode,value){
             var r = JSON.parse(this.responseText);
             if(r.response === 'GOOD'){
                 toast_alert('Success',r.message,'top-right','success',false);
+                field.value = '';
                 add_to_list(mode,value,r.ID);
             }else{
                 toast_alert('ERROR',r.message,'top-right','error',false);
@@ -28,11 +28,9 @@ function add_specific(mode,value){
 }
 
 function add_to_list(mode,value,id){
-    var list;
-    if(mode === 7 || mode === '7'){
-        list = document.getElementById('brands_tbody');
-    }
 
+    var list = document.getElementById(mode+'_tbody');
+    
     //Insert item to the list...
     var row = document.createElement('tr');
     row.setAttribute('style','padding:5px;');
@@ -92,7 +90,7 @@ function remove_specific(sid){
               if(r.response === 'GOOD'){
                   console.log(r.data);
                 r.data.forEach(function(opt){
-                    add_to_list(opt.filter_group_id,opt.name,opt.filter_id);//This is the last line i was working one, please pick it up here..........
+                    add_to_list(opt.filter_group_id,opt.name,opt.filter_id);
                 });
                 console.log('Specifics Loaded...');
               }else{
