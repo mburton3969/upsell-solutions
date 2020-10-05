@@ -35,6 +35,9 @@ $pageIcon = 'fas fa-list';
 				<div class="col-md-4">
 					<?php include 'specifics/sections/sizes-table.php'; ?>
 				</div>
+				<div class="col-md-4">
+					<?php include 'specifics/sections/inseam-table.php'; ?>
+				</div>
 			</div>
 			
 			
