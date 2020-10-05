@@ -60,9 +60,9 @@
                     //Juniors...
                     echo '<option value="">Select Brand</option>';
                     $jsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '7' ORDER BY `name` ASC";
-                    $jsog = mysqli_query($s_conn, $jsoq) or die($s_conn->error . 'ERROR');
+                    $jsog = mysqli_query($conn, $jsoq) or die($conn->error . 'ERROR');
                     while($jsor = mysqli_fetch_array($jsog)){
-                      echo '<option value="' . mysqli_real_escape_string($s_conn, $jsor['name']) . '">' . mysqli_real_escape_string($s_conn, $jsor['name']) . '</option>';
+                      echo '<option value="' . mysqli_real_escape_string($conn, $jsor['name']) . '">' . mysqli_real_escape_string($conn, $jsor['name']) . '</option>';
                     }
                   ?>
                   </select>
