@@ -60,9 +60,9 @@
                     //Juniors...
                     echo '<option value="">Select Brand</option>';
                     $jsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '7' ORDER BY `name` ASC";
-                    $jsog = mysqli_query($s_conn, $jsoq) or die($s_conn->error . 'ERROR');
+                    $jsog = mysqli_query($conn, $jsoq) or die($conn->error . 'ERROR');
                     while($jsor = mysqli_fetch_array($jsog)){
-                      echo '<option value="' . mysqli_real_escape_string($s_conn, $jsor['name']) . '">' . mysqli_real_escape_string($s_conn, $jsor['name']) . '</option>';
+                      echo '<option value="' . mysqli_real_escape_string($conn, $jsor['name']) . '">' . mysqli_real_escape_string($conn, $jsor['name']) . '</option>';
                     }
                   ?>
                   </select>
@@ -79,35 +79,35 @@
                     //Juniors...
                     echo '<option value="">****Junior Sizes****</option>';
                     $jsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Juniors' ORDER BY `name` ASC";
-                    $jsog = mysqli_query($s_conn, $jsoq) or die($s_conn->error . 'ERROR');
+                    $jsog = mysqli_query($conn, $jsoq) or die($conn->error . 'ERROR');
                     while($jsor = mysqli_fetch_array($jsog)){
                       echo '<option value="' . $jsor['name'] . '">' . $jsor['name'] . '</option>';
                     }
                     //Regular...
                     echo '<option value="">****Regular Sizes****</option>';
                     $rsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Regular' ORDER BY `name` ASC";
-                    $rsog = mysqli_query($s_conn, $rsoq) or die($s_conn->error . 'ERROR');
+                    $rsog = mysqli_query($conn, $rsoq) or die($conn->error . 'ERROR');
                     while($rsor = mysqli_fetch_array($rsog)){
                       echo '<option value="' . $rsor['name'] . '">' . $rsor['name'] . '</option>';
                     }
                     //Plus...
                     echo '<option value="">****Plus Sizes****</option>';
                     $plsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Plus' ORDER BY `name` ASC";
-                    $plsog = mysqli_query($s_conn, $plsoq) or die($s_conn->error . 'ERROR');
+                    $plsog = mysqli_query($conn, $plsoq) or die($conn->error . 'ERROR');
                     while($plsor = mysqli_fetch_array($plsog)){
                       echo '<option value="' . $plsor['name'] . '">' . $plsor['name'] . '</option>';
                     }
                     //Petite...
                     echo '<option value="">****Petite Sizes****</option>';
                     $psoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Petite' ORDER BY `name` ASC";
-                    $psog = mysqli_query($s_conn, $psoq) or die($s_conn->error . 'ERROR');
+                    $psog = mysqli_query($conn, $psoq) or die($conn->error . 'ERROR');
                     while($psor = mysqli_fetch_array($psog)){
                       echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
                     }
                     //Infants/Toddlers...
                     echo '<option value="">****Infant/Toddler Sizes****</option>';
                     $psoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Infant/Toddler' ORDER BY `name` ASC";
-                    $psog = mysqli_query($s_conn, $psoq) or die($s_conn->error . 'ERROR');
+                    $psog = mysqli_query($conn, $psoq) or die($conn->error . 'ERROR');
                     while($psor = mysqli_fetch_array($psog)){
                       echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
                     }
@@ -119,7 +119,7 @@
                     <?php
                       //Infants/Toddlers...
                       $psoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '12' ORDER BY `name` ASC";
-                      $psog = mysqli_query($s_conn, $psoq) or die($s_conn->error . 'ERROR');
+                      $psog = mysqli_query($conn, $psoq) or die($conn->error . 'ERROR');
                       while($psor = mysqli_fetch_array($psog)){
                         echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
                       }
