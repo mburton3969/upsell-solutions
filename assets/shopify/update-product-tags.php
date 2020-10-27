@@ -150,5 +150,6 @@ mysqli_query($conn, $uq) or die($conn->error);
 
 //Setup Response Output...
 $x->response = 'GOOD';
+$x->product = $product;
 $response = json_encode($x,JSON_PRETTY_PRINT);
 echo $response;

@@ -17,7 +17,7 @@
             <div id="sync-progress-bar" class="progress-bar progress-bar-primary" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span id="cur_num">0</span>/<span id="tot_num">?</span></div>
           </div>
           <br>
-          <h4 style="color:red;"><u>Items Not Found:</u></h4>
+          <h4 style="color:red;"><u>Items Not Found In Shopify:</u></h4>
           <ul id="sync_error_list" style="margin-left:30px;color:#FFF;">
             
           </ul>
