@@ -47,16 +47,10 @@ async function init_tag_sync(){
         }
       });
   });
-  //add_tags(untagged_products[0]);
   for(var i = 0; i < untagged_products.length; i++){
     await add_tags(untagged_products[i]);
     document.getElementById('sb_updated').innerHTML = tagged_items.length;
   }
-  /*untagged_products.forEach(async function(p){
-    await add_tags(p);
-    document.getElementById('sb_updated').innerHTML = tagged_items.length;
-    return;
-  });*/
   console.log('Process Completed...');
 }
 
