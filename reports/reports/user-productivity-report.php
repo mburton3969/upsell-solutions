@@ -81,6 +81,8 @@ if(!$_REQUEST['submit'] && !$_REQUEST['submit_all']){
          <th>ebay Listings</th>
          <th>Qty to ebay</th>
          <th>ebay Imports</th>
+         <th>SellBrite Listings</th>
+         <th>QTY to SellBrite</th>
          <th>Quick Prints</th>
          <th>Total Actions</th>
          </tr>
@@ -100,6 +102,8 @@ while($ulr = mysqli_fetch_array($ulg)){
   $ebay_qty_listed = 0;
   $store_qty_listed = 0;
   $qp_count = 0;
+  $sb_listings = 0;
+  $sb_qty_listed = 0;
   
   //Get UPC Log info...
   if($_REQUEST['submit_all']){
@@ -123,6 +127,11 @@ while($ulr = mysqli_fetch_array($ulg)){
       $qty = json_decode($lr['request_data']);
       $store_qty_listed = $store_qty_listed + (int)$qty->product_quantity;
     }
+    if($lr['log_type'] == 'Listing_SellBrite' && $lr['listed'] == 'Yes'){
+      $sb_listings++;
+      $qty = json_decode($lr['request_data']);
+      $sb_qty_listed = $sb_qty_listed + (int)$qty->product_quantity;
+    }
     
   }
   
@@ -145,7 +154,7 @@ while($ulr = mysqli_fetch_array($ulg)){
   if($total_store_listings < 0){
     $total_store_listings = 0;
   }
-  $total_actions = $total_ebay_listings + $total_store_listings + $upc_scans + $ebay_imports;
+  $total_actions = $total_ebay_listings + $total_store_listings + $upc_scans + $ebay_imports + $sb_listings + $qp_count;
   
   //Get Quick Print Log info...
   if($_REQUEST['submit_all']){
@@ -169,6 +178,8 @@ while($ulr = mysqli_fetch_array($ulg)){
           <td>' . $total_ebay_listings . '</td>
           <td>' . $ebay_qty_listed . '</td>
           <td>' . $ebay_imports . '</td>
+          <td>' . $sb_listings . '</td>
+          <td>' . $sb_qty_listed . '</td>
           <td>' . $qp_count . '</td>
           <td>' . $total_actions . '</td>
         </tr>';

@@ -161,7 +161,7 @@ foreach($is_array as $is){
 //Setup variables for tag printing...
 //Setup Labels for Printing...
 $label_original_price = number_format($product_msrp,2);
-$label_current_price = number_format($website_product_price,2);
+$label_current_price = number_format($product_price,2);
 $label_upc_code = $product_code;
 $label_ebay_title = wordwrap($ebay_title,30,"\n");
 $label_website_title = wordwrap($website_product_title,30,"\n");
@@ -258,7 +258,7 @@ $product = array(
   "package_unit_of_length" => "inches",
   "package_unit_of_weight" => "pounds",
   "image_list" => $img_array,
-  "name" => $website_product_title,
+  "name" => $product_title,
   "brand" => $product_brand,
   "manufacturer" => $product_brand,
   "description" => $website_product_description,

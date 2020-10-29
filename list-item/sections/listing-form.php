@@ -60,9 +60,9 @@
                     //Juniors...
                     echo '<option value="">Select Brand</option>';
                     $jsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '7' ORDER BY `name` ASC";
-                    $jsog = mysqli_query($s_conn, $jsoq) or die($s_conn->error . 'ERROR');
+                    $jsog = mysqli_query($conn, $jsoq) or die($conn->error . 'ERROR');
                     while($jsor = mysqli_fetch_array($jsog)){
-                      echo '<option value="' . mysqli_real_escape_string($s_conn, $jsor['name']) . '">' . mysqli_real_escape_string($s_conn, $jsor['name']) . '</option>';
+                      echo '<option value="' . mysqli_real_escape_string($conn, $jsor['name']) . '">' . mysqli_real_escape_string($conn, $jsor['name']) . '</option>';
                     }
                   ?>
                   </select>
@@ -79,35 +79,35 @@
                     //Juniors...
                     echo '<option value="">****Junior Sizes****</option>';
                     $jsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Juniors' ORDER BY `name` ASC";
-                    $jsog = mysqli_query($s_conn, $jsoq) or die($s_conn->error . 'ERROR');
+                    $jsog = mysqli_query($conn, $jsoq) or die($conn->error . 'ERROR');
                     while($jsor = mysqli_fetch_array($jsog)){
                       echo '<option value="' . $jsor['name'] . '">' . $jsor['name'] . '</option>';
                     }
                     //Regular...
                     echo '<option value="">****Regular Sizes****</option>';
                     $rsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Regular' ORDER BY `name` ASC";
-                    $rsog = mysqli_query($s_conn, $rsoq) or die($s_conn->error . 'ERROR');
+                    $rsog = mysqli_query($conn, $rsoq) or die($conn->error . 'ERROR');
                     while($rsor = mysqli_fetch_array($rsog)){
                       echo '<option value="' . $rsor['name'] . '">' . $rsor['name'] . '</option>';
                     }
                     //Plus...
                     echo '<option value="">****Plus Sizes****</option>';
                     $plsoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Plus' ORDER BY `name` ASC";
-                    $plsog = mysqli_query($s_conn, $plsoq) or die($s_conn->error . 'ERROR');
+                    $plsog = mysqli_query($conn, $plsoq) or die($conn->error . 'ERROR');
                     while($plsor = mysqli_fetch_array($plsog)){
                       echo '<option value="' . $plsor['name'] . '">' . $plsor['name'] . '</option>';
                     }
                     //Petite...
                     echo '<option value="">****Petite Sizes****</option>';
                     $psoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Petite' ORDER BY `name` ASC";
-                    $psog = mysqli_query($s_conn, $psoq) or die($s_conn->error . 'ERROR');
+                    $psog = mysqli_query($conn, $psoq) or die($conn->error . 'ERROR');
                     while($psor = mysqli_fetch_array($psog)){
                       echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
                     }
                     //Infants/Toddlers...
                     echo '<option value="">****Infant/Toddler Sizes****</option>';
                     $psoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '4' AND `filter_category` = 'Infant/Toddler' ORDER BY `name` ASC";
-                    $psog = mysqli_query($s_conn, $psoq) or die($s_conn->error . 'ERROR');
+                    $psog = mysqli_query($conn, $psoq) or die($conn->error . 'ERROR');
                     while($psor = mysqli_fetch_array($psog)){
                       echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
                     }
@@ -119,7 +119,7 @@
                     <?php
                       //Infants/Toddlers...
                       $psoq = "SELECT * FROM `oc_filter_description` WHERE `filter_group_id` = '12' ORDER BY `name` ASC";
-                      $psog = mysqli_query($s_conn, $psoq) or die($s_conn->error . 'ERROR');
+                      $psog = mysqli_query($conn, $psoq) or die($conn->error . 'ERROR');
                       while($psor = mysqli_fetch_array($psog)){
                         echo '<option value="' . $psor['name'] . '">' . $psor['name'] . '</option>';
                       }
@@ -218,20 +218,20 @@
         </div>
     </div>
     <div style="background:#8A8A8A;">
-    <div style="padding: 15px;display:none;">
+    <!--<div style="padding: 15px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="text-left">Ebay Store Category: <!--<small style="color:red;font-weight:bold;">[Not Yet Working]</small>--></h4>
+                    <h4 class="text-left">Ebay Store Category:</h4>
                 </div>
                 <div class="col-md-6" id="store_cat_box">
-                  <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);" >
+                  <select id="product_store_category" name="product_store_category" class="form-control" onmouseover="sortSelect(this);">
                     <option value="">Select Store Category</option>
                   </select>
               </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div style="padding: 15px;">
         <div class="container">
             <div class="row">
@@ -265,8 +265,8 @@
                     <p>MSRP: <input type="text" class="form-control" style="width:25%;" id="product_msrp" name="product_msrp" /></p>
                 </div>
                 <div class="col-md-6">
-                  <label for="product_price">Ebay Price <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Ebay Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_price'];}?>" autocomplete="off" Required></label>
-                  <label for="website_product_price">Website Price <input type="text" id="website_product_price" style="width: 100%;" name="website_product_price" class="form-control" placeholder="Website Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['website_product_price'];}?>" autocomplete="off" Required></label>
+                  <label for="product_price">Store Price <input type="text" id="product_price" style="width: 100%;" name="product_price" class="form-control" placeholder="Store Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['product_price'];}?>" autocomplete="off" Required></label>
+                  <label for="website_product_price">SellBrite Price <input type="text" id="website_product_price" style="width: 100%;" name="website_product_price" class="form-control" placeholder="SellBrite Price" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['website_product_price'];}?>" autocomplete="off" Required></label>
                   <span id="suggested_prices"></span>
                 </div>
             </div>
@@ -310,7 +310,7 @@
             </div>
         </div>
     </div>
-    <div style="padding: 15px;display:none;">
+    <!--<div style="padding: 15px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -327,7 +327,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
   <br>
     <input type="hidden" id="cur_cat" name="cur_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_cat'];}?>" />
     <input type="hidden" id="cur_store_cat" name="cur_store_cat" value="<?php if($_GET['retry'] == 'Yes'){echo $_SESSION['form_data']['cur_store_cat'];}?>" />

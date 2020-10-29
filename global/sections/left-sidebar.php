@@ -20,13 +20,13 @@
 <!-------------------------------------------------------------------Current Listings-------------------------------------------------------------------------------->
 				<?php
 				
-			echo '<li>
+			/*echo '<li>
 					<a href="current-listings.php">
 						<div class="pull-left"><i class="fab fa-ebay mr-20"></i><span class="right-nav-text">Current Listings</span></div>';
 						
 			echo '<div class="clearfix"></div>
 					</a>
-				  </li>';
+				  </li>';*/
 				
 				?>
       
@@ -36,6 +36,19 @@
 			echo '<li>
 					<a href="index.php">
 						<div class="pull-left"><i class="fas fa-satellite-dish mr-20"></i><span class="right-nav-text">Product Lister</span></div>';
+						
+			echo '<div class="clearfix"></div>
+					</a>
+				  </li>';
+				
+				?>
+
+<!-------------------------------------------------------------------Specifics-------------------------------------------------------------------------------->
+				<?php
+				
+			echo '<li>
+					<a href="specifics.php">
+						<div class="pull-left"><i class="fas fa-list mr-20"></i><span class="right-nav-text">Manage Specifics</span></div>';
 						
 			echo '<div class="clearfix"></div>
 					</a>
