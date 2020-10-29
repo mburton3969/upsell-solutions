@@ -13,14 +13,17 @@ $cache_buster = uniqid();
     
     <div id="main_display">
       <p>
-        SellBrite Items Loaded: <span id="sb_loaded">0</span>
+        Shopify Items Loaded: <span id="sb_loaded">0</span>
       </p>
       <p>
-        SellBrite Items Updated: <span id="sb_updated">0</span>
+        Shopify Items Needing Tags: <span id="sb_need_tags">0</span>
+      </p>
+      <p>
+        Shopify Items Updated: <span id="sb_updated">0</span>
       </p>
     </div>
     
-    <button onclick="init_retrofit();">
+    <button onclick="init_tag_sync();">
       Init Retrofit
     </button>
     
