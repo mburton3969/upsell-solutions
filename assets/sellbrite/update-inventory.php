@@ -54,6 +54,7 @@ if($x->error){
   $x->response = 'ERROR';
 }else{
   $x->response = 'GOOD';
+  $x->message = 'Item Inventory Updated!';
 }
 
 //Setup Response Output...
