@@ -11,8 +11,9 @@ $api_version = $config['api_version'];
 $shop = $config['shop'];
 $resource = 'products';
 $pagination_link = $_REQUEST['pagination_link'];
-if($_REQUEST['pagination_link']){
-  $url = 'https://' . $shop . '.myshopify.com/admin/api/' . $api_version . '/' . $resource . '.json?' . $pagination_link;
+$page_info = $_REQUEST['page_info'];
+if($_REQUEST['page_info']){
+  $url = 'https://' . $shop . '.myshopify.com/admin/api/' . $api_version . '/' . $resource . '.json?limit=250&page_info=' . $page_info;
 }else{
   $url = 'https://' . $shop . '.myshopify.com/admin/api/' . $api_version . '/' . $resource . '.json?limit=250';
 }
@@ -55,9 +56,19 @@ function get_string_between($string, $start, $end){
 foreach($headers as $h){
   if(strpos($h,'link:') !== false){
     $link = str_replace('link: ','',$h);
-    $link = get_string_between($link, '<', '>');
-    $link = explode('?',$link);
-    $link = $link[1];
+    if((strpos($link,'rel="previous"') !== false) && (strpos($link,'rel="next"') === false)){
+      $link = '';
+    }else{
+      if(strpos($link,'rel="previous", <') !== false){
+        $link = get_string_between($link, 'rel="previous", <', '>');
+      }else{
+        $link = get_string_between($link, '<', '>');
+      }
+      $link = explode('?',$link);
+      $link = $link[1];
+      $link = explode('&page_info=',$link);
+      $link = $link[1];
+    }
   }
 }
 //echo $link;

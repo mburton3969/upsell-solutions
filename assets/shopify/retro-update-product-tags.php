@@ -18,7 +18,7 @@ $url = 'https://' . $shop . '.myshopify.com/admin/api/' . $api_version . '/' . $
 
 //Get Tags from Database...
 $tags_array = array();
-$tq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_SellBrite' AND `shopify_tagged` != 'Yes' AND `upc_code` = '" . $upc_code . "' ORDER BY `ID` DESC LIMIT 1";
+$tq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND (`log_type` = 'Listing_SellBrite' OR `log_type` = 'Listing_Ebay' OR `log_type` = 'Listing_Store') AND `upc_code` = '" . $upc_code . "' AND `request_data` != '' ORDER BY `ID` DESC LIMIT 1";
 $tg = mysqli_query($conn, $tq) or die($conn->error);
 $tr = mysqli_fetch_array($tg);
 $td = json_decode($tr['request_data']);
@@ -149,7 +149,13 @@ $uq = "UPDATE `upc_search_log` SET `shopify_tagged` = 'Yes', `shopify_tagged_tim
 mysqli_query($conn, $uq) or die($conn->error);
 
 //Setup Response Output...
-$x->response = 'GOOD';
-$x->product = $product;
+if(mysqli_num_rows($tg) > 0){
+  $x->response = 'GOOD';
+  $x->prod_title = $td->product_title;
+  $x->prod_upc = $td->product_code;
+  $x->query = $tq;
+}else{
+  $x->response = 'EMPTY';
+}
 $response = json_encode($x,JSON_PRETTY_PRINT);
 echo $response;

@@ -2,11 +2,11 @@
 header('Content-Type: application/json');
 error_reporting(0);
 session_start();
-include '../php/connection.php';
+include '../../php/connection.php';
 $s_conn = mysqli_connect('localhost','outfitte_store','+F%JW[$YDOR(','outfitte_opencart') or die('Error: ' . $s_conn->error . ' on line 5 of update-product-tags.php');
 
 //Load Variables...
-$config = require 'config.php';
+$config = require '../../shopify/config.php';
 $api_key = $config['api_key'];
 $api_secret_key = $config['api_secret_key'];
 $api_version = $config['api_version'];
@@ -18,7 +18,7 @@ $url = 'https://' . $shop . '.myshopify.com/admin/api/' . $api_version . '/' . $
 
 //Get Tags from Database...
 $tags_array = array();
-$tq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` = 'Listing_SellBrite' AND `shopify_tagged` != 'Yes' AND `upc_code` = '" . $upc_code . "' ORDER BY `ID` DESC LIMIT 1";
+$tq = "SELECT * FROM `upc_search_log` WHERE `inactive` != 'Yes' AND `log_type` != 'UPC Scan' AND `shopify_tagged` != 'Yes' AND `listed` = 'Yes' AND `upc_code` = '" . $upc_code . "' ORDER BY `ID` DESC LIMIT 1";
 $tg = mysqli_query($conn, $tq) or die($conn->error);
 $tr = mysqli_fetch_array($tg);
 $td = json_decode($tr['request_data']);
@@ -119,8 +119,8 @@ $tags = implode(',',$tags_array);
 //Setup POST Data...
 $product = array('id' => $product_id,'tags' => $tags);
 $post_data = array('product' => $product);
-//echo json_encode($post_data, JSON_PRETTY_PRINT);
-//die();
+echo json_encode($post_data, JSON_PRETTY_PRINT);
+die();
 #Main Functions...
 //Create cURL resource.
 $ch = curl_init();
@@ -150,6 +150,5 @@ mysqli_query($conn, $uq) or die($conn->error);
 
 //Setup Response Output...
 $x->response = 'GOOD';
-$x->product = $product;
 $response = json_encode($x,JSON_PRETTY_PRINT);
 echo $response;
