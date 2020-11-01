@@ -2,6 +2,9 @@
 # Operating Specific Junk Files
 #-------------------------
 
+# Basic Files
+.htaccess
+
 # OS X
 .DS_Store
 .AppleDouble
