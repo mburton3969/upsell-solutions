@@ -5,6 +5,7 @@ return [
     'api_secret_key' => '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',
     'api_version' => '2020-07',
     //'shop' => 'ignition-innovations',
-    'shop' => '81-outfitters',
+    //'shop' => '81-outfitters',
+    'shop' => '81outfitters',
     'redirect_uri' => 'https://beta.reseller-solutions.com/assets/shopify/get-keys.php'
 ];
