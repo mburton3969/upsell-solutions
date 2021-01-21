@@ -9,5 +9,5 @@ return [
     //'shop' => 'ignition-innovations',
     //'shop' => '81-outfitters',
     'shop' => '81outfitters',
-    'redirect_uri' => 'https://beta.reseller-solutions.com/assets/shopify/get-keys.php'
+    'redirect_uri' => 'https://reseller-solutions.com/assets/shopify/get-keys.php'
 ];
